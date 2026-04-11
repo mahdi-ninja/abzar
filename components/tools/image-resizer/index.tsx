@@ -95,7 +95,7 @@ export default function ImageResizer() {
   const [crop, setCrop] = useState<CropRect>({ x: 0, y: 0, w: 0, h: 0 });
   const cropCanvasRef = useRef<HTMLCanvasElement>(null);
   const dragRef = useRef<DragAction>({ type: "none" });
-  const [displayScale, setDisplayScale] = useState(1);
+  const displayScaleRef = useRef(1);
   const [cursorStyle, setCursorStyle] = useState("crosshair");
 
   const objectUrlRef = useRef<string | null>(null);
@@ -165,7 +165,7 @@ export default function ImageResizer() {
     const canvas = cropCanvasRef.current;
     const maxW = canvas.parentElement?.clientWidth ?? 500;
     const scale = Math.min(1, maxW / origWidth);
-    setDisplayScale(scale);
+    displayScaleRef.current = scale;
     canvas.width = origWidth * scale;
     canvas.height = origHeight * scale;
     const ctx = canvas.getContext("2d")!;
@@ -237,11 +237,11 @@ export default function ImageResizer() {
     (e: React.MouseEvent<HTMLCanvasElement>) => {
       const rect = e.currentTarget.getBoundingClientRect();
       return {
-        x: (e.clientX - rect.left) / displayScale,
-        y: (e.clientY - rect.top) / displayScale,
+        x: (e.clientX - rect.left) / displayScaleRef.current,
+        y: (e.clientY - rect.top) / displayScaleRef.current,
       };
     },
-    [displayScale]
+    []
   );
 
   const clampCrop = useCallback(
@@ -259,7 +259,7 @@ export default function ImageResizer() {
       const { x, y } = getImageCoords(e);
 
       // Check handles first
-      const handle = hitTestHandle(x, y, crop, displayScale);
+      const handle = hitTestHandle(x, y, crop, displayScaleRef.current);
       if (handle) {
         dragRef.current = { type: "resize", handle, startCrop: { ...crop } };
         return;
@@ -275,7 +275,7 @@ export default function ImageResizer() {
       dragRef.current = { type: "draw", startX: x, startY: y };
       setCrop({ x: Math.round(x), y: Math.round(y), w: 0, h: 0 });
     },
-    [getImageCoords, crop, displayScale]
+    [getImageCoords, crop]
   );
 
   const handleMouseMove = useCallback(
@@ -285,7 +285,7 @@ export default function ImageResizer() {
 
       if (action.type === "none") {
         // Update cursor based on hover
-        const handle = hitTestHandle(x, y, crop, displayScale);
+        const handle = hitTestHandle(x, y, crop, displayScaleRef.current);
         if (handle) {
           setCursorStyle(HANDLE_CURSORS[handle]);
         } else if (hitTestInside(x, y, crop) && crop.w > 5 && crop.h > 5) {
@@ -340,7 +340,7 @@ export default function ImageResizer() {
         setCrop(clampCrop({ x: nx, y: ny, w: nw, h: nh }));
       }
     },
-    [getImageCoords, crop, displayScale, clampCrop]
+    [getImageCoords, crop, clampCrop]
   );
 
   const handleMouseUp = useCallback(() => {
@@ -407,6 +407,7 @@ export default function ImageResizer() {
                   <Label className="text-xs text-muted-foreground mb-2 block">
                     Original ({origWidth}x{origHeight})
                   </Label>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={image.src} alt="Original" className="max-h-64 w-full object-contain rounded" />
                 </Card>
                 <Card className="p-3">

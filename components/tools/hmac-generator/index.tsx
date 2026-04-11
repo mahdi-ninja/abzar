@@ -41,7 +41,10 @@ export default function HmacGenerator() {
           </Select>
         </div>
       </div>
-      <Button size="sm" onClick={generate} disabled={!message || !secret}>Generate HMAC</Button>
+      <div className="flex gap-2">
+        <Button size="sm" onClick={generate} disabled={!message || !secret}>Generate HMAC</Button>
+        <Button size="sm" variant="outline" onClick={() => { setMessage(""); setSecret(""); setAlgo("SHA-256"); setOutput(""); }}>Clear</Button>
+      </div>
       {output && (
         <Card className="p-3">
           <div className="flex items-center justify-between mb-1"><Label className="text-xs">HMAC-{algo}</Label><CopyButton value={output} /></div>

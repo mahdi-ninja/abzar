@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 function countSentences(text: string): number {
   if (!text.trim()) return 0;
@@ -73,6 +74,10 @@ export default function WordCounter() {
 
   return (
     <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <div />
+        <Button size="sm" variant="outline" onClick={() => setText("")}>Clear</Button>
+      </div>
       <Textarea
         value={text}
         onChange={(e) => setText(e.target.value)}

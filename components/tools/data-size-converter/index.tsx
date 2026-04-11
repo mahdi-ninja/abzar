@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
 
 const BINARY_UNITS = [["B",1],["KiB",1024],["MiB",1048576],["GiB",1073741824],["TiB",1099511627776],["PiB",1125899906842624]] as const;
@@ -44,6 +45,7 @@ export default function DataSizeConverter() {
           <Switch checked={binary} onCheckedChange={setBinary} />
           <Label className="text-xs">{binary ? "Binary (1024)" : "Decimal (1000)"}</Label>
         </div>
+        <Button size="sm" variant="outline" onClick={() => { setValue("1"); setUnit("GB"); setBinary(true); }}>Reset</Button>
       </div>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         {results.map(({ unit: u, value: v }) => (

@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
 
 function addMinutes(time: string, mins: number): string {
   const [h, m] = time.split(":").map(Number);
@@ -49,7 +50,10 @@ export default function SleepCalculator() {
           <TabsTrigger value="sleep" className="text-xs px-3 h-6">I want to go to sleep at...</TabsTrigger>
         </TabsList>
       </Tabs>
-      <div><Label className="text-sm mb-1 block">{mode === "wake" ? "Wake up time" : "Bedtime"}</Label><Input type="time" value={time} onChange={(e) => setTime(e.target.value)} className="w-40" /></div>
+      <div className="flex items-end gap-3">
+        <div><Label className="text-sm mb-1 block">{mode === "wake" ? "Wake up time" : "Bedtime"}</Label><Input type="time" value={time} onChange={(e) => setTime(e.target.value)} className="w-40" /></div>
+        <Button size="sm" variant="outline" onClick={() => { setMode("wake"); setTime("07:00"); }}>Reset</Button>
+      </div>
       <div className="space-y-2">
         <Label className="text-sm font-medium">{mode === "wake" ? "Go to bed at:" : "Set your alarm for:"}</Label>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">

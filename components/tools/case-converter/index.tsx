@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
+import { InputOutputLayout } from "@/components/ui/input-output-layout";
 
 const converters: { label: string; fn: (s: string) => string }[] = [
   { label: "lowercase", fn: (s) => s.toLowerCase() },
@@ -24,19 +25,19 @@ export default function CaseConverter() {
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Input</label>
+      <InputOutputLayout
+        inputLabel="Input"
+        outputLabel="Output"
+        input={
           <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="Type or paste text here..." className="min-h-[200px] text-sm" />
-        </div>
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <label className="text-sm font-medium">Output</label>
-            {output && <CopyButton value={output} />}
-          </div>
-          <Textarea value={output} readOnly className="min-h-[200px] text-sm" />
-        </div>
-      </div>
+        }
+        output={
+          <>
+            {output && <div className="flex justify-end"><CopyButton value={output} /></div>}
+            <Textarea value={output} readOnly className="min-h-[200px] text-sm" />
+          </>
+        }
+      />
       <div className="flex flex-wrap gap-2">
         {converters.map((c) => (
           <Button key={c.label} size="sm" variant="secondary" onClick={() => setOutput(c.fn(input))}>

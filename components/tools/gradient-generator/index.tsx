@@ -38,10 +38,9 @@ export default function GradientGenerator() {
 
   const removeStop = useCallback(
     (index: number) => {
-      if (stops.length <= 2) return;
-      setStops((prev) => prev.filter((_, i) => i !== index));
+      setStops((prev) => prev.length <= 2 ? prev : prev.filter((_, i) => i !== index));
     },
-    [stops.length]
+    []
   );
 
   const stopsStr = stops
@@ -99,9 +98,12 @@ export default function GradientGenerator() {
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <Label className="text-sm font-medium">Color Stops</Label>
-          <Button size="sm" variant="outline" onClick={addStop}>
-            Add Stop
-          </Button>
+          <div className="flex gap-2">
+            <Button size="sm" variant="outline" onClick={() => { setType("linear"); setAngle(90); setStops([{ color: "#f59e0b", position: 0 }, { color: "#ef4444", position: 100 }]); }}>Reset</Button>
+            <Button size="sm" variant="outline" onClick={addStop}>
+              Add Stop
+            </Button>
+          </div>
         </div>
         {stops.map((stop, i) => (
           <div key={i} className="flex items-center gap-3">

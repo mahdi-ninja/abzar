@@ -2,7 +2,6 @@
 
 import { useState, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
@@ -22,10 +21,9 @@ export default function Flashcards() {
   const [back, setBack] = useState("");
   const [studyIndex, setStudyIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
+  const [studyQueue, setStudyQueue] = useState<Flashcard[]>([]);
 
-  // Study queue: prioritize lower boxes
-  const studyQueue = [...cards].sort((a, b) => a.box - b.box);
-  const currentCard = studyQueue[studyIndex];
+  const currentCard = studyQueue[studyIndex] ?? null;
 
   const addCard = useCallback(() => {
     if (!front.trim() || !back.trim()) return;
@@ -61,10 +59,11 @@ export default function Flashcards() {
   );
 
   const startStudy = useCallback(() => {
+    setStudyQueue([...cards].sort((a, b) => a.box - b.box));
     setView("study");
     setStudyIndex(0);
     setShowAnswer(false);
-  }, []);
+  }, [cards]);
 
   return (
     <div className="space-y-6">

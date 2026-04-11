@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function SalaryConverter() {
   const [amount, setAmount] = useState(75000);
@@ -31,6 +32,9 @@ export default function SalaryConverter() {
 
   return (
     <div className="space-y-6">
+      <div className="flex justify-end">
+        <Button size="sm" variant="outline" onClick={() => { setAmount(75000); setHoursPerWeek(40); setWeeksPerYear(52); }}>Reset</Button>
+      </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <div>
           <Label className="text-sm mb-1 block">Annual Salary ($)</Label>

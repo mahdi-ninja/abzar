@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function RoiCalculator() {
   const [initial, setInitial] = useState(10000);
@@ -21,6 +22,9 @@ export default function RoiCalculator() {
 
   return (
     <div className="space-y-6">
+      <div className="flex justify-end">
+        <Button size="sm" variant="outline" onClick={() => { setInitial(10000); setFinal(15000); setYears(3); }}>Reset</Button>
+      </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <div><Label className="text-sm mb-1 block">Initial Investment</Label><Input type="number" value={initial} onChange={(e) => setInitial(Number(e.target.value))} /></div>
         <div><Label className="text-sm mb-1 block">Final Value</Label><Input type="number" value={final} onChange={(e) => setFinal(Number(e.target.value))} /></div>

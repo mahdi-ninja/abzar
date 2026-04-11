@@ -12,7 +12,7 @@ export default function Countdown() {
     return d.toISOString().split("T")[0];
   });
   const [title, setTitle] = useState("My Event");
-  const [now, setNow] = useState(Date.now());
+  const [now, setNow] = useState(() => Date.now());
 
   useEffect(() => {
     const timer = setInterval(() => setNow(Date.now()), 1000);

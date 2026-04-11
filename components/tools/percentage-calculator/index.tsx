@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function PercentageCalculator() {
   const [mode, setMode] = useState("of");
@@ -43,6 +44,7 @@ export default function PercentageCalculator() {
         <Card className="px-4 py-2">
           <span className="text-lg font-bold tabular-nums">{result || "—"}</span>
         </Card>
+        <Button size="sm" variant="outline" onClick={() => { setA(""); setB(""); setMode("of"); }}>Clear</Button>
       </div>
     </div>
   );

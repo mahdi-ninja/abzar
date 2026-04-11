@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useMemo } from "react";
+import { useState, useCallback, useMemo, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -56,9 +56,21 @@ export default function HabitTracker() {
   const [habits, setHabits] = useLocalStorage<Habit[]>("abzar:habit-tracker:habits", []);
   const [newHabitName, setNewHabitName] = useState("");
 
-  const today = toDateKey(new Date());
-  const last7 = useMemo(() => getLast7Days(), []);
-  const last90 = useMemo(() => getLast90Days(), []);
+  const [dateKey, setDateKey] = useState(() => toDateKey(new Date()));
+
+  // Recompute dates when the tab becomes visible (handles midnight rollover)
+  useEffect(() => {
+    const handler = () => {
+      if (!document.hidden) setDateKey(toDateKey(new Date()));
+    };
+    document.addEventListener("visibilitychange", handler);
+    return () => document.removeEventListener("visibilitychange", handler);
+  }, []);
+
+  const today = dateKey;
+  // dateKey changes on visibility change (midnight rollover) to trigger recomputation
+  const last7 = useMemo(() => { void dateKey; return getLast7Days(); }, [dateKey]);
+  const last90 = useMemo(() => { void dateKey; return getLast90Days(); }, [dateKey]);
 
   const addHabit = useCallback(() => {
     const name = newHabitName.trim();

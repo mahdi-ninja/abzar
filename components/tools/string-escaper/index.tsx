@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
+import { InputOutputLayout } from "@/components/ui/input-output-layout";
 
 type EscapeMode = "html" | "json" | "url" | "xml" | "csv";
 
@@ -45,19 +46,19 @@ export default function StringEscaper() {
           ))}
         </TabsList>
       </Tabs>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Input</label>
+      <InputOutputLayout
+        inputLabel="Input"
+        outputLabel="Output"
+        input={
           <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="Text to escape or unescape..." className="min-h-[200px] font-mono text-sm" />
-        </div>
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <label className="text-sm font-medium">Output</label>
-            {output && <CopyButton value={output} />}
-          </div>
-          <Textarea value={output} readOnly className="min-h-[200px] font-mono text-sm" />
-        </div>
-      </div>
+        }
+        output={
+          <>
+            {output && <div className="flex justify-end"><CopyButton value={output} /></div>}
+            <Textarea value={output} readOnly className="min-h-[200px] font-mono text-sm" />
+          </>
+        }
+      />
       <div className="flex gap-2">
         <Button size="sm" onClick={() => setOutput(escapers[mode].escape(input))}>Escape</Button>
         <Button size="sm" variant="secondary" onClick={() => setOutput(escapers[mode].unescape(input))}>Unescape</Button>

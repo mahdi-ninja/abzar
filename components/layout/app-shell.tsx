@@ -1,18 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Header } from "@/components/layout/header";
 import { Sidebar } from "@/components/layout/sidebar";
 
-export function AppShell({ children }: { children: React.ReactNode }) {
-  const [collapsed, setCollapsed] = useState(false);
+function getInitialCollapsed(): boolean {
+  if (typeof window === "undefined") return false;
+  try { return localStorage.getItem("abzar:sidebar-collapsed") === "true"; } catch { return false; }
+}
 
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem("abzar:sidebar-collapsed");
-      if (stored === "true") setCollapsed(true);
-    } catch { /* ignore */ }
-  }, []);
+export function AppShell({ children }: { children: React.ReactNode }) {
+  const [collapsed, setCollapsed] = useState(getInitialCollapsed);
 
   const handleToggle = () => {
     setCollapsed((prev) => {
@@ -24,11 +22,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="flex h-screen overflow-hidden">
-      {/* Desktop sidebar */}
       <div className="hidden lg:flex">
         <Sidebar collapsed={collapsed} onToggle={handleToggle} />
       </div>
-
       <div className="flex flex-1 flex-col overflow-hidden">
         <Header />
         <main className="flex-1 overflow-y-auto">{children}</main>

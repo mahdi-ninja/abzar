@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 function formatCurrency(n: number): string {
   return n.toLocaleString("en-US", {
@@ -81,6 +82,9 @@ export default function MortgageCalculator() {
 
   return (
     <div className="space-y-6">
+      <div className="flex justify-end">
+        <Button size="sm" variant="outline" onClick={() => { setPrincipal(300000); setRate(6.5); setYears(30); }}>Reset</Button>
+      </div>
       {/* Inputs */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <div>

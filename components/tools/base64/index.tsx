@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FileDropZone } from "@/components/ui/file-drop-zone";
+import { InputOutputLayout } from "@/components/ui/input-output-layout";
 
 export default function Base64Tool() {
   const [mode, setMode] = useState<"text" | "file">("text");
@@ -120,12 +121,11 @@ export default function Base64Tool() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div className="flex flex-col gap-2">
-          <label className="text-sm font-medium">
-            {mode === "text" ? "Input" : "File"}
-          </label>
-          {mode === "text" ? (
+      <InputOutputLayout
+        inputLabel={mode === "text" ? "Input" : "File"}
+        outputLabel="Output"
+        input={
+          mode === "text" ? (
             <Textarea
               value={input}
               onChange={(e) => handleInputChange(e.target.value)}
@@ -146,27 +146,25 @@ export default function Base64Tool() {
               }
               className="min-h-[200px]"
             />
-          )}
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center justify-between">
-            <label className="text-sm font-medium">Output</label>
-            {output && <CopyButton value={output} />}
-          </div>
-          <Textarea
-            value={output}
-            readOnly
-            placeholder="Result will appear here"
-            className="min-h-[200px] font-mono text-sm"
-          />
-          {output && (
-            <p className="text-xs text-muted-foreground">
-              {output.length.toLocaleString()} characters
-            </p>
-          )}
-        </div>
-      </div>
+          )
+        }
+        output={
+          <>
+            {output && <div className="flex justify-end"><CopyButton value={output} /></div>}
+            <Textarea
+              value={output}
+              readOnly
+              placeholder="Result will appear here"
+              className="min-h-[200px] font-mono text-sm"
+            />
+            {output && (
+              <p className="text-xs text-muted-foreground">
+                {output.length.toLocaleString()} characters
+              </p>
+            )}
+          </>
+        }
+      />
     </div>
   );
 }

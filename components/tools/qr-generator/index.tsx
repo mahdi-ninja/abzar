@@ -207,6 +207,7 @@ export default function QrGenerator() {
             <canvas ref={canvasRef} />
           </div>
           <div className="flex gap-2">
+            <Button size="sm" variant="outline" onClick={() => { setMode("url"); setUrl("https://example.com"); setText(""); setWifiSsid(""); setWifiPassword(""); setWifiEncryption("WPA"); setVcardName(""); setVcardPhone(""); setVcardEmail(""); setSize(256); setErrorLevel("M"); }}>Reset</Button>
             {pngBlob && (
               <DownloadButton
                 data={pngBlob}

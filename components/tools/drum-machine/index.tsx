@@ -44,6 +44,7 @@ export default function DrumMachine() {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const stepRef = useRef(0);
   const playingRef = useRef(false);
+  const tickRef = useRef<() => void>(() => {});
 
   useEffect(() => { gridRef.current = grid; }, [grid]);
   useEffect(() => { bpmRef.current = bpm; }, [bpm]);
@@ -73,8 +74,9 @@ export default function DrumMachine() {
 
     stepRef.current = (step + 1) % STEPS;
     const interval = (60 / bpmRef.current / 4) * 1000;
-    timerRef.current = setTimeout(tick, interval);
+    timerRef.current = setTimeout(tickRef.current, interval);
   }, []);
+  useEffect(() => { tickRef.current = tick; }, [tick]);
 
   const handlePlay = useCallback(async () => {
     if (playing) {
@@ -96,8 +98,8 @@ export default function DrumMachine() {
     stepRef.current = 0;
     playingRef.current = true;
     setPlaying(true);
-    tick();
-  }, [playing, tick]);
+    tickRef.current();
+  }, [playing]);
 
   // Cleanup on unmount
   useEffect(() => {

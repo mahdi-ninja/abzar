@@ -40,6 +40,7 @@ export default function AspectRatio() {
         {PRESETS.map((p) => (
           <Button key={p.label} size="sm" variant="outline" onClick={() => { setWidth(p.w * 100); setHeight(p.h * 100); }}>{p.label}</Button>
         ))}
+        <Button size="sm" variant="outline" onClick={() => { setWidth(1920); setHeight(1080); }}>Reset</Button>
       </div>
       <div className="grid grid-cols-2 gap-3">
         <Card className="p-4 text-center"><div className="text-2xl font-bold">{ratio}</div><div className="text-xs text-muted-foreground">Aspect Ratio</div></Card>

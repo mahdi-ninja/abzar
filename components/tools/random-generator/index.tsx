@@ -46,6 +46,7 @@ export default function RandomGenerator() {
         )}
         <div><Label className="text-xs mb-1 block">Count</Label><Input type="number" min={1} max={100} value={count} onChange={(e) => setCount(Math.max(1, Number(e.target.value)))} className="w-20" /></div>
         <Button size="sm" onClick={generate}>Generate</Button>
+        <Button size="sm" variant="outline" onClick={() => { setResults([]); setMin(1); setMax(100); setCount(1); setMode("number"); }}>Clear</Button>
       </div>
       {results.length > 0 && (
         <div className="flex flex-wrap gap-2">

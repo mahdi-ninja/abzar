@@ -2,11 +2,11 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
 import { DownloadButton } from "@/components/ui/download-button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { InputOutputLayout } from "@/components/ui/input-output-layout";
 
 export default function MarkdownEditor() {
   const [input, setInput] = useState(
@@ -75,25 +75,24 @@ export default function MarkdownEditor() {
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div className="space-y-2">
-          <Label className="text-sm font-medium">Markdown</Label>
+      <InputOutputLayout
+        inputLabel="Markdown"
+        outputLabel="Preview"
+        input={
           <Textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Write Markdown here..."
             className="min-h-[400px] font-mono text-sm resize-none"
           />
-        </div>
-
-        <div className="space-y-2">
-          <Label className="text-sm font-medium">Preview</Label>
+        }
+        output={
           <div
             className="min-h-[400px] overflow-auto rounded-md border bg-card p-4 prose prose-sm dark:prose-invert max-w-none"
             dangerouslySetInnerHTML={{ __html: html }}
           />
-        </div>
-      </div>
+        }
+      />
     </div>
   );
 }

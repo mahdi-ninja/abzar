@@ -68,7 +68,10 @@ const TEXTS: Record<string, string[]> = {
 
 export default function TypingTest() {
   const [difficulty, setDifficulty] = useState("medium");
-  const [targetText, setTargetText] = useState("");
+  const [targetText, setTargetText] = useState(() => {
+    const pool = TEXTS["medium"];
+    return pool[Math.floor(Math.random() * pool.length)];
+  });
   const [typed, setTyped] = useState("");
   const [started, setStarted] = useState(false);
   const [finished, setFinished] = useState(false);
@@ -81,10 +84,6 @@ export default function TypingTest() {
     const pool = TEXTS[diff] || TEXTS.medium;
     setTargetText(pool[Math.floor(Math.random() * pool.length)]);
   }, []);
-
-  useEffect(() => {
-    pickText(difficulty);
-  }, [difficulty, pickText]);
 
   const stopTimer = useCallback(() => {
     if (timerRef.current) {
@@ -141,7 +140,7 @@ export default function TypingTest() {
       <div className="flex flex-wrap items-end gap-3">
         <div>
           <Label className="text-sm mb-1 block">Difficulty</Label>
-          <Select value={difficulty} onValueChange={(v) => v && setDifficulty(v)}>
+          <Select value={difficulty} onValueChange={(v) => { if (v) { setDifficulty(v); pickText(v); } }} disabled={started && !finished}>
             <SelectTrigger className="w-32">
               <SelectValue />
             </SelectTrigger>

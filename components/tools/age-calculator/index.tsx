@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function AgeCalculator() {
   const [birthdate, setBirthdate] = useState("1990-01-15");
@@ -27,7 +28,10 @@ export default function AgeCalculator() {
 
   return (
     <div className="space-y-6">
-      <div><Label className="text-sm mb-1 block">Date of Birth</Label><Input type="date" value={birthdate} onChange={(e) => setBirthdate(e.target.value)} className="w-48" /></div>
+      <div className="flex items-end gap-3">
+        <div><Label className="text-sm mb-1 block">Date of Birth</Label><Input type="date" value={birthdate} onChange={(e) => setBirthdate(e.target.value)} className="w-48" /></div>
+        <Button size="sm" variant="outline" onClick={() => setBirthdate("1990-01-15")}>Reset</Button>
+      </div>
       {result && (
         <>
           <Card className="p-4 text-center">

@@ -1,24 +1,10 @@
 "use client";
 
 import { useTheme } from "@/components/theme-provider";
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return (
-      <Button variant="ghost" size="icon" className="h-9 w-9" aria-label="Toggle theme">
-        <span className="h-4 w-4" />
-      </Button>
-    );
-  }
 
   return (
     <Button
@@ -31,6 +17,7 @@ export function ThemeToggle() {
         else setTheme("light");
       }}
       aria-label="Toggle theme"
+      suppressHydrationWarning
     >
       {theme === "light" && (
         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

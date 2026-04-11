@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { InputOutputLayout } from "@/components/ui/input-output-layout";
 
 function encodeHtmlEntities(s: string, numeric: boolean): string {
   if (numeric) return [...s].map((c) => `&#${c.charCodeAt(0)};`).join("");
@@ -30,16 +31,19 @@ export default function HtmlEntities() {
         <Switch checked={numeric} onCheckedChange={setNumeric} />
         <Label className="text-xs">{numeric ? "Numeric entities (&#123;)" : "Named entities (&amp;)"}</Label>
       </div>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Input</label>
+      <InputOutputLayout
+        inputLabel="Input"
+        outputLabel="Output"
+        input={
           <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="HTML text..." className="min-h-[200px] font-mono text-sm" />
-        </div>
-        <div className="space-y-2">
-          <div className="flex items-center justify-between"><label className="text-sm font-medium">Output</label>{output && <CopyButton value={output} />}</div>
-          <Textarea value={output} readOnly className="min-h-[200px] font-mono text-sm" />
-        </div>
-      </div>
+        }
+        output={
+          <>
+            {output && <div className="flex justify-end"><CopyButton value={output} /></div>}
+            <Textarea value={output} readOnly className="min-h-[200px] font-mono text-sm" />
+          </>
+        }
+      />
       <div className="flex gap-2">
         <Button size="sm" onClick={() => setOutput(encodeHtmlEntities(input, numeric))}>Encode</Button>
         <Button size="sm" variant="secondary" onClick={() => setOutput(decodeHtmlEntities(input))}>Decode</Button>

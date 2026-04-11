@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { categories } from "@/lib/categories";
-import { getToolsByCategory, getFeaturedTools, isToolAccessible } from "@/lib/tools-registry";
+import { getToolsByCategory, getFeaturedTools } from "@/lib/tools-registry";
 import { getCategoryBySlug } from "@/lib/categories";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";

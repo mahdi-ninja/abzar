@@ -43,6 +43,7 @@ function getStoredTheme(): Theme {
 }
 
 function applyTheme(resolved: "light" | "dark") {
+  if (typeof document === "undefined") return;
   const root = document.documentElement;
   root.classList.remove("light", "dark");
   root.classList.add(resolved);
@@ -54,15 +55,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const t = getStoredTheme();
     return t === "system" ? getSystemTheme() : t;
   });
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Listen for system theme changes
   useEffect(() => {
-    if (!mounted) return;
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
     const handler = () => {
       if (theme === "system") {
@@ -73,7 +68,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     };
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
-  }, [theme, mounted]);
+  }, [theme]);
 
   const setTheme = useCallback((newTheme: Theme) => {
     setThemeState(newTheme);

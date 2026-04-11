@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
 
 function toSlug(input: string, separator: string, maxLength: number, lowercase: boolean): string {
@@ -24,6 +25,9 @@ export default function SlugGenerator() {
 
   return (
     <div className="space-y-4">
+      <div className="flex justify-end">
+        <Button size="sm" variant="outline" onClick={() => { setInput(""); setSeparator("-"); setMaxLength(0); setLowercase(true); }}>Clear</Button>
+      </div>
       <div>
         <Label className="text-sm mb-1 block">Title or text</Label>
         <Input value={input} onChange={(e) => setInput(e.target.value)} placeholder="My Blog Post Title" className="text-sm" />

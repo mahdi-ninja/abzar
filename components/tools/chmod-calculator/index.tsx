@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
 
 const PERMS = ["r", "w", "x"] as const;
@@ -49,6 +50,9 @@ export default function ChmodCalculator() {
 
   return (
     <div className="space-y-6">
+      <div className="flex justify-end">
+        <Button size="sm" variant="outline" onClick={() => setBits([true, true, false, true, false, false, true, false, false])}>Reset</Button>
+      </div>
       <div className="overflow-auto">
         <table className="text-sm">
           <thead>

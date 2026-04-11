@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function ReadingTime() {
   const [text, setText] = useState("");
@@ -18,8 +19,11 @@ export default function ReadingTime() {
 
   return (
     <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <div className="text-sm text-muted-foreground">{words} words</div>
+        <Button size="sm" variant="outline" onClick={() => setText("")}>Clear</Button>
+      </div>
       <Textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="Paste your text here to estimate reading time..." className="min-h-[200px] text-sm" />
-      <div className="text-sm text-muted-foreground">{words} words</div>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         {times.map(({ label, minutes }) => (
           <Card key={label} className="p-3 text-center">

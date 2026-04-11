@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
+import { Button } from "@/components/ui/button";
 
 export default function TipCalculator() {
   const [bill, setBill] = useState(50);
@@ -23,6 +24,9 @@ export default function TipCalculator() {
 
   return (
     <div className="space-y-6">
+      <div className="flex justify-end">
+        <Button size="sm" variant="outline" onClick={() => { setBill(50); setTipPct(18); setPeople(1); }}>Reset</Button>
+      </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <div>
           <Label className="text-sm mb-1 block">Bill Amount ($)</Label>

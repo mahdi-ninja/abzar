@@ -38,7 +38,10 @@ export default function Magic8Ball() {
           </span>
         </div>
       </div>
-      <Button onClick={shake} disabled={shaking}>{shaking ? "Shaking..." : "Shake"}</Button>
+      <div className="flex gap-2">
+        <Button onClick={shake} disabled={shaking}>{shaking ? "Shaking..." : "Shake"}</Button>
+        <Button size="sm" variant="outline" onClick={() => { setQuestion(""); setAnswer(""); }}>Clear</Button>
+      </div>
     </div>
   );
 }

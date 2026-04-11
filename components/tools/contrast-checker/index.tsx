@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 function hexToRgb(hex: string): [number, number, number] | null {
   const clean = hex.replace("#", "");
@@ -89,6 +90,9 @@ export default function ContrastChecker() {
 
   return (
     <div className="space-y-6">
+      <div className="flex justify-end">
+        <Button size="sm" variant="outline" onClick={() => { setFg("#000000"); setBg("#ffffff"); }}>Reset</Button>
+      </div>
       {/* Color inputs */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-end">
         <div className="space-y-2">

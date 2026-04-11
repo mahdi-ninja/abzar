@@ -137,14 +137,13 @@ export default function PixelArt() {
 
   const handleMouseEnter = useCallback(
     (idx: number) => {
-      if (painting) {
-        const newColor = tool === "eraser" ? "" : color;
-        setPixels((prev) => {
-          const next = [...prev];
-          next[idx] = newColor;
-          return next;
-        });
-      }
+      if (!painting || tool === "fill") return;
+      const newColor = tool === "eraser" ? "" : color;
+      setPixels((prev) => {
+        const next = [...prev];
+        next[idx] = newColor;
+        return next;
+      });
     },
     [painting, tool, color]
   );

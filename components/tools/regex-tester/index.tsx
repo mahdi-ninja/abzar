@@ -5,8 +5,9 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { Card } from "@/components/ui/card";
 import { CopyButton } from "@/components/ui/copy-button";
+import { Button } from "@/components/ui/button";
+import { InputOutputLayout } from "@/components/ui/input-output-layout";
 
 interface MatchResult {
   full: string;
@@ -79,6 +80,10 @@ export default function RegexTester() {
 
   return (
     <div className="space-y-4">
+      <div className="flex justify-end">
+        <Button size="sm" variant="outline" onClick={() => { setPattern(""); setTestString(""); setFlags({ g: true, i: false, m: false, s: false }); }}>Clear</Button>
+      </div>
+
       {/* Pattern input */}
       <div className="space-y-2">
         <Label className="text-sm font-medium">Regular Expression</Label>
@@ -126,23 +131,18 @@ export default function RegexTester() {
       )}
 
       {/* Test string + highlighted output */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div className="space-y-2">
-          <Label className="text-sm font-medium">Test String</Label>
+      <InputOutputLayout
+        inputLabel="Test String"
+        outputLabel={`Matches (${matches.length})`}
+        input={
           <Textarea
             value={testString}
             onChange={(e) => setTestString(e.target.value)}
             placeholder="Enter text to test against..."
             className="min-h-[200px] font-mono text-sm"
           />
-        </div>
-
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <Label className="text-sm font-medium">
-              Matches ({matches.length})
-            </Label>
-          </div>
+        }
+        output={
           <div className="min-h-[200px] overflow-auto whitespace-pre-wrap rounded-md border bg-muted/50 p-3 font-mono text-sm break-all">
             {segments.map((seg, i) =>
               seg.highlight ? (
@@ -152,8 +152,8 @@ export default function RegexTester() {
               )
             )}
           </div>
-        </div>
-      </div>
+        }
+      />
 
       {/* Capture groups */}
       {matches.length > 0 && matches.some((m) => m.groups.length > 0) && (

@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
 
 function hexToRgb(hex: string): [number, number, number] | null {
@@ -57,7 +58,7 @@ function rgbToCmyk(r: number, g: number, b: number): [number, number, number, nu
 
 export default function ColorPicker() {
   const [hex, setHex] = useState("#3b82f6");
-  const [rgb, setRgb] = useState<[number, number, number]>([59, 130, 246]);
+  const [rgb, setRgb] = useState<[number, number, number]>(() => hexToRgb("#3b82f6") ?? [59, 130, 246]);
 
   const updateFromHex = useCallback((value: string) => {
     const clean = value.startsWith("#") ? value : `#${value}`;
@@ -76,12 +77,6 @@ export default function ColorPicker() {
     setHex(rgbToHex(...clamped));
   }, []);
 
-  useEffect(() => {
-    // Initialize derived values
-    const parsed = hexToRgb(hex);
-    if (parsed) setRgb(parsed);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
   const [r, g, b] = rgb;
   const hsl = rgbToHsl(r, g, b);
   const hsb = rgbToHsb(r, g, b);
@@ -95,6 +90,9 @@ export default function ColorPicker() {
 
   return (
     <div className="space-y-6">
+      <div className="flex justify-end">
+        <Button size="sm" variant="outline" onClick={() => { updateFromHex("#3b82f6"); }}>Reset</Button>
+      </div>
       {/* Color preview + picker */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
         <div

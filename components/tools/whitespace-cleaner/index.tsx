@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useCallback, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { InputOutputLayout } from "@/components/ui/input-output-layout";
 
 export default function WhitespaceCleaner() {
   const [input, setInput] = useState("");
@@ -27,6 +28,9 @@ export default function WhitespaceCleaner() {
 
   return (
     <div className="space-y-4">
+      <div className="flex justify-end">
+        <Button size="sm" variant="outline" onClick={() => { setInput(""); setTrimTrailing(true); setNormalizeEol(true); setRemoveBlankLines(false); setRemoveInvisible(true); }}>Clear</Button>
+      </div>
       <div className="flex flex-wrap gap-4">
         {[
           { label: "Trim trailing spaces", checked: trimTrailing, set: setTrimTrailing },
@@ -40,19 +44,22 @@ export default function WhitespaceCleaner() {
           </div>
         ))}
       </div>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div className="space-y-2">
-          <label className="text-sm font-medium">Input</label>
+      <InputOutputLayout
+        inputLabel="Input"
+        outputLabel="Cleaned"
+        input={
           <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="Paste text with whitespace issues..." className="min-h-[250px] font-mono text-sm" />
-        </div>
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <label className="text-sm font-medium">Cleaned {changed && <span className="text-xs text-primary">(modified)</span>}</label>
-            {output && <CopyButton value={output} />}
-          </div>
-          <Textarea value={output} readOnly className="min-h-[250px] font-mono text-sm" />
-        </div>
-      </div>
+        }
+        output={
+          <>
+            <div className="flex items-center justify-between">
+              {changed && <span className="text-xs text-primary">(modified)</span>}
+              {output && <div className="ml-auto"><CopyButton value={output} /></div>}
+            </div>
+            <Textarea value={output} readOnly className="min-h-[250px] font-mono text-sm" />
+          </>
+        }
+      />
     </div>
   );
 }

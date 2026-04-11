@@ -7,6 +7,14 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
+function timeAgo(ts: number): string {
+  const diff = Date.now() - ts;
+  if (diff < 60000) return "just now";
+  if (diff < 3600000) return `${Math.floor(diff / 60000)}m ago`;
+  if (diff < 86400000) return `${Math.floor(diff / 3600000)}h ago`;
+  return new Date(ts).toLocaleDateString();
+}
+
 interface Note {
   id: string;
   title: string;
@@ -78,14 +86,6 @@ export default function Notepad() {
     const text = content.trim();
     if (!text) return "Empty note";
     return text.length > 80 ? text.slice(0, 80) + "..." : text;
-  };
-
-  const timeAgo = (ts: number) => {
-    const diff = Date.now() - ts;
-    if (diff < 60000) return "just now";
-    if (diff < 3600000) return `${Math.floor(diff / 60000)}m ago`;
-    if (diff < 86400000) return `${Math.floor(diff / 3600000)}h ago`;
-    return new Date(ts).toLocaleDateString();
   };
 
   return (

@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
 import {
   Select,
@@ -109,6 +110,7 @@ export default function SubnetCalculator() {
             </SelectContent>
           </Select>
         </div>
+        <Button size="sm" variant="outline" onClick={() => { setIp("192.168.1.0"); setCidr("24"); }}>Reset</Button>
       </div>
 
       {!result && ip.trim() && (

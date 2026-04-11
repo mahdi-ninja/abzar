@@ -211,7 +211,11 @@ export default function Pomodoro() {
               min={1}
               max={30}
               value={shortBreakMin}
-              onChange={(e) => setShortBreakMin(Number(e.target.value))}
+              onChange={(e) => {
+                const v = Number(e.target.value);
+                setShortBreakMin(v);
+                if (phase === "short-break" && !running) setSecondsLeft(v * 60);
+              }}
               className="text-sm"
             />
           </div>
@@ -222,7 +226,11 @@ export default function Pomodoro() {
               min={1}
               max={60}
               value={longBreakMin}
-              onChange={(e) => setLongBreakMin(Number(e.target.value))}
+              onChange={(e) => {
+                const v = Number(e.target.value);
+                setLongBreakMin(v);
+                if (phase === "long-break" && !running) setSecondsLeft(v * 60);
+              }}
               className="text-sm"
             />
           </div>

@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { CopyButton } from "@/components/ui/copy-button";
 
 export default function EpochCountdown() {
-  const [now, setNow] = useState(Math.floor(Date.now() / 1000));
+  const [now, setNow] = useState(() => Math.floor(Date.now() / 1000));
   const [input, setInput] = useState("");
 
   useEffect(() => {

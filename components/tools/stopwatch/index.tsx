@@ -19,17 +19,19 @@ export default function Stopwatch() {
   const startRef = useRef(0);
   const offsetRef = useRef(0);
   const rafRef = useRef<number>(0);
+  const tickRef = useRef<() => void>(() => {});
 
   const tick = useCallback(() => {
     setElapsed(Date.now() - startRef.current + offsetRef.current);
-    rafRef.current = requestAnimationFrame(tick);
+    rafRef.current = requestAnimationFrame(tickRef.current);
   }, []);
+  useEffect(() => { tickRef.current = tick; }, [tick]);
 
   const start = useCallback(() => {
     startRef.current = Date.now();
     setRunning(true);
-    rafRef.current = requestAnimationFrame(tick);
-  }, [tick]);
+    rafRef.current = requestAnimationFrame(tickRef.current);
+  }, []);
 
   const stop = useCallback(() => {
     cancelAnimationFrame(rafRef.current);
@@ -46,9 +48,12 @@ export default function Stopwatch() {
   }, []);
 
   const lap = useCallback(() => {
-    const lastCumulative = laps.length > 0 ? laps[laps.length - 1].cumulative : 0;
-    setLaps((prev) => [...prev, { split: elapsed - lastCumulative, cumulative: elapsed }]);
-  }, [elapsed, laps]);
+    const now = Date.now() - startRef.current + offsetRef.current;
+    setLaps((prev) => {
+      const lastCumulative = prev.length > 0 ? prev[prev.length - 1].cumulative : 0;
+      return [...prev, { split: now - lastCumulative, cumulative: now }];
+    });
+  }, []);
 
   useEffect(() => { return () => cancelAnimationFrame(rafRef.current); }, []);
 

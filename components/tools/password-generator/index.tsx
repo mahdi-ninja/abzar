@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
@@ -60,29 +60,21 @@ export default function PasswordGenerator() {
     numbers: true,
     symbols: true,
   });
-  const [password, setPassword] = useState(() =>
-    generatePassword(16, { upper: true, lower: true, numbers: true, symbols: true })
-  );
   const [quantity, setQuantity] = useState(1);
-  const [bulk, setBulk] = useState<string[]>([]);
+  // Increment seed to force regeneration on button click
+  const [seed, setSeed] = useState(0);
 
-  const regenerate = useCallback(() => {
+  const { password, bulk } = useMemo(() => {
+    // seed is in deps to allow manual regeneration via Generate button
+    void seed;
     if (quantity === 1) {
-      setPassword(generatePassword(length, options));
-      setBulk([]);
-    } else {
-      const passwords = Array.from({ length: quantity }, () =>
-        generatePassword(length, options)
-      );
-      setBulk(passwords);
-      setPassword(passwords[0]);
+      return { password: generatePassword(length, options), bulk: [] as string[] };
     }
-  }, [length, options, quantity]);
-
-  // Auto-regenerate when parameters change
-  useEffect(() => {
-    regenerate();
-  }, [regenerate]);
+    const passwords = Array.from({ length: quantity }, () =>
+      generatePassword(length, options)
+    );
+    return { password: passwords[0], bulk: passwords };
+  }, [length, options, quantity, seed]);
 
   const entropy = calculateEntropy(length, options);
   const strength = getStrengthLabel(entropy);
@@ -97,9 +89,10 @@ export default function PasswordGenerator() {
           className="font-mono text-base tracking-wide"
         />
         <CopyButton value={password} />
-        <Button size="sm" onClick={regenerate}>
+        <Button size="sm" onClick={() => setSeed((s) => s + 1)}>
           Generate
         </Button>
+        <Button size="sm" variant="outline" onClick={() => { setLength(16); setOptions({ upper: true, lower: true, numbers: true, symbols: true }); setQuantity(1); setSeed((s) => s + 1); }}>Reset</Button>
       </div>
 
       {/* Strength indicator */}

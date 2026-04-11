@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
@@ -33,10 +33,6 @@ export default function LoremIpsum() {
   const [style, setStyle] = useState("classic");
   const [count, setCount] = useState(3);
   const [output, setOutput] = useState(() => generate("classic", 3));
-
-  const handleGenerate = useCallback(() => {
-    setOutput(generate(style, count));
-  }, [style, count]);
 
   return (
     <div className="space-y-4">

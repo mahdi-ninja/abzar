@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CopyButton } from "@/components/ui/copy-button";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function NumberBaseConverter() {
   const [input, setInput] = useState("255");
@@ -31,6 +32,7 @@ export default function NumberBaseConverter() {
           <Label className="text-sm mb-1 block">Input</Label>
           <Input value={input} onChange={(e) => setInput(e.target.value)} className="font-mono" />
         </div>
+        <Button size="sm" variant="outline" onClick={() => { setInput("255"); setBase(10); }}>Reset</Button>
         <div>
           <Label className="text-sm mb-1 block">Input base</Label>
           <div className="flex gap-1">

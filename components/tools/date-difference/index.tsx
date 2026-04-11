@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 export default function DateDifference() {
   const [from, setFrom] = useState(new Date().toISOString().split("T")[0]);
@@ -27,6 +28,7 @@ export default function DateDifference() {
       <div className="flex flex-wrap items-end gap-4">
         <div><Label className="text-sm mb-1 block">From</Label><Input type="date" value={from} onChange={(e) => setFrom(e.target.value)} /></div>
         <div><Label className="text-sm mb-1 block">To</Label><Input type="date" value={to} onChange={(e) => setTo(e.target.value)} /></div>
+        <Button size="sm" variant="outline" onClick={() => { setFrom(new Date().toISOString().split("T")[0]); const d = new Date(); d.setFullYear(d.getFullYear() + 1); setTo(d.toISOString().split("T")[0]); }}>Reset</Button>
       </div>
       {diff && (
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">

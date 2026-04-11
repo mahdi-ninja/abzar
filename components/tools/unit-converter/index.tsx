@@ -184,18 +184,21 @@ export default function UnitConverter() {
           />
         </div>
 
-        {/* Swap */}
+        {/* Swap + Reset */}
+        <div className="flex flex-col gap-2 self-center">
         <Button
           variant="outline"
           size="icon"
           onClick={handleSwap}
-          className="self-center"
+          className=""
           aria-label="Swap units"
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4" />
           </svg>
         </Button>
+        <Button variant="outline" size="sm" onClick={() => handleCategoryChange(category)} className="text-xs">Reset</Button>
+        </div>
 
         {/* To */}
         <div className="space-y-2">

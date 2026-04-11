@@ -36,11 +36,13 @@ const DEFAULT_COLUMNS: KanbanColumn[] = [
   { id: "done", title: "Done", cards: [] },
 ];
 
+function uid(): string { return crypto.randomUUID(); }
+
 function createBoard(name: string): KanbanBoard {
   return {
-    id: Date.now().toString(),
+    id: uid(),
     name,
-    columns: DEFAULT_COLUMNS.map((c) => ({ ...c, id: `${c.id}-${Date.now()}`, cards: [] })),
+    columns: DEFAULT_COLUMNS.map((c) => ({ ...c, id: uid(), cards: [] })),
   };
 }
 
@@ -123,7 +125,7 @@ export default function Kanban() {
         ...b,
         columns: b.columns.map((col) =>
           col.id === colId
-            ? { ...col, cards: [...col.cards, { id: Date.now().toString(), title: text }] }
+            ? { ...col, cards: [...col.cards, { id: uid(), title: text }] }
             : col
         ),
       }));
@@ -151,7 +153,7 @@ export default function Kanban() {
     if (!title) return;
     updateBoard((b) => ({
       ...b,
-      columns: [...b.columns, { id: Date.now().toString(), title, cards: [] }],
+      columns: [...b.columns, { id: uid(), title, cards: [] }],
     }));
     setNewColTitle("");
   }, [newColTitle, updateBoard]);

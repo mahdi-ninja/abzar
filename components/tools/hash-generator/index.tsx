@@ -25,151 +25,69 @@ async function computeHash(
     .join("");
 }
 
-// Simple MD5 implementation (Web Crypto doesn't support MD5)
+// MD5 implementation (Web Crypto doesn't support MD5)
 function md5(data: ArrayBuffer): string {
   const bytes = new Uint8Array(data);
-  let s = "";
-  for (let i = 0; i < bytes.length; i++) {
-    s += String.fromCharCode(bytes[i]);
-  }
-  return md5Hash(s);
-}
 
-function md5Hash(string: string): string {
-  function rotateLeft(val: number, bits: number) {
-    return (val << bits) | (val >>> (32 - bits));
-  }
+  // Helper functions
+  const add = (a: number, b: number) => (a + b) >>> 0;
+  const rot = (v: number, s: number) => ((v << s) | (v >>> (32 - s))) >>> 0;
 
-  function addUnsigned(x: number, y: number) {
-    return ((x & 0x7fffffff) + (y & 0x7fffffff)) ^ (x & 0x80000000) ^ (y & 0x80000000);
-  }
+  const F = (b: number, c: number, d: number) => (b & c) | (~b & d);
+  const G = (b: number, c: number, d: number) => (b & d) | (c & ~d);
+  const H = (b: number, c: number, d: number) => b ^ c ^ d;
+  const I = (b: number, c: number, d: number) => c ^ (b | ~d);
 
-  function f(x: number, y: number, z: number) { return (x & y) | (~x & z); }
-  function g(x: number, y: number, z: number) { return (x & z) | (y & ~z); }
-  function h(x: number, y: number, z: number) { return x ^ y ^ z; }
-  function ii(x: number, y: number, z: number) { return y ^ (x | ~z); }
-
-  function transform(
-    func: (a: number, b: number, c: number) => number,
-    a: number, b: number, c: number, d: number,
-    x: number, s: number, ac: number
-  ) {
-    a = addUnsigned(a, addUnsigned(addUnsigned(func(b, c, d), x), ac));
-    return addUnsigned(rotateLeft(a, s), b);
-  }
-
-  const words: number[] = [];
-  const len = string.length;
-
-  for (let i = 0; i < len; i += 4) {
-    words.push(
-      (string.charCodeAt(i)) |
-      (string.charCodeAt(i + 1) << 8) |
-      (string.charCodeAt(i + 2) << 16) |
-      (string.charCodeAt(i + 3) << 24)
-    );
-  }
-
-  // Padding
-  const bitLen = len * 8;
-  words[len >> 2] |= 0x80 << ((len % 4) * 8);
-  words[(((len + 8) >>> 6) << 4) + 14] = bitLen;
-
-  let a = 0x67452301, b2 = 0xefcdab89, c = 0x98badcfe, d = 0x10325476;
-
-  const S = [7, 12, 17, 22, 5, 9, 14, 20, 4, 11, 16, 23, 6, 10, 15, 21];
   const T = Array.from({ length: 64 }, (_, i) =>
-    Math.floor(Math.abs(Math.sin(i + 1)) * 0x100000000)
+    (Math.floor(Math.abs(Math.sin(i + 1)) * 0x100000000)) >>> 0
   );
 
-  for (let i = 0; i < words.length; i += 16) {
-    const aa = a, bb = b2, cc = c, dd = d;
-    const w = words.slice(i, i + 16);
-    // Pad w to 16 elements
-    while (w.length < 16) w.push(0);
+  // Pre-processing: pad message to 64-byte blocks
+  const bitLen = bytes.length * 8;
+  const padLen = bytes.length % 64 < 56 ? 56 - (bytes.length % 64) : 120 - (bytes.length % 64);
+  const padded = new Uint8Array(bytes.length + padLen + 8);
+  padded.set(bytes);
+  padded[bytes.length] = 0x80;
+  // Append length in bits as 64-bit LE
+  for (let i = 0; i < 4; i++) padded[padded.length - 8 + i] = (bitLen >>> (i * 8)) & 0xff;
 
-    // Round 1
-    a = transform(f, a, b2, c, d, w[0], S[0], T[0]);
-    d = transform(f, d, a, b2, c, w[1], S[1], T[1]);
-    c = transform(f, c, d, a, b2, w[2], S[2], T[2]);
-    b2 = transform(f, b2, c, d, a, w[3], S[3], T[3]);
-    a = transform(f, a, b2, c, d, w[4], S[0], T[4]);
-    d = transform(f, d, a, b2, c, w[5], S[1], T[5]);
-    c = transform(f, c, d, a, b2, w[6], S[2], T[6]);
-    b2 = transform(f, b2, c, d, a, w[7], S[3], T[7]);
-    a = transform(f, a, b2, c, d, w[8], S[0], T[8]);
-    d = transform(f, d, a, b2, c, w[9], S[1], T[9]);
-    c = transform(f, c, d, a, b2, w[10], S[2], T[10]);
-    b2 = transform(f, b2, c, d, a, w[11], S[3], T[11]);
-    a = transform(f, a, b2, c, d, w[12], S[0], T[12]);
-    d = transform(f, d, a, b2, c, w[13], S[1], T[13]);
-    c = transform(f, c, d, a, b2, w[14], S[2], T[14]);
-    b2 = transform(f, b2, c, d, a, w[15], S[3], T[15]);
+  // Process each 64-byte block
+  let a0 = 0x67452301, b0 = 0xefcdab89, c0 = 0x98badcfe, d0 = 0x10325476;
 
-    // Round 2
-    a = transform(g, a, b2, c, d, w[1], S[4], T[16]);
-    d = transform(g, d, a, b2, c, w[6], S[5], T[17]);
-    c = transform(g, c, d, a, b2, w[11], S[6], T[18]);
-    b2 = transform(g, b2, c, d, a, w[0], S[7], T[19]);
-    a = transform(g, a, b2, c, d, w[5], S[4], T[20]);
-    d = transform(g, d, a, b2, c, w[10], S[5], T[21]);
-    c = transform(g, c, d, a, b2, w[15], S[6], T[22]);
-    b2 = transform(g, b2, c, d, a, w[4], S[7], T[23]);
-    a = transform(g, a, b2, c, d, w[9], S[4], T[24]);
-    d = transform(g, d, a, b2, c, w[14], S[5], T[25]);
-    c = transform(g, c, d, a, b2, w[3], S[6], T[26]);
-    b2 = transform(g, b2, c, d, a, w[8], S[7], T[27]);
-    a = transform(g, a, b2, c, d, w[13], S[4], T[28]);
-    d = transform(g, d, a, b2, c, w[2], S[5], T[29]);
-    c = transform(g, c, d, a, b2, w[7], S[6], T[30]);
-    b2 = transform(g, b2, c, d, a, w[12], S[7], T[31]);
+  for (let offset = 0; offset < padded.length; offset += 64) {
+    const M: number[] = [];
+    for (let j = 0; j < 16; j++) {
+      const o = offset + j * 4;
+      M[j] = padded[o] | (padded[o + 1] << 8) | (padded[o + 2] << 16) | (padded[o + 3] << 24);
+    }
 
-    // Round 3
-    a = transform(h, a, b2, c, d, w[5], S[8], T[32]);
-    d = transform(h, d, a, b2, c, w[8], S[9], T[33]);
-    c = transform(h, c, d, a, b2, w[11], S[10], T[34]);
-    b2 = transform(h, b2, c, d, a, w[14], S[11], T[35]);
-    a = transform(h, a, b2, c, d, w[1], S[8], T[36]);
-    d = transform(h, d, a, b2, c, w[4], S[9], T[37]);
-    c = transform(h, c, d, a, b2, w[7], S[10], T[38]);
-    b2 = transform(h, b2, c, d, a, w[10], S[11], T[39]);
-    a = transform(h, a, b2, c, d, w[13], S[8], T[40]);
-    d = transform(h, d, a, b2, c, w[0], S[9], T[41]);
-    c = transform(h, c, d, a, b2, w[3], S[10], T[42]);
-    b2 = transform(h, b2, c, d, a, w[6], S[11], T[43]);
-    a = transform(h, a, b2, c, d, w[9], S[8], T[44]);
-    d = transform(h, d, a, b2, c, w[12], S[9], T[45]);
-    c = transform(h, c, d, a, b2, w[15], S[10], T[46]);
-    b2 = transform(h, b2, c, d, a, w[2], S[11], T[47]);
+    let a = a0, b = b0, c = c0, d = d0;
+    const S = [7, 12, 17, 22, 5, 9, 14, 20, 4, 11, 16, 23, 6, 10, 15, 21];
+    const gIdx = [
+      0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,   // Round 1
+      1,6,11,0,5,10,15,4,9,14,3,8,13,2,7,12,    // Round 2
+      5,8,11,14,1,4,7,10,13,0,3,6,9,12,15,2,    // Round 3
+      0,7,14,5,12,3,10,1,8,15,6,13,4,11,2,9,    // Round 4
+    ];
+    const funcs = [F, G, H, I];
 
-    // Round 4
-    a = transform(ii, a, b2, c, d, w[0], S[12], T[48]);
-    d = transform(ii, d, a, b2, c, w[7], S[13], T[49]);
-    c = transform(ii, c, d, a, b2, w[14], S[14], T[50]);
-    b2 = transform(ii, b2, c, d, a, w[5], S[15], T[51]);
-    a = transform(ii, a, b2, c, d, w[12], S[12], T[52]);
-    d = transform(ii, d, a, b2, c, w[3], S[13], T[53]);
-    c = transform(ii, c, d, a, b2, w[10], S[14], T[54]);
-    b2 = transform(ii, b2, c, d, a, w[1], S[15], T[55]);
-    a = transform(ii, a, b2, c, d, w[8], S[12], T[56]);
-    d = transform(ii, d, a, b2, c, w[15], S[13], T[57]);
-    c = transform(ii, c, d, a, b2, w[6], S[14], T[58]);
-    b2 = transform(ii, b2, c, d, a, w[13], S[15], T[59]);
-    a = transform(ii, a, b2, c, d, w[4], S[12], T[60]);
-    d = transform(ii, d, a, b2, c, w[11], S[13], T[61]);
-    c = transform(ii, c, d, a, b2, w[2], S[14], T[62]);
-    b2 = transform(ii, b2, c, d, a, w[9], S[15], T[63]);
+    for (let i = 0; i < 64; i++) {
+      const round = i >> 4;
+      const fn = funcs[round];
+      const f = fn(b, c, d) >>> 0;
+      const temp = add(add(add(a, f), (M[gIdx[i]] >>> 0)), T[i]);
+      a = d;
+      d = c;
+      c = b;
+      b = add(b, rot(temp, S[round * 4 + (i % 4)]));
+    }
 
-    a = addUnsigned(a, aa);
-    b2 = addUnsigned(b2, bb);
-    c = addUnsigned(c, cc);
-    d = addUnsigned(d, dd);
+    a0 = add(a0, a); b0 = add(b0, b); c0 = add(c0, c); d0 = add(d0, d);
   }
 
   const toHex = (n: number) =>
     [0, 8, 16, 24].map((s) => ((n >>> s) & 0xff).toString(16).padStart(2, "0")).join("");
-
-  return toHex(a) + toHex(b2) + toHex(c) + toHex(d);
+  return toHex(a0) + toHex(b0) + toHex(c0) + toHex(d0);
 }
 
 export default function HashGenerator() {

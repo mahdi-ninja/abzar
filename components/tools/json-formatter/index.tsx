@@ -4,7 +4,8 @@ import { useState, useCallback } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { InputOutputLayout } from "@/components/ui/input-output-layout";
 
 function JsonTree({ data, depth = 0 }: { data: unknown; depth?: number }) {
   if (data === null) return <span className="text-rose-500">null</span>;
@@ -140,21 +141,20 @@ export default function JsonFormatter() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div className="flex flex-col gap-2">
-          <label className="text-sm font-medium">Input</label>
+      <InputOutputLayout
+        inputLabel="Input"
+        outputLabel="Output"
+        input={
           <Textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder='Paste your JSON here... e.g. {"key": "value"}'
             className="min-h-[300px] font-mono text-sm"
           />
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <div className="flex items-center justify-between">
-            <label className="text-sm font-medium">Output</label>
-            <div className="flex items-center gap-2">
+        }
+        output={
+          <>
+            <div className="flex items-center justify-end gap-2">
               {output && <CopyButton value={output} />}
               {parsed !== null && (
                 <Tabs
@@ -172,21 +172,21 @@ export default function JsonFormatter() {
                 </Tabs>
               )}
             </div>
-          </div>
-          {viewMode === "text" || parsed === null ? (
-            <Textarea
-              value={output}
-              readOnly
-              placeholder="Formatted output will appear here"
-              className="min-h-[300px] font-mono text-sm"
-            />
-          ) : (
-            <div className="min-h-[300px] overflow-auto rounded-md border bg-muted/50 p-3 font-mono text-sm">
-              <JsonTree data={parsed} />
-            </div>
-          )}
-        </div>
-      </div>
+            {viewMode === "text" || parsed === null ? (
+              <Textarea
+                value={output}
+                readOnly
+                placeholder="Formatted output will appear here"
+                className="min-h-[300px] font-mono text-sm"
+              />
+            ) : (
+              <div className="min-h-[300px] overflow-auto rounded-md border bg-muted/50 p-3 font-mono text-sm">
+                <JsonTree data={parsed} />
+              </div>
+            )}
+          </>
+        }
+      />
     </div>
   );
 }

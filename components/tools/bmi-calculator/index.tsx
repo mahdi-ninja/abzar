@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
+import { Button } from "@/components/ui/button";
 
 export default function BmiCalculator() {
   const [imperial, setImperial] = useState(false);
@@ -24,9 +25,12 @@ export default function BmiCalculator() {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center gap-1.5">
-        <Switch checked={imperial} onCheckedChange={setImperial} />
-        <Label className="text-xs">{imperial ? "Imperial (lbs/in)" : "Metric (kg/cm)"}</Label>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-1.5">
+          <Switch checked={imperial} onCheckedChange={setImperial} />
+          <Label className="text-xs">{imperial ? "Imperial (lbs/in)" : "Metric (kg/cm)"}</Label>
+        </div>
+        <Button size="sm" variant="outline" onClick={() => { setImperial(false); setWeight(70); setHeight(175); }}>Reset</Button>
       </div>
       <div className="flex flex-wrap items-end gap-4">
         <div><Label className="text-sm mb-1 block">Weight ({imperial ? "lbs" : "kg"})</Label><Input type="number" min={1} value={weight} onChange={(e) => setWeight(Number(e.target.value))} className="w-28" /></div>
