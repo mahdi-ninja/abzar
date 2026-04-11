@@ -8,14 +8,16 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("abzar:sidebar-collapsed");
-    if (stored === "true") setCollapsed(true);
+    try {
+      const stored = localStorage.getItem("abzar:sidebar-collapsed");
+      if (stored === "true") setCollapsed(true);
+    } catch { /* ignore */ }
   }, []);
 
   const handleToggle = () => {
     setCollapsed((prev) => {
       const next = !prev;
-      localStorage.setItem("abzar:sidebar-collapsed", String(next));
+      try { localStorage.setItem("abzar:sidebar-collapsed", String(next)); } catch { /* ignore */ }
       return next;
     });
   };

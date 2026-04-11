@@ -16,20 +16,24 @@ export default function MarkdownEditor() {
     null
   );
   const [exportMode, setExportMode] = useState<"md" | "html">("md");
+  const [purify, setPurify] = useState<typeof import("dompurify") | null>(null);
 
   useEffect(() => {
-    import("marked").then(setMarkedLib);
+    Promise.all([import("marked"), import("dompurify")]).then(
+      ([m, d]) => { setMarkedLib(m); setPurify(d); }
+    );
   }, []);
 
   const html = useMemo(() => {
-    if (!markedLib || !input.trim()) return "";
+    if (!markedLib || !purify || !input.trim()) return "";
     try {
-      const result = markedLib.marked(input);
-      return typeof result === "string" ? result : "";
+      const raw = markedLib.marked(input);
+      const unsanitized = typeof raw === "string" ? raw : "";
+      return purify.default.sanitize(unsanitized);
     } catch {
       return "<p>Error parsing markdown</p>";
     }
-  }, [markedLib, input]);
+  }, [markedLib, purify, input]);
 
   const fullHtml = `<!DOCTYPE html>
 <html><head><meta charset="utf-8"><title>Document</title></head>

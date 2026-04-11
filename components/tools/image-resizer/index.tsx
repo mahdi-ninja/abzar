@@ -98,7 +98,10 @@ export default function ImageResizer() {
   const [displayScale, setDisplayScale] = useState(1);
   const [cursorStyle, setCursorStyle] = useState("crosshair");
 
+  const objectUrlRef = useRef<string | null>(null);
+
   const handleFileUpload = useCallback((files: File[]) => {
+    if (objectUrlRef.current) URL.revokeObjectURL(objectUrlRef.current);
     const file = files[0];
     setFileName(file.name);
     const img = new Image();
@@ -110,7 +113,9 @@ export default function ImageResizer() {
       setHeight(img.naturalHeight);
       setCrop({ x: 0, y: 0, w: img.naturalWidth, h: img.naturalHeight });
     };
-    img.src = URL.createObjectURL(file);
+    const url = URL.createObjectURL(file);
+    objectUrlRef.current = url;
+    img.src = url;
   }, []);
 
   const handleWidthChange = useCallback(
@@ -146,6 +151,13 @@ export default function ImageResizer() {
       if (blob) setOutputBlob(blob);
     }, "image/png");
   }, [image, width, height, mode]);
+
+  // Revoke object URL on unmount
+  useEffect(() => {
+    return () => {
+      if (objectUrlRef.current) URL.revokeObjectURL(objectUrlRef.current);
+    };
+  }, []);
 
   // Draw crop overlay
   useEffect(() => {
@@ -474,7 +486,7 @@ export default function ImageResizer() {
                 label="Download"
               />
             )}
-            <Button size="sm" variant="outline" onClick={() => { setImage(null); setOutputBlob(null); setFileName(""); }}>
+            <Button size="sm" variant="outline" onClick={() => { if (objectUrlRef.current) { URL.revokeObjectURL(objectUrlRef.current); objectUrlRef.current = null; } setImage(null); setOutputBlob(null); setFileName(""); }}>
               Clear
             </Button>
           </div>

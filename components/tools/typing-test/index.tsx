@@ -165,6 +165,9 @@ export default function TypingTest() {
       <div
         className="rounded-lg border bg-muted/50 p-4 font-mono text-base leading-relaxed select-none cursor-text"
         onClick={() => inputRef.current?.focus()}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") inputRef.current?.focus(); }}
       >
         {targetText.split("").map((char, i) => {
           let cls = "text-muted-foreground/60";

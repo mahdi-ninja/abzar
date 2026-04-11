@@ -24,9 +24,9 @@ export default function RegexTester() {
     .map(([k]) => k)
     .join("");
 
-  const { matches, error, highlighted } = useMemo(() => {
+  const { matches, error, segments } = useMemo(() => {
     if (!pattern)
-      return { matches: [] as MatchResult[], error: "", highlighted: testString };
+      return { matches: [] as MatchResult[], error: "", segments: [{ text: testString, highlight: false }] };
 
     try {
       const re = new RegExp(pattern, flagString);
@@ -53,22 +53,26 @@ export default function RegexTester() {
         }
       }
 
-      // Build highlighted string
-      let html = "";
+      // Build segments for React rendering
+      const segs: { text: string; highlight: boolean }[] = [];
       let lastIndex = 0;
       for (const match of results) {
-        html += escapeHtml(testString.slice(lastIndex, match.index));
-        html += `<mark class="bg-primary/30 text-foreground rounded-sm px-0.5">${escapeHtml(match.full)}</mark>`;
+        if (match.index > lastIndex) {
+          segs.push({ text: testString.slice(lastIndex, match.index), highlight: false });
+        }
+        segs.push({ text: match.full, highlight: true });
         lastIndex = match.index + match.full.length;
       }
-      html += escapeHtml(testString.slice(lastIndex));
+      if (lastIndex < testString.length) {
+        segs.push({ text: testString.slice(lastIndex), highlight: false });
+      }
 
-      return { matches: results, error: "", highlighted: html };
+      return { matches: results, error: "", segments: segs };
     } catch (e) {
       return {
         matches: [] as MatchResult[],
         error: (e as Error).message,
-        highlighted: testString,
+        segments: [{ text: testString, highlight: false }],
       };
     }
   }, [pattern, testString, flagString, flags.g]);
@@ -139,10 +143,15 @@ export default function RegexTester() {
               Matches ({matches.length})
             </Label>
           </div>
-          <div
-            className="min-h-[200px] overflow-auto whitespace-pre-wrap rounded-md border bg-muted/50 p-3 font-mono text-sm break-all"
-            dangerouslySetInnerHTML={{ __html: highlighted }}
-          />
+          <div className="min-h-[200px] overflow-auto whitespace-pre-wrap rounded-md border bg-muted/50 p-3 font-mono text-sm break-all">
+            {segments.map((seg, i) =>
+              seg.highlight ? (
+                <mark key={i} className="bg-primary/30 text-foreground rounded-sm px-0.5">{seg.text}</mark>
+              ) : (
+                <span key={i}>{seg.text}</span>
+              )
+            )}
+          </div>
         </div>
       </div>
 
@@ -187,12 +196,4 @@ export default function RegexTester() {
       )}
     </div>
   );
-}
-
-function escapeHtml(str: string): string {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
 }

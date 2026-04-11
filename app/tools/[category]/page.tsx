@@ -36,6 +36,8 @@ export default async function CategoryPage({
   if (!cat) notFound();
 
   const tools = getToolsByCategory(category);
+  const activeTools = tools.filter((t) => isToolAccessible(t));
+  const plannedTools = tools.filter((t) => !isToolAccessible(t));
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
@@ -56,44 +58,55 @@ export default async function CategoryPage({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {tools.map((tool) => {
-          const accessible = isToolAccessible(tool);
+      {/* Active tools */}
+      {activeTools.length > 0 && (
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {activeTools.map((tool) => (
+            <Link
+              key={tool.slug}
+              href={`/tools/${tool.category}/${tool.slug}`}
+            >
+              <Card className="h-full transition-colors hover:bg-accent py-3 px-4 gap-1">
+                <CardHeader className="p-0">
+                  <CardTitle className="text-sm font-semibold">
+                    {tool.name}
+                  </CardTitle>
+                  <CardDescription className="text-xs mt-1">
+                    {tool.description}
+                  </CardDescription>
+                </CardHeader>
+                <div className="flex gap-1.5 px-0 pt-1">
+                  {tool.status === "beta" && (
+                    <Badge variant="secondary" className="text-[10px] px-1.5 py-0">
+                      Beta
+                    </Badge>
+                  )}
+                  {tool.isNew && (
+                    <Badge className="text-[10px] px-1.5 py-0">New</Badge>
+                  )}
+                </div>
+              </Card>
+            </Link>
+          ))}
+        </div>
+      )}
 
-          if (accessible) {
-            return (
-              <Link
-                key={tool.slug}
-                href={`/tools/${tool.category}/${tool.slug}`}
-              >
-                <Card className="h-full transition-colors hover:bg-accent py-3 px-4 gap-1">
-                  <CardHeader className="p-0">
-                    <CardTitle className="text-sm font-semibold">
-                      {tool.name}
-                    </CardTitle>
-                    <CardDescription className="text-xs mt-1">
-                      {tool.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <div className="flex gap-1.5 px-0 pt-1">
-                    {tool.status === "beta" && (
-                      <Badge variant="secondary" className="text-[10px] px-1.5 py-0">
-                        Beta
-                      </Badge>
-                    )}
-                    {tool.isNew && (
-                      <Badge className="text-[10px] px-1.5 py-0">New</Badge>
-                    )}
-                  </div>
-                </Card>
-              </Link>
-            );
-          }
+      {/* Separator */}
+      {activeTools.length > 0 && plannedTools.length > 0 && (
+        <div className="flex items-center gap-3 my-6">
+          <div className="h-px flex-1 bg-border" />
+          <span className="text-xs text-muted-foreground shrink-0">Coming Soon</span>
+          <div className="h-px flex-1 bg-border" />
+        </div>
+      )}
 
-          return (
+      {/* Planned tools */}
+      {plannedTools.length > 0 && (
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {plannedTools.map((tool) => (
             <Card
               key={tool.slug}
-              className="h-full opacity-60 py-3 px-4 gap-1"
+              className="h-full opacity-50 py-3 px-4 gap-1"
             >
               <CardHeader className="p-0">
                 <CardTitle className="text-sm font-semibold">
@@ -103,15 +116,10 @@ export default async function CategoryPage({
                   {tool.description}
                 </CardDescription>
               </CardHeader>
-              <div className="px-0 pt-1">
-                <Badge variant="secondary" className="text-[10px] px-1.5 py-0">
-                  Coming Soon
-                </Badge>
-              </div>
             </Card>
-          );
-        })}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

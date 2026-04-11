@@ -112,28 +112,27 @@ export default function PixelArt() {
   const handlePixel = useCallback(
     (idx: number) => {
       if (tool === "fill") {
-        saveHistory();
         floodFill(idx, pixels[idx], color);
         return;
       }
       const newColor = tool === "eraser" ? "" : color;
       if (pixels[idx] === newColor) return;
-      saveHistory();
       setPixels((prev) => {
         const next = [...prev];
         next[idx] = newColor;
         return next;
       });
     },
-    [tool, color, pixels, saveHistory, floodFill]
+    [tool, color, pixels, floodFill]
   );
 
   const handleMouseDown = useCallback(
     (idx: number) => {
+      saveHistory(); // Save once at start of stroke
       setPainting(true);
       handlePixel(idx);
     },
-    [handlePixel]
+    [handlePixel, saveHistory]
   );
 
   const handleMouseEnter = useCallback(
@@ -241,6 +240,7 @@ export default function PixelArt() {
             className={`h-7 w-7 rounded border-2 ${color === c ? "border-primary ring-2 ring-primary/30" : "border-transparent"}`}
             style={{ backgroundColor: c }}
             onClick={() => setColor(c)}
+            aria-label={`Select color ${c}`}
           />
         ))}
         <Input

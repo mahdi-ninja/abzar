@@ -103,6 +103,7 @@ export default function DrumMachine() {
   useEffect(() => {
     return () => {
       playingRef.current = false;
+      audioCtxRef.current?.close();
       if (timerRef.current) clearTimeout(timerRef.current);
     };
   }, []);
@@ -144,6 +145,7 @@ export default function DrumMachine() {
                 <button
                   key={step}
                   onClick={() => toggleCell(row, step)}
+                  aria-label={`Toggle ${inst.name} step ${step + 1}`}
                   className={`h-8 w-8 rounded-sm border transition-colors ${
                     grid[row][step]
                       ? "bg-primary border-primary"

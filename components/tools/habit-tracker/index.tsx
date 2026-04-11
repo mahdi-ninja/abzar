@@ -167,6 +167,7 @@ export default function HabitTracker() {
                       <button
                         onClick={() => removeHabit(habit.id)}
                         className="text-muted-foreground hover:text-destructive text-xs"
+                        aria-label="Remove habit"
                       >
                         ×
                       </button>

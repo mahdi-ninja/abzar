@@ -30,6 +30,9 @@ export async function generateMetadata({
       description: tool.description,
       images: [`/og/${tool.category}/${tool.slug}.png`],
     },
+    other: {
+      "script:ld+json": JSON.stringify(generateToolJsonLd(tool)),
+    },
   };
 }
 
@@ -159,6 +162,40 @@ const toolComponents: Record<
     () => import("@/components/tools/pdf-merger"),
     { loading: () => <ToolSkeleton /> }
   ),
+  // Phase 4 — batch of easy light-dep tools
+  "lorem-ipsum": dynamic(() => import("@/components/tools/lorem-ipsum"), { loading: () => <ToolSkeleton /> }),
+  "case-converter": dynamic(() => import("@/components/tools/case-converter"), { loading: () => <ToolSkeleton /> }),
+  "slug-generator": dynamic(() => import("@/components/tools/slug-generator"), { loading: () => <ToolSkeleton /> }),
+  "string-escaper": dynamic(() => import("@/components/tools/string-escaper"), { loading: () => <ToolSkeleton /> }),
+  "reverse-text": dynamic(() => import("@/components/tools/reverse-text"), { loading: () => <ToolSkeleton /> }),
+  "whitespace-cleaner": dynamic(() => import("@/components/tools/whitespace-cleaner"), { loading: () => <ToolSkeleton /> }),
+  "url-encoder": dynamic(() => import("@/components/tools/url-encoder"), { loading: () => <ToolSkeleton /> }),
+  "html-entities": dynamic(() => import("@/components/tools/html-entities"), { loading: () => <ToolSkeleton /> }),
+  "chmod-calculator": dynamic(() => import("@/components/tools/chmod-calculator"), { loading: () => <ToolSkeleton /> }),
+  "epoch-countdown": dynamic(() => import("@/components/tools/epoch-countdown"), { loading: () => <ToolSkeleton /> }),
+  "percentage-calculator": dynamic(() => import("@/components/tools/percentage-calculator"), { loading: () => <ToolSkeleton /> }),
+  "number-base-converter": dynamic(() => import("@/components/tools/number-base-converter"), { loading: () => <ToolSkeleton /> }),
+  "roman-numerals": dynamic(() => import("@/components/tools/roman-numerals"), { loading: () => <ToolSkeleton /> }),
+  "data-size-converter": dynamic(() => import("@/components/tools/data-size-converter"), { loading: () => <ToolSkeleton /> }),
+  "aspect-ratio": dynamic(() => import("@/components/tools/aspect-ratio"), { loading: () => <ToolSkeleton /> }),
+  "random-generator": dynamic(() => import("@/components/tools/random-generator"), { loading: () => <ToolSkeleton /> }),
+  "tip-calculator": dynamic(() => import("@/components/tools/tip-calculator"), { loading: () => <ToolSkeleton /> }),
+  "salary-converter": dynamic(() => import("@/components/tools/salary-converter"), { loading: () => <ToolSkeleton /> }),
+  "roi-calculator": dynamic(() => import("@/components/tools/roi-calculator"), { loading: () => <ToolSkeleton /> }),
+  "markup-margin": dynamic(() => import("@/components/tools/markup-margin"), { loading: () => <ToolSkeleton /> }),
+  "date-difference": dynamic(() => import("@/components/tools/date-difference"), { loading: () => <ToolSkeleton /> }),
+  "age-calculator": dynamic(() => import("@/components/tools/age-calculator"), { loading: () => <ToolSkeleton /> }),
+  "bmi-calculator": dynamic(() => import("@/components/tools/bmi-calculator"), { loading: () => <ToolSkeleton /> }),
+  "sleep-calculator": dynamic(() => import("@/components/tools/sleep-calculator"), { loading: () => <ToolSkeleton /> }),
+  "stopwatch": dynamic(() => import("@/components/tools/stopwatch"), { loading: () => <ToolSkeleton /> }),
+  "countdown": dynamic(() => import("@/components/tools/countdown"), { loading: () => <ToolSkeleton /> }),
+  "notepad": dynamic(() => import("@/components/tools/notepad"), { loading: () => <ToolSkeleton /> }),
+  "reading-time": dynamic(() => import("@/components/tools/reading-time"), { loading: () => <ToolSkeleton /> }),
+  "dice-roller": dynamic(() => import("@/components/tools/dice-roller"), { loading: () => <ToolSkeleton /> }),
+  "magic-8-ball": dynamic(() => import("@/components/tools/magic-8-ball"), { loading: () => <ToolSkeleton /> }),
+  "random-bytes": dynamic(() => import("@/components/tools/random-bytes"), { loading: () => <ToolSkeleton /> }),
+  "hmac-generator": dynamic(() => import("@/components/tools/hmac-generator"), { loading: () => <ToolSkeleton /> }),
+  "json-to-csv": dynamic(() => import("@/components/tools/json-to-csv"), { loading: () => <ToolSkeleton /> }),
 };
 
 export default async function ToolSlugPage({
@@ -174,17 +211,8 @@ export default async function ToolSlugPage({
   const ToolComponent = toolComponents[slug];
   const accessible = isToolAccessible(tool);
 
-  const jsonLd = JSON.stringify(generateToolJsonLd(tool));
-
   return (
-    <>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: jsonLd }}
-        />
-      </head>
-      <ToolPage
+    <ToolPage
         tool={tool}
         about={content?.about}
         howTo={content?.howTo}
@@ -202,6 +230,5 @@ export default async function ToolSlugPage({
           </div>
         )}
       </ToolPage>
-    </>
   );
 }

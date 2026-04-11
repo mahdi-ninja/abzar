@@ -65,15 +65,19 @@ export default function GameOfLife() {
     setGeneration((prev) => prev + 1);
   }, []);
 
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
   useEffect(() => {
     if (!running) return;
     const tick = () => {
       if (!runningRef.current) return;
       step();
-      setTimeout(tick, speedRef.current);
+      timerRef.current = setTimeout(tick, speedRef.current);
     };
-    const timer = setTimeout(tick, speedRef.current);
-    return () => clearTimeout(timer);
+    timerRef.current = setTimeout(tick, speedRef.current);
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
   }, [running, step]);
 
   const handleClear = useCallback(() => {

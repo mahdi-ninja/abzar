@@ -77,7 +77,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   const setTheme = useCallback((newTheme: Theme) => {
     setThemeState(newTheme);
-    localStorage.setItem("abzar:theme", newTheme);
+    try { localStorage.setItem("abzar:theme", newTheme); } catch { /* ignore */ }
     const resolved = newTheme === "system" ? getSystemTheme() : newTheme;
     setResolvedTheme(resolved);
     applyTheme(resolved);

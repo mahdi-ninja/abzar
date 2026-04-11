@@ -25,6 +25,12 @@ export default function Pomodoro() {
   const [running, setRunning] = useState(false);
   const [completedSessions, setCompletedSessions] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const phaseRef = useRef(phase);
+  const sessionsRef = useRef(completedSessions);
+
+  useEffect(() => { phaseRef.current = phase; }, [phase]);
+  useEffect(() => { sessionsRef.current = completedSessions; }, [completedSessions]);
 
   const getDuration = useCallback(
     (p: Phase) => {
@@ -35,38 +41,41 @@ export default function Pomodoro() {
     [workMin, shortBreakMin, longBreakMin]
   );
 
-  const startNextPhase = useCallback(
-    (currentPhase: Phase, sessions: number) => {
-      let next: Phase;
-      let newSessions = sessions;
-      if (currentPhase === "work") {
-        newSessions = sessions + 1;
-        next = newSessions % sessionsBeforeLong === 0 ? "long-break" : "short-break";
-      } else {
-        next = "work";
-      }
-      setPhase(next);
-      setSecondsLeft(getDuration(next));
-      setCompletedSessions(newSessions);
-      setRunning(false);
+  const playNotification = useCallback(() => {
+    try {
+      if (!audioCtxRef.current) audioCtxRef.current = new AudioContext();
+      const ctx = audioCtxRef.current;
+      if (ctx.state === "suspended") ctx.resume();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.frequency.value = 800;
+      gain.gain.setValueAtTime(0.3, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
+      osc.start();
+      osc.stop(ctx.currentTime + 0.3);
+    } catch {
+      // ignore audio errors
+    }
+  }, []);
 
-      // Play notification sound
-      try {
-        const ctx = new AudioContext();
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.frequency.value = 800;
-        gain.gain.value = 0.3;
-        osc.start();
-        osc.stop(ctx.currentTime + 0.2);
-      } catch {
-        // ignore audio errors
-      }
-    },
-    [getDuration, sessionsBeforeLong]
-  );
+  const startNextPhase = useCallback(() => {
+    const currentPhase = phaseRef.current;
+    let sessions = sessionsRef.current;
+    let next: Phase;
+    if (currentPhase === "work") {
+      sessions += 1;
+      next = sessions % sessionsBeforeLong === 0 ? "long-break" : "short-break";
+    } else {
+      next = "work";
+    }
+    setPhase(next);
+    setSecondsLeft(getDuration(next));
+    setCompletedSessions(sessions);
+    setRunning(false);
+    playNotification();
+  }, [getDuration, sessionsBeforeLong, playNotification]);
 
   useEffect(() => {
     if (running) {
@@ -74,7 +83,7 @@ export default function Pomodoro() {
         setSecondsLeft((prev) => {
           if (prev <= 1) {
             clearInterval(intervalRef.current!);
-            startNextPhase(phase, completedSessions);
+            startNextPhase();
             return 0;
           }
           return prev - 1;
@@ -86,7 +95,12 @@ export default function Pomodoro() {
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [running, phase, completedSessions, startNextPhase]);
+  }, [running, startNextPhase]);
+
+  // Cleanup AudioContext on unmount
+  useEffect(() => {
+    return () => { audioCtxRef.current?.close(); };
+  }, []);
 
   const handleStartPause = useCallback(() => {
     setRunning((prev) => !prev);
@@ -101,8 +115,8 @@ export default function Pomodoro() {
 
   const handleSkip = useCallback(() => {
     setRunning(false);
-    startNextPhase(phase, completedSessions);
-  }, [phase, completedSessions, startNextPhase]);
+    startNextPhase();
+  }, [startNextPhase]);
 
   const minutes = Math.floor(secondsLeft / 60);
   const seconds = secondsLeft % 60;

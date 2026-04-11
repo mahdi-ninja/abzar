@@ -1,9 +1,16 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+} from "@/components/ui/select";
 import { useLocalStorage } from "@/lib/use-local-storage";
 
 interface KanbanCard {
@@ -17,65 +24,146 @@ interface KanbanColumn {
   cards: KanbanCard[];
 }
 
+interface KanbanBoard {
+  id: string;
+  name: string;
+  columns: KanbanColumn[];
+}
+
 const DEFAULT_COLUMNS: KanbanColumn[] = [
   { id: "todo", title: "To Do", cards: [] },
   { id: "progress", title: "In Progress", cards: [] },
   { id: "done", title: "Done", cards: [] },
 ];
 
+function createBoard(name: string): KanbanBoard {
+  return {
+    id: Date.now().toString(),
+    name,
+    columns: DEFAULT_COLUMNS.map((c) => ({ ...c, id: `${c.id}-${Date.now()}`, cards: [] })),
+  };
+}
+
 export default function Kanban() {
-  const [columns, setColumns] = useLocalStorage<KanbanColumn[]>(
-    "abzar:kanban:columns",
-    DEFAULT_COLUMNS
+  const [boards, setBoards] = useLocalStorage<KanbanBoard[]>(
+    "abzar:kanban:boards",
+    [createBoard("My Board")]
+  );
+  const [activeBoardId, setActiveBoardId] = useLocalStorage<string>(
+    "abzar:kanban:active",
+    boards[0]?.id ?? ""
   );
   const [newCardText, setNewCardText] = useState<Record<string, string>>({});
   const [dragCard, setDragCard] = useState<{ colId: string; cardId: string } | null>(null);
   const [newColTitle, setNewColTitle] = useState("");
+  const [newBoardName, setNewBoardName] = useState("");
+  const [renaming, setRenaming] = useState(false);
+  const [renameValue, setRenameValue] = useState("");
 
+  const board = useMemo(
+    () => boards.find((b) => b.id === activeBoardId) ?? boards[0] ?? null,
+    [boards, activeBoardId]
+  );
+
+  const updateBoard = useCallback(
+    (updater: (b: KanbanBoard) => KanbanBoard) => {
+      setBoards((prev) =>
+        prev.map((b) => (b.id === (board?.id ?? activeBoardId) ? updater(b) : b))
+      );
+    },
+    [board, activeBoardId, setBoards]
+  );
+
+  const addBoard = useCallback(() => {
+    const name = newBoardName.trim() || `Board ${boards.length + 1}`;
+    const b = createBoard(name);
+    setBoards((prev) => [...prev, b]);
+    setActiveBoardId(b.id);
+    setNewBoardName("");
+  }, [newBoardName, boards.length, setBoards, setActiveBoardId]);
+
+  const deleteBoard = useCallback(
+    (id: string) => {
+      setBoards((prev) => {
+        const next = prev.filter((b) => b.id !== id);
+        if (next.length === 0) {
+          const b = createBoard("My Board");
+          setActiveBoardId(b.id);
+          return [b];
+        }
+        if (activeBoardId === id) {
+          setActiveBoardId(next[0].id);
+        }
+        return next;
+      });
+    },
+    [activeBoardId, setBoards, setActiveBoardId]
+  );
+
+  const startRename = useCallback(() => {
+    if (!board) return;
+    setRenameValue(board.name);
+    setRenaming(true);
+  }, [board]);
+
+  const finishRename = useCallback(() => {
+    const name = renameValue.trim();
+    if (name) {
+      updateBoard((b) => ({ ...b, name }));
+    }
+    setRenaming(false);
+  }, [renameValue, updateBoard]);
+
+  // Column/card operations
   const addCard = useCallback(
     (colId: string) => {
       const text = (newCardText[colId] || "").trim();
       if (!text) return;
-      setColumns((prev) =>
-        prev.map((col) =>
+      updateBoard((b) => ({
+        ...b,
+        columns: b.columns.map((col) =>
           col.id === colId
             ? { ...col, cards: [...col.cards, { id: Date.now().toString(), title: text }] }
             : col
-        )
-      );
+        ),
+      }));
       setNewCardText((prev) => ({ ...prev, [colId]: "" }));
     },
-    [newCardText, setColumns]
+    [newCardText, updateBoard]
   );
 
   const removeCard = useCallback(
     (colId: string, cardId: string) => {
-      setColumns((prev) =>
-        prev.map((col) =>
+      updateBoard((b) => ({
+        ...b,
+        columns: b.columns.map((col) =>
           col.id === colId
             ? { ...col, cards: col.cards.filter((c) => c.id !== cardId) }
             : col
-        )
-      );
+        ),
+      }));
     },
-    [setColumns]
+    [updateBoard]
   );
 
   const addColumn = useCallback(() => {
     const title = newColTitle.trim();
     if (!title) return;
-    setColumns((prev) => [
-      ...prev,
-      { id: Date.now().toString(), title, cards: [] },
-    ]);
+    updateBoard((b) => ({
+      ...b,
+      columns: [...b.columns, { id: Date.now().toString(), title, cards: [] }],
+    }));
     setNewColTitle("");
-  }, [newColTitle, setColumns]);
+  }, [newColTitle, updateBoard]);
 
   const removeColumn = useCallback(
     (colId: string) => {
-      setColumns((prev) => prev.filter((c) => c.id !== colId));
+      updateBoard((b) => ({
+        ...b,
+        columns: b.columns.filter((c) => c.id !== colId),
+      }));
     },
-    [setColumns]
+    [updateBoard]
   );
 
   const handleDragStart = useCallback((colId: string, cardId: string) => {
@@ -84,32 +172,106 @@ export default function Kanban() {
 
   const handleDrop = useCallback(
     (targetColId: string) => {
-      if (!dragCard) return;
+      if (!dragCard || !board) return;
       if (dragCard.colId === targetColId) {
         setDragCard(null);
         return;
       }
-      setColumns((prev) => {
-        const sourceCol = prev.find((c) => c.id === dragCard.colId);
+      updateBoard((b) => {
+        const sourceCol = b.columns.find((c) => c.id === dragCard.colId);
         const card = sourceCol?.cards.find((c) => c.id === dragCard.cardId);
-        if (!card) return prev;
-        return prev.map((col) => {
-          if (col.id === dragCard.colId) {
-            return { ...col, cards: col.cards.filter((c) => c.id !== dragCard.cardId) };
-          }
-          if (col.id === targetColId) {
-            return { ...col, cards: [...col.cards, card] };
-          }
-          return col;
-        });
+        if (!card) return b;
+        return {
+          ...b,
+          columns: b.columns.map((col) => {
+            if (col.id === dragCard.colId) {
+              return { ...col, cards: col.cards.filter((c) => c.id !== dragCard.cardId) };
+            }
+            if (col.id === targetColId) {
+              return { ...col, cards: [...col.cards, card] };
+            }
+            return col;
+          }),
+        };
       });
       setDragCard(null);
     },
-    [dragCard, setColumns]
+    [dragCard, board, updateBoard]
   );
+
+  if (!board) return null;
+
+  const columns = board.columns;
 
   return (
     <div className="space-y-4">
+      {/* Board switcher */}
+      <div className="flex flex-wrap items-end gap-3">
+        <div className="flex-1 min-w-[180px]">
+          <Label className="text-xs mb-1 block">Board</Label>
+          <div className="flex items-center gap-2">
+            <Select
+              value={activeBoardId}
+              onValueChange={(v) => v && setActiveBoardId(v)}
+            >
+              <SelectTrigger className="text-sm">
+                <span>{board?.name ?? "Select board"}</span>
+              </SelectTrigger>
+              <SelectContent>
+                {boards.map((b) => (
+                  <SelectItem key={b.id} value={b.id}>
+                    {b.name}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            {renaming ? (
+              <div className="flex gap-1">
+                <Input
+                  value={renameValue}
+                  onChange={(e) => setRenameValue(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && finishRename()}
+                  className="h-8 text-sm w-36"
+                  autoFocus
+                />
+                <Button size="sm" variant="secondary" onClick={finishRename} className="h-8">
+                  Save
+                </Button>
+              </div>
+            ) : (
+              <Button size="sm" variant="ghost" onClick={startRename} className="h-8 text-xs">
+                Rename
+              </Button>
+            )}
+          </div>
+        </div>
+
+        <div className="flex items-end gap-1">
+          <Input
+            value={newBoardName}
+            onChange={(e) => setNewBoardName(e.target.value)}
+            onKeyDown={(e) => e.key === "Enter" && addBoard()}
+            placeholder="New board..."
+            className="h-8 text-sm w-32"
+          />
+          <Button size="sm" variant="outline" onClick={addBoard} className="h-8">
+            +
+          </Button>
+        </div>
+
+        {boards.length > 1 && (
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={() => deleteBoard(board.id)}
+            className="h-8 text-xs text-muted-foreground hover:text-destructive"
+          >
+            Delete Board
+          </Button>
+        )}
+      </div>
+
+      {/* Columns */}
       <div className="flex overflow-x-auto gap-4 pb-4">
         {columns.map((col) => (
           <div
@@ -126,7 +288,7 @@ export default function Kanban() {
                   <button
                     onClick={() => removeColumn(col.id)}
                     className="text-muted-foreground hover:text-destructive text-xs ml-1"
-                    title="Remove column"
+                    aria-label="Remove column"
                   >
                     ×
                   </button>
@@ -147,6 +309,7 @@ export default function Kanban() {
                     <button
                       onClick={() => removeCard(col.id, card.id)}
                       className="text-muted-foreground hover:text-destructive text-xs shrink-0"
+                      aria-label="Remove card"
                     >
                       ×
                     </button>

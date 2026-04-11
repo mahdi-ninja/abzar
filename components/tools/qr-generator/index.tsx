@@ -32,7 +32,7 @@ export default function QrGenerator() {
   const [errorLevel, setErrorLevel] = useState<ErrorCorrectionLevel>("M");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [qrLib, setQrLib] = useState<typeof import("qrcode") | null>(null);
-  const [dataUrl, setDataUrl] = useState("");
+  const [pngBlob, setPngBlob] = useState<Blob | null>(null);
 
   // Load QR library on mount
   useEffect(() => {
@@ -72,7 +72,7 @@ export default function QrGenerator() {
       errorCorrectionLevel: errorLevel,
       margin: 2,
     }).then(() => {
-      setDataUrl(canvasRef.current?.toDataURL("image/png") ?? "");
+      canvasRef.current?.toBlob((blob) => { if (blob) setPngBlob(blob); }, "image/png");
     }).catch(() => {
       // ignore QR generation errors for partial input
     });
@@ -207,9 +207,9 @@ export default function QrGenerator() {
             <canvas ref={canvasRef} />
           </div>
           <div className="flex gap-2">
-            {dataUrl && (
+            {pngBlob && (
               <DownloadButton
-                data={dataUrl}
+                data={pngBlob}
                 filename="qr-code.png"
                 mimeType="image/png"
                 label="PNG"

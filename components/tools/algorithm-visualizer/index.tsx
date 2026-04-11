@@ -32,6 +32,8 @@ export default function AlgorithmVisualizer() {
   const [sorting, setSorting] = useState(false);
   const [speed, setSpeed] = useState(50);
   const stopRef = useRef(false);
+  const speedRef = useRef(speed);
+  useEffect(() => { speedRef.current = speed; }, [speed]);
 
   const generateNew = useCallback(() => {
     stopRef.current = true;
@@ -41,8 +43,8 @@ export default function AlgorithmVisualizer() {
   }, [size]);
 
   const delay = useCallback(
-    () => new Promise<void>((resolve) => setTimeout(resolve, speed)),
-    [speed]
+    () => new Promise<void>((resolve) => setTimeout(resolve, speedRef.current)),
+    []
   );
 
   const sortArray = useCallback(async () => {
