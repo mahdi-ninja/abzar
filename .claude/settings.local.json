@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:currency-rates.github.io)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:fdc.nal.usda.gov)",
+      "WebFetch(domain:commons.wikimedia.org)",
+      "WebFetch(domain:standards-oui.ieee.org)",
+      "WebFetch(domain:www.thedon.com.br)",
+      "WebFetch(domain:taxfoundation.org)",
+      "WebFetch(domain:www.bishopcollins.com.au)",
+      "WebFetch(domain:cdn.jsdelivr.net)",
+      "WebFetch(domain:gist.github.com)",
+      "WebFetch(domain:towardsdatascience.com)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src=no --import-alias \"@/*\" --use-npm)",
+      "Bash(cp -r /Users/mahdi/Source/abzar-init/. /Users/mahdi/Source/abzar/)",
+      "Bash(rm -rf /Users/mahdi/Source/abzar-init)"
+    ]
+  }
+}
