@@ -77,6 +77,47 @@ const toolComponents: Record<
     () => import("@/components/tools/qr-generator"),
     { loading: () => <ToolSkeleton /> }
   ),
+  // Phase 2
+  "regex-tester": dynamic(
+    () => import("@/components/tools/regex-tester"),
+    { loading: () => <ToolSkeleton /> }
+  ),
+  "image-resizer": dynamic(
+    () => import("@/components/tools/image-resizer"),
+    { loading: () => <ToolSkeleton /> }
+  ),
+  "gradient-generator": dynamic(
+    () => import("@/components/tools/gradient-generator"),
+    { loading: () => <ToolSkeleton /> }
+  ),
+  "markdown-editor": dynamic(
+    () => import("@/components/tools/markdown-editor"),
+    { loading: () => <ToolSkeleton /> }
+  ),
+  "mortgage-calculator": dynamic(
+    () => import("@/components/tools/mortgage-calculator"),
+    { loading: () => <ToolSkeleton /> }
+  ),
+  "pomodoro": dynamic(
+    () => import("@/components/tools/pomodoro"),
+    { loading: () => <ToolSkeleton /> }
+  ),
+  "subnet-calculator": dynamic(
+    () => import("@/components/tools/subnet-calculator"),
+    { loading: () => <ToolSkeleton /> }
+  ),
+  "jwt-decoder": dynamic(
+    () => import("@/components/tools/jwt-decoder"),
+    { loading: () => <ToolSkeleton /> }
+  ),
+  "cron-builder": dynamic(
+    () => import("@/components/tools/cron-builder"),
+    { loading: () => <ToolSkeleton /> }
+  ),
+  "contrast-checker": dynamic(
+    () => import("@/components/tools/contrast-checker"),
+    { loading: () => <ToolSkeleton /> }
+  ),
 };
 
 export default async function ToolSlugPage({
