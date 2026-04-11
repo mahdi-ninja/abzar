@@ -118,6 +118,47 @@ const toolComponents: Record<
     () => import("@/components/tools/contrast-checker"),
     { loading: () => <ToolSkeleton /> }
   ),
+  // Phase 3
+  "typing-test": dynamic(
+    () => import("@/components/tools/typing-test"),
+    { loading: () => <ToolSkeleton /> }
+  ),
+  "kanban": dynamic(
+    () => import("@/components/tools/kanban"),
+    { loading: () => <ToolSkeleton /> }
+  ),
+  "flashcards": dynamic(
+    () => import("@/components/tools/flashcards"),
+    { loading: () => <ToolSkeleton /> }
+  ),
+  "pixel-art": dynamic(
+    () => import("@/components/tools/pixel-art"),
+    { loading: () => <ToolSkeleton /> }
+  ),
+  "drum-machine": dynamic(
+    () => import("@/components/tools/drum-machine"),
+    { loading: () => <ToolSkeleton /> }
+  ),
+  "game-of-life": dynamic(
+    () => import("@/components/tools/game-of-life"),
+    { loading: () => <ToolSkeleton /> }
+  ),
+  "algorithm-visualizer": dynamic(
+    () => import("@/components/tools/algorithm-visualizer"),
+    { loading: () => <ToolSkeleton /> }
+  ),
+  "habit-tracker": dynamic(
+    () => import("@/components/tools/habit-tracker"),
+    { loading: () => <ToolSkeleton /> }
+  ),
+  "invoice-generator": dynamic(
+    () => import("@/components/tools/invoice-generator"),
+    { loading: () => <ToolSkeleton /> }
+  ),
+  "pdf-merger": dynamic(
+    () => import("@/components/tools/pdf-merger"),
+    { loading: () => <ToolSkeleton /> }
+  ),
 };
 
 export default async function ToolSlugPage({
@@ -133,14 +174,16 @@ export default async function ToolSlugPage({
   const ToolComponent = toolComponents[slug];
   const accessible = isToolAccessible(tool);
 
+  const jsonLd = JSON.stringify(generateToolJsonLd(tool));
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(generateToolJsonLd(tool)),
-        }}
-      />
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLd }}
+        />
+      </head>
       <ToolPage
         tool={tool}
         about={content?.about}
