@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { usePwa } from "@/components/pwa-provider";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config";
 import {
@@ -27,6 +28,7 @@ export function Header() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Tool[]>([]);
   const router = useRouter();
+  const { isOffline, isInstallable, promptInstall } = usePwa();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -106,6 +108,37 @@ export function Header() {
           </kbd>
         </Button>
       </div>
+
+      {isOffline && (
+        <span className="flex items-center gap-1 rounded-md bg-destructive/10 px-2 py-1 text-xs font-medium text-destructive">
+          <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+            <line x1="1" y1="1" x2="23" y2="23" />
+            <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55" />
+            <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39" />
+            <path d="M10.71 5.05A16 16 0 0 1 22.56 9" />
+            <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88" />
+            <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+            <line x1="12" y1="20" x2="12.01" y2="20" />
+          </svg>
+          Offline
+        </span>
+      )}
+
+      {isInstallable && (
+        <Button
+          variant="ghost"
+          size="icon"
+          className="h-9 w-9"
+          onClick={promptInstall}
+          aria-label="Install Abzar"
+        >
+          <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+        </Button>
+      )}
 
       <ThemeToggle />
 

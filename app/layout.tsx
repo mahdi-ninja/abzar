@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Source_Serif_4, Source_Code_Pro } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { PwaProvider } from "@/components/pwa-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/sonner";
 import { AppShell } from "@/components/layout/app-shell";
@@ -59,10 +60,12 @@ export default function RootLayout({
       </head>
       <body className="min-h-full">
         <ThemeProvider>
-          <TooltipProvider>
-            <AppShell>{children}</AppShell>
-            <Toaster />
-          </TooltipProvider>
+          <PwaProvider>
+            <TooltipProvider>
+              <AppShell>{children}</AppShell>
+              <Toaster />
+            </TooltipProvider>
+          </PwaProvider>
         </ThemeProvider>
       </body>
     </html>

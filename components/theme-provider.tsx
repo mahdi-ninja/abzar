@@ -4,6 +4,7 @@ import {
   createContext,
   useContext,
   useEffect,
+  useLayoutEffect,
   useState,
   useCallback,
 } from "react";
@@ -55,6 +56,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const t = getStoredTheme();
     return t === "system" ? getSystemTheme() : t;
   });
+
+  // Re-apply theme after hydration (React may overwrite the inline script's class)
+  useLayoutEffect(() => {
+    applyTheme(resolvedTheme);
+  }, [resolvedTheme]);
 
   // Listen for system theme changes
   useEffect(() => {
