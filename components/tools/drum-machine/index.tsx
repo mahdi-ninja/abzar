@@ -2,21 +2,23 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
+import { renderOffline, encodeWav, type Instrument } from "./utils";
 
-const INSTRUMENTS = [
-  { name: "Kick", freq: 60, decay: 0.3, type: "sine" as OscillatorType },
-  { name: "Snare", freq: 200, decay: 0.15, type: "triangle" as OscillatorType },
-  { name: "Hi-Hat", freq: 800, decay: 0.05, type: "square" as OscillatorType },
-  { name: "Tom", freq: 120, decay: 0.2, type: "sine" as OscillatorType },
-  { name: "Clap", freq: 400, decay: 0.1, type: "sawtooth" as OscillatorType },
-  { name: "Rim", freq: 600, decay: 0.05, type: "triangle" as OscillatorType },
+const INSTRUMENTS: Instrument[] = [
+  { name: "Kick", freq: 60, decay: 0.3, type: "sine" },
+  { name: "Snare", freq: 200, decay: 0.15, type: "triangle" },
+  { name: "Hi-Hat", freq: 800, decay: 0.05, type: "square" },
+  { name: "Tom", freq: 120, decay: 0.2, type: "sine" },
+  { name: "Clap", freq: 400, decay: 0.1, type: "sawtooth" },
+  { name: "Rim", freq: 600, decay: 0.05, type: "triangle" },
 ];
 
 const STEPS = 16;
 
-function playSound(ctx: AudioContext, instrument: (typeof INSTRUMENTS)[0]) {
+function playSound(ctx: AudioContext, instrument: Instrument) {
   const osc = ctx.createOscillator();
   const gain = ctx.createGain();
   osc.connect(gain);
@@ -36,6 +38,8 @@ export default function DrumMachine() {
   const [bpm, setBpm] = useState(120);
   const [playing, setPlaying] = useState(false);
   const [currentStep, setCurrentStep] = useState(-1);
+  const [bars, setBars] = useState<number>(2);
+  const [isExporting, setIsExporting] = useState(false);
 
   // Use refs so the interval callback always reads latest values
   const gridRef = useRef(grid);
@@ -79,7 +83,7 @@ export default function DrumMachine() {
   useEffect(() => { tickRef.current = tick; }, [tick]);
 
   const handlePlay = useCallback(async () => {
-    if (playing) {
+    if (playing || playingRef.current) {
       playingRef.current = false;
       setPlaying(false);
       setCurrentStep(-1);
@@ -106,13 +110,36 @@ export default function DrumMachine() {
     return () => {
       playingRef.current = false;
       audioCtxRef.current?.close();
+      audioCtxRef.current = null;
       if (timerRef.current) clearTimeout(timerRef.current);
     };
   }, []);
 
-  const clearGrid = useCallback(() => {
+  const clearState = useCallback(() => {
+    setBpm(120);
     setGrid(INSTRUMENTS.map(() => Array(STEPS).fill(false)));
   }, []);
+
+  const handleDownload = useCallback(async () => {
+    if (isExporting) return;
+    setIsExporting(true);
+    try {
+      const audioBuffer = await renderOffline(grid, INSTRUMENTS, bpm, bars);
+      const blob = encodeWav(audioBuffer);
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `beat-${bars}bar-${bpm}bpm.wav`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } finally {
+      setIsExporting(false);
+    }
+  }, [isExporting, grid, bpm, bars]);
+
+  const isEmpty = grid.every((r) => r.every((c) => !c));
 
   return (
     <div className="space-y-4">
@@ -130,7 +157,7 @@ export default function DrumMachine() {
             step={1}
           />
         </div>
-        <Button size="sm" variant="outline" onClick={clearGrid}>
+        <Button size="sm" variant="outline" onClick={clearState}>
           Clear
         </Button>
       </div>
@@ -172,6 +199,46 @@ export default function DrumMachine() {
             ))}
           </div>
         </div>
+      </div>
+
+      <div className="flex items-center gap-2">
+        <Label className="text-xs whitespace-nowrap">Export bars:</Label>
+        {([1, 2, 4, 8] as const).map((n) => (
+          <Button
+            key={n}
+            size="sm"
+            variant={bars === n ? "default" : "outline"}
+            className="h-7 w-7 p-0 text-xs"
+            onClick={() => setBars(n)}
+          >
+            {n}
+          </Button>
+        ))}
+        <Input
+          type="number"
+          min={1}
+          max={64}
+          step={1}
+          value={bars}
+          onChange={(e) => {
+            const v = parseInt(e.target.value, 10);
+            if (!isNaN(v)) setBars(Math.min(64, Math.max(1, v)));
+          }}
+          onBlur={(e) => {
+            if (e.target.value === "" || isNaN(parseInt(e.target.value, 10))) {
+              setBars(bars);
+            }
+          }}
+          className="h-7 w-16 text-xs text-center"
+        />
+        <Button
+          size="sm"
+          variant="outline"
+          onClick={handleDownload}
+          disabled={isExporting || isEmpty}
+        >
+          {isExporting ? "Rendering…" : "↓ WAV"}
+        </Button>
       </div>
     </div>
   );
