@@ -1,30 +1,26 @@
-import uFuzzy from "@leeoniya/ufuzzy";
+import Fuse from "fuse.js";
 import { getAllTools, type Tool } from "./tools-registry";
 
-const uf = new uFuzzy();
-
-let haystack: string[] | null = null;
-let toolsList: Tool[] | null = null;
+let fuse: Fuse<Tool> | null = null;
 
 function ensureIndex() {
-  if (!haystack) {
-    toolsList = getAllTools();
-    haystack = toolsList.map(
-      (t) => `${t.name} ${t.description} ${t.tags.join(" ")}`
-    );
+  if (!fuse) {
+    fuse = new Fuse(getAllTools(), {
+      keys: [
+        { name: "name", weight: 0.5 },
+        { name: "description", weight: 0.3 },
+        { name: "tags", weight: 0.2 },
+      ],
+      threshold: 0.4,
+      ignoreLocation: true,
+      minMatchCharLength: 1,
+    });
   }
 }
 
 export function searchTools(query: string): Tool[] {
-  if (!query.trim()) return [];
+  const q = query.trim();
+  if (!q) return [];
   ensureIndex();
-
-  const [idxs, , order] = uf.search(haystack!, query);
-  if (!idxs) return [];
-
-  const ranked = order
-    ? order.map((i) => toolsList![idxs[i]])
-    : idxs.map((i) => toolsList![i]);
-
-  return ranked;
+  return fuse!.search(q).map((r) => r.item);
 }

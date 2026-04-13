@@ -10,7 +10,7 @@ Abzar (ابزار — "tools" in Persian) is a collection of utility tools that 
 - **TypeScript** + **Tailwind CSS v4**
 - **shadcn/ui** (Base UI variant, not Radix)
 - **Theme:** "playable" amber theme (Space Grotesk / Source Serif 4 / Source Code Pro)
-- **Search:** uFuzzy for fuzzy search across all tools
+- **Search:** Fuse.js for fuzzy search across all tools
 - **Testing:** Vitest
 - **Deploy:** Cloudflare Pages via wrangler
 
@@ -48,7 +48,7 @@ lib/
   config.ts               — Site branding (name, url, tagline) — single source of truth
   tools-registry.ts       — All 202 tools as pure metadata array
   categories.ts           — 14 category definitions
-  search.ts               — uFuzzy search over tools
+  search.ts               — Fuse.js search over tools
   json-ld.ts              — WebApplication schema generator
   tool-content.ts         — About/howTo text per tool
   use-local-storage.ts    — localStorage hook with try/catch

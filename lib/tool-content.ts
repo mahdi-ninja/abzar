@@ -182,7 +182,7 @@ export const toolContent: Record<string, ToolContent> = {
   },
   "emoji-search": {
     about:
-      "Browse and search over 300 emojis by name, keyword, or category. Click any emoji to copy it to your clipboard. Recently used emojis appear at the top for quick re-access. All data is bundled locally — no network requests.",
+      "Browse and search over 1900+ emojis by name, keyword, or category. Click any emoji to copy it to your clipboard. Recently used emojis appear at the top for quick re-access. All data is bundled locally — no network requests.",
     howTo: [
       "Type in the search box to filter emojis by name or keyword",
       "Click a category button to browse by theme",

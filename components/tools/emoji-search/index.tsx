@@ -1,33 +1,42 @@
 "use client";
 import { useState, useMemo, useCallback } from "react";
+import Fuse from "fuse.js";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { useLocalStorage } from "@/lib/use-local-storage";
 import { EMOJIS, CATEGORIES, type Emoji } from "./data";
+
+const fuse = new Fuse(EMOJIS, {
+  keys: [
+    { name: "name", weight: 0.7 },
+    { name: "keywords", weight: 0.3 },
+  ],
+  threshold: 0.4,
+  ignoreLocation: true,
+  minMatchCharLength: 1,
+});
 
 export default function EmojiSearch() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
-  const [recentIds, setRecentIds] = useState<string[]>(() => {
-    try {
-      const s = localStorage.getItem("abzar:emoji-search:recent");
-      return s ? JSON.parse(s) : [];
-    } catch {
-      return [];
-    }
-  });
+  const [recentIds, setRecentIds] = useLocalStorage<string[]>(
+    "abzar:emoji-search:recent",
+    [],
+  );
 
   const filtered = useMemo(() => {
-    const q = query.toLowerCase().trim();
-    return EMOJIS.filter((e) => {
-      const matchCat = category === "All" || e.category === category;
-      if (!matchCat) return false;
-      if (!q) return true;
-      return (
-        e.name.includes(q) ||
-        e.char === q ||
-        e.keywords.some((k) => k.includes(q))
-      );
-    });
+    const q = query.trim();
+
+    if (!q) {
+      return category === "All"
+        ? EMOJIS
+        : EMOJIS.filter((e) => e.category === category);
+    }
+
+    const results = fuse.search(q).map((r) => r.item);
+    return category === "All"
+      ? results
+      : results.filter((e) => e.category === category);
   }, [query, category]);
 
   const recent = useMemo(
@@ -35,47 +44,23 @@ export default function EmojiSearch() {
     [recentIds],
   );
 
-  const copy = useCallback((emoji: Emoji) => {
-    navigator.clipboard.writeText(emoji.char).then(
-      () => {
-        toast.success(`Copied ${emoji.char}`);
-        setRecentIds((prev) => {
-          const next = [emoji.char, ...prev.filter((c) => c !== emoji.char)].slice(0, 16);
-          try { localStorage.setItem("abzar:emoji-search:recent", JSON.stringify(next)); } catch {}
-          return next;
-        });
-      },
-      () => toast.error("Copy failed"),
-    );
-  }, []);
+  const copy = useCallback(
+    (emoji: Emoji) => {
+      navigator.clipboard.writeText(emoji.char).then(
+        () => {
+          toast.success(`Copied ${emoji.char}`);
+          setRecentIds((prev) =>
+            [emoji.char, ...prev.filter((c) => c !== emoji.char)].slice(0, 16),
+          );
+        },
+        () => toast.error("Copy failed"),
+      );
+    },
+    [setRecentIds],
+  );
 
   return (
     <div className="space-y-3">
-      <div className="flex flex-col sm:flex-row gap-2">
-        <Input
-          placeholder="Search emojis…"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          className="flex-1"
-          autoComplete="off"
-        />
-        <div className="flex gap-1 overflow-x-auto pb-1">
-          {CATEGORIES.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setCategory(cat)}
-              className={`whitespace-nowrap rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
-                category === cat
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-muted hover:bg-muted/80 text-muted-foreground"
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </div>
-      </div>
-
       {recent.length > 0 && !query && category === "All" && (
         <div>
           <p className="text-xs text-muted-foreground mb-1">Recently used</p>
@@ -85,7 +70,7 @@ export default function EmojiSearch() {
                 key={e.char}
                 onClick={() => copy(e)}
                 title={e.name}
-                className="flex h-10 w-10 items-center justify-center rounded-md border border-border bg-muted/50 text-xl hover:bg-muted hover:scale-110 transition-transform"
+                className="flex h-10 w-10 items-center justify-center rounded-md border border-border bg-muted/50 text-xl hover:bg-muted hover:scale-105 transition-transform"
               >
                 {e.char}
               </button>
@@ -93,6 +78,30 @@ export default function EmojiSearch() {
           </div>
         </div>
       )}
+
+      <div className="flex gap-1 overflow-x-auto pb-1">
+        {CATEGORIES.map((cat) => (
+          <button
+            key={cat}
+            onClick={() => setCategory(cat)}
+            className={`whitespace-nowrap rounded-md px-3 py-1.5 text-xs font-medium transition-colors ${
+              category === cat
+                ? "bg-primary text-primary-foreground"
+                : "bg-muted hover:bg-muted/80 text-muted-foreground"
+            }`}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      <Input
+        placeholder="Search emojis…"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        className="w-full"
+        autoComplete="off"
+      />
 
       <div className="text-xs text-muted-foreground">
         {filtered.length} emoji{filtered.length !== 1 ? "s" : ""} — click to copy
@@ -104,7 +113,7 @@ export default function EmojiSearch() {
             key={emoji.char}
             onClick={() => copy(emoji)}
             title={emoji.name}
-            className="flex h-10 w-full items-center justify-center rounded-md border border-transparent bg-muted/30 text-xl hover:bg-muted hover:scale-110 hover:border-border transition-all"
+            className="flex h-10 w-full items-center justify-center rounded-md border border-transparent bg-muted/30 text-xl hover:bg-muted hover:border-border transition-all"
           >
             {emoji.char}
           </button>
