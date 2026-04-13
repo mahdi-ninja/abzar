@@ -149,7 +149,7 @@ export default function JsonFormatter() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder='Paste your JSON here... e.g. {"key": "value"}'
-            className="min-h-[300px] font-mono text-sm"
+            className="min-h-75 font-mono text-sm"
           />
         }
         output={
@@ -177,10 +177,10 @@ export default function JsonFormatter() {
                 value={output}
                 readOnly
                 placeholder="Formatted output will appear here"
-                className="min-h-[300px] font-mono text-sm"
+                className="min-h-75 font-mono text-sm"
               />
             ) : (
-              <div className="min-h-[300px] overflow-auto rounded-md border bg-muted/50 p-3 font-mono text-sm">
+              <div className="min-h-75 overflow-auto rounded-md border bg-muted/50 p-3 font-mono text-sm">
                 <JsonTree data={parsed} />
               </div>
             )}

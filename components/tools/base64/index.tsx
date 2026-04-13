@@ -134,7 +134,7 @@ export default function Base64Tool() {
                   ? "Type text to encode..."
                   : "Paste Base64 to decode..."
               }
-              className="min-h-[200px] font-mono text-sm"
+              className="min-h-50 font-mono text-sm"
             />
           ) : (
             <FileDropZone
@@ -144,7 +144,7 @@ export default function Base64Tool() {
                   ? `Selected: ${fileName}`
                   : "Drop a file here to encode"
               }
-              className="min-h-[200px]"
+              className="min-h-50"
             />
           )
         }
@@ -155,7 +155,7 @@ export default function Base64Tool() {
               value={output}
               readOnly
               placeholder="Result will appear here"
-              className="min-h-[200px] font-mono text-sm"
+              className="min-h-50 font-mono text-sm"
             />
             {output && (
               <p className="text-xs text-muted-foreground">

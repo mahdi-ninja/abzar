@@ -116,7 +116,7 @@ export default function GameOfLife() {
         <Button size="sm" variant="outline" onClick={handleClear}>
           Clear
         </Button>
-        <div className="flex-1 min-w-[120px] max-w-[200px]">
+        <div className="flex-1 min-w-30 max-w-50">
           <Label className="text-xs mb-1 block">Speed: {speed}ms</Label>
           <Slider
             value={[speed]}

@@ -86,7 +86,7 @@ export default function SubnetCalculator() {
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-end gap-4">
-        <div className="flex-1 min-w-[180px]">
+        <div className="flex-1 min-w-45">
           <Label className="text-sm mb-1 block">IP Address</Label>
           <Input
             value={ip}

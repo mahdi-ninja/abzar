@@ -95,7 +95,7 @@ export default function Flashcards() {
                 value={front}
                 onChange={(e) => setFront(e.target.value)}
                 placeholder="Enter question..."
-                className="min-h-[80px] text-sm"
+                className="min-h-20 text-sm"
               />
             </div>
             <div>
@@ -104,7 +104,7 @@ export default function Flashcards() {
                 value={back}
                 onChange={(e) => setBack(e.target.value)}
                 placeholder="Enter answer..."
-                className="min-h-[80px] text-sm"
+                className="min-h-20 text-sm"
               />
             </div>
           </div>
@@ -155,7 +155,7 @@ export default function Flashcards() {
               </div>
 
               <Card
-                className="w-full max-w-md min-h-[200px] flex items-center justify-center p-8 cursor-pointer text-center"
+                className="w-full max-w-md min-h-50 flex items-center justify-center p-8 cursor-pointer text-center"
                 onClick={() => setShowAnswer(true)}
               >
                 {!showAnswer ? (

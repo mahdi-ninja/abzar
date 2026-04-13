@@ -50,7 +50,7 @@ export default function LoremIpsum() {
         </div>
       </div>
       <div className="flex justify-end"><CopyButton value={output} /></div>
-      <Textarea value={output} readOnly className="min-h-[300px] text-sm" />
+      <Textarea value={output} readOnly className="min-h-75 text-sm" />
     </div>
   );
 }

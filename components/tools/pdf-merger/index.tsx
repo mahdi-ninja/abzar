@@ -91,7 +91,7 @@ export default function PdfMerger() {
         accept=".pdf,application/pdf"
         multiple
         label="Drop PDF files here or click to browse"
-        className="min-h-[120px]"
+        className="min-h-30"
       />
 
       {error && (

@@ -29,7 +29,7 @@ export default function HmacGenerator() {
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div className="space-y-2">
           <Label className="text-sm">Message</Label>
-          <Textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Enter message..." className="min-h-[120px] font-mono text-sm" />
+          <Textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Enter message..." className="min-h-30 font-mono text-sm" />
         </div>
         <div className="space-y-2">
           <Label className="text-sm">Secret Key</Label>

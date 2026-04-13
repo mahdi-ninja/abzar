@@ -206,7 +206,7 @@ export default function AlgorithmVisualizer() {
       </div>
 
       {/* Bar chart */}
-      <div className="flex items-end gap-[1px] h-64 border rounded-md p-2 bg-muted/30">
+      <div className="flex items-end gap-px h-64 border rounded-md p-2 bg-muted/30">
         {bars.map((bar, i) => (
           <div
             key={i}

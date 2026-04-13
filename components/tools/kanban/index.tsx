@@ -209,7 +209,7 @@ export default function Kanban() {
     <div className="space-y-4">
       {/* Board switcher */}
       <div className="flex flex-wrap items-end gap-3">
-        <div className="flex-1 min-w-[180px]">
+        <div className="flex-1 min-w-45">
           <Label className="text-xs mb-1 block">Board</Label>
           <div className="flex items-center gap-2">
             <Select
@@ -278,7 +278,7 @@ export default function Kanban() {
         {columns.map((col) => (
           <div
             key={col.id}
-            className="flex-shrink-0 w-64 rounded-lg border bg-muted/30 p-3"
+            className="shrink-0 w-64 rounded-lg border bg-muted/30 p-3"
             onDragOver={(e) => e.preventDefault()}
             onDrop={() => handleDrop(col.id)}
           >
@@ -298,7 +298,7 @@ export default function Kanban() {
               </div>
             </div>
 
-            <div className="space-y-2 min-h-[50px]">
+            <div className="space-y-2 min-h-12.5">
               {col.cards.map((card) => (
                 <Card
                   key={card.id}
@@ -338,7 +338,7 @@ export default function Kanban() {
         ))}
 
         {/* Add column */}
-        <div className="flex-shrink-0 w-64">
+        <div className="shrink-0 w-64">
           <div className="flex gap-1">
             <Input
               value={newColTitle}

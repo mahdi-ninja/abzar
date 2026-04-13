@@ -147,7 +147,7 @@ export default function DrumMachine() {
         <Button onClick={handlePlay} className="w-20">
           {playing ? "Stop" : "Play"}
         </Button>
-        <div className="flex-1 min-w-[150px] max-w-[200px]">
+        <div className="flex-1 min-w-37.5 max-w-50">
           <Label className="text-xs mb-1 block">BPM: {bpm}</Label>
           <Slider
             value={[bpm]}

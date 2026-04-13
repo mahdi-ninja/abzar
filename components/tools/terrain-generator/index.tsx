@@ -106,15 +106,15 @@ export default function TerrainGenerator() {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-end gap-4">
-        <div className="flex-1 min-w-[130px] max-w-[200px]">
+        <div className="flex-1 min-w-32.5 max-w-50">
           <Label className="text-xs mb-1 block">Seed: {seed}</Label>
           <Slider value={[seed]} onValueChange={(v) => setSeed(Array.isArray(v) ? v[0] : v)} min={1} max={9999} step={1} />
         </div>
-        <div className="flex-1 min-w-[130px] max-w-[200px]">
+        <div className="flex-1 min-w-32.5 max-w-50">
           <Label className="text-xs mb-1 block">Scale: {scale}</Label>
           <Slider value={[scale]} onValueChange={(v) => setScale(Array.isArray(v) ? v[0] : v)} min={1} max={12} step={0.5} />
         </div>
-        <div className="flex-1 min-w-[130px] max-w-[200px]">
+        <div className="flex-1 min-w-32.5 max-w-50">
           <Label className="text-xs mb-1 block">Detail (octaves): {octaves}</Label>
           <Slider value={[octaves]} onValueChange={(v) => setOctaves(Array.isArray(v) ? v[0] : v)} min={1} max={8} step={1} />
         </div>
@@ -126,7 +126,7 @@ export default function TerrainGenerator() {
 
       <canvas
         ref={canvasRef}
-        className="rounded-lg border border-border w-full max-w-[600px]"
+        className="rounded-lg border border-border w-full max-w-150"
         style={{ aspectRatio: "3/2" }}
       />
 

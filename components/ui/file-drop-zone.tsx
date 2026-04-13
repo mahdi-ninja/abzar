@@ -51,7 +51,7 @@ export function FileDropZone({
   return (
     <div
       className={cn(
-        "relative flex min-h-[120px] cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/25 bg-muted/50 p-6 text-center transition-colors hover:border-muted-foreground/50",
+        "relative flex min-h-30 cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/25 bg-muted/50 p-6 text-center transition-colors hover:border-muted-foreground/50",
         dragActive && "border-primary bg-primary/5",
         className
       )}

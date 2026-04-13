@@ -30,7 +30,7 @@ export default function Countdown() {
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-end gap-4">
-        <div className="flex-1 min-w-[200px]"><Label className="text-sm mb-1 block">Event Name</Label><Input value={title} onChange={(e) => setTitle(e.target.value)} /></div>
+        <div className="flex-1 min-w-50"><Label className="text-sm mb-1 block">Event Name</Label><Input value={title} onChange={(e) => setTitle(e.target.value)} /></div>
         <div><Label className="text-sm mb-1 block">Target Date</Label><Input type="date" value={target} onChange={(e) => setTarget(e.target.value)} /></div>
       </div>
       <div className="text-center py-4">

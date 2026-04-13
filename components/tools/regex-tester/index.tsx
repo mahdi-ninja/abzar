@@ -139,11 +139,11 @@ export default function RegexTester() {
             value={testString}
             onChange={(e) => setTestString(e.target.value)}
             placeholder="Enter text to test against..."
-            className="min-h-[200px] font-mono text-sm"
+            className="min-h-50 font-mono text-sm"
           />
         }
         output={
-          <div className="min-h-[200px] overflow-auto whitespace-pre-wrap rounded-md border bg-muted/50 p-3 font-mono text-sm break-all">
+          <div className="min-h-50 overflow-auto whitespace-pre-wrap rounded-md border bg-muted/50 p-3 font-mono text-sm break-all">
             {segments.map((seg, i) =>
               seg.highlight ? (
                 <mark key={i} className="bg-primary/30 text-foreground rounded-sm px-0.5">{seg.text}</mark>

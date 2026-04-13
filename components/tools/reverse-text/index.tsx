@@ -40,12 +40,12 @@ export default function ReverseText() {
         inputLabel="Input"
         outputLabel="Output"
         input={
-          <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="Type text here..." className="min-h-[200px] text-sm" />
+          <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="Type text here..." className="min-h-50 text-sm" />
         }
         output={
           <>
             {output && <div className="flex justify-end"><CopyButton value={output} /></div>}
-            <Textarea value={output} readOnly className="min-h-[200px] text-sm" />
+            <Textarea value={output} readOnly className="min-h-50 text-sm" />
           </>
         }
       />

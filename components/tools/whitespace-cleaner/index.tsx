@@ -48,7 +48,7 @@ export default function WhitespaceCleaner() {
         inputLabel="Input"
         outputLabel="Cleaned"
         input={
-          <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="Paste text with whitespace issues..." className="min-h-[250px] font-mono text-sm" />
+          <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="Paste text with whitespace issues..." className="min-h-62.5 font-mono text-sm" />
         }
         output={
           <>
@@ -56,7 +56,7 @@ export default function WhitespaceCleaner() {
               {changed && <span className="text-xs text-primary">(modified)</span>}
               {output && <div className="ml-auto"><CopyButton value={output} /></div>}
             </div>
-            <Textarea value={output} readOnly className="min-h-[250px] font-mono text-sm" />
+            <Textarea value={output} readOnly className="min-h-62.5 font-mono text-sm" />
           </>
         }
       />

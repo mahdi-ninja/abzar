@@ -69,7 +69,7 @@ export default function TimestampConverter() {
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-end gap-3">
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-50">
           <Label className="text-sm mb-1 block">
             Paste a timestamp or date string
           </Label>

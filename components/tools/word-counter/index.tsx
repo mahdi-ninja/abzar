@@ -82,7 +82,7 @@ export default function WordCounter() {
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Type or paste your text here..."
-        className="min-h-[200px] text-sm"
+        className="min-h-50 text-sm"
       />
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">

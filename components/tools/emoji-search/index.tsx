@@ -107,7 +107,7 @@ export default function EmojiSearch() {
         {filtered.length} emoji{filtered.length !== 1 ? "s" : ""} — click to copy
       </div>
 
-      <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 gap-1 max-h-[440px] overflow-y-auto pr-1">
+      <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 gap-1 max-h-110 overflow-y-auto pr-1">
         {filtered.map((emoji) => (
           <button
             key={emoji.char}

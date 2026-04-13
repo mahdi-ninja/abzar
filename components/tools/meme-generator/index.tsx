@@ -75,11 +75,11 @@ export default function MemeGenerator() {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap gap-3 items-end">
-        <div className="flex-1 min-w-[160px]">
+        <div className="flex-1 min-w-40">
           <Label className="text-xs mb-1 block">Top text</Label>
           <Input value={topText} onChange={(e) => setTopText(e.target.value)} placeholder="Top text…" />
         </div>
-        <div className="flex-1 min-w-[160px]">
+        <div className="flex-1 min-w-40">
           <Label className="text-xs mb-1 block">Bottom text</Label>
           <Input value={bottomText} onChange={(e) => setBottomText(e.target.value)} placeholder="Bottom text…" />
         </div>

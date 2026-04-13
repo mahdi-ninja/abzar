@@ -89,13 +89,13 @@ export default function Notepad() {
   };
 
   return (
-    <div className="flex gap-4 min-h-[500px]">
+    <div className="flex gap-4 min-h-125">
       {/* Sidebar — note list */}
       <div className="w-56 shrink-0 space-y-2 hidden md:block">
         <Button size="sm" className="w-full" onClick={addNote}>
           + New Note
         </Button>
-        <div className="space-y-1.5 max-h-[460px] overflow-y-auto">
+        <div className="space-y-1.5 max-h-115 overflow-y-auto">
           {sorted.map((note) => (
             <Card
               key={note.id}
@@ -222,7 +222,7 @@ function NoteEditor({
         value={note.content}
         onChange={(e) => onUpdate({ content: e.target.value })}
         placeholder="Start writing..."
-        className="flex-1 min-h-[400px] text-sm resize-none"
+        className="flex-1 min-h-100 text-sm resize-none"
       />
       <div className="flex items-center justify-between text-xs text-muted-foreground">
         <span>{wordCount} words · {note.content.length} characters</span>

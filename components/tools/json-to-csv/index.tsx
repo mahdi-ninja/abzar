@@ -36,12 +36,12 @@ export default function JsonToCsv() {
         inputLabel="JSON Array"
         outputLabel="CSV Output"
         input={
-          <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder='[{"name":"Alice","age":30},{"name":"Bob","age":25}]' className="min-h-[250px] font-mono text-sm" />
+          <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder='[{"name":"Alice","age":30},{"name":"Bob","age":25}]' className="min-h-62.5 font-mono text-sm" />
         }
         output={
           <>
             {output && <div className="flex justify-end gap-1"><CopyButton value={output} /><DownloadButton data={output} filename="data.csv" mimeType="text/csv" label=".csv" /></div>}
-            <Textarea value={output} readOnly className="min-h-[250px] font-mono text-sm" />
+            <Textarea value={output} readOnly className="min-h-62.5 font-mono text-sm" />
           </>
         }
       />

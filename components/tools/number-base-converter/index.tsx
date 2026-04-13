@@ -28,7 +28,7 @@ export default function NumberBaseConverter() {
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-end gap-4">
-        <div className="flex-1 min-w-[200px]">
+        <div className="flex-1 min-w-50">
           <Label className="text-sm mb-1 block">Input</Label>
           <Input value={input} onChange={(e) => setInput(e.target.value)} className="font-mono" />
         </div>

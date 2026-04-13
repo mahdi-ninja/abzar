@@ -360,7 +360,7 @@ export default function ImageResizer() {
           onFiles={handleFileUpload}
           accept="image/*"
           label="Drop an image here to get started"
-          className="min-h-[200px]"
+          className="min-h-50"
         />
       ) : (
         <>

@@ -23,7 +23,7 @@ export default function ReadingTime() {
         <div className="text-sm text-muted-foreground">{words} words</div>
         <Button size="sm" variant="outline" onClick={() => setText("")}>Clear</Button>
       </div>
-      <Textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="Paste your text here to estimate reading time..." className="min-h-[200px] text-sm" />
+      <Textarea value={text} onChange={(e) => setText(e.target.value)} placeholder="Paste your text here to estimate reading time..." className="min-h-50 text-sm" />
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         {times.map(({ label, minutes }) => (
           <Card key={label} className="p-3 text-center">

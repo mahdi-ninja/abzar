@@ -81,7 +81,7 @@ export default function GradientGenerator() {
         </div>
 
         {(type === "linear" || type === "conic") && (
-          <div className="flex-1 min-w-[150px]">
+          <div className="flex-1 min-w-37.5">
             <Label className="text-sm mb-1 block">Angle: {angle}°</Label>
             <Slider
               value={[angle]}

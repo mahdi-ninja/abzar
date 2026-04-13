@@ -50,12 +50,12 @@ export default function StringEscaper() {
         inputLabel="Input"
         outputLabel="Output"
         input={
-          <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="Text to escape or unescape..." className="min-h-[200px] font-mono text-sm" />
+          <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="Text to escape or unescape..." className="min-h-50 font-mono text-sm" />
         }
         output={
           <>
             {output && <div className="flex justify-end"><CopyButton value={output} /></div>}
-            <Textarea value={output} readOnly className="min-h-[200px] font-mono text-sm" />
+            <Textarea value={output} readOnly className="min-h-50 font-mono text-sm" />
           </>
         }
       />

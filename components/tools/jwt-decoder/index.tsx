@@ -82,7 +82,7 @@ export default function JwtDecoder() {
           value={token}
           onChange={(e) => setToken(e.target.value)}
           placeholder="Paste your JWT here (eyJhbGci...)"
-          className="min-h-[100px] font-mono text-sm break-all"
+          className="min-h-25 font-mono text-sm break-all"
         />
       </div>
 

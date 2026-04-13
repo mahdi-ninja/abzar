@@ -166,13 +166,13 @@ export default function HashGenerator() {
           value={input}
           onChange={(e) => handleTextChange(e.target.value)}
           placeholder="Type or paste text to hash..."
-          className="min-h-[120px] font-mono text-sm"
+          className="min-h-30 font-mono text-sm"
         />
       ) : (
         <FileDropZone
           onFiles={handleFileUpload}
           label={fileName ? `Selected: ${fileName}` : "Drop a file here to hash"}
-          className="min-h-[120px]"
+          className="min-h-30"
         />
       )}
 

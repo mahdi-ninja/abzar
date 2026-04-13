@@ -148,7 +148,7 @@ export default function HabitTracker() {
               <tbody>
                 {habits.map((habit) => (
                   <tr key={habit.id}>
-                    <td className="pr-4 py-1 font-medium text-sm truncate max-w-[150px]">
+                    <td className="pr-4 py-1 font-medium text-sm truncate max-w-37.5">
                       {habit.name}
                     </td>
                     {last7.map((day) => {
@@ -198,7 +198,7 @@ export default function HabitTracker() {
           <Label className="text-sm font-medium mb-2 block">
             90-Day Heatmap — {habits[0].name}
           </Label>
-          <div className="flex flex-wrap gap-[2px]">
+          <div className="flex flex-wrap gap-0.5">
             {last90.map((day) => {
               const count = habits.filter((h) =>
                 h.completedDates.includes(day)

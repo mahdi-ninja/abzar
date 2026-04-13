@@ -83,12 +83,12 @@ export default function MarkdownEditor() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Write Markdown here..."
-            className="min-h-[400px] font-mono text-sm resize-none"
+            className="min-h-100 font-mono text-sm resize-none"
           />
         }
         output={
           <div
-            className="min-h-[400px] overflow-auto rounded-md border bg-card p-4 prose prose-sm dark:prose-invert max-w-none"
+            className="min-h-100 overflow-auto rounded-md border bg-card p-4 prose prose-sm dark:prose-invert max-w-none"
             dangerouslySetInnerHTML={{ __html: html }}
           />
         }
