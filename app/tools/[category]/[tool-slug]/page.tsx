@@ -198,6 +198,16 @@ const toolComponents: Record<
   "json-to-csv": dynamic(() => import("@/components/tools/json-to-csv"), { loading: () => <ToolSkeleton /> }),
   "html-to-markdown": dynamic(() => import("@/components/tools/html-to-markdown"), { loading: () => <ToolSkeleton /> }),
   "markdown-to-html": dynamic(() => import("@/components/tools/markdown-to-html"), { loading: () => <ToolSkeleton /> }),
+  // Phase 5 — Fun & Creative
+  "generative-art": dynamic(() => import("@/components/tools/generative-art"), { loading: () => <ToolSkeleton /> }),
+  "meme-generator": dynamic(() => import("@/components/tools/meme-generator"), { loading: () => <ToolSkeleton /> }),
+  "soundboard": dynamic(() => import("@/components/tools/soundboard"), { loading: () => <ToolSkeleton /> }),
+  "terrain-generator": dynamic(() => import("@/components/tools/terrain-generator"), { loading: () => <ToolSkeleton /> }),
+  "drawing-canvas": dynamic(() => import("@/components/tools/drawing-canvas"), { loading: () => <ToolSkeleton /> }),
+  "ambient-sounds": dynamic(() => import("@/components/tools/ambient-sounds"), { loading: () => <ToolSkeleton /> }),
+  "css-art": dynamic(() => import("@/components/tools/css-art"), { loading: () => <ToolSkeleton /> }),
+  "emoji-search": dynamic(() => import("@/components/tools/emoji-search"), { loading: () => <ToolSkeleton /> }),
+  "palette-game": dynamic(() => import("@/components/tools/palette-game"), { loading: () => <ToolSkeleton /> }),
 };
 
 export default async function ToolSlugPage({

@@ -105,6 +105,101 @@ export const toolContent: Record<string, ToolContent> = {
       "Download the QR code as PNG or SVG",
     ],
   },
+  "generative-art": {
+    about:
+      "Create procedurally generated artwork entirely in your browser using Canvas API. Choose from Perlin noise landscapes, flowing wave patterns, particle flow fields, and overlapping circle compositions. Adjust scale and seed to explore infinite variations, then download as PNG.",
+    howTo: [
+      "Pick an algorithm: Perlin Noise, Circles, Waves, or Flow Field",
+      "Choose a color palette from the dropdown",
+      "Adjust Scale to control detail density",
+      "Drag the Seed slider or click Randomize for a new variation",
+      "Click Download PNG to save the artwork",
+    ],
+  },
+  "meme-generator": {
+    about:
+      "Create memes in your browser by uploading any image and adding classic Impact-style text overlays. Adjust font size, text color, and copy for top and bottom captions. Everything runs locally — no uploads, no watermarks.",
+    howTo: [
+      "Drop or click to upload an image",
+      "Type your top and bottom caption text",
+      "Adjust font size and text color",
+      "Click Download PNG to save the meme",
+      "Click Change Image to start over with a new photo",
+    ],
+  },
+  "soundboard": {
+    about:
+      "Build a custom soundboard by uploading your own audio clips. Each file becomes a trigger button — click to play instantly. Control global volume with the slider and stop all sounds at once. Perfect for streaming, presentations, or sound effects.",
+    howTo: [
+      "Drop audio files (MP3, WAV, OGG) onto the upload area",
+      "Click any sound button to play it",
+      "Adjust the volume slider to control playback level",
+      "Hover a tile and click × to remove it",
+      "Click Stop All to silence everything at once",
+    ],
+  },
+  "terrain-generator": {
+    about:
+      "Generate realistic 2D terrain maps using fractal Brownian motion (fBm) built on Perlin noise. Adjust scale to zoom in or out, increase detail octaves for more rugged terrain, and explore thousands of unique landscapes with the seed slider. Download any map as PNG.",
+    howTo: [
+      "Drag the Seed slider to explore different terrains",
+      "Increase Scale to zoom out (larger continent-scale features)",
+      "Increase Detail (octaves) for more rugged, detailed terrain",
+      "Click New Terrain to jump to a random seed",
+      "Click Download PNG to save the map",
+    ],
+  },
+  "drawing-canvas": {
+    about:
+      "A lightweight freehand drawing canvas with brush and eraser tools, a 12-color palette plus custom color picker, adjustable brush size, and undo history. Works with mouse and touch. Download your drawing as a PNG when finished.",
+    howTo: [
+      "Select Brush or Eraser from the toolbar",
+      "Pick a color from the palette or the custom color picker",
+      "Adjust brush size with the slider",
+      "Draw on the canvas — touch and stylus are supported",
+      "Click Undo to step back, Clear to start fresh, or Download PNG to save",
+    ],
+  },
+  "ambient-sounds": {
+    about:
+      "Generate soothing ambient soundscapes entirely in your browser using the Web Audio API — no downloads, no streaming. Layer white noise, pink noise, brown noise, rain, and ocean waves, each with its own volume control. Great for focus, sleep, or relaxation.",
+    howTo: [
+      "Click a sound card to toggle it on or off",
+      "Drag each card's volume slider to blend the mix",
+      "Layer multiple sounds for a richer environment",
+      "Click Stop All to silence everything at once",
+    ],
+  },
+  "css-art": {
+    about:
+      "A live CSS playground for creating pure CSS illustrations and animations. Edit HTML and CSS in real time with an instant preview rendered in a sandboxed iframe. Start from one of the built-in examples — sunset, smiley, spinner, card, or checkerboard — and customize freely.",
+    howTo: [
+      "Choose an example from the dropdown to get started",
+      "Edit the HTML and CSS panels — the preview updates live",
+      "Click Copy HTML+CSS to copy the code to your clipboard",
+      "Click Download HTML to save a standalone file you can open in any browser",
+    ],
+  },
+  "emoji-search": {
+    about:
+      "Browse and search over 300 emojis by name, keyword, or category. Click any emoji to copy it to your clipboard. Recently used emojis appear at the top for quick re-access. All data is bundled locally — no network requests.",
+    howTo: [
+      "Type in the search box to filter emojis by name or keyword",
+      "Click a category button to browse by theme",
+      "Click any emoji to copy it to your clipboard",
+      "Recently copied emojis appear at the top of the grid",
+    ],
+  },
+  "palette-game": {
+    about:
+      "Train your color sense by sorting shuffled color tiles to match a target palette. A new random palette is generated each round. Score 100% by placing every tile in the correct brightness order. Your best scores per difficulty are saved locally.",
+    howTo: [
+      "Choose a difficulty: Easy (3 colors), Medium (5), or Hard (8)",
+      "Click Start Game to see the target palette and scrambled tiles",
+      "Drag tiles to swap their positions and match the target order",
+      "Click Submit to see your score, or New Game to play a fresh round",
+    ],
+  },
 };
 
 export function getToolContent(slug: string): ToolContent | undefined {
