@@ -196,6 +196,8 @@ const toolComponents: Record<
   "random-bytes": dynamic(() => import("@/components/tools/random-bytes"), { loading: () => <ToolSkeleton /> }),
   "hmac-generator": dynamic(() => import("@/components/tools/hmac-generator"), { loading: () => <ToolSkeleton /> }),
   "json-to-csv": dynamic(() => import("@/components/tools/json-to-csv"), { loading: () => <ToolSkeleton /> }),
+  "html-to-markdown": dynamic(() => import("@/components/tools/html-to-markdown"), { loading: () => <ToolSkeleton /> }),
+  "markdown-to-html": dynamic(() => import("@/components/tools/markdown-to-html"), { loading: () => <ToolSkeleton /> }),
 };
 
 export default async function ToolSlugPage({
