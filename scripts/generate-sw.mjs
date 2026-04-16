@@ -21,16 +21,14 @@ const { count, size, warnings } = await injectManifest({
   swDest: "out/sw.js",
   globDirectory: "out",
   globPatterns: [
-    "index.html",
-    "offline.html",
-    "tools/*.html",
+    "{en,fa}/index.html",
+    "{en,fa}/tools/**/*.html",
     "_next/static/chunks/*.css",
     "_next/static/*/_buildManifest.js",
     "_next/static/*/_ssgManifest.js",
     "_next/static/media/*.woff2",
   ],
   globIgnores: [
-    "tools/*/*.html",
     "**/*.txt",
     "og/**",
   ],

@@ -215,10 +215,18 @@ Build output: 438 static pages (219 per locale).
 
 ---
 
+## Completed Since Initial Implementation
+
+- **Persian tool translations:** `messages/fa/tools.json` (all ~200 tool names/descriptions) and `messages/fa/tool-content.json` (all 19 about/howTo sections) fully translated
+- **Shared UI primitives:** CopyButton, DownloadButton, FileDropZone, InputOutputLayout now use `useTranslations("ui")` with keys in `common.json`
+- **Site branding:** tagline, subtitle, description, titleSuffix, site name all translatable via `site.*` keys in `common.json`; homepage hero, `<title>`, meta descriptions, OG titles all use translations
+- **Locale-aware search:** `lib/search.ts` builds dual Fuse.js indexes (one per locale); `home-search.tsx` and `header.tsx` pass locale and display translated tool names/descriptions
+- **Homepage quick-filter pills:** translated via `home.quickFilters` array in `home.json`
+- **JSON-LD localization:** `generateToolJsonLd` accepts `locale` param — sets `inLanguage`, locale-prefixed URL, translated `browserRequirements`
+- **Service worker:** precache patterns updated to `{en,fa}/` prefixed paths
+- **RTL fixes:** Slider and Switch use `dir="ltr"` to prevent interaction issues; sidebar chevron uses `rtl:-scale-x-100`; site name displays "ابزار" in Persian
+
 ## Still Needed
 
-- Human translation of `messages/fa/tools.json` and `messages/fa/tool-content.json` (currently English placeholders)
-- Per-tool component string files (`messages/{locale}/tool/*.json`) — incremental, one tool at a time
-- Localized search (Fuse.js index is English-only)
-- Localized OG images
-- Localized site tagline (`siteConfig.tagline` stays English)
+- Per-tool component string files (`messages/{locale}/tool/*.json`) — incremental, one tool at a time (see `docs/I18N_HANDOFF.md` for details)
+- Localized OG images (optional — no generation exists yet)

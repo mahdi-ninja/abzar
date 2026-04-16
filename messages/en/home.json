@@ -3,6 +3,7 @@
     "categories": "Categories",
     "popularTools": "Popular Tools",
     "toolsSuffix": "tools",
-    "newBadge": "New"
+    "newBadge": "New",
+    "quickFilters": ["JSON", "Password", "Color", "PDF", "Calculator", "Image", "UUID"]
   }
 }

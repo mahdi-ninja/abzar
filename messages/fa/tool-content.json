@@ -1,180 +1,180 @@
 {
   "toolContent": {
     "json-formatter": {
-      "about": "Paste or type JSON to instantly format, validate, and minify it. The tree view lets you explore nested structures interactively. Everything runs locally in your browser — your data never leaves your device.",
+      "about": "JSON خود را بچسبانید یا تایپ کنید تا فوراً فرمت‌دهی، اعتبارسنجی و فشرده‌سازی شود. نمای درختی امکان بررسی تعاملی ساختارهای تودرتو را فراهم می‌کند. همه چیز به‌صورت محلی در مرورگر شما اجرا می‌شود — داده‌هایتان هرگز دستگاه شما را ترک نمی‌کند.",
       "howTo": [
-        "Paste your JSON into the input area",
-        "Click Format to pretty-print, or Minify to compress",
-        "Use the tree view to explore nested structures",
-        "Click Copy to copy the result to your clipboard"
+        "JSON خود را در ناحیه ورودی بچسبانید",
+        "روی فرمت‌دهی برای زیباسازی یا فشرده‌سازی کلیک کنید",
+        "از نمای درختی برای بررسی ساختارهای تودرتو استفاده کنید",
+        "روی کپی کلیک کنید تا نتیجه در کلیپ‌بورد کپی شود"
       ]
     },
     "base64": {
-      "about": "Encode text or files to Base64 and decode Base64 strings back to their original form. Useful for embedding data in URLs, emails, or HTML. Supports both text and binary file encoding.",
+      "about": "متن یا فایل را به Base64 رمزگذاری و رشته‌های Base64 را به شکل اصلی رمزگشایی کنید. مناسب برای جاسازی داده در URLها، ایمیل‌ها یا HTML. از رمزگذاری متن و فایل باینری پشتیبانی می‌کند.",
       "howTo": [
-        "Choose Text or File mode",
-        "Paste text or drop a file into the input area",
-        "Toggle between Encode and Decode",
-        "Copy the result or download the decoded file"
+        "حالت متن یا فایل را انتخاب کنید",
+        "متن بچسبانید یا فایلی را به ناحیه ورودی بکشید",
+        "بین رمزگذاری و رمزگشایی جابجا شوید",
+        "نتیجه را کپی کنید یا فایل رمزگشایی‌شده را دانلود کنید"
       ]
     },
     "color-picker": {
-      "about": "Pick any color and see it in all major formats simultaneously — HEX, RGB, HSL, HSB, and CMYK. Use the native color picker or type values directly. Great for web development and design work.",
+      "about": "هر رنگی را انتخاب کنید و همزمان در تمام فرمت‌های اصلی ببینید — HEX، RGB، HSL، HSB و CMYK. از انتخابگر رنگ بومی استفاده کنید یا مقادیر را مستقیماً تایپ کنید. عالی برای توسعه وب و کارهای طراحی.",
       "howTo": [
-        "Click the color swatch to open the color picker",
-        "Or type a value in any format field (HEX, RGB, HSL, etc.)",
-        "All formats update in sync automatically",
-        "Click Copy next to any format to copy it"
+        "روی نمونه رنگ کلیک کنید تا انتخابگر رنگ باز شود",
+        "یا مقداری را در هر فرمتی تایپ کنید (HEX، RGB، HSL و غیره)",
+        "تمام فرمت‌ها به‌صورت خودکار همگام به‌روز می‌شوند",
+        "روی کپی کنار هر فرمت کلیک کنید تا کپی شود"
       ]
     },
     "password-generator": {
-      "about": "Generate cryptographically strong passwords using your browser's secure random number generator. Customize length, character types, and generate multiple passwords at once. Includes entropy calculation to show password strength.",
+      "about": "رمزهای عبور قوی رمزنگاری‌شده با تولیدکننده اعداد تصادفی امن مرورگرتان بسازید. طول، نوع کاراکترها را سفارشی کنید و چندین رمز عبور را یکجا تولید کنید. شامل محاسبه آنتروپی برای نمایش قدرت رمز عبور.",
       "howTo": [
-        "Adjust the length slider to set password length",
-        "Toggle character types: uppercase, lowercase, numbers, symbols",
-        "Click Generate to create a new password",
-        "Use Bulk mode to generate multiple passwords at once",
-        "Click Copy to copy the password to your clipboard"
+        "اسلایدر طول را برای تنظیم طول رمز عبور جابجا کنید",
+        "نوع کاراکترها را فعال/غیرفعال کنید: بزرگ، کوچک، اعداد، نمادها",
+        "روی تولید کلیک کنید تا رمز عبور جدیدی ساخته شود",
+        "از حالت انبوه برای تولید چندین رمز عبور یکجا استفاده کنید",
+        "روی کپی کلیک کنید تا رمز عبور در کلیپ‌بورد کپی شود"
       ]
     },
     "uuid-generator": {
-      "about": "Generate universally unique identifiers in various formats. Supports v4 UUIDs (random), ULIDs (time-sortable), and nanoids (compact). Generate in bulk and copy all at once.",
+      "about": "شناسه‌های منحصربه‌فرد جهانی در فرمت‌های مختلف تولید کنید. از UUID نسخه ۴ (تصادفی)، ULID (قابل مرتب‌سازی زمانی) و nanoid (فشرده) پشتیبانی می‌کند. تولید انبوه و کپی یکجا.",
       "howTo": [
-        "Select the ID type: UUID v4, ULID, or nanoid",
-        "Set the quantity (1-100)",
-        "Click Generate to create IDs",
-        "Click Copy All to copy all generated IDs"
+        "نوع شناسه را انتخاب کنید: UUID v4، ULID یا nanoid",
+        "تعداد را تنظیم کنید (۱ تا ۱۰۰)",
+        "روی تولید کلیک کنید تا شناسه‌ها ساخته شوند",
+        "روی کپی همه کلیک کنید تا تمام شناسه‌ها کپی شوند"
       ]
     },
     "word-counter": {
-      "about": "Analyze your text with real-time word, character, sentence, and paragraph counts. Includes readability scores (Flesch-Kincaid, Gunning Fog) to help you gauge text complexity and reading level.",
+      "about": "متنتان را با شمارش لحظه‌ای کلمات، کاراکترها، جملات و پاراگراف‌ها تحلیل کنید. شامل امتیازهای خوانایی (Flesch-Kincaid، Gunning Fog) برای ارزیابی پیچیدگی و سطح خوانایی متن.",
       "howTo": [
-        "Type or paste text into the input area",
-        "View real-time counts in the stats cards below",
-        "Check readability scores for complexity analysis",
-        "Use the character/word breakdown for detailed analysis"
+        "متن را تایپ یا بچسبانید",
+        "شمارش لحظه‌ای را در کارت‌های آمار زیر ببینید",
+        "امتیازهای خوانایی را برای تحلیل پیچیدگی بررسی کنید",
+        "از تفکیک کاراکتر/کلمه برای تحلیل دقیق‌تر استفاده کنید"
       ]
     },
     "unit-converter": {
-      "about": "Convert between units of length, weight, volume, temperature, speed, area, and data storage. Supports both metric and imperial systems with instant conversion as you type.",
+      "about": "بین واحدهای طول، وزن، حجم، دما، سرعت، مساحت و ذخیره‌سازی داده تبدیل کنید. از سیستم‌های متریک و امپریال با تبدیل فوری هنگام تایپ پشتیبانی می‌کند.",
       "howTo": [
-        "Select a unit category (Length, Weight, etc.)",
-        "Choose source and target units from the dropdowns",
-        "Type a value in the input field",
-        "Use the swap button to reverse the conversion"
+        "یک دسته واحد انتخاب کنید (طول، وزن و غیره)",
+        "واحدهای مبدأ و مقصد را از منوها انتخاب کنید",
+        "مقداری را در فیلد ورودی تایپ کنید",
+        "از دکمه جابجایی برای معکوس کردن تبدیل استفاده کنید"
       ]
     },
     "timestamp-converter": {
-      "about": "Convert between Unix timestamps, ISO 8601, RFC 2822, and human-readable date formats. Automatically detects the input format. Useful for debugging APIs, logs, and database records.",
+      "about": "بین برچسب‌های زمانی یونیکس، ISO 8601، RFC 2822 و فرمت‌های خوانا تبدیل کنید. فرمت ورودی به‌صورت خودکار شناسایی می‌شود. مناسب برای دیباگ APIها، لاگ‌ها و رکوردهای پایگاه داده.",
       "howTo": [
-        "Paste a timestamp or date string into the input",
-        "The format is auto-detected and all conversions are shown",
-        "Click \"Now\" to use the current date and time",
-        "Copy any format with the copy button next to it"
+        "یک برچسب زمانی یا رشته تاریخ در ورودی بچسبانید",
+        "فرمت به‌صورت خودکار شناسایی و تمام تبدیل‌ها نمایش داده می‌شود",
+        "روی «اکنون» کلیک کنید تا تاریخ و ساعت فعلی استفاده شود",
+        "هر فرمت را با دکمه کپی کنارش کپی کنید"
       ]
     },
     "hash-generator": {
-      "about": "Generate SHA-1, SHA-256, SHA-512, and MD5 hashes of text or files using the Web Crypto API. All processing happens in your browser — your data is never uploaded anywhere.",
+      "about": "هش‌های SHA-1، SHA-256، SHA-512 و MD5 از متن یا فایل با Web Crypto API تولید کنید. تمام پردازش در مرورگر شما انجام می‌شود — داده‌هایتان هرگز آپلود نمی‌شود.",
       "howTo": [
-        "Choose Text or File mode",
-        "Type text or drop a file to hash",
-        "All hash algorithms are computed simultaneously",
-        "Click Copy next to any hash to copy it"
+        "حالت متن یا فایل را انتخاب کنید",
+        "متن تایپ کنید یا فایلی برای هش کردن بکشید",
+        "تمام الگوریتم‌های هش همزمان محاسبه می‌شوند",
+        "روی کپی کنار هر هش کلیک کنید تا کپی شود"
       ]
     },
     "qr-generator": {
-      "about": "Generate QR codes for URLs, plain text, Wi-Fi credentials, and vCards. Customize size and error correction level. Download as PNG or SVG for use in print or digital media.",
+      "about": "کد QR برای URL، متن ساده، اعتبارنامه Wi-Fi و vCard تولید کنید. اندازه و سطح تصحیح خطا را سفارشی کنید. به‌صورت PNG یا SVG برای استفاده در چاپ یا رسانه دیجیتال دانلود کنید.",
       "howTo": [
-        "Select the content type (URL, Text, Wi-Fi, or vCard)",
-        "Fill in the required fields",
-        "Adjust size and error correction if needed",
-        "Download the QR code as PNG or SVG"
+        "نوع محتوا را انتخاب کنید (URL، متن، Wi-Fi یا vCard)",
+        "فیلدهای مورد نیاز را پر کنید",
+        "در صورت نیاز اندازه و تصحیح خطا را تنظیم کنید",
+        "کد QR را به‌صورت PNG یا SVG دانلود کنید"
       ]
     },
     "generative-art": {
-      "about": "Create procedurally generated artwork entirely in your browser using Canvas API. Choose from Perlin noise landscapes, flowing wave patterns, particle flow fields, and overlapping circle compositions. Adjust scale and seed to explore infinite variations, then download as PNG.",
+      "about": "آثار هنری مولد را کاملاً در مرورگر با Canvas API بسازید. از بین چشم‌اندازهای نویز پرلین، الگوهای موج‌دار، میدان‌های جریان ذرات و ترکیب‌های دایره‌ای انتخاب کنید. مقیاس و بذر را تنظیم کنید تا تنوعات بی‌نهایت کشف شود، سپس به‌صورت PNG دانلود کنید.",
       "howTo": [
-        "Pick an algorithm: Perlin Noise, Circles, Waves, or Flow Field",
-        "Choose a color palette from the dropdown",
-        "Adjust Scale to control detail density",
-        "Drag the Seed slider or click Randomize for a new variation",
-        "Click Download PNG to save the artwork"
+        "یک الگوریتم انتخاب کنید: نویز پرلین، دایره‌ها، امواج یا میدان جریان",
+        "یک پالت رنگ از منو انتخاب کنید",
+        "مقیاس را برای کنترل تراکم جزئیات تنظیم کنید",
+        "اسلایدر بذر را بکشید یا روی تصادفی‌سازی کلیک کنید",
+        "روی دانلود PNG کلیک کنید تا اثر ذخیره شود"
       ]
     },
     "meme-generator": {
-      "about": "Create memes in your browser by uploading any image and adding classic Impact-style text overlays. Adjust font size, text color, and copy for top and bottom captions. Everything runs locally — no uploads, no watermarks.",
+      "about": "میم‌ها را در مرورگر بسازید: هر تصویری بارگذاری کنید و متن‌های کلاسیک Impact اضافه کنید. اندازه فونت، رنگ متن و متن بالا و پایین را تنظیم کنید. همه چیز محلی اجرا می‌شود — بدون آپلود، بدون واترمارک.",
       "howTo": [
-        "Drop or click to upload an image",
-        "Type your top and bottom caption text",
-        "Adjust font size and text color",
-        "Click Download PNG to save the meme",
-        "Click Change Image to start over with a new photo"
+        "یک تصویر بکشید یا برای بارگذاری کلیک کنید",
+        "متن عنوان بالا و پایین را تایپ کنید",
+        "اندازه فونت و رنگ متن را تنظیم کنید",
+        "روی دانلود PNG کلیک کنید تا میم ذخیره شود",
+        "روی تغییر تصویر کلیک کنید تا با عکس جدید شروع کنید"
       ]
     },
     "soundboard": {
-      "about": "Build a custom soundboard by uploading your own audio clips. Each file becomes a trigger button — click to play instantly. Control global volume with the slider and stop all sounds at once. Perfect for streaming, presentations, or sound effects.",
+      "about": "یک صفحه صدای سفارشی بسازید: کلیپ‌های صوتی خود را بارگذاری کنید. هر فایل یک دکمه پخش می‌شود — برای پخش فوری کلیک کنید. صدا را با اسلایدر کنترل کنید و همه صداها را یکجا متوقف کنید. عالی برای استریم، ارائه و جلوه‌های صوتی.",
       "howTo": [
-        "Drop audio files (MP3, WAV, OGG) onto the upload area",
-        "Click any sound button to play it",
-        "Adjust the volume slider to control playback level",
-        "Hover a tile and click × to remove it",
-        "Click Stop All to silence everything at once"
+        "فایل‌های صوتی (MP3، WAV، OGG) را به ناحیه بارگذاری بکشید",
+        "روی هر دکمه صدا کلیک کنید تا پخش شود",
+        "اسلایدر صدا را برای کنترل سطح پخش تنظیم کنید",
+        "روی کاشی بروید و × را بزنید تا حذف شود",
+        "روی توقف همه کلیک کنید تا همه صداها ساکت شوند"
       ]
     },
     "terrain-generator": {
-      "about": "Generate realistic 2D terrain maps using fractal Brownian motion (fBm) built on Perlin noise. Adjust scale to zoom in or out, increase detail octaves for more rugged terrain, and explore thousands of unique landscapes with the seed slider. Download any map as PNG.",
+      "about": "نقشه‌های زمین دوبعدی واقع‌گرایانه با حرکت براونی کسری (fBm) مبتنی بر نویز پرلین تولید کنید. مقیاس را برای بزرگ‌نمایی/کوچک‌نمایی تنظیم کنید، اکتاوهای جزئیات را برای زمین ناهموارتر افزایش دهید و هزاران چشم‌انداز منحصربه‌فرد را با اسلایدر بذر کشف کنید.",
       "howTo": [
-        "Drag the Seed slider to explore different terrains",
-        "Increase Scale to zoom out (larger continent-scale features)",
-        "Increase Detail (octaves) for more rugged, detailed terrain",
-        "Click New Terrain to jump to a random seed",
-        "Click Download PNG to save the map"
+        "اسلایدر بذر را بکشید تا زمین‌های مختلف کشف شود",
+        "مقیاس را افزایش دهید تا کوچک‌نمایی شود (ویژگی‌های قاره‌ای)",
+        "جزئیات (اکتاوها) را برای زمین ناهموارتر و جزئی‌تر افزایش دهید",
+        "روی زمین جدید کلیک کنید تا به بذر تصادفی بروید",
+        "روی دانلود PNG کلیک کنید تا نقشه ذخیره شود"
       ]
     },
     "drawing-canvas": {
-      "about": "A lightweight freehand drawing canvas with brush and eraser tools, a 12-color palette plus custom color picker, adjustable brush size, and undo history. Works with mouse and touch. Download your drawing as a PNG when finished.",
+      "about": "یک بوم نقاشی سبک با ابزارهای قلم‌مو و پاک‌کن، پالت ۱۲ رنگی به‌علاوه انتخابگر رنگ سفارشی، اندازه قلم قابل تنظیم و تاریخچه بازگشت. با ماوس و لمس کار می‌کند. نقاشی خود را به‌صورت PNG دانلود کنید.",
       "howTo": [
-        "Select Brush or Eraser from the toolbar",
-        "Pick a color from the palette or the custom color picker",
-        "Adjust brush size with the slider",
-        "Draw on the canvas — touch and stylus are supported",
-        "Click Undo to step back, Clear to start fresh, or Download PNG to save"
+        "قلم‌مو یا پاک‌کن را از نوار ابزار انتخاب کنید",
+        "یک رنگ از پالت یا انتخابگر رنگ سفارشی انتخاب کنید",
+        "اندازه قلم را با اسلایدر تنظیم کنید",
+        "روی بوم نقاشی کنید — لمس و قلم نوری پشتیبانی می‌شود",
+        "برای بازگشت روی واگرد، برای شروع دوباره روی پاک کردن، یا برای ذخیره روی دانلود PNG کلیک کنید"
       ]
     },
     "ambient-sounds": {
-      "about": "Generate soothing ambient soundscapes entirely in your browser using the Web Audio API — no downloads, no streaming. Layer white noise, pink noise, brown noise, rain, and ocean waves, each with its own volume control. Great for focus, sleep, or relaxation.",
+      "about": "فضاهای صوتی آرام‌بخش را کاملاً در مرورگر با Web Audio API تولید کنید — بدون دانلود، بدون استریم. نویز سفید، صورتی، قهوه‌ای، باران و امواج اقیانوس را ترکیب کنید، هر کدام با کنترل صدای مستقل. عالی برای تمرکز، خواب یا آرامش.",
       "howTo": [
-        "Click a sound card to toggle it on or off",
-        "Drag each card's volume slider to blend the mix",
-        "Layer multiple sounds for a richer environment",
-        "Click Stop All to silence everything at once"
+        "روی یک کارت صدا کلیک کنید تا روشن/خاموش شود",
+        "اسلایدر صدای هر کارت را بکشید تا ترکیب صدا تنظیم شود",
+        "چند صدا را برای محیط غنی‌تر لایه‌بندی کنید",
+        "روی توقف همه کلیک کنید تا همه چیز ساکت شود"
       ]
     },
     "css-art": {
-      "about": "A live CSS playground for creating pure CSS illustrations and animations. Edit HTML and CSS in real time with an instant preview rendered in a sandboxed iframe. Start from one of the built-in examples — sunset, smiley, spinner, card, or checkerboard — and customize freely.",
+      "about": "یک آزمایشگاه CSS زنده برای ساخت تصاویر و انیمیشن‌های خالص CSS. HTML و CSS را به‌صورت بلادرنگ ویرایش کنید با پیش‌نمایش فوری در iframe ایزوله. از یکی از نمونه‌های آماده شروع کنید و آزادانه سفارشی کنید.",
       "howTo": [
-        "Choose an example from the dropdown to get started",
-        "Edit the HTML and CSS panels — the preview updates live",
-        "Click Copy HTML+CSS to copy the code to your clipboard",
-        "Click Download HTML to save a standalone file you can open in any browser"
+        "یک نمونه از منو انتخاب کنید تا شروع کنید",
+        "پنل‌های HTML و CSS را ویرایش کنید — پیش‌نمایش زنده به‌روز می‌شود",
+        "روی کپی HTML+CSS کلیک کنید تا کد کپی شود",
+        "روی دانلود HTML کلیک کنید تا فایل مستقلی ذخیره شود"
       ]
     },
     "emoji-search": {
-      "about": "Browse and search over 1900+ emojis by name, keyword, or category. Click any emoji to copy it to your clipboard. Recently used emojis appear at the top for quick re-access. All data is bundled locally — no network requests.",
+      "about": "بیش از ۱۹۰۰ ایموجی را بر اساس نام، کلیدواژه یا دسته‌بندی مرور و جستجو کنید. روی هر ایموجی کلیک کنید تا در کلیپ‌بورد کپی شود. ایموجی‌های اخیراً استفاده‌شده در بالا نمایش داده می‌شوند. تمام داده‌ها به‌صورت محلی بسته‌بندی شده — بدون درخواست شبکه.",
       "howTo": [
-        "Type in the search box to filter emojis by name or keyword",
-        "Click a category button to browse by theme",
-        "Click any emoji to copy it to your clipboard",
-        "Recently copied emojis appear at the top of the grid"
+        "در کادر جستجو تایپ کنید تا ایموجی‌ها فیلتر شوند",
+        "روی دکمه دسته‌بندی کلیک کنید تا بر اساس موضوع مرور کنید",
+        "روی هر ایموجی کلیک کنید تا در کلیپ‌بورد کپی شود",
+        "ایموجی‌های اخیراً کپی‌شده در بالای شبکه نمایش داده می‌شوند"
       ]
     },
     "palette-game": {
-      "about": "Train your color sense by sorting shuffled color tiles to match a target palette. A new random palette is generated each round. Score 100% by placing every tile in the correct brightness order. Your best scores per difficulty are saved locally.",
+      "about": "حس رنگ خود را با مرتب‌سازی کاشی‌های رنگی درهم‌ریخته برای تطبیق با پالت هدف تقویت کنید. هر دور یک پالت تصادفی جدید تولید می‌شود. با قرار دادن هر کاشی در ترتیب روشنایی صحیح امتیاز ۱۰۰٪ بگیرید. بهترین امتیازات به‌صورت محلی ذخیره می‌شود.",
       "howTo": [
-        "Choose a difficulty: Easy (3 colors), Medium (5), or Hard (8)",
-        "Click Start Game to see the target palette and scrambled tiles",
-        "Drag tiles to swap their positions and match the target order",
-        "Click Submit to see your score, or New Game to play a fresh round"
+        "سطح دشواری را انتخاب کنید: آسان (۳ رنگ)، متوسط (۵) یا سخت (۸)",
+        "روی شروع بازی کلیک کنید تا پالت هدف و کاشی‌های درهم‌ریخته ببینید",
+        "کاشی‌ها را بکشید تا جایشان عوض شود و با ترتیب هدف تطبیق یابد",
+        "روی ارسال کلیک کنید تا امتیازتان ببینید، یا بازی جدید برای دور تازه"
       ]
     }
   }

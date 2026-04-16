@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -13,17 +14,18 @@ interface CopyButtonProps {
 
 export function CopyButton({ value, label, className }: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
+  const t = useTranslations("ui");
 
   const handleCopy = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(value);
       setCopied(true);
-      toast.success("Copied to clipboard!");
+      toast.success(t("copiedToClipboard"));
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      toast.error("Failed to copy");
+      toast.error(t("copyFailed"));
     }
-  }, [value]);
+  }, [value, t]);
 
   return (
     <Button
@@ -42,7 +44,7 @@ export function CopyButton({ value, label, className }: CopyButtonProps) {
           <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
         </svg>
       )}
-      {label ?? (copied ? "Copied" : "Copy")}
+      {label ?? (copied ? t("copied") : t("copy"))}
     </Button>
   );
 }

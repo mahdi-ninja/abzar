@@ -8,7 +8,8 @@
     "collapseSidebar": "بستن نوار کناری",
     "openNavigation": "باز کردن منو",
     "navigation": "منوی ناوبری",
-    "comingSoon": "به‌زودی"
+    "comingSoon": "به‌زودی",
+    "toolsHeading": "ابزارها"
   },
   "localeSwitcher": {
     "label": "زبان",
@@ -34,5 +35,23 @@
     "toolsSuffix": "ابزار",
     "betaBadge": "بتا",
     "newBadge": "جدید"
+  },
+  "ui": {
+    "copy": "کپی",
+    "copied": "کپی شد",
+    "copiedToClipboard": "در کلیپ‌بورد کپی شد!",
+    "copyFailed": "کپی ناموفق بود",
+    "download": "دانلود",
+    "dropFiles": "فایل را اینجا رها کنید یا کلیک کنید",
+    "maxFileSize": "حداکثر {size} مگابایت",
+    "input": "ورودی",
+    "output": "خروجی"
+  },
+  "site": {
+    "name": "ابزار",
+    "tagline": "بیش از ۲۰۰ ابزار رایگان مرورگر",
+    "subtitle": "بدون ثبت‌نام. بدون سرور. همه چیز در مرورگر شما اجرا می‌شود.",
+    "description": "بیش از ۲۰۰ ابزار رایگان مرورگر. بدون ثبت‌نام، بدون سرور، همه چیز در مرورگر شما اجرا می‌شود.",
+    "titleSuffix": "ابزار آنلاین رایگان"
   }
 }

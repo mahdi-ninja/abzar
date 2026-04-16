@@ -1,812 +1,812 @@
 {
   "tools": {
     "word-counter": {
-      "name": "Word & Character Counter",
-      "description": "Count words, characters, sentences, paragraphs with readability scores"
+      "name": "شمارشگر کلمات و کاراکترها",
+      "description": "شمارش کلمات، کاراکترها، جملات و پاراگراف‌ها با امتیاز خوانایی"
     },
     "markdown-editor": {
-      "name": "Markdown Editor",
-      "description": "Live split-pane editor with instant HTML preview and export"
+      "name": "ویرایشگر مارک‌داون",
+      "description": "ویرایشگر دوپنله با پیش‌نمایش HTML و امکان خروجی‌گیری"
     },
     "lorem-ipsum": {
-      "name": "Lorem Ipsum Generator",
-      "description": "Generate placeholder text in multiple styles (classic, hipster, corporate)"
+      "name": "تولیدکننده متن ساختگی",
+      "description": "تولید متن پیش‌فرض در سبک‌های مختلف (کلاسیک، هیپستر، شرکتی)"
     },
     "case-converter": {
-      "name": "Case Converter",
-      "description": "Transform text between camelCase, snake_case, PascalCase, Title Case, UPPER, lower, kebab-case"
+      "name": "تبدیل حالت حروف",
+      "description": "تبدیل متن بین camelCase، snake_case، PascalCase، Title Case، بزرگ، کوچک، kebab-case"
     },
     "text-diff": {
-      "name": "Text Diff Tool",
-      "description": "Side-by-side comparison with highlighted additions, deletions, and changes"
+      "name": "مقایسه متن",
+      "description": "مقایسه کنار هم با نمایش افزوده‌ها، حذف‌ها و تغییرات"
     },
     "regex-tester": {
-      "name": "Regex Tester",
-      "description": "Test regular expressions with real-time match highlighting, capture groups, and cheat sheet"
+      "name": "آزمایشگر عبارات باقاعده",
+      "description": "تست عبارات باقاعده با هایلایت لحظه‌ای، گروه‌های گیرنده و راهنما"
     },
     "morse-code": {
-      "name": "Morse Code Translator",
-      "description": "Encode/decode Morse code with audio playback via Web Audio API"
+      "name": "مترجم کد مورس",
+      "description": "رمزگذاری/رمزگشایی کد مورس با پخش صوتی"
     },
     "word-frequency": {
-      "name": "Word Frequency Analyzer",
-      "description": "Visualize most-used words in text — useful for SEO and writing"
+      "name": "تحلیلگر بسامد کلمات",
+      "description": "نمایش پرکاربردترین کلمات — مناسب برای سئو و نگارش"
     },
     "text-similarity": {
-      "name": "Text Similarity Checker",
-      "description": "Compare two texts using cosine similarity to detect overlap"
+      "name": "بررسی شباهت متن",
+      "description": "مقایسه دو متن با شباهت کسینوسی برای تشخیص همپوشانی"
     },
     "name-generator": {
-      "name": "Name & Username Generator",
-      "description": "Random name generator with filters for style, length, and theme"
+      "name": "تولیدکننده نام کاربری",
+      "description": "تولید نام تصادفی با فیلتر سبک، طول و تم"
     },
     "text-to-speech": {
-      "name": "Text-to-Speech Previewer",
-      "description": "Preview text in browser voices and speeds using SpeechSynthesis API"
+      "name": "تبدیل متن به گفتار",
+      "description": "پیش‌نمایش متن با صداها و سرعت‌های مختلف مرورگر"
     },
     "transliteration": {
-      "name": "Transliteration Tool",
-      "description": "Convert between writing systems — Latin ↔ Cyrillic"
+      "name": "نویسه‌گردانی",
+      "description": "تبدیل بین سیستم‌های نوشتاری — لاتین ↔ سیریلیک"
     },
     "slug-generator": {
-      "name": "Slug Generator",
-      "description": "Turn any title into a URL-friendly slug"
+      "name": "تولیدکننده اسلاگ",
+      "description": "تبدیل هر عنوانی به اسلاگ مناسب URL"
     },
     "string-escaper": {
-      "name": "String Escaper/Unescaper",
-      "description": "Escape and unescape for HTML, JSON, URL, XML, CSV"
+      "name": "Escape/Unescape رشته",
+      "description": "Escape و Unescape برای HTML، JSON، URL، XML، CSV"
     },
     "whitespace-cleaner": {
-      "name": "Whitespace Cleaner",
-      "description": "Strip trailing spaces, normalize line endings, remove invisible Unicode"
+      "name": "پاک‌کننده فضای خالی",
+      "description": "حذف فاصله‌های انتهایی، یکسان‌سازی خطوط، حذف یونیکد نامرئی"
     },
     "reverse-text": {
-      "name": "Reverse Text / Mirror",
-      "description": "Reverse, flip, or mirror text — character-level or word-level"
+      "name": "معکوس‌کننده متن",
+      "description": "معکوس، برگردان یا آینه‌ای کردن متن — سطح کاراکتر یا کلمه"
     },
     "unicode-lookup": {
-      "name": "Unicode Character Lookup",
-      "description": "Search, browse, and copy Unicode symbols, emojis, and special characters"
+      "name": "جستجوی کاراکتر یونیکد",
+      "description": "جستجو، مرور و کپی نمادهای یونیکد، ایموجی و کاراکترهای خاص"
     },
     "zalgo-text": {
-      "name": "Zalgo Text Generator",
-      "description": "Add combining characters to text for stylistic/meme use"
+      "name": "تولیدکننده متن زالگو",
+      "description": "افزودن کاراکترهای ترکیبی به متن برای جلوه‌های تزئینی"
     },
     "json-formatter": {
-      "name": "JSON Formatter & Validator",
-      "description": "Pretty-print, validate, minify, and view JSON as a collapsible tree"
+      "name": "فرمت‌دهنده و اعتبارسنج JSON",
+      "description": "فرمت‌دهی، اعتبارسنجی، فشرده‌سازی و نمایش درختی JSON"
     },
     "base64": {
-      "name": "Base64 Encoder/Decoder",
-      "description": "Encode and decode text or files to/from Base64"
+      "name": "رمزگذار/رمزگشای Base64",
+      "description": "رمزگذاری و رمزگشایی متن یا فایل به/از Base64"
     },
     "url-encoder": {
-      "name": "URL Encoder/Decoder",
-      "description": "Percent-encode and decode URL components"
+      "name": "رمزگذار/رمزگشای URL",
+      "description": "رمزگذاری و رمزگشایی درصدی اجزای URL"
     },
     "jwt-decoder": {
-      "name": "JWT Decoder",
-      "description": "Paste a JWT and see decoded header, payload, and expiration"
+      "name": "رمزگشای JWT",
+      "description": "یک JWT بچسبانید و هدر، پیلود و انقضا را ببینید"
     },
     "jwt-builder": {
-      "name": "JWT Builder",
-      "description": "Craft and sign JWTs with a user-provided secret"
+      "name": "سازنده JWT",
+      "description": "ساخت و امضای JWT با کلید کاربر"
     },
     "uuid-generator": {
-      "name": "UUID / ULID Generator",
-      "description": "Generate v4 UUIDs, ULIDs, nanoids — bulk and copy"
+      "name": "تولیدکننده UUID / ULID",
+      "description": "تولید UUID نسخه ۴، ULID، nanoid — تولید انبوه و کپی"
     },
     "cron-builder": {
-      "name": "Cron Expression Builder",
-      "description": "Visual cron schedule builder with human-readable descriptions and next-run preview"
+      "name": "سازنده عبارت Cron",
+      "description": "سازنده بصری زمان‌بندی cron با توضیح خوانا و پیش‌نمایش اجرای بعدی"
     },
     "html-entities": {
-      "name": "HTML Entity Encoder",
-      "description": "Encode/decode HTML entities — named and numeric"
+      "name": "رمزگذار موجودیت HTML",
+      "description": "رمزگذاری/رمزگشایی موجودیت‌های HTML — نامی و عددی"
     },
     "sql-formatter": {
-      "name": "SQL Formatter",
-      "description": "Beautify and indent raw SQL queries"
+      "name": "فرمت‌دهنده SQL",
+      "description": "زیباسازی و تورفتگی کوئری‌های SQL"
     },
     "flexbox-playground": {
-      "name": "CSS Flexbox Playground",
-      "description": "Toggle every flex property and see layout changes in real time"
+      "name": "آزمایشگاه CSS Flexbox",
+      "description": "تغییر هر ویژگی flex و مشاهده تغییرات چیدمان به‌صورت زنده"
     },
     "grid-playground": {
-      "name": "CSS Grid Playground",
-      "description": "Visual grid builder — define rows, columns, gaps, place items"
+      "name": "آزمایشگاه CSS Grid",
+      "description": "سازنده بصری grid — تعریف سطرها، ستون‌ها، فاصله‌ها و جایگذاری"
     },
     "og-preview": {
-      "name": "Open Graph Previewer",
-      "description": "Paste HTML meta tags and preview social cards"
+      "name": "پیش‌نمایش Open Graph",
+      "description": "متاتگ‌های HTML را بچسبانید و کارت‌های شبکه‌های اجتماعی را ببینید"
     },
     "breakpoint-tester": {
-      "name": "Responsive Breakpoint Tester",
-      "description": "Preview a URL at common device widths"
+      "name": "تست نقاط شکست ریسپانسیو",
+      "description": "پیش‌نمایش URL در عرض‌های رایج دستگاه‌ها"
     },
     "snippet-manager": {
-      "name": "Snippet Manager",
-      "description": "Save, tag, and search code snippets in localStorage"
+      "name": "مدیریت قطعه کد",
+      "description": "ذخیره، برچسب‌گذاری و جستجوی قطعه کدها در مرورگر"
     },
     "api-mocker": {
-      "name": "API Response Mocker",
-      "description": "Define mock endpoints and responses for frontend dev"
+      "name": "شبیه‌ساز پاسخ API",
+      "description": "تعریف نقاط پایانی و پاسخ‌های ساختگی برای توسعه فرانت‌اند"
     },
     "diff-viewer": {
-      "name": "Diff / Patch Viewer",
-      "description": "Visualize unified diffs with syntax highlighting"
+      "name": "نمایشگر Diff / Patch",
+      "description": "نمایش بصری تفاوت‌ها با هایلایت نحوی"
     },
     "timestamp-converter": {
-      "name": "Timestamp Converter",
-      "description": "Convert between Unix epoch, ISO 8601, RFC 2822, and human-readable"
+      "name": "تبدیل‌کننده برچسب زمانی",
+      "description": "تبدیل بین Unix epoch، ISO 8601، RFC 2822 و فرمت خوانا"
     },
     "yaml-json": {
-      "name": "YAML ↔ JSON Converter",
-      "description": "Convert between YAML and JSON"
+      "name": "تبدیل YAML ↔ JSON",
+      "description": "تبدیل بین YAML و JSON"
     },
     "csv-json": {
-      "name": "CSV ↔ JSON Converter",
-      "description": "Transform CSV to JSON array and vice versa"
+      "name": "تبدیل CSV ↔ JSON",
+      "description": "تبدیل CSV به آرایه JSON و بالعکس"
     },
     "xml-json": {
-      "name": "XML ↔ JSON Converter",
-      "description": "Bidirectional XML and JSON conversion"
+      "name": "تبدیل XML ↔ JSON",
+      "description": "تبدیل دوطرفه XML و JSON"
     },
     "toml-json": {
-      "name": "TOML ↔ JSON Converter",
-      "description": "Parse and convert TOML configuration files"
+      "name": "تبدیل TOML ↔ JSON",
+      "description": "تجزیه و تبدیل فایل‌های پیکربندی TOML"
     },
     "http-status-codes": {
-      "name": "HTTP Status Code Reference",
-      "description": "Searchable reference of all status codes"
+      "name": "مرجع کدهای وضعیت HTTP",
+      "description": "مرجع قابل جستجوی تمام کدهای وضعیت"
     },
     "chmod-calculator": {
-      "name": "Chmod Calculator",
-      "description": "Visual permission calculator for Unix file permissions"
+      "name": "ماشین‌حساب Chmod",
+      "description": "محاسبه بصری مجوزهای فایل یونیکس"
     },
     "user-agent-parser": {
-      "name": "User-Agent Parser",
-      "description": "Parse a user-agent string into browser, OS, device details"
+      "name": "تجزیه‌کننده User-Agent",
+      "description": "تجزیه رشته user-agent به جزئیات مرورگر، سیستم‌عامل و دستگاه"
     },
     "markdown-table": {
-      "name": "Markdown Table Generator",
-      "description": "Visual table editor that outputs Markdown or HTML"
+      "name": "تولیدکننده جدول مارک‌داون",
+      "description": "ویرایشگر بصری جدول با خروجی مارک‌داون یا HTML"
     },
     "epoch-countdown": {
-      "name": "Epoch Countdown",
-      "description": "Live ticking Unix timestamp with conversion"
+      "name": "شمارش معکوس Epoch",
+      "description": "برچسب زمانی یونیکس زنده با تبدیل"
     },
     "color-picker": {
-      "name": "Color Picker & Converter",
-      "description": "Pick colors and convert between HEX, RGB, HSL, HSB, CMYK"
+      "name": "انتخابگر و تبدیل‌کننده رنگ",
+      "description": "انتخاب رنگ و تبدیل بین HEX، RGB، HSL، HSB، CMYK"
     },
     "gradient-generator": {
-      "name": "CSS Gradient Generator",
-      "description": "Build linear, radial, and conic gradients with visual stops"
+      "name": "تولیدکننده گرادیان CSS",
+      "description": "ساخت گرادیان خطی، شعاعی و مخروطی با توقف‌های بصری"
     },
     "contrast-checker": {
-      "name": "Contrast Ratio Checker",
-      "description": "Check color pairs against WCAG AA/AAA"
+      "name": "بررسی نسبت کنتراست",
+      "description": "بررسی جفت رنگ‌ها بر اساس WCAG AA/AAA"
     },
     "palette-generator": {
-      "name": "Color Palette Generator",
-      "description": "Generate harmonious palettes — complementary, analogous, triadic"
+      "name": "تولیدکننده پالت رنگ",
+      "description": "تولید پالت‌های هماهنگ — مکمل، مشابه، سه‌تایی"
     },
     "palette-extractor": {
-      "name": "Color Palette Extractor",
-      "description": "Upload an image and extract dominant colors"
+      "name": "استخراج‌کننده پالت رنگ",
+      "description": "بارگذاری تصویر و استخراج رنگ‌های غالب"
     },
     "duotone-filter": {
-      "name": "Duotone Image Filter",
-      "description": "Apply duotone color effects using Canvas API"
+      "name": "فیلتر تصویر دوتون",
+      "description": "اعمال جلوه‌های رنگی دوتون با Canvas API"
     },
     "font-pairing": {
-      "name": "Font Pairing Previewer",
-      "description": "Browse and preview Google Font combinations"
+      "name": "پیش‌نمایش ترکیب فونت‌ها",
+      "description": "مرور و پیش‌نمایش ترکیب‌های فونت گوگل"
     },
     "box-shadow": {
-      "name": "Box Shadow Generator",
-      "description": "Visual CSS box-shadow builder with multiple layers"
+      "name": "تولیدکننده Box Shadow",
+      "description": "سازنده بصری سایه CSS با چندین لایه"
     },
     "border-radius": {
-      "name": "Border Radius Previewer",
-      "description": "Drag corners to create complex border-radius values"
+      "name": "پیش‌نمایش Border Radius",
+      "description": "کشیدن گوشه‌ها برای ساخت مقادیر border-radius پیچیده"
     },
     "animation-builder": {
-      "name": "CSS Animation Builder",
-      "description": "Keyframe timeline editor with easing curves and live preview"
+      "name": "سازنده انیمیشن CSS",
+      "description": "ویرایشگر تایم‌لاین keyframe با منحنی‌های easing و پیش‌نمایش زنده"
     },
     "glassmorphism": {
-      "name": "Glassmorphism Generator",
-      "description": "Create frosted glass effects with CSS output"
+      "name": "تولیدکننده Glassmorphism",
+      "description": "ساخت جلوه‌های شیشه مات با خروجی CSS"
     },
     "neumorphism": {
-      "name": "Neumorphism Generator",
-      "description": "Design soft UI elements with shadows"
+      "name": "تولیدکننده Neumorphism",
+      "description": "طراحی عناصر نرم با سایه‌ها"
     },
     "pattern-generator": {
-      "name": "Pattern / Texture Generator",
-      "description": "Generate repeating CSS/SVG patterns"
+      "name": "تولیدکننده الگو و بافت",
+      "description": "تولید الگوهای تکرارشونده CSS/SVG"
     },
     "mockup-generator": {
-      "name": "Mockup Frame Generator",
-      "description": "Place screenshots into device frames"
+      "name": "تولیدکننده قاب ماکاپ",
+      "description": "قرار دادن اسکرین‌شات در قاب دستگاه‌ها"
     },
     "sprite-sheet": {
-      "name": "Sprite Sheet Generator",
-      "description": "Upload frames and stitch into a spritesheet"
+      "name": "تولیدکننده Sprite Sheet",
+      "description": "بارگذاری فریم‌ها و دوختن به یک spritesheet"
     },
     "svg-optimizer": {
-      "name": "SVG Optimizer / Viewer",
-      "description": "Paste SVG markup, preview, and optimize"
+      "name": "بهینه‌ساز SVG",
+      "description": "چسباندن کد SVG، پیش‌نمایش و بهینه‌سازی"
     },
     "favicon-generator": {
-      "name": "Favicon Generator",
-      "description": "Generate favicons in all sizes from text, emoji, or image"
+      "name": "تولیدکننده فاوآیکون",
+      "description": "تولید فاوآیکون در تمام اندازه‌ها از متن، ایموجی یا تصویر"
     },
     "tailwind-colors": {
-      "name": "Tailwind Color Lookup",
-      "description": "Browse and search the full Tailwind color palette"
+      "name": "جستجوی رنگ‌های Tailwind",
+      "description": "مرور و جستجوی کامل پالت رنگ Tailwind"
     },
     "type-scale": {
-      "name": "Typography Scale Calculator",
-      "description": "Generate a modular type scale from a base size and ratio"
+      "name": "ماشین‌حساب مقیاس تایپوگرافی",
+      "description": "تولید مقیاس مدولار تایپ از اندازه پایه و نسبت"
     },
     "image-resizer": {
-      "name": "Image Resizer & Cropper",
-      "description": "Resize, crop, and adjust images using Canvas API"
+      "name": "تغییر اندازه و برش تصویر",
+      "description": "تغییر اندازه، برش و تنظیم تصاویر با Canvas API"
     },
     "image-compressor": {
-      "name": "Image Compressor",
-      "description": "Reduce file size with adjustable quality"
+      "name": "فشرده‌ساز تصویر",
+      "description": "کاهش حجم فایل با کیفیت قابل تنظیم"
     },
     "image-converter": {
-      "name": "Image Format Converter",
-      "description": "Convert between PNG, JPEG, WebP, BMP"
+      "name": "تبدیل فرمت تصویر",
+      "description": "تبدیل بین PNG، JPEG، WebP، BMP"
     },
     "image-to-base64": {
-      "name": "Image to Base64",
-      "description": "Convert image to Base64 data URI"
+      "name": "تبدیل تصویر به Base64",
+      "description": "تبدیل تصویر به URI داده Base64"
     },
     "exif-viewer": {
-      "name": "EXIF Data Viewer",
-      "description": "Inspect embedded photo metadata"
+      "name": "نمایشگر داده‌های EXIF",
+      "description": "بررسی فراداده‌های تعبیه‌شده عکس"
     },
     "qr-generator": {
-      "name": "QR Code Generator",
-      "description": "Generate QR codes for URLs, text, Wi-Fi, vCards"
+      "name": "تولیدکننده کد QR",
+      "description": "تولید کد QR برای URL، متن، Wi-Fi، vCard"
     },
     "qr-reader": {
-      "name": "QR Code Reader",
-      "description": "Scan QR codes from image or camera"
+      "name": "خواننده کد QR",
+      "description": "اسکن کد QR از تصویر یا دوربین"
     },
     "barcode-generator": {
-      "name": "Barcode Generator",
-      "description": "Create Code128, EAN, UPC barcodes"
+      "name": "تولیدکننده بارکد",
+      "description": "ساخت بارکدهای Code128، EAN، UPC"
     },
     "ascii-art": {
-      "name": "ASCII Art Generator",
-      "description": "Convert images to ASCII art"
+      "name": "تولیدکننده هنر ASCII",
+      "description": "تبدیل تصاویر به هنر ASCII"
     },
     "pixel-art": {
-      "name": "Pixel Art Editor",
-      "description": "Grid-based drawing tool with palette and export"
+      "name": "ویرایشگر پیکسل آرت",
+      "description": "ابزار ترسیم شبکه‌ای با پالت و خروجی‌گیری"
     },
     "placeholder-image": {
-      "name": "Placeholder Image Generator",
-      "description": "Generate solid/gradient placeholder images"
+      "name": "تولیدکننده تصویر جانشین",
+      "description": "تولید تصاویر جانشین ساده یا گرادیان"
     },
     "color-replacer": {
-      "name": "Image Color Replacer",
-      "description": "Swap specific colors in an image using Canvas"
+      "name": "جایگزینی رنگ تصویر",
+      "description": "تعویض رنگ‌های خاص در تصویر با Canvas"
     },
     "collage-maker": {
-      "name": "Photo Collage Maker",
-      "description": "Arrange multiple images into grid layouts"
+      "name": "سازنده کلاژ عکس",
+      "description": "چیدمان چند تصویر در طرح‌های شبکه‌ای"
     },
     "watermark": {
-      "name": "Watermark Tool",
-      "description": "Add text or image watermarks to photos"
+      "name": "ابزار واترمارک",
+      "description": "افزودن واترمارک متنی یا تصویری به عکس‌ها"
     },
     "audio-trimmer": {
-      "name": "Audio Trimmer",
-      "description": "Trim audio clips in-browser using Web Audio API"
+      "name": "برش‌دهنده صوت",
+      "description": "برش کلیپ‌های صوتی در مرورگر با Web Audio API"
     },
     "video-to-gif": {
-      "name": "Video to GIF Converter",
-      "description": "Extract video frames into animated GIF"
+      "name": "تبدیل ویدیو به GIF",
+      "description": "استخراج فریم‌های ویدیو به GIF متحرک"
     },
     "waveform-visualizer": {
-      "name": "Waveform Visualizer",
-      "description": "Upload audio and see its waveform on Canvas"
+      "name": "نمایشگر شکل موج",
+      "description": "بارگذاری صوت و مشاهده شکل موج روی Canvas"
     },
     "screen-recorder": {
-      "name": "Screen Recorder",
-      "description": "Record screen/tab using MediaRecorder API"
+      "name": "ضبط‌کننده صفحه",
+      "description": "ضبط صفحه/تب با MediaRecorder API"
     },
     "webcam-booth": {
-      "name": "Webcam Photo Booth",
-      "description": "Capture webcam snapshots with filters"
+      "name": "غرفه عکس وبکم",
+      "description": "گرفتن عکس از وبکم با فیلترها"
     },
     "unit-converter": {
-      "name": "Unit Converter",
-      "description": "Convert length, weight, volume, temperature, speed, area, data"
+      "name": "تبدیل واحد",
+      "description": "تبدیل طول، وزن، حجم، دما، سرعت، مساحت، داده"
     },
     "percentage-calculator": {
-      "name": "Percentage Calculator",
-      "description": "Calculate percentages, percentage change, ratios"
+      "name": "ماشین‌حساب درصد",
+      "description": "محاسبه درصد، تغییر درصدی و نسبت‌ها"
     },
     "number-base-converter": {
-      "name": "Hex / Binary / Decimal Converter",
-      "description": "Convert between hex, binary, octal, decimal"
+      "name": "تبدیل مبنای اعداد",
+      "description": "تبدیل بین هگز، باینری، اکتال و دسیمال"
     },
     "matrix-calculator": {
-      "name": "Matrix Calculator",
-      "description": "Add, multiply, transpose, invert, determinants"
+      "name": "ماشین‌حساب ماتریس",
+      "description": "جمع، ضرب، ترانهاده، معکوس و دترمینان"
     },
     "statistics-calculator": {
-      "name": "Statistics Calculator",
-      "description": "Mean, median, mode, std dev, variance, quartiles"
+      "name": "ماشین‌حساب آمار",
+      "description": "میانگین، میانه، مد، انحراف معیار، واریانس و چارک‌ها"
     },
     "scientific-calculator": {
-      "name": "Scientific Calculator",
-      "description": "Full calculator with trig, log, exponents, history"
+      "name": "ماشین‌حساب علمی",
+      "description": "ماشین‌حساب کامل با مثلثات، لگاریتم، توان و تاریخچه"
     },
     "graphing-calculator": {
-      "name": "Graphing Calculator",
-      "description": "Plot mathematical functions on coordinate plane"
+      "name": "ماشین‌حساب نمودار",
+      "description": "رسم توابع ریاضی روی صفحه مختصات"
     },
     "boolean-algebra": {
-      "name": "Boolean Algebra Simplifier",
-      "description": "Simplify logic expressions and generate truth tables"
+      "name": "ساده‌ساز جبر بولی",
+      "description": "ساده‌سازی عبارات منطقی و تولید جدول درستی"
     },
     "roman-numerals": {
-      "name": "Roman Numeral Converter",
-      "description": "Convert between Roman and Arabic numbers"
+      "name": "تبدیل اعداد رومی",
+      "description": "تبدیل بین اعداد رومی و عربی"
     },
     "number-to-words": {
-      "name": "Number to Words",
-      "description": "Convert numeric values to written English"
+      "name": "تبدیل عدد به حروف",
+      "description": "تبدیل مقادیر عددی به حروف انگلیسی"
     },
     "bitwise-visualizer": {
-      "name": "Bitwise Operation Visualizer",
-      "description": "Visualize AND, OR, XOR, NOT, shifts bit-by-bit"
+      "name": "نمایشگر عملیات بیتی",
+      "description": "نمایش بصری AND، OR، XOR، NOT و شیفت‌ها بیت‌به‌بیت"
     },
     "probability-calculator": {
-      "name": "Probability Calculator",
-      "description": "Permutations, combinations, dice, cards"
+      "name": "ماشین‌حساب احتمال",
+      "description": "ترتیب، ترکیب، تاس و ورق"
     },
     "aspect-ratio": {
-      "name": "Aspect Ratio Calculator",
-      "description": "Calculate and convert aspect ratios"
+      "name": "ماشین‌حساب نسبت تصویر",
+      "description": "محاسبه و تبدیل نسبت‌های تصویر"
     },
     "data-size-converter": {
-      "name": "Data Size Converter",
-      "description": "Convert between bytes, KB, MB, GB, TB"
+      "name": "تبدیل حجم داده",
+      "description": "تبدیل بین بایت، KB، MB، GB، TB"
     },
     "random-generator": {
-      "name": "Random Number Generator",
-      "description": "Random numbers, dice, coins, lottery"
+      "name": "تولیدکننده اعداد تصادفی",
+      "description": "اعداد تصادفی، تاس، سکه و قرعه‌کشی"
     },
     "arbitrary-base-converter": {
-      "name": "Number Base Converter",
-      "description": "Convert between any base (2–36) with step-by-step"
+      "name": "تبدیل مبنای دلخواه",
+      "description": "تبدیل بین هر مبنایی (۲ تا ۳۶) با مراحل"
     },
     "compound-interest": {
-      "name": "Compound Interest Calculator",
-      "description": "Growth over time with chart"
+      "name": "ماشین‌حساب سود مرکب",
+      "description": "رشد در طول زمان با نمودار"
     },
     "mortgage-calculator": {
-      "name": "Mortgage / Loan Calculator",
-      "description": "Monthly payments, amortization, total interest"
+      "name": "ماشین‌حساب وام مسکن",
+      "description": "اقساط ماهانه، جدول استهلاک و کل سود"
     },
     "tip-calculator": {
-      "name": "Tip / Bill Splitter",
-      "description": "Split bills with custom tip and rounding"
+      "name": "ماشین‌حساب انعام",
+      "description": "تقسیم صورت‌حساب با انعام و رند کردن"
     },
     "currency-converter": {
-      "name": "Currency Converter",
-      "description": "Convert between currencies"
+      "name": "تبدیل ارز",
+      "description": "تبدیل بین ارزها"
     },
     "subscription-tracker": {
-      "name": "Subscription Tracker",
-      "description": "List subscriptions, see totals"
+      "name": "ردیاب اشتراک‌ها",
+      "description": "لیست اشتراک‌ها و مشاهده مجموع"
     },
     "net-worth-tracker": {
-      "name": "Net Worth Tracker",
-      "description": "Track assets and liabilities over time"
+      "name": "ردیاب دارایی خالص",
+      "description": "ردیابی دارایی‌ها و بدهی‌ها در طول زمان"
     },
     "budget-planner": {
-      "name": "50/30/20 Budget Planner",
-      "description": "Allocate income into needs, wants, savings"
+      "name": "برنامه‌ریز بودجه ۵۰/۳۰/۲۰",
+      "description": "تخصیص درآمد به نیازها، خواسته‌ها و پس‌انداز"
     },
     "debt-calculator": {
-      "name": "Debt Snowball/Avalanche Calculator",
-      "description": "Compare payoff strategies"
+      "name": "ماشین‌حساب بازپرداخت بدهی",
+      "description": "مقایسه استراتژی‌های بازپرداخت گلوله‌برفی و بهمنی"
     },
     "tax-estimator": {
-      "name": "Tax Estimator (Freelancer)",
-      "description": "Rough tax estimate by income and deductions"
+      "name": "تخمین مالیات (فریلنسر)",
+      "description": "تخمین تقریبی مالیات بر اساس درآمد و کسورات"
     },
     "invoice-generator": {
-      "name": "Invoice Generator",
-      "description": "Create invoices and export to PDF"
+      "name": "تولیدکننده فاکتور",
+      "description": "ساخت فاکتور و خروجی PDF"
     },
     "salary-converter": {
-      "name": "Salary ↔ Hourly Converter",
-      "description": "Convert between annual, monthly, weekly, daily, hourly"
+      "name": "تبدیل حقوق ↔ ساعتی",
+      "description": "تبدیل بین سالانه، ماهانه، هفتگی، روزانه و ساعتی"
     },
     "roi-calculator": {
-      "name": "ROI Calculator",
-      "description": "Return on investment with periods"
+      "name": "ماشین‌حساب بازگشت سرمایه",
+      "description": "بازگشت سرمایه با دوره‌ها"
     },
     "break-even": {
-      "name": "Break-Even Calculator",
-      "description": "Find break-even point"
+      "name": "ماشین‌حساب نقطه سربه‌سر",
+      "description": "یافتن نقطه سربه‌سر"
     },
     "savings-goal": {
-      "name": "Savings Goal Tracker",
-      "description": "Set goals, log deposits, track progress"
+      "name": "ردیاب هدف پس‌انداز",
+      "description": "تعیین هدف، ثبت واریز و پیگیری پیشرفت"
     },
     "position-size": {
-      "name": "Stock Position Size Calculator",
-      "description": "Position sizing based on risk"
+      "name": "ماشین‌حساب اندازه پوزیشن",
+      "description": "تعیین اندازه پوزیشن بر اساس ریسک"
     },
     "markup-margin": {
-      "name": "Markup / Margin Calculator",
-      "description": "Convert between cost, markup %, profit margin"
+      "name": "ماشین‌حساب سود و حاشیه",
+      "description": "تبدیل بین بهای تمام‌شده، درصد سود و حاشیه سود"
     },
     "password-generator": {
-      "name": "Password Generator",
-      "description": "Strong passwords with customizable options"
+      "name": "تولیدکننده رمز عبور",
+      "description": "رمزهای عبور قوی با گزینه‌های قابل تنظیم"
     },
     "password-strength": {
-      "name": "Password Strength Checker",
-      "description": "Strength analysis with crack time"
+      "name": "بررسی قدرت رمز عبور",
+      "description": "تحلیل قدرت با زمان شکستن"
     },
     "hash-generator": {
-      "name": "Hash Generator",
-      "description": "SHA-1, SHA-256, SHA-512, MD5 of text or files"
+      "name": "تولیدکننده هش",
+      "description": "SHA-1، SHA-256، SHA-512، MD5 از متن یا فایل"
     },
     "checksum-verifier": {
-      "name": "File Checksum Verifier",
-      "description": "Drag-and-drop file hash verification"
+      "name": "تأییدکننده چک‌سام فایل",
+      "description": "تأیید هش فایل با کشیدن و رها کردن"
     },
     "encrypted-notes": {
-      "name": "Encrypted Notes",
-      "description": "AES-GCM encrypted notepad"
+      "name": "یادداشت‌های رمزنگاری‌شده",
+      "description": "دفترچه یادداشت رمزنگاری‌شده با AES-GCM"
     },
     "encrypted-vault": {
-      "name": "Encrypted Vault",
-      "description": "Client-side password manager"
+      "name": "صندوق رمزنگاری‌شده",
+      "description": "مدیریت رمز عبور سمت کاربر"
     },
     "hmac-generator": {
-      "name": "HMAC Generator",
-      "description": "Generate HMAC signatures"
+      "name": "تولیدکننده HMAC",
+      "description": "تولید امضاهای HMAC"
     },
     "random-bytes": {
-      "name": "Random Byte Generator",
-      "description": "Cryptographically secure random bytes"
+      "name": "تولیدکننده بایت تصادفی",
+      "description": "بایت‌های تصادفی رمزنگاری‌شده امن"
     },
     "totp-generator": {
-      "name": "TOTP Code Generator",
-      "description": "Time-based one-time passwords (RFC 6238)"
+      "name": "تولیدکننده کد TOTP",
+      "description": "رمزهای یک‌بار مصرف مبتنی بر زمان (RFC 6238)"
     },
     "metadata-stripper": {
-      "name": "Privacy Metadata Stripper",
-      "description": "Remove EXIF from images before sharing"
+      "name": "حذف‌کننده فراداده حریم خصوصی",
+      "description": "حذف EXIF از تصاویر قبل از اشتراک‌گذاری"
     },
     "secure-share": {
-      "name": "Secure Text Sharing Encoder",
-      "description": "Encode message into a URL fragment for client-side decryption"
+      "name": "رمزگذار اشتراک امن متن",
+      "description": "رمزگذاری پیام در فرگمنت URL برای رمزگشایی سمت کاربر"
     },
     "pomodoro": {
-      "name": "Pomodoro Timer",
-      "description": "Focus timer with configurable intervals and session tracking"
+      "name": "تایمر پومودورو",
+      "description": "تایمر تمرکز با بازه‌های قابل تنظیم و ردیابی جلسات"
     },
     "stopwatch": {
-      "name": "Stopwatch & Lap Timer",
-      "description": "Precision stopwatch with lap recording"
+      "name": "کرونومتر و دور",
+      "description": "کرونومتر دقیق با ثبت دورها"
     },
     "countdown": {
-      "name": "Countdown Timer",
-      "description": "Count down to a specific date"
+      "name": "شمارش معکوس",
+      "description": "شمارش معکوس تا یک تاریخ مشخص"
     },
     "kanban": {
-      "name": "Kanban Board",
-      "description": "Drag-and-drop task board"
+      "name": "تخته کانبان",
+      "description": "تخته وظایف با کشیدن و رها کردن"
     },
     "todo-list": {
-      "name": "To-Do List / Checklist",
-      "description": "Task manager with priorities and due dates"
+      "name": "لیست کارها",
+      "description": "مدیریت وظایف با اولویت و تاریخ سررسید"
     },
     "habit-tracker": {
-      "name": "Habit Tracker",
-      "description": "Daily habits with streaks and heatmap"
+      "name": "ردیاب عادت‌ها",
+      "description": "عادت‌های روزانه با رکورد و نقشه حرارتی"
     },
     "notepad": {
-      "name": "Notepad with Auto-Save",
-      "description": "Distraction-free writing pad"
+      "name": "دفترچه یادداشت با ذخیره خودکار",
+      "description": "محیط نوشتن بدون حواس‌پرتی"
     },
     "meeting-cost": {
-      "name": "Meeting Cost Calculator",
-      "description": "Calculate real cost of a meeting"
+      "name": "ماشین‌حساب هزینه جلسه",
+      "description": "محاسبه هزینه واقعی یک جلسه"
     },
     "decision-matrix": {
-      "name": "Decision Matrix",
-      "description": "Score options against weighted criteria"
+      "name": "ماتریس تصمیم‌گیری",
+      "description": "امتیازدهی گزینه‌ها بر اساس معیارهای وزن‌دار"
     },
     "eisenhower-matrix": {
-      "name": "Eisenhower Matrix",
-      "description": "Drag tasks into urgent/important quadrants"
+      "name": "ماتریس آیزنهاور",
+      "description": "کشیدن وظایف به چارک‌های فوری/مهم"
     },
     "mind-map": {
-      "name": "Mind Map Builder",
-      "description": "Branching mind maps with drag-and-drop"
+      "name": "سازنده نقشه ذهنی",
+      "description": "نقشه‌های ذهنی شاخه‌ای با کشیدن و رها کردن"
     },
     "daily-planner": {
-      "name": "Daily Planner / Schedule",
-      "description": "Time-block your day"
+      "name": "برنامه‌ریز روزانه",
+      "description": "زمان‌بندی بلوکی روز شما"
     },
     "reading-time": {
-      "name": "Reading Time Estimator",
-      "description": "Estimate reading time at various speeds"
+      "name": "تخمین زمان مطالعه",
+      "description": "تخمین زمان مطالعه با سرعت‌های مختلف"
     },
     "sticky-notes": {
-      "name": "Sticky Notes Wall",
-      "description": "Freeform draggable sticky notes"
+      "name": "دیوار یادداشت چسبان",
+      "description": "یادداشت‌های چسبان قابل جابجایی"
     },
     "goal-tracker": {
-      "name": "Goal Tracker",
-      "description": "Goals with milestones and progress bars"
+      "name": "ردیاب اهداف",
+      "description": "اهداف با نقاط عطف و نوارهای پیشرفت"
     },
     "bmi-calculator": {
-      "name": "BMI Calculator",
-      "description": "Body Mass Index with visual scale"
+      "name": "ماشین‌حساب BMI",
+      "description": "شاخص توده بدنی با مقیاس بصری"
     },
     "tdee-calculator": {
-      "name": "TDEE & Macro Calculator",
-      "description": "Daily calorie needs and macro targets"
+      "name": "ماشین‌حساب TDEE و ماکرو",
+      "description": "نیاز کالری روزانه و اهداف ماکرو"
     },
     "water-tracker": {
-      "name": "Water Intake Tracker",
-      "description": "Log daily water consumption"
+      "name": "ردیاب مصرف آب",
+      "description": "ثبت مصرف روزانه آب"
     },
     "sleep-calculator": {
-      "name": "Sleep Cycle Calculator",
-      "description": "Optimal bedtimes based on 90-min cycles"
+      "name": "ماشین‌حساب چرخه خواب",
+      "description": "بهترین زمان خواب بر اساس چرخه‌های ۹۰ دقیقه‌ای"
     },
     "hiit-timer": {
-      "name": "HIIT / Tabata Timer",
-      "description": "Customizable interval timer with audio"
+      "name": "تایمر HIIT / تاباتا",
+      "description": "تایمر اینتروال قابل تنظیم با صدا"
     },
     "body-tracker": {
-      "name": "Body Measurement Tracker",
-      "description": "Log measurements over time with charts"
+      "name": "ردیاب اندازه‌های بدن",
+      "description": "ثبت اندازه‌ها در طول زمان با نمودار"
     },
     "calorie-counter": {
-      "name": "Calorie Counter",
-      "description": "Calorie lookup and daily logging"
+      "name": "شمارشگر کالری",
+      "description": "جستجوی کالری و ثبت روزانه"
     },
     "one-rep-max": {
-      "name": "One-Rep Max Calculator",
-      "description": "Estimate 1RM from submaximal lifts"
+      "name": "ماشین‌حساب یک تکرار بیشینه",
+      "description": "تخمین 1RM از بارهای زیربیشینه"
     },
     "pace-calculator": {
-      "name": "Pace Calculator",
-      "description": "Convert pace, speed, and finish time"
+      "name": "ماشین‌حساب سرعت دویدن",
+      "description": "تبدیل سرعت، پیس و زمان پایان"
     },
     "breathing-timer": {
-      "name": "Breathing Exercise Timer",
-      "description": "Guided breathing with visual + audio"
+      "name": "تایمر تمرین تنفس",
+      "description": "تنفس هدایت‌شده با تصویر و صدا"
     },
     "subnet-calculator": {
-      "name": "Subnet Calculator",
-      "description": "Network, broadcast, host range from IP + CIDR"
+      "name": "ماشین‌حساب زیرشبکه",
+      "description": "شبکه، پخش، محدوده میزبان از IP + CIDR"
     },
     "ip-converter": {
-      "name": "IPv4 ↔ IPv6 Converter",
-      "description": "Convert between IPv4 and IPv6"
+      "name": "تبدیل IPv4 ↔ IPv6",
+      "description": "تبدیل بین IPv4 و IPv6"
     },
     "cidr-visualizer": {
-      "name": "CIDR Range Visualizer",
-      "description": "See which IPs fall within a CIDR block"
+      "name": "نمایشگر محدوده CIDR",
+      "description": "مشاهده IPهایی که در یک بلوک CIDR قرار دارند"
     },
     "bandwidth-calculator": {
-      "name": "Bandwidth Calculator",
-      "description": "Transfer time for file size at given speed"
+      "name": "ماشین‌حساب پهنای باند",
+      "description": "زمان انتقال فایل با سرعت مشخص"
     },
     "dns-reference": {
-      "name": "DNS Record Reference",
-      "description": "Interactive DNS record type reference"
+      "name": "مرجع رکوردهای DNS",
+      "description": "مرجع تعاملی انواع رکوردهای DNS"
     },
     "port-reference": {
-      "name": "Port Number Reference",
-      "description": "Searchable common port database"
+      "name": "مرجع شماره پورت",
+      "description": "پایگاه داده قابل جستجوی پورت‌های رایج"
     },
     "mac-lookup": {
-      "name": "MAC Address Lookup",
-      "description": "Identify vendor from OUI prefix"
+      "name": "جستجوی آدرس MAC",
+      "description": "شناسایی سازنده از پیشوند OUI"
     },
     "netmask-calculator": {
-      "name": "Network Mask Calculator",
-      "description": "Convert between dotted-decimal, CIDR, wildcard"
+      "name": "ماشین‌حساب ماسک شبکه",
+      "description": "تبدیل بین دسیمال نقطه‌دار، CIDR و وایلدکارد"
     },
     "typing-test": {
-      "name": "Typing Speed Test",
-      "description": "WPM with accuracy and difficulty levels"
+      "name": "تست سرعت تایپ",
+      "description": "WPM با دقت و سطوح دشواری"
     },
     "flashcards": {
-      "name": "Flashcard App",
-      "description": "Spaced repetition (Leitner) stored locally"
+      "name": "اپلیکیشن فلش‌کارت",
+      "description": "تکرار فاصله‌دار (لایتنر) ذخیره‌شده محلی"
     },
     "mental-math": {
-      "name": "Mental Math Trainer",
-      "description": "Timed arithmetic drills"
+      "name": "تمرین محاسبات ذهنی",
+      "description": "تمرین‌های حساب زمان‌دار"
     },
     "periodic-table": {
-      "name": "Periodic Table Explorer",
-      "description": "Interactive periodic table"
+      "name": "کاوشگر جدول تناوبی",
+      "description": "جدول تناوبی تعاملی"
     },
     "geography-quiz": {
-      "name": "Geography Quiz",
-      "description": "Identify countries on SVG world map"
+      "name": "آزمون جغرافیا",
+      "description": "شناسایی کشورها روی نقشه جهان"
     },
     "interval-trainer": {
-      "name": "Music Interval Trainer",
-      "description": "Hear two notes, guess the interval"
+      "name": "تمرین فاصله‌های موسیقی",
+      "description": "دو نت بشنوید و فاصله را حدس بزنید"
     },
     "vocabulary-builder": {
-      "name": "Language Vocabulary Builder",
-      "description": "Words + translations with spaced repetition"
+      "name": "واژه‌ساز زبان",
+      "description": "کلمات + ترجمه با تکرار فاصله‌دار"
     },
     "times-tables": {
-      "name": "Times Table Trainer",
-      "description": "Multiplication drills with visual feedback"
+      "name": "تمرین جدول ضرب",
+      "description": "تمرین‌های ضرب با بازخورد بصری"
     },
     "color-blind-sim": {
-      "name": "Color Blindness Simulator",
-      "description": "Preview images with color vision deficiencies"
+      "name": "شبیه‌ساز کوررنگی",
+      "description": "پیش‌نمایش تصاویر با نقص‌های بینایی رنگ"
     },
     "binary-teacher": {
-      "name": "Binary / Hex Teaching Tool",
-      "description": "Interactive binary ↔ decimal ↔ hex"
+      "name": "ابزار آموزش باینری / هگز",
+      "description": "تبدیل تعاملی باینری ↔ دسیمال ↔ هگز"
     },
     "algorithm-visualizer": {
-      "name": "Algorithm Visualizer",
-      "description": "Watch sorting/search algorithms step-by-step"
+      "name": "نمایشگر الگوریتم",
+      "description": "مشاهده مرحله‌به‌مرحله الگوریتم‌های مرتب‌سازی/جستجو"
     },
     "drum-machine": {
-      "name": "Drum Machine / Beat Maker",
-      "description": "Sequencer with Web Audio API"
+      "name": "درام‌ماشین / بیت‌ساز",
+      "description": "سکوئنسر با Web Audio API"
     },
     "generative-art": {
-      "name": "Generative Art Tool",
-      "description": "Parameter-driven pattern creation"
+      "name": "ابزار هنر مولد",
+      "description": "ساخت الگوهای پارامتری"
     },
     "meme-generator": {
-      "name": "Meme Generator",
-      "description": "Upload image, add draggable text overlays"
+      "name": "ساخت میم",
+      "description": "بارگذاری تصویر و افزودن متن قابل جابجایی"
     },
     "soundboard": {
-      "name": "Soundboard",
-      "description": "Upload and trigger audio clips"
+      "name": "صفحه صدا",
+      "description": "بارگذاری و پخش کلیپ‌های صوتی"
     },
     "game-of-life": {
-      "name": "Conway's Game of Life",
-      "description": "Cellular automaton"
+      "name": "بازی زندگی کانوی",
+      "description": "اتوماتای سلولی"
     },
     "terrain-generator": {
-      "name": "Procedural Terrain Generator",
-      "description": "Landscape generation using noise"
+      "name": "تولیدکننده زمین رویه‌ای",
+      "description": "تولید چشم‌انداز با نویز"
     },
     "drawing-canvas": {
-      "name": "Drawing Canvas",
-      "description": "Freehand drawing with brushes"
+      "name": "بوم نقاشی",
+      "description": "نقاشی آزاد با قلم‌ها"
     },
     "magic-8-ball": {
-      "name": "Fortune / Magic 8-Ball",
-      "description": "Random answers with animation"
+      "name": "گوی جادویی ۸",
+      "description": "پاسخ‌های تصادفی با انیمیشن"
     },
     "dice-roller": {
-      "name": "Dice Roller (D&D)",
-      "description": "Roll polyhedral dice with history"
+      "name": "تاس‌انداز (D&D)",
+      "description": "پرتاب تاس‌های چندوجهی با تاریخچه"
     },
     "ambient-sounds": {
-      "name": "Noise / Ambient Sound Generator",
-      "description": "Layer noise and nature sounds"
+      "name": "تولیدکننده صدای محیطی",
+      "description": "ترکیب نویز و صداهای طبیعت"
     },
     "css-art": {
-      "name": "CSS Art Playground",
-      "description": "Create illustrations using only CSS"
+      "name": "آزمایشگاه هنر CSS",
+      "description": "ساخت تصاویر فقط با CSS"
     },
     "emoji-search": {
-      "name": "Emoji Picker / Search",
-      "description": "Search emojis with copy to clipboard"
+      "name": "جستجوی ایموجی",
+      "description": "جستجوی ایموجی‌ها با کپی در کلیپ‌بورد"
     },
     "palette-game": {
-      "name": "Random Color Palette Game",
-      "description": "Vote on random palettes to train color sense"
+      "name": "بازی پالت رنگ تصادفی",
+      "description": "رأی دادن به پالت‌های تصادفی برای تقویت حس رنگ"
     },
     "pdf-merger": {
-      "name": "PDF Merger",
-      "description": "Combine multiple PDFs into one"
+      "name": "ادغام PDF",
+      "description": "ترکیب چند PDF در یک فایل"
     },
     "pdf-splitter": {
-      "name": "PDF Splitter",
-      "description": "Extract specific pages from a PDF"
+      "name": "تفکیک PDF",
+      "description": "استخراج صفحات مشخص از PDF"
     },
     "pdf-rotator": {
-      "name": "PDF Page Rotator",
-      "description": "Rotate pages in a PDF"
+      "name": "چرخاندن صفحات PDF",
+      "description": "چرخاندن صفحات در یک PDF"
     },
     "file-size-analyzer": {
-      "name": "File Size Analyzer",
-      "description": "Drag-and-drop file size breakdown"
+      "name": "تحلیلگر حجم فایل",
+      "description": "تفکیک حجم فایل با کشیدن و رها کردن"
     },
     "text-merger": {
-      "name": "Text File Merger",
-      "description": "Concatenate multiple text/CSV files"
+      "name": "ادغام فایل متنی",
+      "description": "الحاق چند فایل متنی/CSV"
     },
     "markdown-to-html": {
-      "name": "Markdown → HTML Converter",
-      "description": "Convert Markdown to clean HTML"
+      "name": "تبدیل مارک‌داون → HTML",
+      "description": "تبدیل مارک‌داون به HTML تمیز"
     },
     "html-to-markdown": {
-      "name": "HTML → Markdown Converter",
-      "description": "Turn HTML into Markdown"
+      "name": "تبدیل HTML → مارک‌داون",
+      "description": "تبدیل HTML به مارک‌داون"
     },
     "json-to-csv": {
-      "name": "JSON to CSV Exporter",
-      "description": "Flatten JSON arrays into CSV"
+      "name": "صادرکننده JSON به CSV",
+      "description": "تبدیل آرایه‌های JSON به CSV"
     },
     "zip-creator": {
-      "name": "ZIP File Creator",
-      "description": "Bundle files into a .zip"
+      "name": "سازنده فایل ZIP",
+      "description": "بسته‌بندی فایل‌ها در یک .zip"
     },
     "file-renamer": {
-      "name": "File Rename Batch Tool",
-      "description": "Batch rename with patterns"
+      "name": "تغییر نام دسته‌ای فایل",
+      "description": "تغییر نام دسته‌ای با الگو"
     },
     "text-cleaner": {
-      "name": "Plain Text Cleaner",
-      "description": "Fix encoding, remove smart quotes, normalize"
+      "name": "پاک‌کننده متن ساده",
+      "description": "اصلاح رمزگذاری، حذف گیومه‌های هوشمند و نرمال‌سازی"
     },
     "timezone-converter": {
-      "name": "Timezone Converter",
-      "description": "Convert time across multiple timezones"
+      "name": "تبدیل منطقه زمانی",
+      "description": "تبدیل زمان بین مناطق زمانی مختلف"
     },
     "date-difference": {
-      "name": "Date Difference Calculator",
-      "description": "Days, weeks, months, years between dates"
+      "name": "ماشین‌حساب فاصله تاریخ",
+      "description": "روز، هفته، ماه و سال بین دو تاریخ"
     },
     "date-add-subtract": {
-      "name": "Date Adder/Subtractor",
-      "description": "Add or subtract time from a date"
+      "name": "جمع/تفریق تاریخ",
+      "description": "افزودن یا کاستن زمان از یک تاریخ"
     },
     "week-number": {
-      "name": "Week Number Lookup",
-      "description": "ISO week number for any date"
+      "name": "جستجوی شماره هفته",
+      "description": "شماره هفته ISO برای هر تاریخی"
     },
     "age-calculator": {
-      "name": "Age Calculator",
-      "description": "Exact age in years, months, days"
+      "name": "ماشین‌حساب سن",
+      "description": "سن دقیق به سال، ماه و روز"
     },
     "working-days": {
-      "name": "Working Days Calculator",
-      "description": "Business days between two dates"
+      "name": "ماشین‌حساب روزهای کاری",
+      "description": "روزهای کاری بین دو تاریخ"
     },
     "calendar-generator": {
-      "name": "Calendar Generator",
-      "description": "Printable monthly/yearly calendars"
+      "name": "تولیدکننده تقویم",
+      "description": "تقویم‌های ماهانه/سالانه قابل چاپ"
     },
     "meeting-planner": {
-      "name": "Timezone Meeting Planner",
-      "description": "Find overlapping working hours"
+      "name": "برنامه‌ریز جلسه بین مناطق زمانی",
+      "description": "یافتن ساعات کاری هم‌پوشان"
     },
     "relative-time": {
-      "name": "Relative Time Display",
-      "description": "See dates as relative strings"
+      "name": "نمایش زمان نسبی",
+      "description": "مشاهده تاریخ‌ها به‌صورت رشته‌های نسبی"
     }
   }
 }

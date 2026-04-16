@@ -12,7 +12,7 @@ import {
   isToolAccessible,
 } from "@/lib/tools-registry";
 import { generateToolJsonLd } from "@/lib/json-ld";
-import { siteConfig } from "@/lib/config";
+
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -37,15 +37,17 @@ export async function generateMetadata({
   const tool = getToolBySlug(slug);
   if (!tool) return {};
   const t = await getTranslations({ locale, namespace: "tools" });
+  const tSite = await getTranslations({ locale, namespace: "site" });
   const toolName = t(`${slug}.name`);
   const toolDesc = t(`${slug}.description`);
+  const titleSuffix = tSite("titleSuffix");
   return {
-    title: `${toolName} — ${siteConfig.titleSuffix}`,
+    title: `${toolName} — ${titleSuffix}`,
     description: toolDesc,
     openGraph: {
-      title: `${toolName} — ${siteConfig.titleSuffix} | ${siteConfig.name}`,
+      title: `${toolName} — ${titleSuffix} | ${tSite("name")}`,
       description: toolDesc,
-      images: [`/og/${tool.category}/${tool.slug}.png`],
+      images: [`/og/${locale}/${tool.category}/${tool.slug}.png`],
     },
     alternates: {
       languages: Object.fromEntries(
@@ -57,7 +59,7 @@ export async function generateMetadata({
     },
     other: {
       "script:ld+json": JSON.stringify(
-        generateToolJsonLd(tool, { name: toolName, description: toolDesc })
+        generateToolJsonLd(tool, locale, { name: toolName, description: toolDesc })
       ),
     },
   };

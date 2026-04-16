@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useState, useRef } from "react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 interface FileDropZoneProps {
@@ -18,10 +19,11 @@ export function FileDropZone({
   accept,
   maxSizeMB = 50,
   multiple = false,
-  label = "Drop files here or click to browse",
+  label,
   className,
   children,
 }: FileDropZoneProps) {
+  const t = useTranslations("ui");
   const [dragActive, setDragActive] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -87,10 +89,10 @@ export function FileDropZone({
           >
             <path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
           </svg>
-          <p className="text-sm text-muted-foreground">{label}</p>
+          <p className="text-sm text-muted-foreground">{label ?? t("dropFiles")}</p>
           {maxSizeMB && (
             <p className="mt-1 text-xs text-muted-foreground/70">
-              Max {maxSizeMB}MB
+              {t("maxFileSize", { size: maxSizeMB })}
             </p>
           )}
         </>

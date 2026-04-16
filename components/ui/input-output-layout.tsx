@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 interface InputOutputLayoutProps {
@@ -13,10 +14,11 @@ interface InputOutputLayoutProps {
 export function InputOutputLayout({
   input,
   output,
-  inputLabel = "Input",
-  outputLabel = "Output",
+  inputLabel,
+  outputLabel,
   className,
 }: InputOutputLayoutProps) {
+  const t = useTranslations("ui");
   return (
     <div
       className={cn(
@@ -25,11 +27,11 @@ export function InputOutputLayout({
       )}
     >
       <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium">{inputLabel}</label>
+        <label className="text-sm font-medium">{inputLabel ?? t("input")}</label>
         {input}
       </div>
       <div className="flex flex-col gap-2">
-        <label className="text-sm font-medium">{outputLabel}</label>
+        <label className="text-sm font-medium">{outputLabel ?? t("output")}</label>
         {output}
       </div>
     </div>

@@ -3,12 +3,11 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "@/i18n/navigation";
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { LocaleSwitcher } from "@/components/locale-switcher";
 import { usePwa } from "@/components/pwa-provider";
 import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/lib/config";
 import {
   CommandDialog,
   CommandEmpty,
@@ -32,6 +31,9 @@ export function Header() {
   const router = useRouter();
   const { isOffline, isInstallable, promptInstall } = usePwa();
   const t = useTranslations("nav");
+  const tSite = useTranslations("site");
+  const tTools = useTranslations("tools");
+  const locale = useLocale();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -50,8 +52,8 @@ export function Header() {
       setResults([]);
       return;
     }
-    setResults(searchTools(value).slice(0, 12));
-  }, []);
+    setResults(searchTools(value, locale).slice(0, 12));
+  }, [locale]);
 
   const handleSelect = useCallback(
     (tool: Tool) => {
@@ -94,7 +96,7 @@ export function Header() {
 
       {/* Logo — visible on mobile when sidebar is hidden */}
       <Link href="/" className="text-lg font-bold tracking-tight lg:hidden">
-        {siteConfig.name}
+        {tSite("name")}
       </Link>
 
       {/* Search trigger */}
@@ -159,7 +161,7 @@ export function Header() {
         <CommandList>
           <CommandEmpty>{t("noResults")}</CommandEmpty>
           {results.length > 0 && (
-            <CommandGroup heading="Tools">
+            <CommandGroup heading={t("toolsHeading")}>
               {results.map((tool) => {
                 const cat = getCategoryBySlug(tool.category);
                 const accessible = isToolAccessible(tool);
@@ -174,7 +176,7 @@ export function Header() {
                     <span className="shrink-0 text-sm">{cat?.icon}</span>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2">
-                        <span className="font-medium truncate">{tool.name}</span>
+                        <span className="font-medium truncate">{tTools(`${tool.slug}.name`)}</span>
                         {!accessible && (
                           <Badge variant="secondary" className="text-[10px] px-1.5 py-0">
                             {t("comingSoon")}
@@ -182,7 +184,7 @@ export function Header() {
                         )}
                       </div>
                       <p className="text-xs text-muted-foreground truncate">
-                        {tool.description}
+                        {tTools(`${tool.slug}.description`)}
                       </p>
                     </div>
                   </CommandItem>

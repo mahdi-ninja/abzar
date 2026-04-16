@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { useRouter } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import {
   Command,
   CommandEmpty,
@@ -21,6 +21,8 @@ export function HomeSearch() {
   const [results, setResults] = useState<Tool[]>([]);
   const router = useRouter();
   const t = useTranslations("nav");
+  const tTools = useTranslations("tools");
+  const locale = useLocale();
 
   const handleSearch = useCallback((value: string) => {
     setQuery(value);
@@ -28,8 +30,8 @@ export function HomeSearch() {
       setResults([]);
       return;
     }
-    setResults(searchTools(value).slice(0, 8));
-  }, []);
+    setResults(searchTools(value, locale).slice(0, 8));
+  }, [locale]);
 
   const handleSelect = useCallback(
     (tool: Tool) => {
@@ -67,9 +69,9 @@ export function HomeSearch() {
                   >
                     <span className="shrink-0 text-sm">{cat?.icon}</span>
                     <div className="flex-1 min-w-0">
-                      <span className="font-medium text-sm">{tool.name}</span>
+                      <span className="font-medium text-sm">{tTools(`${tool.slug}.name`)}</span>
                       <p className="text-xs text-muted-foreground truncate">
-                        {tool.description}
+                        {tTools(`${tool.slug}.description`)}
                       </p>
                     </div>
                     {!accessible && (

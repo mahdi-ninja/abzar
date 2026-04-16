@@ -10,7 +10,6 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { HomeSearch } from "@/components/home-search";
-import { siteConfig } from "@/lib/config";
 
 export default async function HomePage({
   params,
@@ -24,16 +23,19 @@ export default async function HomePage({
   const t = await getTranslations("home");
   const tCat = await getTranslations("categories");
   const tTools = await getTranslations("tools");
+  const tSite = await getTranslations("site");
+
+  const quickFilters = t.raw("quickFilters") as string[];
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
       {/* Hero */}
       <section className="py-8 text-center sm:py-12">
         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-          {siteConfig.tagline}
+          {tSite("tagline")}
         </h1>
         <p className="mx-auto mt-3 max-w-xl text-base text-muted-foreground sm:text-lg">
-          {siteConfig.subtitle}
+          {tSite("subtitle")}
         </p>
 
         <div className="mx-auto mt-6 max-w-md">
@@ -42,13 +44,11 @@ export default async function HomePage({
 
         {/* Quick filter pills */}
         <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-          {["JSON", "Password", "Color", "PDF", "Calculator", "Image", "UUID"].map(
-            (tag) => (
-              <Badge key={tag} variant="secondary" className="cursor-default">
-                {tag}
-              </Badge>
-            )
-          )}
+          {quickFilters.map((tag) => (
+            <Badge key={tag} variant="secondary" className="cursor-default">
+              {tag}
+            </Badge>
+          ))}
         </div>
       </section>
 

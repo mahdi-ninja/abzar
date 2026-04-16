@@ -3,6 +3,7 @@
     "categories": "دسته‌بندی‌ها",
     "popularTools": "ابزارهای محبوب",
     "toolsSuffix": "ابزار",
-    "newBadge": "جدید"
+    "newBadge": "جدید",
+    "quickFilters": ["JSON", "رمز عبور", "رنگ", "PDF", "ماشین‌حساب", "تصویر", "UUID"]
   }
 }

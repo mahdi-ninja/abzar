@@ -8,7 +8,8 @@
     "collapseSidebar": "Collapse sidebar",
     "openNavigation": "Open navigation",
     "navigation": "Navigation",
-    "comingSoon": "Coming Soon"
+    "comingSoon": "Coming Soon",
+    "toolsHeading": "Tools"
   },
   "localeSwitcher": {
     "label": "Language",
@@ -34,5 +35,23 @@
     "toolsSuffix": "Tools",
     "betaBadge": "Beta",
     "newBadge": "New"
+  },
+  "ui": {
+    "copy": "Copy",
+    "copied": "Copied",
+    "copiedToClipboard": "Copied to clipboard!",
+    "copyFailed": "Failed to copy",
+    "download": "Download",
+    "dropFiles": "Drop files here or click to browse",
+    "maxFileSize": "Max {size}MB",
+    "input": "Input",
+    "output": "Output"
+  },
+  "site": {
+    "name": "Abzar",
+    "tagline": "200+ Free Browser Tools",
+    "subtitle": "No signup. No server. Everything runs in your browser.",
+    "description": "200+ free browser-based tools. No signup, no server, everything runs in your browser.",
+    "titleSuffix": "Free Online Tool"
   }
 }

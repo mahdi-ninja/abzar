@@ -1,14 +1,32 @@
 import Fuse from "fuse.js";
 import { getAllTools, type Tool } from "./tools-registry";
+import enTools from "@/messages/en/tools.json";
+import faTools from "@/messages/fa/tools.json";
 
-let fuse: Fuse<Tool> | null = null;
+type ToolMessages = Record<string, { name: string; description: string }>;
 
-function ensureIndex() {
-  if (!fuse) {
-    fuse = new Fuse(getAllTools(), {
+const toolMessages: Record<string, ToolMessages> = {
+  en: (enTools as { tools: ToolMessages }).tools,
+  fa: (faTools as { tools: ToolMessages }).tools,
+};
+
+type IndexedTool = Tool & { localName: string; localDesc: string };
+
+const indexes: Record<string, Fuse<IndexedTool>> = {};
+
+function ensureIndex(locale: string) {
+  if (!indexes[locale]) {
+    const translations = toolMessages[locale] ?? toolMessages.en;
+    const items: IndexedTool[] = getAllTools().map((tool) => ({
+      ...tool,
+      localName: translations[tool.slug]?.name ?? tool.name,
+      localDesc: translations[tool.slug]?.description ?? tool.description,
+    }));
+    indexes[locale] = new Fuse(items, {
       keys: [
-        { name: "name", weight: 0.5 },
-        { name: "description", weight: 0.3 },
+        { name: "localName", weight: 0.4 },
+        { name: "name", weight: 0.15 },
+        { name: "localDesc", weight: 0.25 },
         { name: "tags", weight: 0.2 },
       ],
       threshold: 0.4,
@@ -18,9 +36,9 @@ function ensureIndex() {
   }
 }
 
-export function searchTools(query: string): Tool[] {
+export function searchTools(query: string, locale: string = "en"): Tool[] {
   const q = query.trim();
   if (!q) return [];
-  ensureIndex();
-  return fuse!.search(q).map((r) => r.item);
+  ensureIndex(locale);
+  return indexes[locale].search(q).map((r) => r.item);
 }

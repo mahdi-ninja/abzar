@@ -6,7 +6,6 @@ import { categories } from "@/lib/categories";
 import { getToolsByCategory } from "@/lib/tools-registry";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/lib/config";
 
 interface SidebarProps {
   collapsed?: boolean;
@@ -16,6 +15,7 @@ interface SidebarProps {
 export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
   const pathname = usePathname();
   const t = useTranslations("nav");
+  const tSite = useTranslations("site");
   const tCat = useTranslations("categories");
 
   return (
@@ -28,7 +28,7 @@ export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
       <div className="flex h-14 items-center justify-between border-b border-border px-3">
         {!collapsed && (
           <Link href="/" className="text-lg font-bold tracking-tight">
-            {siteConfig.name}
+            {tSite("name")}
           </Link>
         )}
         <Button
@@ -39,7 +39,7 @@ export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
           aria-label={collapsed ? t("expandSidebar") : t("collapseSidebar")}
         >
           <svg
-            className={cn("h-4 w-4 transition-transform", collapsed && "rotate-180")}
+            className={cn("h-4 w-4 transition-transform rtl:-scale-x-100", collapsed && "rotate-180")}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

@@ -1,5 +1,5 @@
 import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import {
   Space_Grotesk,
@@ -53,13 +53,14 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "site" });
   return {
     metadataBase: new URL(siteConfig.url),
     title: {
-      default: `${siteConfig.name} — ${siteConfig.tagline}`,
-      template: `%s — ${siteConfig.name}`,
+      default: `${t("name")} — ${t("tagline")}`,
+      template: `%s — ${t("name")}`,
     },
-    description: siteConfig.description,
+    description: t("description"),
     icons: {
       icon: [
         { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
