@@ -1,0 +1,10 @@
+{
+  "ageCalculator": {
+    "dateOfBirth": "出生日期",
+    "reset": "重置",
+    "ageFormat": "{years} 年 {months} 个月 {days} 天",
+    "totalDaysAlive": "存活总天数",
+    "totalHoursAlive": "存活总小时数",
+    "daysUntilBirthday": "距生日还有几天"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "memeGenerator": {
+    "dropLabel": "拖放图片或点击上传",
+    "topText": "顶部文字",
+    "bottomText": "底部文字",
+    "fontSizeLabel": "字号：{value}px",
+    "textColor": "文字颜色",
+    "changeImage": "更换图片",
+    "downloadPng": "下载 PNG"
+  }
+}

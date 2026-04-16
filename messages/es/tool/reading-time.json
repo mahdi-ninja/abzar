@@ -1,0 +1,12 @@
+{
+  "readingTime": {
+    "words": "{count} palabras",
+    "clear": "Limpiar",
+    "placeholder": "Pega tu texto aquí para estimar el tiempo de lectura...",
+    "min": "{count} min",
+    "slow": "Lento (150 PPM)",
+    "average": "Promedio (250 PPM)",
+    "fast": "Rápido (400 PPM)",
+    "speaking": "Hablando (150 PPM)"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "timestampConverter": {
+    "inputLabel": "粘贴时间戳或日期字符串",
+    "inputPlaceholder": "例如 1700000000、2024-01-15T10:30:00Z、Jan 15 2024...",
+    "now": "当前时间",
+    "clear": "清除",
+    "parseError": "无法将此解析为日期或时间戳。",
+    "emptyHint": "粘贴 Unix 时间戳、ISO 8601 日期或任何日期字符串以查看所有格式。",
+    "fmtUnixSeconds": "Unix（秒）",
+    "fmtUnixMs": "Unix（毫秒）",
+    "fmtIso": "ISO 8601",
+    "fmtRfc": "RFC 2822",
+    "fmtLocal": "本地时间",
+    "fmtDate": "仅日期",
+    "fmtTime": "仅时间",
+    "fmtRelative": "相对时间",
+    "seconds": "{count} 秒",
+    "minutes": "{count} 分钟",
+    "hours": "{count} 小时",
+    "days": "{count} 天",
+    "months": "{count} 个月",
+    "years": "{count} 年",
+    "ago": "{time}前",
+    "inFuture": "{time}后"
+  }
+}

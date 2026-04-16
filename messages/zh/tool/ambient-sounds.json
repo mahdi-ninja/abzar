@@ -1,0 +1,12 @@
+{
+  "ambientSounds": {
+    "description": "点击声音开关。可混合多种声音。",
+    "stopAll": "全部停止",
+    "volumeLabel": "音量：{value}%",
+    "whiteNoise": "白噪声",
+    "pinkNoise": "粉噪声",
+    "brownNoise": "棕噪声",
+    "rain": "雨声",
+    "ocean": "海浪"
+  }
+}

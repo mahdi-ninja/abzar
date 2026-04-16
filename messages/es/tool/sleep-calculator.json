@@ -1,0 +1,14 @@
+{
+  "sleepCalculator": {
+    "wakeTab": "Quiero despertar a las...",
+    "sleepTab": "Quiero dormir a las...",
+    "wakeUpTime": "Hora de despertar",
+    "bedtime": "Hora de dormir",
+    "reset": "Restablecer",
+    "goToBedAt": "Acuéstate a las:",
+    "setAlarmFor": "Pon tu alarma a las:",
+    "cyclesHours": "{cycles} ciclos · {hours}h",
+    "recommended": "Recomendado",
+    "disclaimer": "Basado en ciclos de sueño de 90 minutos + 15 minutos para dormirse."
+  }
+}

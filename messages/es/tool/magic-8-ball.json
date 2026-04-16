@@ -1,0 +1,30 @@
+{
+  "magic8Ball": {
+    "placeholder": "Haz una pregunta de sí/no...",
+    "shake": "Agitar",
+    "shaking": "Agitando...",
+    "clear": "Limpiar",
+    "answers": {
+      "certain": "Es seguro",
+      "decidedly": "Decididamente sí",
+      "withoutDoubt": "Sin duda",
+      "yesDefinitely": "Sí, definitivamente",
+      "rely": "Puedes confiar en ello",
+      "asISeeIt": "Como yo lo veo, sí",
+      "mostLikely": "Muy probable",
+      "outlookGood": "Perspectiva favorable",
+      "yes": "Sí",
+      "signsYes": "Las señales apuntan a sí",
+      "hazy": "Respuesta confusa, intenta de nuevo",
+      "askAgain": "Pregunta más tarde",
+      "betterNot": "Mejor no decirte ahora",
+      "cannotPredict": "No puedo predecir ahora",
+      "concentrate": "Concéntrate y pregunta de nuevo",
+      "dontCount": "No cuentes con ello",
+      "replyNo": "Mi respuesta es no",
+      "sourcesNo": "Mis fuentes dicen que no",
+      "outlookBad": "Perspectiva no muy buena",
+      "doubtful": "Muy dudoso"
+    }
+  }
+}

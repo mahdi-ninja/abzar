@@ -1,0 +1,17 @@
+{
+  "pomodoro": {
+    "phaseFocus": "专注",
+    "phaseShortBreak": "短休息",
+    "phaseLongBreak": "长休息",
+    "start": "开始",
+    "pause": "暂停",
+    "skip": "跳过",
+    "reset": "重置",
+    "sessionsCompleted": "已完成会话：{count}",
+    "settings": "设置",
+    "workMin": "工作（分钟）",
+    "shortBreak": "短休息",
+    "longBreak": "长休息",
+    "longBreakAfter": "长休息间隔"
+  }
+}

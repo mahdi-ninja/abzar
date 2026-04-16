@@ -1,0 +1,14 @@
+{
+  "chmodCalculator": {
+    "reset": "重置",
+    "read": "读取",
+    "write": "写入",
+    "execute": "执行",
+    "owner": "所有者",
+    "group": "组",
+    "other": "其他",
+    "octalLabel": "八进制",
+    "symbolicLabel": "符号",
+    "commandLabel": "命令"
+  }
+}

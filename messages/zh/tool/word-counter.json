@@ -1,0 +1,16 @@
+{
+  "wordCounter": {
+    "clear": "清除",
+    "placeholder": "在此输入或粘贴文本...",
+    "words": "单词",
+    "characters": "字符",
+    "noSpaces": "无空格",
+    "sentences": "句子",
+    "paragraphs": "段落",
+    "fleschKincaid": "Flesch-Kincaid",
+    "gunningFog": "Gunning Fog",
+    "readingTime": "阅读时间",
+    "speakingTime": "演讲时间",
+    "min": "{time} 分钟"
+  }
+}

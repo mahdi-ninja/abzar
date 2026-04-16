@@ -1,0 +1,30 @@
+{
+  "magic8Ball": {
+    "placeholder": "问一个是/否的问题...",
+    "shake": "摇晃",
+    "shaking": "摇晃中...",
+    "clear": "清除",
+    "answers": {
+      "certain": "这是确定的",
+      "decidedly": "毫无疑问是的",
+      "withoutDoubt": "毫无疑问",
+      "yesDefinitely": "是的，绝对是",
+      "rely": "你可以相信",
+      "asISeeIt": "据我所见，是的",
+      "mostLikely": "很有可能",
+      "outlookGood": "前景良好",
+      "yes": "是的",
+      "signsYes": "迹象指向是",
+      "hazy": "回答模糊，再试一次",
+      "askAgain": "稍后再问",
+      "betterNot": "最好不要告诉你",
+      "cannotPredict": "现在无法预测",
+      "concentrate": "集中精力再问一次",
+      "dontCount": "别指望了",
+      "replyNo": "我的回答是否",
+      "sourcesNo": "我的消息来源说不",
+      "outlookBad": "前景不太好",
+      "doubtful": "非常值得怀疑"
+    }
+  }
+}

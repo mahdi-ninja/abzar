@@ -1,0 +1,11 @@
+{
+  "gameOfLife": {
+    "pause": "暂停",
+    "play": "播放",
+    "step": "单步",
+    "random": "随机",
+    "clear": "清除",
+    "speed": "速度：{ms}ms",
+    "generation": "代：{gen} · 细胞：{cells}"
+  }
+}

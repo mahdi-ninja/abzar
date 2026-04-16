@@ -1,0 +1,12 @@
+{
+  "whitespaceCleaner": {
+    "clear": "Limpiar",
+    "trimTrailing": "Recortar espacios finales",
+    "normalizeEol": "Normalizar saltos de línea",
+    "removeBlankLines": "Eliminar líneas en blanco extra",
+    "removeInvisible": "Eliminar Unicode invisible",
+    "inputPlaceholder": "Pega texto con problemas de espacios...",
+    "cleanedLabel": "Limpio",
+    "modified": "(modificado)"
+  }
+}

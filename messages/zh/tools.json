@@ -1,0 +1,812 @@
+{
+  "tools": {
+    "word-counter": {
+      "name": "字数与字符计数器",
+      "description": "统计单词、字符、句子和段落，附带可读性评分"
+    },
+    "markdown-editor": {
+      "name": "Markdown 编辑器",
+      "description": "双栏编辑器，带 HTML 预览和导出功能"
+    },
+    "lorem-ipsum": {
+      "name": "Lorem Ipsum 生成器",
+      "description": "生成多种风格的占位文本（经典、时髦、企业风）"
+    },
+    "case-converter": {
+      "name": "大小写转换器",
+      "description": "在 camelCase、snake_case、PascalCase、Title Case、大写、小写、kebab-case 之间转换"
+    },
+    "text-diff": {
+      "name": "文本比较",
+      "description": "并排比较，高亮显示新增、删除和修改"
+    },
+    "regex-tester": {
+      "name": "正则表达式测试器",
+      "description": "实时高亮、捕获组和参考指南"
+    },
+    "morse-code": {
+      "name": "摩尔斯电码翻译器",
+      "description": "摩尔斯电码编码/解码，支持音频播放"
+    },
+    "word-frequency": {
+      "name": "词频分析器",
+      "description": "显示最常用的词——适合 SEO 和写作分析"
+    },
+    "text-similarity": {
+      "name": "文本相似度检查",
+      "description": "使用余弦相似度比较两段文本，检测重叠"
+    },
+    "name-generator": {
+      "name": "用户名生成器",
+      "description": "按风格、长度和主题筛选生成随机名称"
+    },
+    "text-to-speech": {
+      "name": "文本转语音",
+      "description": "使用浏览器不同语音和语速预览文本"
+    },
+    "transliteration": {
+      "name": "音译转换",
+      "description": "在不同书写系统之间转换——拉丁 ↔ 西里尔"
+    },
+    "slug-generator": {
+      "name": "Slug 生成器",
+      "description": "将任何标题转换为 URL 友好的 slug"
+    },
+    "string-escaper": {
+      "name": "字符串转义/反转义",
+      "description": "HTML、JSON、URL、XML、CSV 的转义和反转义"
+    },
+    "whitespace-cleaner": {
+      "name": "空白字符清理器",
+      "description": "删除末尾空格、统一换行符、移除不可见 Unicode"
+    },
+    "reverse-text": {
+      "name": "文本反转器",
+      "description": "按字符或单词反转、翻转或镜像文本"
+    },
+    "unicode-lookup": {
+      "name": "Unicode 字符查询",
+      "description": "搜索、浏览和复制 Unicode 符号、表情和特殊字符"
+    },
+    "zalgo-text": {
+      "name": "Zalgo 文本生成器",
+      "description": "添加组合字符产生装饰效果"
+    },
+    "json-formatter": {
+      "name": "JSON 格式化与验证器",
+      "description": "格式化、验证、压缩和树形查看 JSON"
+    },
+    "base64": {
+      "name": "Base64 编码/解码器",
+      "description": "将文本或文件编码/解码为 Base64"
+    },
+    "url-encoder": {
+      "name": "URL 编码/解码器",
+      "description": "URL 组件的百分号编码和解码"
+    },
+    "jwt-decoder": {
+      "name": "JWT 解码器",
+      "description": "粘贴 JWT，查看头部、载荷和过期时间"
+    },
+    "jwt-builder": {
+      "name": "JWT 构建器",
+      "description": "使用自定义密钥构建和签名 JWT"
+    },
+    "uuid-generator": {
+      "name": "UUID / ULID 生成器",
+      "description": "生成 UUID v4、ULID、nanoid——支持批量生成和复制"
+    },
+    "cron-builder": {
+      "name": "Cron 表达式构建器",
+      "description": "可视化 cron 调度构建器，附带可读说明和下次运行预览"
+    },
+    "html-entities": {
+      "name": "HTML 实体编码器",
+      "description": "HTML 实体的编码/解码——命名和数字形式"
+    },
+    "sql-formatter": {
+      "name": "SQL 格式化器",
+      "description": "美化和缩进 SQL 查询"
+    },
+    "flexbox-playground": {
+      "name": "CSS Flexbox 实验室",
+      "description": "调整每个 flex 属性，实时查看布局变化"
+    },
+    "grid-playground": {
+      "name": "CSS Grid 实验室",
+      "description": "可视化 grid 构建器——定义行、列、间距和放置"
+    },
+    "og-preview": {
+      "name": "Open Graph 预览",
+      "description": "粘贴 HTML 元标签，预览社交媒体卡片"
+    },
+    "breakpoint-tester": {
+      "name": "响应式断点测试",
+      "description": "在常见设备宽度下预览 URL"
+    },
+    "snippet-manager": {
+      "name": "代码片段管理器",
+      "description": "在浏览器中保存、标记和搜索代码片段"
+    },
+    "api-mocker": {
+      "name": "API 响应模拟器",
+      "description": "定义端点和模拟响应，用于前端开发"
+    },
+    "diff-viewer": {
+      "name": "Diff / Patch 查看器",
+      "description": "带语法高亮的差异可视化"
+    },
+    "timestamp-converter": {
+      "name": "时间戳转换器",
+      "description": "在 Unix epoch、ISO 8601、RFC 2822 和可读格式之间转换"
+    },
+    "yaml-json": {
+      "name": "YAML ↔ JSON 转换",
+      "description": "YAML 和 JSON 之间的转换"
+    },
+    "csv-json": {
+      "name": "CSV ↔ JSON 转换",
+      "description": "CSV 转 JSON 数组，反之亦然"
+    },
+    "xml-json": {
+      "name": "XML ↔ JSON 转换",
+      "description": "XML 和 JSON 的双向转换"
+    },
+    "toml-json": {
+      "name": "TOML ↔ JSON 转换",
+      "description": "解析和转换 TOML 配置文件"
+    },
+    "http-status-codes": {
+      "name": "HTTP 状态码参考",
+      "description": "可搜索的完整状态码参考"
+    },
+    "chmod-calculator": {
+      "name": "Chmod 计算器",
+      "description": "可视化计算 Unix 文件权限"
+    },
+    "user-agent-parser": {
+      "name": "User-Agent 解析器",
+      "description": "将 user-agent 字符串解析为浏览器、操作系统和设备详情"
+    },
+    "markdown-table": {
+      "name": "Markdown 表格生成器",
+      "description": "可视化表格编辑器，输出 Markdown 或 HTML"
+    },
+    "epoch-countdown": {
+      "name": "Epoch 倒计时",
+      "description": "实时 Unix 时间戳及转换"
+    },
+    "color-picker": {
+      "name": "取色器与颜色转换",
+      "description": "选取颜色并在 HEX、RGB、HSL、HSB、CMYK 之间转换"
+    },
+    "gradient-generator": {
+      "name": "CSS 渐变生成器",
+      "description": "创建线性、径向和锥形渐变，支持可视化色标"
+    },
+    "contrast-checker": {
+      "name": "对比度检查器",
+      "description": "根据 WCAG AA/AAA 标准检查颜色对比度"
+    },
+    "palette-generator": {
+      "name": "调色板生成器",
+      "description": "生成和谐配色——互补色、类似色、三色组"
+    },
+    "palette-extractor": {
+      "name": "调色板提取器",
+      "description": "上传图片并提取主色调"
+    },
+    "duotone-filter": {
+      "name": "双色调图片滤镜",
+      "description": "使用 Canvas API 应用双色调效果"
+    },
+    "font-pairing": {
+      "name": "字体配对预览",
+      "description": "浏览和预览 Google 字体组合"
+    },
+    "box-shadow": {
+      "name": "Box Shadow 生成器",
+      "description": "可视化 CSS 阴影构建器，支持多层"
+    },
+    "border-radius": {
+      "name": "Border Radius 预览",
+      "description": "拖拽角落创建复杂的 border-radius 值"
+    },
+    "animation-builder": {
+      "name": "CSS 动画构建器",
+      "description": "关键帧时间线编辑器，带缓动曲线和实时预览"
+    },
+    "glassmorphism": {
+      "name": "Glassmorphism 生成器",
+      "description": "创建毛玻璃效果并输出 CSS"
+    },
+    "neumorphism": {
+      "name": "Neumorphism 生成器",
+      "description": "设计带柔和阴影的软质 UI 元素"
+    },
+    "pattern-generator": {
+      "name": "图案与纹理生成器",
+      "description": "生成可重复的 CSS/SVG 图案"
+    },
+    "mockup-generator": {
+      "name": "设备模型生成器",
+      "description": "将截图嵌入设备框架"
+    },
+    "sprite-sheet": {
+      "name": "Sprite Sheet 生成器",
+      "description": "上传帧并拼接为 spritesheet"
+    },
+    "svg-optimizer": {
+      "name": "SVG 优化器",
+      "description": "粘贴 SVG 代码，预览并优化"
+    },
+    "favicon-generator": {
+      "name": "Favicon 生成器",
+      "description": "从文字、表情或图片生成所有尺寸的 favicon"
+    },
+    "tailwind-colors": {
+      "name": "Tailwind 颜色查询",
+      "description": "浏览和搜索完整的 Tailwind 调色板"
+    },
+    "type-scale": {
+      "name": "字体比例计算器",
+      "description": "根据基准字号和比例生成模块化字体比例"
+    },
+    "image-resizer": {
+      "name": "图片缩放与裁剪",
+      "description": "使用 Canvas API 缩放、裁剪和调整图片"
+    },
+    "image-compressor": {
+      "name": "图片压缩器",
+      "description": "可调质量减小文件大小"
+    },
+    "image-converter": {
+      "name": "图片格式转换",
+      "description": "在 PNG、JPEG、WebP、BMP 之间转换"
+    },
+    "image-to-base64": {
+      "name": "图片转 Base64",
+      "description": "将图片转换为 Base64 数据 URI"
+    },
+    "exif-viewer": {
+      "name": "EXIF 数据查看器",
+      "description": "查看照片嵌入的元数据"
+    },
+    "qr-generator": {
+      "name": "二维码生成器",
+      "description": "为 URL、文本、Wi-Fi、vCard 生成二维码"
+    },
+    "qr-reader": {
+      "name": "二维码扫描器",
+      "description": "从图片或摄像头扫描二维码"
+    },
+    "barcode-generator": {
+      "name": "条形码生成器",
+      "description": "创建 Code128、EAN、UPC 条形码"
+    },
+    "ascii-art": {
+      "name": "ASCII 艺术生成器",
+      "description": "将图片转换为 ASCII 艺术"
+    },
+    "pixel-art": {
+      "name": "像素画编辑器",
+      "description": "网格绘图工具，带调色板和导出功能"
+    },
+    "placeholder-image": {
+      "name": "占位图生成器",
+      "description": "生成纯色或渐变占位图"
+    },
+    "color-replacer": {
+      "name": "图片颜色替换",
+      "description": "使用 Canvas 替换图片中的特定颜色"
+    },
+    "collage-maker": {
+      "name": "照片拼贴制作器",
+      "description": "将多张图片排列成网格布局"
+    },
+    "watermark": {
+      "name": "水印工具",
+      "description": "为照片添加文字或图片水印"
+    },
+    "audio-trimmer": {
+      "name": "音频裁剪器",
+      "description": "使用 Web Audio API 在浏览器中裁剪音频片段"
+    },
+    "video-to-gif": {
+      "name": "视频转 GIF",
+      "description": "从视频提取帧生成动态 GIF"
+    },
+    "waveform-visualizer": {
+      "name": "波形可视化器",
+      "description": "上传音频并在 Canvas 上查看波形"
+    },
+    "screen-recorder": {
+      "name": "屏幕录制器",
+      "description": "使用 MediaRecorder API 录制屏幕/标签页"
+    },
+    "webcam-booth": {
+      "name": "摄像头拍照亭",
+      "description": "使用摄像头拍照并添加滤镜"
+    },
+    "unit-converter": {
+      "name": "单位转换器",
+      "description": "转换长度、重量、体积、温度、速度、面积、数据"
+    },
+    "percentage-calculator": {
+      "name": "百分比计算器",
+      "description": "计算百分比、百分比变化和比率"
+    },
+    "number-base-converter": {
+      "name": "进制转换器",
+      "description": "在十六进制、二进制、八进制和十进制之间转换"
+    },
+    "matrix-calculator": {
+      "name": "矩阵计算器",
+      "description": "加法、乘法、转置、逆矩阵和行列式"
+    },
+    "statistics-calculator": {
+      "name": "统计计算器",
+      "description": "均值、中位数、众数、标准差、方差和四分位数"
+    },
+    "scientific-calculator": {
+      "name": "科学计算器",
+      "description": "完整计算器，支持三角函数、对数、幂和历史记录"
+    },
+    "graphing-calculator": {
+      "name": "函数图形计算器",
+      "description": "在坐标平面上绘制数学函数"
+    },
+    "boolean-algebra": {
+      "name": "布尔代数化简器",
+      "description": "化简逻辑表达式并生成真值表"
+    },
+    "roman-numerals": {
+      "name": "罗马数字转换器",
+      "description": "罗马数字和阿拉伯数字之间的转换"
+    },
+    "number-to-words": {
+      "name": "数字转文字",
+      "description": "将数值转换为英文单词"
+    },
+    "bitwise-visualizer": {
+      "name": "位运算可视化器",
+      "description": "逐位可视化 AND、OR、XOR、NOT 和移位操作"
+    },
+    "probability-calculator": {
+      "name": "概率计算器",
+      "description": "排列、组合、骰子和扑克牌"
+    },
+    "aspect-ratio": {
+      "name": "宽高比计算器",
+      "description": "计算和转换宽高比"
+    },
+    "data-size-converter": {
+      "name": "数据大小转换器",
+      "description": "在字节、KB、MB、GB、TB 之间转换"
+    },
+    "random-generator": {
+      "name": "随机数生成器",
+      "description": "随机数、骰子、硬币和抽签"
+    },
+    "arbitrary-base-converter": {
+      "name": "任意进制转换器",
+      "description": "在任意进制（2 到 36）之间转换，附带步骤"
+    },
+    "compound-interest": {
+      "name": "复利计算器",
+      "description": "带图表的时间增长计算"
+    },
+    "mortgage-calculator": {
+      "name": "房贷计算器",
+      "description": "月供、摊销表和总利息"
+    },
+    "tip-calculator": {
+      "name": "小费计算器",
+      "description": "账单分摊，含小费和取整"
+    },
+    "currency-converter": {
+      "name": "货币转换器",
+      "description": "不同货币之间的转换"
+    },
+    "subscription-tracker": {
+      "name": "订阅追踪器",
+      "description": "列出订阅并查看总额"
+    },
+    "net-worth-tracker": {
+      "name": "净资产追踪器",
+      "description": "跟踪资产和负债的变化"
+    },
+    "budget-planner": {
+      "name": "50/30/20 预算规划器",
+      "description": "将收入分配到需求、愿望和储蓄"
+    },
+    "debt-calculator": {
+      "name": "还债计算器",
+      "description": "比较雪球法和雪崩法还债策略"
+    },
+    "tax-estimator": {
+      "name": "税务估算器（自由职业者）",
+      "description": "根据收入和扣除额估算税款"
+    },
+    "invoice-generator": {
+      "name": "发票生成器",
+      "description": "创建发票并导出 PDF"
+    },
+    "salary-converter": {
+      "name": "薪资 ↔ 时薪转换",
+      "description": "在年薪、月薪、周薪、日薪和时薪之间转换"
+    },
+    "roi-calculator": {
+      "name": "投资回报率计算器",
+      "description": "按期间计算投资回报率"
+    },
+    "break-even": {
+      "name": "盈亏平衡计算器",
+      "description": "找到盈亏平衡点"
+    },
+    "savings-goal": {
+      "name": "储蓄目标追踪器",
+      "description": "设定目标、记录存款、跟踪进度"
+    },
+    "position-size": {
+      "name": "仓位大小计算器",
+      "description": "根据风险确定仓位大小"
+    },
+    "markup-margin": {
+      "name": "加价与利润率计算器",
+      "description": "在成本、加价百分比和利润率之间转换"
+    },
+    "password-generator": {
+      "name": "密码生成器",
+      "description": "可自定义选项的强密码生成"
+    },
+    "password-strength": {
+      "name": "密码强度检查",
+      "description": "分析密码强度及破解时间"
+    },
+    "hash-generator": {
+      "name": "哈希生成器",
+      "description": "从文本或文件生成 SHA-1、SHA-256、SHA-512、MD5"
+    },
+    "checksum-verifier": {
+      "name": "文件校验和验证器",
+      "description": "拖放验证文件哈希"
+    },
+    "encrypted-notes": {
+      "name": "加密笔记",
+      "description": "使用 AES-GCM 加密的笔记本"
+    },
+    "encrypted-vault": {
+      "name": "加密保险箱",
+      "description": "客户端密码管理器"
+    },
+    "hmac-generator": {
+      "name": "HMAC 生成器",
+      "description": "生成 HMAC 签名"
+    },
+    "random-bytes": {
+      "name": "随机字节生成器",
+      "description": "密码学安全的随机字节"
+    },
+    "totp-generator": {
+      "name": "TOTP 代码生成器",
+      "description": "基于时间的一次性密码（RFC 6238）"
+    },
+    "metadata-stripper": {
+      "name": "隐私元数据清除器",
+      "description": "分享前移除图片 EXIF 数据"
+    },
+    "secure-share": {
+      "name": "安全文本分享加密器",
+      "description": "在 URL 片段中加密消息，客户端解密"
+    },
+    "pomodoro": {
+      "name": "番茄钟计时器",
+      "description": "可自定义间隔的专注计时器，附带会话追踪"
+    },
+    "stopwatch": {
+      "name": "秒表与计圈",
+      "description": "精确秒表，支持分圈记录"
+    },
+    "countdown": {
+      "name": "倒计时",
+      "description": "倒计时到指定日期"
+    },
+    "kanban": {
+      "name": "看板",
+      "description": "支持拖放的任务看板"
+    },
+    "todo-list": {
+      "name": "待办事项",
+      "description": "支持优先级和截止日期的任务管理"
+    },
+    "habit-tracker": {
+      "name": "习惯追踪器",
+      "description": "每日习惯，附带连续记录和热力图"
+    },
+    "notepad": {
+      "name": "自动保存记事本",
+      "description": "无干扰的书写环境"
+    },
+    "meeting-cost": {
+      "name": "会议成本计算器",
+      "description": "计算一次会议的实际成本"
+    },
+    "decision-matrix": {
+      "name": "决策矩阵",
+      "description": "根据加权标准对选项评分"
+    },
+    "eisenhower-matrix": {
+      "name": "艾森豪威尔矩阵",
+      "description": "将任务拖到紧急/重要象限"
+    },
+    "mind-map": {
+      "name": "思维导图构建器",
+      "description": "支持拖放的分支式思维导图"
+    },
+    "daily-planner": {
+      "name": "每日计划器",
+      "description": "时间块式日程安排"
+    },
+    "reading-time": {
+      "name": "阅读时间估算",
+      "description": "按不同阅读速度估算阅读时间"
+    },
+    "sticky-notes": {
+      "name": "便签墙",
+      "description": "可移动的便签"
+    },
+    "goal-tracker": {
+      "name": "目标追踪器",
+      "description": "带里程碑和进度条的目标管理"
+    },
+    "bmi-calculator": {
+      "name": "BMI 计算器",
+      "description": "身体质量指数，带可视化刻度"
+    },
+    "tdee-calculator": {
+      "name": "TDEE 与宏量营养素计算器",
+      "description": "每日热量需求和宏量营养素目标"
+    },
+    "water-tracker": {
+      "name": "饮水追踪器",
+      "description": "记录每日饮水量"
+    },
+    "sleep-calculator": {
+      "name": "睡眠周期计算器",
+      "description": "基于 90 分钟周期的最佳就寝时间"
+    },
+    "hiit-timer": {
+      "name": "HIIT / Tabata 计时器",
+      "description": "可自定义的间歇训练计时器，带声音提示"
+    },
+    "body-tracker": {
+      "name": "身体尺寸追踪器",
+      "description": "随时间记录身体尺寸并绘制图表"
+    },
+    "calorie-counter": {
+      "name": "卡路里计数器",
+      "description": "搜索卡路里并记录每日摄入"
+    },
+    "one-rep-max": {
+      "name": "最大单次重复计算器",
+      "description": "从次最大负荷估算 1RM"
+    },
+    "pace-calculator": {
+      "name": "跑步配速计算器",
+      "description": "转换速度、配速和完赛时间"
+    },
+    "breathing-timer": {
+      "name": "呼吸练习计时器",
+      "description": "带可视化和声音的引导呼吸"
+    },
+    "subnet-calculator": {
+      "name": "子网计算器",
+      "description": "从 IP + CIDR 计算网络、广播和主机范围"
+    },
+    "ip-converter": {
+      "name": "IPv4 ↔ IPv6 转换",
+      "description": "IPv4 和 IPv6 之间的转换"
+    },
+    "cidr-visualizer": {
+      "name": "CIDR 范围可视化器",
+      "description": "查看 CIDR 块中包含的 IP"
+    },
+    "bandwidth-calculator": {
+      "name": "带宽计算器",
+      "description": "按给定速度计算文件传输时间"
+    },
+    "dns-reference": {
+      "name": "DNS 记录参考",
+      "description": "DNS 记录类型的交互式参考"
+    },
+    "port-reference": {
+      "name": "端口号参考",
+      "description": "常用端口的可搜索数据库"
+    },
+    "mac-lookup": {
+      "name": "MAC 地址查询",
+      "description": "通过 OUI 前缀识别制造商"
+    },
+    "netmask-calculator": {
+      "name": "子网掩码计算器",
+      "description": "在点分十进制、CIDR 和通配符之间转换"
+    },
+    "typing-test": {
+      "name": "打字速度测试",
+      "description": "WPM 测试，附带准确率和难度级别"
+    },
+    "flashcards": {
+      "name": "闪卡应用",
+      "description": "本地保存的间隔重复（莱特纳系统）"
+    },
+    "mental-math": {
+      "name": "心算练习",
+      "description": "限时算术练习"
+    },
+    "periodic-table": {
+      "name": "元素周期表",
+      "description": "交互式元素周期表"
+    },
+    "geography-quiz": {
+      "name": "地理知识测验",
+      "description": "在世界地图上识别国家"
+    },
+    "interval-trainer": {
+      "name": "音程训练器",
+      "description": "听两个音符，猜测音程"
+    },
+    "vocabulary-builder": {
+      "name": "词汇构建器",
+      "description": "单词 + 翻译，配合间隔重复"
+    },
+    "times-tables": {
+      "name": "乘法表练习",
+      "description": "带视觉反馈的乘法练习"
+    },
+    "color-blind-sim": {
+      "name": "色盲模拟器",
+      "description": "模拟不同色觉缺陷下的图片效果"
+    },
+    "binary-teacher": {
+      "name": "二进制 / 十六进制教学",
+      "description": "交互式二进制 ↔ 十进制 ↔ 十六进制转换"
+    },
+    "algorithm-visualizer": {
+      "name": "算法可视化器",
+      "description": "逐步观察排序/搜索算法"
+    },
+    "drum-machine": {
+      "name": "鼓机 / 节拍器",
+      "description": "基于 Web Audio API 的音序器"
+    },
+    "generative-art": {
+      "name": "生成艺术工具",
+      "description": "创建参数化图案"
+    },
+    "meme-generator": {
+      "name": "表情包制作器",
+      "description": "上传图片并添加可移动文字"
+    },
+    "soundboard": {
+      "name": "音效板",
+      "description": "上传和播放音频片段"
+    },
+    "game-of-life": {
+      "name": "康威生命游戏",
+      "description": "细胞自动机"
+    },
+    "terrain-generator": {
+      "name": "程序化地形生成器",
+      "description": "使用噪声生成地形景观"
+    },
+    "drawing-canvas": {
+      "name": "绘画画布",
+      "description": "自由绘画，带画笔工具"
+    },
+    "magic-8-ball": {
+      "name": "魔法 8 号球",
+      "description": "带动画的随机回答"
+    },
+    "dice-roller": {
+      "name": "骰子投掷器（D&D）",
+      "description": "投掷多面骰子，附带历史记录"
+    },
+    "ambient-sounds": {
+      "name": "环境音生成器",
+      "description": "混合噪音和自然声音"
+    },
+    "css-art": {
+      "name": "CSS 艺术实验室",
+      "description": "纯 CSS 创作图像"
+    },
+    "emoji-search": {
+      "name": "表情搜索",
+      "description": "搜索表情并一键复制到剪贴板"
+    },
+    "palette-game": {
+      "name": "随机调色板游戏",
+      "description": "为随机调色板投票，训练色彩感觉"
+    },
+    "pdf-merger": {
+      "name": "PDF 合并",
+      "description": "将多个 PDF 合并为一个文件"
+    },
+    "pdf-splitter": {
+      "name": "PDF 拆分",
+      "description": "从 PDF 中提取指定页面"
+    },
+    "pdf-rotator": {
+      "name": "PDF 页面旋转",
+      "description": "旋转 PDF 中的页面"
+    },
+    "file-size-analyzer": {
+      "name": "文件大小分析器",
+      "description": "拖放查看文件大小明细"
+    },
+    "text-merger": {
+      "name": "文本文件合并",
+      "description": "合并多个文本/CSV 文件"
+    },
+    "markdown-to-html": {
+      "name": "Markdown → HTML 转换",
+      "description": "将 Markdown 转换为干净的 HTML"
+    },
+    "html-to-markdown": {
+      "name": "HTML → Markdown 转换",
+      "description": "将 HTML 转换为 Markdown"
+    },
+    "json-to-csv": {
+      "name": "JSON 导出为 CSV",
+      "description": "将 JSON 数组转换为 CSV"
+    },
+    "zip-creator": {
+      "name": "ZIP 文件创建器",
+      "description": "将文件打包为 .zip"
+    },
+    "file-renamer": {
+      "name": "批量文件重命名",
+      "description": "按模式批量重命名"
+    },
+    "text-cleaner": {
+      "name": "纯文本清理器",
+      "description": "修复编码、移除智能引号和规范化"
+    },
+    "timezone-converter": {
+      "name": "时区转换器",
+      "description": "在不同时区之间转换时间"
+    },
+    "date-difference": {
+      "name": "日期间隔计算器",
+      "description": "计算两个日期之间的天、周、月和年"
+    },
+    "date-add-subtract": {
+      "name": "日期加减",
+      "description": "在日期上加减时间"
+    },
+    "week-number": {
+      "name": "周数查询",
+      "description": "查询任意日期的 ISO 周数"
+    },
+    "age-calculator": {
+      "name": "年龄计算器",
+      "description": "精确到年、月、日的年龄"
+    },
+    "working-days": {
+      "name": "工作日计算器",
+      "description": "两个日期之间的工作日数"
+    },
+    "calendar-generator": {
+      "name": "日历生成器",
+      "description": "可打印的月历/年历"
+    },
+    "meeting-planner": {
+      "name": "跨时区会议规划器",
+      "description": "找到重叠的工作时间"
+    },
+    "relative-time": {
+      "name": "相对时间显示",
+      "description": "将日期显示为相对时间字符串"
+    }
+  }
+}

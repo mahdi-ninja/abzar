@@ -1,0 +1,19 @@
+{
+  "mortgageCalculator": {
+    "reset": "Restablecer",
+    "loanAmount": "Monto del préstamo ($)",
+    "interestRate": "Tasa de interés (%)",
+    "term": "Plazo (años)",
+    "monthlyPayment": "Pago mensual",
+    "totalPaid": "Total pagado",
+    "totalInterest": "Interés total",
+    "paymentBreakdown": "Desglose del pago",
+    "principal": "Capital: {pct}%",
+    "interest": "Interés: {pct}%",
+    "amortizationSchedule": "Tabla de amortización",
+    "thYear": "Año",
+    "thPrincipal": "Capital",
+    "thInterest": "Interés",
+    "thBalance": "Saldo"
+  }
+}

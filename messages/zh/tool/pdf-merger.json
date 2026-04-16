@@ -1,0 +1,14 @@
+{
+  "pdfMerger": {
+    "dropLabel": "拖放 PDF 文件到此处或点击浏览",
+    "filesSummary": "{count} 个文件 · 共 {pages} 页",
+    "pageCount": "{count, plural, other {# 页}}",
+    "merging": "合并中...",
+    "mergeButton": "合并 {count} 个 PDF",
+    "downloadMerged": "下载合并后的 PDF",
+    "clearAll": "全部清除",
+    "emptyState": "添加至少 2 个 PDF 文件以合并为一个。",
+    "loadError": "加载 {name} 失败。请确保它是有效的 PDF。",
+    "mergeError": "PDF 合并失败。"
+  }
+}

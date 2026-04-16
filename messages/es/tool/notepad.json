@@ -1,0 +1,16 @@
+{
+  "notepad": {
+    "newNote": "+ Nueva nota",
+    "untitled": "Sin título",
+    "emptyNote": "Nota vacía",
+    "deleteNote": "Eliminar nota",
+    "allNotes": "← Todas las notas",
+    "titlePlaceholder": "Título de la nota...",
+    "contentPlaceholder": "Empieza a escribir...",
+    "stats": "{words} palabras · {chars} caracteres",
+    "autoSaved": "Guardado automático",
+    "justNow": "ahora mismo",
+    "minutesAgo": "hace {count}m",
+    "hoursAgo": "hace {count}h"
+  }
+}

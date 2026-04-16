@@ -1,0 +1,12 @@
+{
+  "whitespaceCleaner": {
+    "clear": "清除",
+    "trimTrailing": "删除末尾空格",
+    "normalizeEol": "统一换行符",
+    "removeBlankLines": "删除多余空行",
+    "removeInvisible": "删除不可见 Unicode",
+    "inputPlaceholder": "粘贴有空白问题的文本...",
+    "cleanedLabel": "已清理",
+    "modified": "（已修改）"
+  }
+}

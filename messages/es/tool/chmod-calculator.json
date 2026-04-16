@@ -1,0 +1,14 @@
+{
+  "chmodCalculator": {
+    "reset": "Restablecer",
+    "read": "Lectura",
+    "write": "Escritura",
+    "execute": "Ejecución",
+    "owner": "Propietario",
+    "group": "Grupo",
+    "other": "Otros",
+    "octalLabel": "Octal",
+    "symbolicLabel": "Simbólico",
+    "commandLabel": "Comando"
+  }
+}

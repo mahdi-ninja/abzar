@@ -1,0 +1,31 @@
+{
+  "cronBuilder": {
+    "expression": "Expresión",
+    "minute": "Minuto",
+    "hour": "Hora",
+    "dayOfMonth": "Día del mes",
+    "month": "Mes",
+    "dayOfWeek": "Día de la semana",
+    "presets": "Preajustes",
+    "presetEveryMinute": "Cada minuto",
+    "presetEveryHour": "Cada hora",
+    "presetDailyMidnight": "Cada día a medianoche",
+    "presetMondayMorning": "Cada lunes a las 9am",
+    "presetEvery5Minutes": "Cada 5 minutos",
+    "presetMonthly": "1ro de cada mes",
+    "nextRuns": "Próximas 5 ejecuciones",
+    "descEveryMinute": "Cada minuto",
+    "descEveryNMinutes": "Cada {step} minutos",
+    "descAtMinute": "En el minuto {minute}",
+    "descEveryHour": "de cada hora",
+    "descEveryNHours": "cada {step} horas",
+    "descAtTime": "a las {time}",
+    "descEveryNDays": "cada {step} días",
+    "descOnDay": "el día {day}",
+    "descInMonth": "en {month}",
+    "descOnWeekday": "el {weekday}",
+    "descOnWeekdays": "los {weekdays}",
+    "descWeekdayRange": "{from}–{to}",
+    "descInvalid": "Expresión inválida"
+  }
+}

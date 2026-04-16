@@ -1,0 +1,18 @@
+{
+  "categories": {
+    "text": { "name": "文本与语言", "description": "转换、分析和生成文本" },
+    "developer": { "name": "开发者工具", "description": "格式化、编码、解码和调试" },
+    "design": { "name": "颜色与设计", "description": "取色、调色板生成和 CSS 构建" },
+    "image": { "name": "图片与媒体", "description": "调整大小、转换、编辑和生成媒体" },
+    "math": { "name": "数学与数据", "description": "计算、转换和可视化数字" },
+    "finance": { "name": "财务与商业", "description": "预算、贷款、发票和追踪器" },
+    "security": { "name": "安全与隐私", "description": "生成密码、哈希数据和加密笔记" },
+    "productivity": { "name": "生产力", "description": "计时器、看板、规划和追踪" },
+    "health": { "name": "健康与健身", "description": "健康计算器和追踪器" },
+    "networking": { "name": "网络与系统管理", "description": "子网、带宽、端口和 DNS" },
+    "education": { "name": "教育与学习", "description": "测验、闪卡和互动学习" },
+    "fun": { "name": "趣味与创意", "description": "音乐、艺术、游戏和创意工具" },
+    "files": { "name": "文件工具", "description": "合并、拆分、转换和清理文件" },
+    "datetime": { "name": "日期与时间", "description": "时区、倒计时和日期计算" }
+  }
+}

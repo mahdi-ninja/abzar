@@ -1,0 +1,16 @@
+{
+  "notepad": {
+    "newNote": "+ 新笔记",
+    "untitled": "无标题",
+    "emptyNote": "空笔记",
+    "deleteNote": "删除笔记",
+    "allNotes": "← 所有笔记",
+    "titlePlaceholder": "笔记标题...",
+    "contentPlaceholder": "开始写作...",
+    "stats": "{words} 个词 · {chars} 个字符",
+    "autoSaved": "已自动保存",
+    "justNow": "刚刚",
+    "minutesAgo": "{count} 分钟前",
+    "hoursAgo": "{count} 小时前"
+  }
+}

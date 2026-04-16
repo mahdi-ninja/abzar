@@ -1,0 +1,12 @@
+{
+  "hashGenerator": {
+    "text": "文本",
+    "file": "文件",
+    "clear": "清除",
+    "inputPlaceholder": "输入或粘贴要哈希的文本...",
+    "dropFileLabel": "拖放文件到此处进行哈希",
+    "selectedFile": "已选择：{fileName}",
+    "computing": "正在计算哈希...",
+    "emptyHint": "输入文本或拖放文件以生成哈希。"
+  }
+}

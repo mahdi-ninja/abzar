@@ -1,0 +1,26 @@
+{
+  "paletteGame": {
+    "difficulty": "难度",
+    "startGame": "开始游戏",
+    "howToPlay": "游戏规则",
+    "rule1": "目标调色板显示在顶部（从暗到亮排列）",
+    "rule2": "重新排列下方打乱的色块以匹配顺序",
+    "rule3": "拖动色块交换位置",
+    "rule4": "准备好后提交查看得分",
+    "bestScores": "最高分：{scores}",
+    "targetOrder": "目标顺序（暗 → 亮）",
+    "yourOrder": "你的顺序——拖动重新排列",
+    "submit": "提交",
+    "newGame": "新游戏",
+    "playAgain": "再玩一次",
+    "retrySame": "重试相同",
+    "perfect": "完美！🎉",
+    "great": "太好了！",
+    "good": "不错",
+    "keepTrying": "继续努力",
+    "tryAgain": "再试一次",
+    "diffEasy": "简单 (3)",
+    "diffMedium": "中等 (5)",
+    "diffHard": "困难 (8)"
+  }
+}

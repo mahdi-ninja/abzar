@@ -1,0 +1,59 @@
+{
+  "nav": {
+    "searchPlaceholder": "Buscar herramientas...",
+    "noResults": "No se encontraron herramientas.",
+    "installApp": "Instalar Abzar",
+    "offline": "Sin conexión",
+    "expandSidebar": "Expandir barra lateral",
+    "collapseSidebar": "Contraer barra lateral",
+    "openNavigation": "Abrir navegación",
+    "navigation": "Navegación",
+    "comingSoon": "Próximamente",
+    "toolsHeading": "Herramientas"
+  },
+  "localeSwitcher": {
+    "label": "Idioma",
+    "en": "English",
+    "fa": "فارسی",
+    "zh": "中文",
+    "es": "Español"
+  },
+  "breadcrumbs": {
+    "home": "Inicio"
+  },
+  "notFound": {
+    "message": "Página no encontrada",
+    "goHome": "Ir al inicio"
+  },
+  "toolPage": {
+    "comingSoonTitle": "Próximamente",
+    "comingSoonDesc": "Esta herramienta está en desarrollo.",
+    "aboutHeading": "Acerca de esta herramienta",
+    "howToHeading": "Cómo usar",
+    "relatedHeading": "Herramientas relacionadas"
+  },
+  "categoryPage": {
+    "comingSoon": "Próximamente",
+    "toolsSuffix": "Herramientas",
+    "betaBadge": "Beta",
+    "newBadge": "Nuevo"
+  },
+  "ui": {
+    "copy": "Copiar",
+    "copied": "Copiado",
+    "copiedToClipboard": "¡Copiado al portapapeles!",
+    "copyFailed": "Error al copiar",
+    "download": "Descargar",
+    "dropFiles": "Arrastra archivos aquí o haz clic para explorar",
+    "maxFileSize": "Máximo {size}MB",
+    "input": "Entrada",
+    "output": "Salida"
+  },
+  "site": {
+    "name": "Abzar",
+    "tagline": "Más de 200 herramientas gratuitas para el navegador",
+    "subtitle": "Sin registro. Sin servidor. Todo funciona en tu navegador.",
+    "description": "Más de 200 herramientas gratuitas en el navegador. Sin registro, sin servidor, todo funciona en tu navegador.",
+    "titleSuffix": "Herramienta en línea gratuita"
+  }
+}

@@ -4,6 +4,8 @@ import { siteConfig } from "./config";
 const browserRequirements: Record<string, string> = {
   en: "Requires JavaScript. Works in Chrome, Firefox, Safari, Edge.",
   fa: "نیاز به جاوااسکریپت دارد. در Chrome، Firefox، Safari و Edge کار می‌کند.",
+  zh: "需要 JavaScript。支持 Chrome、Firefox、Safari、Edge。",
+  es: "Requiere JavaScript. Funciona en Chrome, Firefox, Safari, Edge.",
 };
 
 export function generateToolJsonLd(

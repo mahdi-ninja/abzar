@@ -1,0 +1,14 @@
+{
+  "pdfMerger": {
+    "dropLabel": "Arrastra archivos PDF aquí o haz clic para explorar",
+    "filesSummary": "{count} archivos · {pages} páginas en total",
+    "pageCount": "{count, plural, one {# página} other {# páginas}}",
+    "merging": "Combinando...",
+    "mergeButton": "Combinar {count} PDFs",
+    "downloadMerged": "Descargar PDF combinado",
+    "clearAll": "Limpiar todo",
+    "emptyState": "Agrega al menos 2 archivos PDF para combinarlos en uno.",
+    "loadError": "Error al cargar {name}. Asegúrate de que sea un PDF válido.",
+    "mergeError": "Error al combinar los PDFs."
+  }
+}

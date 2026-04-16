@@ -1,0 +1,14 @@
+{
+  "randomGenerator": {
+    "tabNumber": "Número",
+    "tabCoin": "Lanzar moneda",
+    "tabDice": "Dado",
+    "min": "Mín",
+    "max": "Máx",
+    "count": "Cantidad",
+    "generate": "Generar",
+    "clear": "Limpiar",
+    "heads": "Cara",
+    "tails": "Cruz"
+  }
+}

@@ -2,12 +2,16 @@ import Fuse from "fuse.js";
 import { getAllTools, type Tool } from "./tools-registry";
 import enTools from "@/messages/en/tools.json";
 import faTools from "@/messages/fa/tools.json";
+import zhTools from "@/messages/zh/tools.json";
+import esTools from "@/messages/es/tools.json";
 
 type ToolMessages = Record<string, { name: string; description: string }>;
 
 const toolMessages: Record<string, ToolMessages> = {
   en: (enTools as { tools: ToolMessages }).tools,
   fa: (faTools as { tools: ToolMessages }).tools,
+  zh: (zhTools as { tools: ToolMessages }).tools,
+  es: (esTools as { tools: ToolMessages }).tools,
 };
 
 type IndexedTool = Tool & { localName: string; localDesc: string };

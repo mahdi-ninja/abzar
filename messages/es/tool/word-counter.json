@@ -1,0 +1,16 @@
+{
+  "wordCounter": {
+    "clear": "Limpiar",
+    "placeholder": "Escribe o pega tu texto aquí...",
+    "words": "Palabras",
+    "characters": "Caracteres",
+    "noSpaces": "Sin espacios",
+    "sentences": "Oraciones",
+    "paragraphs": "Párrafos",
+    "fleschKincaid": "Flesch-Kincaid",
+    "gunningFog": "Gunning Fog",
+    "readingTime": "Tiempo de lectura",
+    "speakingTime": "Tiempo de habla",
+    "min": "{time} min"
+  }
+}

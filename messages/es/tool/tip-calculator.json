@@ -1,0 +1,12 @@
+{
+  "tipCalculator": {
+    "reset": "Restablecer",
+    "billAmount": "Monto de la cuenta ($)",
+    "tipLabel": "Propina: {pct}%",
+    "splitBetween": "Dividir entre",
+    "tip": "Propina",
+    "total": "Total",
+    "perPerson": "Por persona",
+    "tipPerPerson": "Propina/persona"
+  }
+}

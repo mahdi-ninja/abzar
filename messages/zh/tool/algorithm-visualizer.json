@@ -1,0 +1,18 @@
+{
+  "algorithmVisualizer": {
+    "algorithm": "算法",
+    "bubbleSort": "冒泡排序",
+    "selectionSort": "选择排序",
+    "insertionSort": "插入排序",
+    "quickSort": "快速排序",
+    "mergeSort": "归并排序",
+    "size": "大小：{size}",
+    "speed": "速度：{ms}ms",
+    "sort": "排序",
+    "newArray": "新数组",
+    "default": "默认",
+    "comparing": "比较中",
+    "swapping": "交换中",
+    "sorted": "已排序"
+  }
+}

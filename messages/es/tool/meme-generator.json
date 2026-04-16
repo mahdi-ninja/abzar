@@ -1,0 +1,11 @@
+{
+  "memeGenerator": {
+    "dropLabel": "Arrastra una imagen o haz clic para subir",
+    "topText": "Texto superior",
+    "bottomText": "Texto inferior",
+    "fontSizeLabel": "Tamaño de fuente: {value}px",
+    "textColor": "Color del texto",
+    "changeImage": "Cambiar imagen",
+    "downloadPng": "Descargar PNG"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "habitTracker": {
+    "add": "添加",
+    "placeholder": "新习惯名称...",
+    "emptyState": "添加一个习惯开始追踪。",
+    "thisWeek": "本周",
+    "habit": "习惯",
+    "streak": "连续",
+    "removeHabit": "删除习惯",
+    "heatmapTitle": "90 天热力图 — {name}",
+    "heatmapTooltip": "{day}：{count} 个习惯",
+    "less": "少",
+    "more": "多"
+  }
+}

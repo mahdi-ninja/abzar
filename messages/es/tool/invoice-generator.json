@@ -1,0 +1,24 @@
+{
+  "invoiceGenerator": {
+    "businessName": "Nombre de tu negocio",
+    "businessPlaceholder": "Tu negocio",
+    "clientName": "Nombre del cliente",
+    "clientPlaceholder": "Nombre del cliente",
+    "invoiceNumber": "Factura #",
+    "date": "Fecha",
+    "lineItems": "Líneas de detalle",
+    "descriptionPlaceholder": "Descripción",
+    "addItem": "+ Agregar elemento",
+    "subtotal": "Subtotal",
+    "taxPercent": "Impuesto (%)",
+    "tax": "Impuesto",
+    "total": "Total",
+    "export": "Exportar",
+    "generating": "Generando...",
+    "pdf": "PDF",
+    "markdown": "Markdown",
+    "html": "HTML",
+    "plainText": "Texto plano",
+    "csv": "CSV"
+  }
+}

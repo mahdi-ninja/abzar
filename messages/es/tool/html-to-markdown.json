@@ -1,0 +1,12 @@
+{
+  "htmlToMarkdown": {
+    "richPasteDetected": "Texto enriquecido detectado — HTML extraído del portapapeles y convertido automáticamente.",
+    "inputLabel": "Entrada HTML",
+    "outputLabel": "Salida Markdown",
+    "inputPlaceholder": "Pega texto enriquecido de Word / Google Docs / navegador, o escribe HTML directamente…",
+    "outputPlaceholder": "El Markdown aparecerá aquí…",
+    "convert": "Convertir",
+    "loadExample": "Cargar ejemplo",
+    "clear": "Limpiar"
+  }
+}

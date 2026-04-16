@@ -1,0 +1,20 @@
+{
+  "cssArt": {
+    "algorithm": "算法",
+    "sizeLabel": "大小：{value}px",
+    "complexityLabel": "复杂度：{value}",
+    "copyCss": "复制 CSS",
+    "download": "下载",
+    "color1": "颜色 1",
+    "color2": "颜色 2",
+    "preview": "预览",
+    "algoDots": "圆点",
+    "algoStripes": "条纹",
+    "algoCheckerboard": "棋盘格",
+    "algoGradientBlob": "渐变色块",
+    "algoConcentric": "同心圆",
+    "algoWave": "波浪",
+    "copySuccess": "已复制到剪贴板！",
+    "copyFailed": "复制失败"
+  }
+}

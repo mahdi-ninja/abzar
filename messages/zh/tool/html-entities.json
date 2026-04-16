@@ -1,0 +1,10 @@
+{
+  "htmlEntities": {
+    "numericMode": "数字实体 (&#123;)",
+    "namedMode": "命名实体 (&amp;)",
+    "inputPlaceholder": "HTML 文本...",
+    "encode": "编码",
+    "decode": "解码",
+    "clear": "清除"
+  }
+}

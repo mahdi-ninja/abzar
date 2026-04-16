@@ -1,0 +1,13 @@
+{
+  "gradientGenerator": {
+    "type": "Tipo",
+    "linear": "Lineal",
+    "radial": "Radial",
+    "conic": "Cónico",
+    "angle": "Ángulo: {angle}°",
+    "colorStops": "Paradas de color",
+    "reset": "Restablecer",
+    "addStop": "Agregar parada",
+    "css": "CSS"
+  }
+}

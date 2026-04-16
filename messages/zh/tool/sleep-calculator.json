@@ -1,0 +1,14 @@
+{
+  "sleepCalculator": {
+    "wakeTab": "我想在...醒来",
+    "sleepTab": "我想在...入睡",
+    "wakeUpTime": "起床时间",
+    "bedtime": "就寝时间",
+    "reset": "重置",
+    "goToBedAt": "建议就寝时间：",
+    "setAlarmFor": "设置闹钟：",
+    "cyclesHours": "{cycles} 个周期 · {hours} 小时",
+    "recommended": "推荐",
+    "disclaimer": "基于 90 分钟睡眠周期 + 15 分钟入睡时间。"
+  }
+}

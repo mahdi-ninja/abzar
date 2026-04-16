@@ -1,0 +1,8 @@
+{
+  "loremIpsum": {
+    "classic": "Clásico",
+    "hipster": "Hipster",
+    "corporate": "Corporativo",
+    "paragraphsLabel": "Párrafos: {count}"
+  }
+}

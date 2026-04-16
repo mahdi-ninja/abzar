@@ -1,0 +1,16 @@
+{
+  "subnetCalculator": {
+    "ipAddress": "Dirección IP",
+    "cidr": "CIDR",
+    "reset": "Restablecer",
+    "invalidIpOrCidr": "Dirección IP o CIDR inválida.",
+    "networkAddress": "Dirección de red",
+    "broadcastAddress": "Dirección de broadcast",
+    "subnetMask": "Máscara de subred",
+    "wildcardMask": "Máscara comodín",
+    "firstUsableHost": "Primer host utilizable",
+    "lastUsableHost": "Último host utilizable",
+    "totalUsableHosts": "Total de hosts utilizables",
+    "cidrNotation": "Notación CIDR"
+  }
+}

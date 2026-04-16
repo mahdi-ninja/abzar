@@ -1,0 +1,13 @@
+{
+  "uuidGenerator": {
+    "type": "类型",
+    "quantity": "数量",
+    "generate": "生成",
+    "generated": "已生成 {count} 个 ID",
+    "copyAll": "全部复制",
+    "uuidv4Desc": "UUID v4：128 位随机标识符（RFC 9562）。使用 crypto.randomUUID()。",
+    "uuidv7Desc": "UUID v7：按时间排序的 UUID（RFC 9562）。48 位 Unix 时间戳（毫秒）+ 随机数。可按创建时间排序。",
+    "ulidDesc": "ULID：通用唯一字典序可排序标识符。48 位时间戳 + 80 位随机数。",
+    "nanoidDesc": "nanoid：紧凑的 URL 友好唯一 ID。21 个字符，约 126 位熵。"
+  }
+}

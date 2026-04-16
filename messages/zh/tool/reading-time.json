@@ -1,0 +1,12 @@
+{
+  "readingTime": {
+    "words": "{count} 个词",
+    "clear": "清除",
+    "placeholder": "在此粘贴文本以估算阅读时间...",
+    "min": "{count} 分钟",
+    "slow": "慢速 (150 WPM)",
+    "average": "中速 (250 WPM)",
+    "fast": "快速 (400 WPM)",
+    "speaking": "演讲 (150 WPM)"
+  }
+}

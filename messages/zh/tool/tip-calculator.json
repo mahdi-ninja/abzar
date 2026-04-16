@@ -1,0 +1,12 @@
+{
+  "tipCalculator": {
+    "reset": "重置",
+    "billAmount": "账单金额 ($)",
+    "tipLabel": "小费：{pct}%",
+    "splitBetween": "分摊人数",
+    "tip": "小费",
+    "total": "总计",
+    "perPerson": "每人",
+    "tipPerPerson": "每人小费"
+  }
+}

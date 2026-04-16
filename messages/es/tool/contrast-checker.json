@@ -1,0 +1,17 @@
+{
+  "contrastChecker": {
+    "reset": "Restablecer",
+    "foreground": "Primer plano (texto)",
+    "background": "Fondo",
+    "swapColors": "Intercambiar colores",
+    "largeTextPreview": "Vista previa de texto grande (24px negrita)",
+    "normalTextPreview": "Vista previa de texto normal (16px). El veloz murciélago hindú comía feliz cardillo y kiwi.",
+    "smallTextPreview": "Vista previa de texto pequeño (14px). WCAG requiere mayor contraste para texto más pequeño.",
+    "contrastRatio": "Relación de contraste",
+    "level": "Nivel",
+    "normalText": "Texto normal",
+    "largeText": "Texto grande",
+    "pass": "Pasa",
+    "fail": "Falla"
+  }
+}

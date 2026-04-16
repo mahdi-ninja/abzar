@@ -1,0 +1,18 @@
+{
+  "categories": {
+    "text": { "name": "Texto e idioma", "description": "Convertir, analizar y generar texto" },
+    "developer": { "name": "Herramientas de desarrollo", "description": "Formatear, codificar, decodificar y depurar" },
+    "design": { "name": "Color y diseño", "description": "Selector de color, generador de paletas y constructor CSS" },
+    "image": { "name": "Imagen y medios", "description": "Redimensionar, convertir, editar y generar medios" },
+    "math": { "name": "Matemáticas y datos", "description": "Calcular, convertir y visualizar números" },
+    "finance": { "name": "Finanzas y negocios", "description": "Presupuesto, préstamos, facturas y rastreadores" },
+    "security": { "name": "Seguridad y privacidad", "description": "Generar contraseñas, hashear datos y cifrar notas" },
+    "productivity": { "name": "Productividad", "description": "Temporizadores, tableros, planificación y seguimiento" },
+    "health": { "name": "Salud y fitness", "description": "Calculadoras y rastreadores de salud" },
+    "networking": { "name": "Redes y administración", "description": "Subredes, ancho de banda, puertos y DNS" },
+    "education": { "name": "Educación y aprendizaje", "description": "Cuestionarios, tarjetas y aprendizaje interactivo" },
+    "fun": { "name": "Diversión y creatividad", "description": "Música, arte, juegos y herramientas creativas" },
+    "files": { "name": "Herramientas de archivos", "description": "Combinar, dividir, convertir y limpiar archivos" },
+    "datetime": { "name": "Fecha y hora", "description": "Zonas horarias, cuentas regresivas y cálculos de fechas" }
+  }
+}

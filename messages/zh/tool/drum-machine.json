@@ -1,0 +1,12 @@
+{
+  "drumMachine": {
+    "play": "播放",
+    "stop": "停止",
+    "bpm": "BPM：{bpm}",
+    "clear": "清除",
+    "toggleStep": "切换 {instrument} 步骤 {step}",
+    "exportBars": "导出小节：",
+    "rendering": "渲染中…",
+    "downloadWav": "↓ WAV"
+  }
+}

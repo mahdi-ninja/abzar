@@ -1,0 +1,9 @@
+{
+  "dataSizeConverter": {
+    "valueLabel": "Valor",
+    "unitLabel": "Unidad",
+    "binaryLabel": "Binario (1024)",
+    "decimalLabel": "Decimal (1000)",
+    "reset": "Restablecer"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "gradientGenerator": {
+    "type": "类型",
+    "linear": "线性",
+    "radial": "径向",
+    "conic": "锥形",
+    "angle": "角度：{angle}°",
+    "colorStops": "色标",
+    "reset": "重置",
+    "addStop": "添加色标",
+    "css": "CSS"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "bmiCalculator": {
+    "imperial": "英制 (磅/英寸)",
+    "metric": "公制 (千克/厘米)",
+    "reset": "重置",
+    "weightLbs": "体重（磅）",
+    "weightKg": "体重（千克）",
+    "heightInches": "身高（英寸）",
+    "heightCm": "身高（厘米）",
+    "underweight": "偏瘦",
+    "normal": "正常",
+    "overweight": "超重",
+    "obese": "肥胖"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "countdown": {
+    "eventName": "事件名称",
+    "targetDate": "目标日期",
+    "eventPassed": "事件已过！",
+    "days": "天",
+    "hours": "小时",
+    "minutes": "分钟",
+    "seconds": "秒"
+  }
+}

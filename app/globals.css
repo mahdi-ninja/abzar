@@ -142,3 +142,8 @@
   --font-serif: var(--font-serif-fa);
   --font-mono: "Vazir Code", var(--font-mono);
 }
+
+/* Chinese font overrides — applied when <html lang="zh"> */
+[lang="zh"] {
+  --font-sans: var(--font-sans-zh), "PingFang SC", "Microsoft YaHei", sans-serif;
+}

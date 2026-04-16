@@ -1,0 +1,10 @@
+{
+  "reverseText": {
+    "reverseCharacters": "反转字符",
+    "reverseWords": "反转单词",
+    "reverseLines": "反转行",
+    "flipUpsideDown": "上下翻转",
+    "clear": "清除",
+    "inputPlaceholder": "在此输入文本..."
+  }
+}

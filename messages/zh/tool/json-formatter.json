@@ -1,0 +1,13 @@
+{
+  "jsonFormatter": {
+    "format": "格式化",
+    "minify": "压缩",
+    "validate": "验证",
+    "clear": "清除",
+    "inputPlaceholder": "在此粘贴 JSON... 例如 '{\"key\": \"value\"}'",
+    "outputPlaceholder": "格式化结果将在此显示",
+    "validJson": "有效的 JSON！",
+    "text": "文本",
+    "tree": "树形"
+  }
+}

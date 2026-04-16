@@ -1,0 +1,9 @@
+{
+  "soundboard": {
+    "volumeLabel": "Volumen: {value}%",
+    "stopAll": "Detener todo",
+    "dropLabel": "Arrastra archivos de audio (MP3, WAV, OGG) o haz clic para subir",
+    "emptyHint": "Sube archivos de audio arriba, luego haz clic en cada botón para reproducir.",
+    "removeAriaLabel": "Eliminar {name}"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "salaryConverter": {
+    "reset": "Restablecer",
+    "annualSalary": "Salario anual ($)",
+    "hoursPerWeek": "Horas/semana",
+    "weeksPerYear": "Semanas/año",
+    "hourly": "Por hora",
+    "daily": "Diario (8h)",
+    "weekly": "Semanal",
+    "biweekly": "Quincenal",
+    "monthly": "Mensual",
+    "annual": "Anual"
+  }
+}

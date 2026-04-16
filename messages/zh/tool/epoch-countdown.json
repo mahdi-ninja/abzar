@@ -1,0 +1,11 @@
+{
+  "epochCountdown": {
+    "currentTimestamp": "当前 Unix 时间戳",
+    "convertLabel": "转换 epoch 或日期",
+    "inputPlaceholder": "例如 1700000000 或 2024-01-15",
+    "epochSeconds": "Epoch（秒）：{value}",
+    "epochMs": "Epoch（毫秒）：{value}",
+    "iso": "ISO：{value}",
+    "local": "本地时间：{value}"
+  }
+}

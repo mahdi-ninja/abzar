@@ -1,0 +1,24 @@
+{
+  "imageResizer": {
+    "dropLabel": "Arrastra una imagen aquí para comenzar",
+    "resize": "Redimensionar",
+    "crop": "Recortar",
+    "widthPx": "Ancho (px)",
+    "heightPx": "Alto (px)",
+    "lockAspectRatio": "Bloquear relación de aspecto",
+    "original": "Original ({w}x{h})",
+    "resized": "Redimensionado ({w}x{h})",
+    "resizedWithSize": "Redimensionado ({w}x{h}) — {size}KB",
+    "applyCrop": "Aplicar recorte",
+    "cropInstruction": "Dibuja una selección, luego arrastra para mover o tira de las asas para redimensionar.",
+    "selectCropArea": "Seleccionar área de recorte",
+    "croppedResult": "Resultado recortado",
+    "croppedResultWithSize": "Resultado recortado ({w}x{h}) — {size}KB",
+    "download": "Descargar",
+    "clear": "Limpiar",
+    "x": "X",
+    "y": "Y",
+    "width": "Ancho",
+    "height": "Alto"
+  }
+}

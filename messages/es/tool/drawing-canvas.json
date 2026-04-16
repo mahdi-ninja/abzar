@@ -1,0 +1,11 @@
+{
+  "drawingCanvas": {
+    "brush": "pincel",
+    "eraser": "borrador",
+    "sizeLabel": "Tamaño: {value}px",
+    "undo": "Deshacer",
+    "clear": "Limpiar",
+    "downloadPng": "Descargar PNG",
+    "customColor": "Color personalizado"
+  }
+}

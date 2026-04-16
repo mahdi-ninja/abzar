@@ -7,6 +7,7 @@ import {
   Source_Code_Pro,
   Vazirmatn,
   Noto_Naskh_Arabic,
+  Noto_Sans_SC,
 } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -41,7 +42,25 @@ const notoNaskhArabic = Noto_Naskh_Arabic({
   subsets: ["arabic"],
 });
 
+// Chinese font (applied via CSS only when locale is zh)
+const notoSansSC = Noto_Sans_SC({
+  variable: "--font-sans-zh",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
+
 const rtlLocales = ["fa", "ar", "he"];
+
+function getFontVars(locale: string) {
+  switch (locale) {
+    case "fa":
+      return `${vazirmatn.variable} ${notoNaskhArabic.variable} ${sourceCodePro.variable}`;
+    case "zh":
+      return `${notoSansSC.variable} ${sourceSerif.variable} ${sourceCodePro.variable}`;
+    default:
+      return `${spaceGrotesk.variable} ${sourceSerif.variable} ${sourceCodePro.variable}`;
+  }
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -93,10 +112,7 @@ export default async function RootLayout({
 
   const messages = await getMessages();
   const dir = rtlLocales.includes(locale) ? "rtl" : "ltr";
-  const fontVars =
-    locale === "fa"
-      ? `${vazirmatn.variable} ${notoNaskhArabic.variable} ${sourceCodePro.variable}`
-      : `${spaceGrotesk.variable} ${sourceSerif.variable} ${sourceCodePro.variable}`;
+  const fontVars = getFontVars(locale);
 
   return (
     <html

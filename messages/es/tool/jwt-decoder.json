@@ -1,0 +1,21 @@
+{
+  "jwtDecoder": {
+    "jwtToken": "Token JWT",
+    "clear": "Limpiar",
+    "placeholder": "Pega tu JWT aquí (eyJhbGci...)",
+    "errorInvalid3Parts": "JWT inválido: se esperan 3 partes separadas por puntos",
+    "errorInvalidJson": "JWT inválido: no se pudo analizar el encabezado o payload como JSON",
+    "errorBase64Failed": "JWT inválido: la decodificación base64 falló",
+    "header": "Encabezado",
+    "payload": "Payload",
+    "signature": "Firma",
+    "timestamps": "Marcas de tiempo",
+    "issuedAt": "Emitido el",
+    "expires": "Expira",
+    "notBefore": "No antes de",
+    "expired": "Expirado",
+    "expiresInMinutes": "Expira en {minutes}m",
+    "expiresInHours": "Expira en {hours}h",
+    "emptyState": "Pega un token JWT para decodificar su encabezado, payload y verificar la expiración."
+  }
+}

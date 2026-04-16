@@ -1,0 +1,19 @@
+{
+  "base64": {
+    "text": "Texto",
+    "file": "Archivo",
+    "encode": "Codificar",
+    "decode": "Decodificar",
+    "clear": "Limpiar",
+    "encodePlaceholder": "Escribe texto para codificar...",
+    "decodePlaceholder": "Pega Base64 para decodificar...",
+    "dropFileLabel": "Arrastra un archivo aquí para codificar",
+    "selectedFile": "Seleccionado: {fileName}",
+    "resultPlaceholder": "El resultado aparecerá aquí",
+    "characters": "{count} caracteres",
+    "invalidBase64": "Cadena Base64 inválida",
+    "encodeFailed": "Error al codificar texto",
+    "readFailed": "Error al leer archivo",
+    "fileInfo": "[Archivo: {name} — {size}KB]"
+  }
+}

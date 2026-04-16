@@ -1,0 +1,812 @@
+{
+  "tools": {
+    "word-counter": {
+      "name": "Contador de palabras y caracteres",
+      "description": "Cuenta palabras, caracteres, oraciones y párrafos con puntuación de legibilidad"
+    },
+    "markdown-editor": {
+      "name": "Editor de Markdown",
+      "description": "Editor de doble panel con vista previa HTML y exportación"
+    },
+    "lorem-ipsum": {
+      "name": "Generador de Lorem Ipsum",
+      "description": "Genera texto de relleno en varios estilos (clásico, hipster, corporativo)"
+    },
+    "case-converter": {
+      "name": "Convertidor de mayúsculas/minúsculas",
+      "description": "Convierte entre camelCase, snake_case, PascalCase, Title Case, mayúsculas, minúsculas, kebab-case"
+    },
+    "text-diff": {
+      "name": "Comparador de texto",
+      "description": "Comparación lado a lado con resaltado de adiciones, eliminaciones y cambios"
+    },
+    "regex-tester": {
+      "name": "Probador de expresiones regulares",
+      "description": "Resaltado en tiempo real, grupos de captura y guía de referencia"
+    },
+    "morse-code": {
+      "name": "Traductor de código Morse",
+      "description": "Codificar/decodificar código Morse con reproducción de audio"
+    },
+    "word-frequency": {
+      "name": "Analizador de frecuencia de palabras",
+      "description": "Muestra las palabras más usadas — ideal para SEO y escritura"
+    },
+    "text-similarity": {
+      "name": "Verificador de similitud de texto",
+      "description": "Compara dos textos con similitud coseno para detectar superposición"
+    },
+    "name-generator": {
+      "name": "Generador de nombres de usuario",
+      "description": "Genera nombres aleatorios con filtros de estilo, longitud y tema"
+    },
+    "text-to-speech": {
+      "name": "Texto a voz",
+      "description": "Vista previa de texto con diferentes voces y velocidades del navegador"
+    },
+    "transliteration": {
+      "name": "Transliteración",
+      "description": "Convertir entre sistemas de escritura — latín ↔ cirílico"
+    },
+    "slug-generator": {
+      "name": "Generador de slug",
+      "description": "Convierte cualquier título en un slug amigable para URL"
+    },
+    "string-escaper": {
+      "name": "Escape/Unescape de cadenas",
+      "description": "Escape y unescape para HTML, JSON, URL, XML, CSV"
+    },
+    "whitespace-cleaner": {
+      "name": "Limpiador de espacios en blanco",
+      "description": "Elimina espacios finales, unifica saltos de línea, remueve Unicode invisible"
+    },
+    "reverse-text": {
+      "name": "Invertidor de texto",
+      "description": "Invertir, voltear o reflejar texto — a nivel de carácter o palabra"
+    },
+    "unicode-lookup": {
+      "name": "Búsqueda de caracteres Unicode",
+      "description": "Busca, explora y copia símbolos Unicode, emojis y caracteres especiales"
+    },
+    "zalgo-text": {
+      "name": "Generador de texto Zalgo",
+      "description": "Añade caracteres combinados para efectos decorativos"
+    },
+    "json-formatter": {
+      "name": "Formateador y validador JSON",
+      "description": "Formatear, validar, minificar y vista de árbol de JSON"
+    },
+    "base64": {
+      "name": "Codificador/Decodificador Base64",
+      "description": "Codifica y decodifica texto o archivos a/desde Base64"
+    },
+    "url-encoder": {
+      "name": "Codificador/Decodificador URL",
+      "description": "Codificación y decodificación porcentual de componentes URL"
+    },
+    "jwt-decoder": {
+      "name": "Decodificador JWT",
+      "description": "Pega un JWT y visualiza el encabezado, payload y expiración"
+    },
+    "jwt-builder": {
+      "name": "Constructor JWT",
+      "description": "Construye y firma JWT con clave personalizada"
+    },
+    "uuid-generator": {
+      "name": "Generador UUID / ULID",
+      "description": "Genera UUID v4, ULID, nanoid — generación en lote y copia"
+    },
+    "cron-builder": {
+      "name": "Constructor de expresiones Cron",
+      "description": "Constructor visual de programación cron con descripción legible y vista previa de próximas ejecuciones"
+    },
+    "html-entities": {
+      "name": "Codificador de entidades HTML",
+      "description": "Codificar/decodificar entidades HTML — con nombre y numéricas"
+    },
+    "sql-formatter": {
+      "name": "Formateador SQL",
+      "description": "Embellece e indenta consultas SQL"
+    },
+    "flexbox-playground": {
+      "name": "Laboratorio CSS Flexbox",
+      "description": "Ajusta cada propiedad flex y observa los cambios de diseño en vivo"
+    },
+    "grid-playground": {
+      "name": "Laboratorio CSS Grid",
+      "description": "Constructor visual de grid — define filas, columnas, espaciado y ubicación"
+    },
+    "og-preview": {
+      "name": "Vista previa Open Graph",
+      "description": "Pega meta etiquetas HTML y previsualiza tarjetas de redes sociales"
+    },
+    "breakpoint-tester": {
+      "name": "Probador de puntos de ruptura responsivos",
+      "description": "Previsualiza URL en anchos de dispositivos comunes"
+    },
+    "snippet-manager": {
+      "name": "Gestor de fragmentos de código",
+      "description": "Guarda, etiqueta y busca fragmentos de código en el navegador"
+    },
+    "api-mocker": {
+      "name": "Simulador de respuestas API",
+      "description": "Define endpoints y respuestas simuladas para desarrollo frontend"
+    },
+    "diff-viewer": {
+      "name": "Visor de Diff / Patch",
+      "description": "Visualización de diferencias con resaltado de sintaxis"
+    },
+    "timestamp-converter": {
+      "name": "Convertidor de marcas de tiempo",
+      "description": "Convierte entre Unix epoch, ISO 8601, RFC 2822 y formato legible"
+    },
+    "yaml-json": {
+      "name": "Conversión YAML ↔ JSON",
+      "description": "Convierte entre YAML y JSON"
+    },
+    "csv-json": {
+      "name": "Conversión CSV ↔ JSON",
+      "description": "Convierte CSV a array JSON y viceversa"
+    },
+    "xml-json": {
+      "name": "Conversión XML ↔ JSON",
+      "description": "Conversión bidireccional entre XML y JSON"
+    },
+    "toml-json": {
+      "name": "Conversión TOML ↔ JSON",
+      "description": "Analiza y convierte archivos de configuración TOML"
+    },
+    "http-status-codes": {
+      "name": "Referencia de códigos de estado HTTP",
+      "description": "Referencia completa y buscable de todos los códigos de estado"
+    },
+    "chmod-calculator": {
+      "name": "Calculadora Chmod",
+      "description": "Calcula visualmente permisos de archivos Unix"
+    },
+    "user-agent-parser": {
+      "name": "Analizador de User-Agent",
+      "description": "Analiza cadenas user-agent en detalles de navegador, SO y dispositivo"
+    },
+    "markdown-table": {
+      "name": "Generador de tablas Markdown",
+      "description": "Editor visual de tablas con salida Markdown o HTML"
+    },
+    "epoch-countdown": {
+      "name": "Cuenta regresiva Epoch",
+      "description": "Marca de tiempo Unix en vivo con conversión"
+    },
+    "color-picker": {
+      "name": "Selector y convertidor de color",
+      "description": "Selecciona un color y convierte entre HEX, RGB, HSL, HSB, CMYK"
+    },
+    "gradient-generator": {
+      "name": "Generador de degradados CSS",
+      "description": "Crea degradados lineales, radiales y cónicos con paradas visuales"
+    },
+    "contrast-checker": {
+      "name": "Verificador de contraste",
+      "description": "Verifica pares de colores según WCAG AA/AAA"
+    },
+    "palette-generator": {
+      "name": "Generador de paleta de colores",
+      "description": "Genera paletas armónicas — complementarias, análogas, triádicas"
+    },
+    "palette-extractor": {
+      "name": "Extractor de paleta de colores",
+      "description": "Sube una imagen y extrae los colores dominantes"
+    },
+    "duotone-filter": {
+      "name": "Filtro de imagen duotono",
+      "description": "Aplica efectos de color duotono con Canvas API"
+    },
+    "font-pairing": {
+      "name": "Vista previa de combinación de fuentes",
+      "description": "Explora y previsualiza combinaciones de Google Fonts"
+    },
+    "box-shadow": {
+      "name": "Generador de Box Shadow",
+      "description": "Constructor visual de sombras CSS con múltiples capas"
+    },
+    "border-radius": {
+      "name": "Vista previa de Border Radius",
+      "description": "Arrastra esquinas para crear valores complejos de border-radius"
+    },
+    "animation-builder": {
+      "name": "Constructor de animaciones CSS",
+      "description": "Editor de línea de tiempo con curvas de easing y vista previa en vivo"
+    },
+    "glassmorphism": {
+      "name": "Generador de Glassmorphism",
+      "description": "Crea efectos de vidrio esmerilado con salida CSS"
+    },
+    "neumorphism": {
+      "name": "Generador de Neumorphism",
+      "description": "Diseña elementos suaves con sombras"
+    },
+    "pattern-generator": {
+      "name": "Generador de patrones y texturas",
+      "description": "Genera patrones repetibles CSS/SVG"
+    },
+    "mockup-generator": {
+      "name": "Generador de mockups",
+      "description": "Coloca capturas de pantalla en marcos de dispositivos"
+    },
+    "sprite-sheet": {
+      "name": "Generador de Sprite Sheet",
+      "description": "Sube cuadros y únelos en un spritesheet"
+    },
+    "svg-optimizer": {
+      "name": "Optimizador SVG",
+      "description": "Pega código SVG, previsualiza y optimiza"
+    },
+    "favicon-generator": {
+      "name": "Generador de favicon",
+      "description": "Genera favicon en todos los tamaños desde texto, emoji o imagen"
+    },
+    "tailwind-colors": {
+      "name": "Búsqueda de colores Tailwind",
+      "description": "Explora y busca la paleta completa de colores Tailwind"
+    },
+    "type-scale": {
+      "name": "Calculadora de escala tipográfica",
+      "description": "Genera escala modular de tipo a partir de tamaño base y proporción"
+    },
+    "image-resizer": {
+      "name": "Redimensionar y recortar imagen",
+      "description": "Redimensiona, recorta y ajusta imágenes con Canvas API"
+    },
+    "image-compressor": {
+      "name": "Compresor de imágenes",
+      "description": "Reduce el tamaño del archivo con calidad ajustable"
+    },
+    "image-converter": {
+      "name": "Convertidor de formato de imagen",
+      "description": "Convierte entre PNG, JPEG, WebP, BMP"
+    },
+    "image-to-base64": {
+      "name": "Imagen a Base64",
+      "description": "Convierte imagen a URI de datos Base64"
+    },
+    "exif-viewer": {
+      "name": "Visor de datos EXIF",
+      "description": "Inspecciona los metadatos incrustados en fotos"
+    },
+    "qr-generator": {
+      "name": "Generador de código QR",
+      "description": "Genera códigos QR para URL, texto, Wi-Fi, vCard"
+    },
+    "qr-reader": {
+      "name": "Lector de código QR",
+      "description": "Escanea códigos QR desde imagen o cámara"
+    },
+    "barcode-generator": {
+      "name": "Generador de código de barras",
+      "description": "Crea códigos de barras Code128, EAN, UPC"
+    },
+    "ascii-art": {
+      "name": "Generador de arte ASCII",
+      "description": "Convierte imágenes en arte ASCII"
+    },
+    "pixel-art": {
+      "name": "Editor de pixel art",
+      "description": "Herramienta de dibujo en cuadrícula con paleta y exportación"
+    },
+    "placeholder-image": {
+      "name": "Generador de imágenes de relleno",
+      "description": "Genera imágenes de relleno simples o con degradado"
+    },
+    "color-replacer": {
+      "name": "Reemplazador de color en imagen",
+      "description": "Reemplaza colores específicos en imágenes con Canvas"
+    },
+    "collage-maker": {
+      "name": "Creador de collage de fotos",
+      "description": "Organiza múltiples imágenes en diseños de cuadrícula"
+    },
+    "watermark": {
+      "name": "Herramienta de marca de agua",
+      "description": "Añade marcas de agua de texto o imagen a fotos"
+    },
+    "audio-trimmer": {
+      "name": "Recortador de audio",
+      "description": "Recorta clips de audio en el navegador con Web Audio API"
+    },
+    "video-to-gif": {
+      "name": "Video a GIF",
+      "description": "Extrae fotogramas de video en GIF animado"
+    },
+    "waveform-visualizer": {
+      "name": "Visualizador de forma de onda",
+      "description": "Sube audio y visualiza la forma de onda en Canvas"
+    },
+    "screen-recorder": {
+      "name": "Grabador de pantalla",
+      "description": "Graba pantalla/pestaña con MediaRecorder API"
+    },
+    "webcam-booth": {
+      "name": "Cabina de fotos webcam",
+      "description": "Toma fotos con webcam y filtros"
+    },
+    "unit-converter": {
+      "name": "Convertidor de unidades",
+      "description": "Convierte longitud, peso, volumen, temperatura, velocidad, área, datos"
+    },
+    "percentage-calculator": {
+      "name": "Calculadora de porcentajes",
+      "description": "Calcula porcentajes, cambio porcentual y proporciones"
+    },
+    "number-base-converter": {
+      "name": "Convertidor de base numérica",
+      "description": "Convierte entre hexadecimal, binario, octal y decimal"
+    },
+    "matrix-calculator": {
+      "name": "Calculadora de matrices",
+      "description": "Suma, multiplicación, transpuesta, inversa y determinante"
+    },
+    "statistics-calculator": {
+      "name": "Calculadora de estadísticas",
+      "description": "Media, mediana, moda, desviación estándar, varianza y cuartiles"
+    },
+    "scientific-calculator": {
+      "name": "Calculadora científica",
+      "description": "Calculadora completa con trigonometría, logaritmos, potencias e historial"
+    },
+    "graphing-calculator": {
+      "name": "Calculadora gráfica",
+      "description": "Grafica funciones matemáticas en el plano cartesiano"
+    },
+    "boolean-algebra": {
+      "name": "Simplificador de álgebra booleana",
+      "description": "Simplifica expresiones lógicas y genera tablas de verdad"
+    },
+    "roman-numerals": {
+      "name": "Convertidor de números romanos",
+      "description": "Convierte entre números romanos y arábigos"
+    },
+    "number-to-words": {
+      "name": "Número a palabras",
+      "description": "Convierte valores numéricos a palabras en inglés"
+    },
+    "bitwise-visualizer": {
+      "name": "Visualizador de operaciones bit a bit",
+      "description": "Visualiza AND, OR, XOR, NOT y desplazamientos bit a bit"
+    },
+    "probability-calculator": {
+      "name": "Calculadora de probabilidad",
+      "description": "Permutaciones, combinaciones, dados y cartas"
+    },
+    "aspect-ratio": {
+      "name": "Calculadora de relación de aspecto",
+      "description": "Calcula y convierte relaciones de aspecto"
+    },
+    "data-size-converter": {
+      "name": "Convertidor de tamaño de datos",
+      "description": "Convierte entre bytes, KB, MB, GB, TB"
+    },
+    "random-generator": {
+      "name": "Generador de números aleatorios",
+      "description": "Números aleatorios, dados, moneda y sorteo"
+    },
+    "arbitrary-base-converter": {
+      "name": "Convertidor de base arbitraria",
+      "description": "Convierte entre cualquier base (2 a 36) con pasos"
+    },
+    "compound-interest": {
+      "name": "Calculadora de interés compuesto",
+      "description": "Crecimiento a lo largo del tiempo con gráfico"
+    },
+    "mortgage-calculator": {
+      "name": "Calculadora de hipoteca",
+      "description": "Pagos mensuales, tabla de amortización e interés total"
+    },
+    "tip-calculator": {
+      "name": "Calculadora de propina",
+      "description": "Divide la cuenta con propina y redondeo"
+    },
+    "currency-converter": {
+      "name": "Convertidor de divisas",
+      "description": "Convierte entre diferentes divisas"
+    },
+    "subscription-tracker": {
+      "name": "Rastreador de suscripciones",
+      "description": "Lista suscripciones y visualiza el total"
+    },
+    "net-worth-tracker": {
+      "name": "Rastreador de patrimonio neto",
+      "description": "Rastrea activos y pasivos a lo largo del tiempo"
+    },
+    "budget-planner": {
+      "name": "Planificador de presupuesto 50/30/20",
+      "description": "Asigna ingresos a necesidades, deseos y ahorro"
+    },
+    "debt-calculator": {
+      "name": "Calculadora de pago de deudas",
+      "description": "Compara estrategias de pago bola de nieve y avalancha"
+    },
+    "tax-estimator": {
+      "name": "Estimador de impuestos (freelancer)",
+      "description": "Estimación aproximada de impuestos según ingresos y deducciones"
+    },
+    "invoice-generator": {
+      "name": "Generador de facturas",
+      "description": "Crea facturas y exporta en PDF"
+    },
+    "salary-converter": {
+      "name": "Conversión salario ↔ por hora",
+      "description": "Convierte entre anual, mensual, semanal, diario y por hora"
+    },
+    "roi-calculator": {
+      "name": "Calculadora de retorno de inversión",
+      "description": "Retorno de inversión con períodos"
+    },
+    "break-even": {
+      "name": "Calculadora de punto de equilibrio",
+      "description": "Encuentra el punto de equilibrio"
+    },
+    "savings-goal": {
+      "name": "Rastreador de meta de ahorro",
+      "description": "Establece meta, registra depósitos y sigue el progreso"
+    },
+    "position-size": {
+      "name": "Calculadora de tamaño de posición",
+      "description": "Determina el tamaño de posición según el riesgo"
+    },
+    "markup-margin": {
+      "name": "Calculadora de margen y ganancia",
+      "description": "Convierte entre costo, porcentaje de margen y margen de ganancia"
+    },
+    "password-generator": {
+      "name": "Generador de contraseñas",
+      "description": "Contraseñas seguras con opciones personalizables"
+    },
+    "password-strength": {
+      "name": "Verificador de fortaleza de contraseña",
+      "description": "Analiza la fortaleza con tiempo de descifrado"
+    },
+    "hash-generator": {
+      "name": "Generador de hash",
+      "description": "SHA-1, SHA-256, SHA-512, MD5 desde texto o archivo"
+    },
+    "checksum-verifier": {
+      "name": "Verificador de checksum de archivos",
+      "description": "Verifica hash de archivos arrastrando y soltando"
+    },
+    "encrypted-notes": {
+      "name": "Notas cifradas",
+      "description": "Bloc de notas cifrado con AES-GCM"
+    },
+    "encrypted-vault": {
+      "name": "Bóveda cifrada",
+      "description": "Gestor de contraseñas del lado del cliente"
+    },
+    "hmac-generator": {
+      "name": "Generador HMAC",
+      "description": "Genera firmas HMAC"
+    },
+    "random-bytes": {
+      "name": "Generador de bytes aleatorios",
+      "description": "Bytes aleatorios criptográficamente seguros"
+    },
+    "totp-generator": {
+      "name": "Generador de código TOTP",
+      "description": "Contraseñas de un solo uso basadas en tiempo (RFC 6238)"
+    },
+    "metadata-stripper": {
+      "name": "Eliminador de metadatos de privacidad",
+      "description": "Elimina datos EXIF de imágenes antes de compartir"
+    },
+    "secure-share": {
+      "name": "Cifrador de texto para compartir seguro",
+      "description": "Cifra mensajes en fragmentos de URL para descifrado del lado del cliente"
+    },
+    "pomodoro": {
+      "name": "Temporizador Pomodoro",
+      "description": "Temporizador de enfoque con intervalos personalizables y seguimiento de sesiones"
+    },
+    "stopwatch": {
+      "name": "Cronómetro y vueltas",
+      "description": "Cronómetro preciso con registro de vueltas"
+    },
+    "countdown": {
+      "name": "Cuenta regresiva",
+      "description": "Cuenta regresiva hasta una fecha específica"
+    },
+    "kanban": {
+      "name": "Tablero Kanban",
+      "description": "Tablero de tareas con arrastrar y soltar"
+    },
+    "todo-list": {
+      "name": "Lista de tareas",
+      "description": "Gestión de tareas con prioridad y fecha límite"
+    },
+    "habit-tracker": {
+      "name": "Rastreador de hábitos",
+      "description": "Hábitos diarios con rachas y mapa de calor"
+    },
+    "notepad": {
+      "name": "Bloc de notas con autoguardado",
+      "description": "Entorno de escritura sin distracciones"
+    },
+    "meeting-cost": {
+      "name": "Calculadora de costo de reunión",
+      "description": "Calcula el costo real de una reunión"
+    },
+    "decision-matrix": {
+      "name": "Matriz de decisión",
+      "description": "Puntúa opciones según criterios ponderados"
+    },
+    "eisenhower-matrix": {
+      "name": "Matriz de Eisenhower",
+      "description": "Arrastra tareas a cuadrantes urgente/importante"
+    },
+    "mind-map": {
+      "name": "Constructor de mapas mentales",
+      "description": "Mapas mentales ramificados con arrastrar y soltar"
+    },
+    "daily-planner": {
+      "name": "Planificador diario",
+      "description": "Programación del día por bloques de tiempo"
+    },
+    "reading-time": {
+      "name": "Estimador de tiempo de lectura",
+      "description": "Estima el tiempo de lectura a diferentes velocidades"
+    },
+    "sticky-notes": {
+      "name": "Muro de notas adhesivas",
+      "description": "Notas adhesivas movibles"
+    },
+    "goal-tracker": {
+      "name": "Rastreador de metas",
+      "description": "Metas con hitos y barras de progreso"
+    },
+    "bmi-calculator": {
+      "name": "Calculadora de IMC",
+      "description": "Índice de masa corporal con escala visual"
+    },
+    "tdee-calculator": {
+      "name": "Calculadora TDEE y macros",
+      "description": "Requerimiento calórico diario y objetivos de macronutrientes"
+    },
+    "water-tracker": {
+      "name": "Rastreador de consumo de agua",
+      "description": "Registra el consumo diario de agua"
+    },
+    "sleep-calculator": {
+      "name": "Calculadora de ciclos de sueño",
+      "description": "Mejor hora para dormir basada en ciclos de 90 minutos"
+    },
+    "hiit-timer": {
+      "name": "Temporizador HIIT / Tabata",
+      "description": "Temporizador de intervalos personalizable con sonido"
+    },
+    "body-tracker": {
+      "name": "Rastreador de medidas corporales",
+      "description": "Registra medidas a lo largo del tiempo con gráficos"
+    },
+    "calorie-counter": {
+      "name": "Contador de calorías",
+      "description": "Busca calorías y registra la ingesta diaria"
+    },
+    "one-rep-max": {
+      "name": "Calculadora de repetición máxima",
+      "description": "Estima 1RM a partir de cargas submáximas"
+    },
+    "pace-calculator": {
+      "name": "Calculadora de ritmo de carrera",
+      "description": "Convierte velocidad, ritmo y tiempo de llegada"
+    },
+    "breathing-timer": {
+      "name": "Temporizador de ejercicio de respiración",
+      "description": "Respiración guiada con visualización y sonido"
+    },
+    "subnet-calculator": {
+      "name": "Calculadora de subredes",
+      "description": "Red, broadcast, rango de hosts desde IP + CIDR"
+    },
+    "ip-converter": {
+      "name": "Conversión IPv4 ↔ IPv6",
+      "description": "Convierte entre IPv4 e IPv6"
+    },
+    "cidr-visualizer": {
+      "name": "Visualizador de rango CIDR",
+      "description": "Visualiza las IPs contenidas en un bloque CIDR"
+    },
+    "bandwidth-calculator": {
+      "name": "Calculadora de ancho de banda",
+      "description": "Tiempo de transferencia de archivos a velocidad dada"
+    },
+    "dns-reference": {
+      "name": "Referencia de registros DNS",
+      "description": "Referencia interactiva de tipos de registros DNS"
+    },
+    "port-reference": {
+      "name": "Referencia de números de puerto",
+      "description": "Base de datos buscable de puertos comunes"
+    },
+    "mac-lookup": {
+      "name": "Búsqueda de dirección MAC",
+      "description": "Identifica el fabricante por prefijo OUI"
+    },
+    "netmask-calculator": {
+      "name": "Calculadora de máscara de red",
+      "description": "Convierte entre decimal con punto, CIDR y comodín"
+    },
+    "typing-test": {
+      "name": "Prueba de velocidad de escritura",
+      "description": "PPM con precisión y niveles de dificultad"
+    },
+    "flashcards": {
+      "name": "Aplicación de tarjetas de estudio",
+      "description": "Repetición espaciada (Leitner) almacenada localmente"
+    },
+    "mental-math": {
+      "name": "Práctica de cálculo mental",
+      "description": "Ejercicios de aritmética cronometrados"
+    },
+    "periodic-table": {
+      "name": "Tabla periódica interactiva",
+      "description": "Tabla periódica de elementos interactiva"
+    },
+    "geography-quiz": {
+      "name": "Cuestionario de geografía",
+      "description": "Identifica países en el mapa mundial"
+    },
+    "interval-trainer": {
+      "name": "Entrenador de intervalos musicales",
+      "description": "Escucha dos notas y adivina el intervalo"
+    },
+    "vocabulary-builder": {
+      "name": "Constructor de vocabulario",
+      "description": "Palabras + traducción con repetición espaciada"
+    },
+    "times-tables": {
+      "name": "Práctica de tablas de multiplicar",
+      "description": "Ejercicios de multiplicación con retroalimentación visual"
+    },
+    "color-blind-sim": {
+      "name": "Simulador de daltonismo",
+      "description": "Previsualiza imágenes con deficiencias de visión del color"
+    },
+    "binary-teacher": {
+      "name": "Herramienta de enseñanza binario / hex",
+      "description": "Conversión interactiva binario ↔ decimal ↔ hexadecimal"
+    },
+    "algorithm-visualizer": {
+      "name": "Visualizador de algoritmos",
+      "description": "Observa algoritmos de ordenamiento/búsqueda paso a paso"
+    },
+    "drum-machine": {
+      "name": "Caja de ritmos / Beat Maker",
+      "description": "Secuenciador con Web Audio API"
+    },
+    "generative-art": {
+      "name": "Herramienta de arte generativo",
+      "description": "Crea patrones paramétricos"
+    },
+    "meme-generator": {
+      "name": "Creador de memes",
+      "description": "Sube imagen y añade texto movible"
+    },
+    "soundboard": {
+      "name": "Panel de sonidos",
+      "description": "Sube y reproduce clips de audio"
+    },
+    "game-of-life": {
+      "name": "Juego de la vida de Conway",
+      "description": "Autómata celular"
+    },
+    "terrain-generator": {
+      "name": "Generador de terreno procedural",
+      "description": "Genera paisajes con ruido"
+    },
+    "drawing-canvas": {
+      "name": "Lienzo de dibujo",
+      "description": "Dibujo libre con pinceles"
+    },
+    "magic-8-ball": {
+      "name": "Bola mágica 8",
+      "description": "Respuestas aleatorias con animación"
+    },
+    "dice-roller": {
+      "name": "Lanzador de dados (D&D)",
+      "description": "Lanza dados poliédricos con historial"
+    },
+    "ambient-sounds": {
+      "name": "Generador de sonidos ambientales",
+      "description": "Mezcla ruido y sonidos de la naturaleza"
+    },
+    "css-art": {
+      "name": "Laboratorio de arte CSS",
+      "description": "Crea imágenes solo con CSS"
+    },
+    "emoji-search": {
+      "name": "Buscador de emojis",
+      "description": "Busca emojis y copia al portapapeles"
+    },
+    "palette-game": {
+      "name": "Juego de paleta de colores aleatoria",
+      "description": "Vota paletas aleatorias para entrenar tu sentido del color"
+    },
+    "pdf-merger": {
+      "name": "Combinar PDF",
+      "description": "Combina múltiples PDF en un archivo"
+    },
+    "pdf-splitter": {
+      "name": "Dividir PDF",
+      "description": "Extrae páginas específicas de un PDF"
+    },
+    "pdf-rotator": {
+      "name": "Rotar páginas PDF",
+      "description": "Rota páginas dentro de un PDF"
+    },
+    "file-size-analyzer": {
+      "name": "Analizador de tamaño de archivos",
+      "description": "Desglose del tamaño de archivos arrastrando y soltando"
+    },
+    "text-merger": {
+      "name": "Combinar archivos de texto",
+      "description": "Concatena múltiples archivos de texto/CSV"
+    },
+    "markdown-to-html": {
+      "name": "Conversión Markdown → HTML",
+      "description": "Convierte Markdown a HTML limpio"
+    },
+    "html-to-markdown": {
+      "name": "Conversión HTML → Markdown",
+      "description": "Convierte HTML a Markdown"
+    },
+    "json-to-csv": {
+      "name": "Exportar JSON a CSV",
+      "description": "Convierte arrays JSON a CSV"
+    },
+    "zip-creator": {
+      "name": "Creador de archivos ZIP",
+      "description": "Empaqueta archivos en un .zip"
+    },
+    "file-renamer": {
+      "name": "Renombrador de archivos en lote",
+      "description": "Renombra en lote con patrones"
+    },
+    "text-cleaner": {
+      "name": "Limpiador de texto plano",
+      "description": "Corrige codificación, elimina comillas tipográficas y normaliza"
+    },
+    "timezone-converter": {
+      "name": "Convertidor de zona horaria",
+      "description": "Convierte tiempo entre diferentes zonas horarias"
+    },
+    "date-difference": {
+      "name": "Calculadora de diferencia de fechas",
+      "description": "Días, semanas, meses y años entre dos fechas"
+    },
+    "date-add-subtract": {
+      "name": "Sumar/restar fechas",
+      "description": "Añade o resta tiempo a una fecha"
+    },
+    "week-number": {
+      "name": "Búsqueda de número de semana",
+      "description": "Número de semana ISO para cualquier fecha"
+    },
+    "age-calculator": {
+      "name": "Calculadora de edad",
+      "description": "Edad exacta en años, meses y días"
+    },
+    "working-days": {
+      "name": "Calculadora de días laborales",
+      "description": "Días laborales entre dos fechas"
+    },
+    "calendar-generator": {
+      "name": "Generador de calendario",
+      "description": "Calendarios mensuales/anuales imprimibles"
+    },
+    "meeting-planner": {
+      "name": "Planificador de reuniones entre zonas horarias",
+      "description": "Encuentra horarios de trabajo superpuestos"
+    },
+    "relative-time": {
+      "name": "Visualización de tiempo relativo",
+      "description": "Muestra fechas como cadenas de tiempo relativo"
+    }
+  }
+}

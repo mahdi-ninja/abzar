@@ -1,0 +1,9 @@
+{
+  "soundboard": {
+    "volumeLabel": "音量：{value}%",
+    "stopAll": "全部停止",
+    "dropLabel": "拖放音频文件（MP3、WAV、OGG）或点击上传",
+    "emptyHint": "上传音频文件，然后点击每个按钮播放。",
+    "removeAriaLabel": "移除 {name}"
+  }
+}

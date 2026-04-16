@@ -1,0 +1,14 @@
+{
+  "kanban": {
+    "board": "看板",
+    "selectBoard": "选择看板",
+    "save": "保存",
+    "rename": "重命名",
+    "newBoardPlaceholder": "新看板...",
+    "deleteBoard": "删除看板",
+    "removeColumn": "删除列",
+    "removeCard": "删除卡片",
+    "newCardPlaceholder": "新卡片...",
+    "newColumnPlaceholder": "新列..."
+  }
+}

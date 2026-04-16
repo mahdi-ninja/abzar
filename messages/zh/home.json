@@ -1,0 +1,9 @@
+{
+  "home": {
+    "categories": "分类",
+    "popularTools": "热门工具",
+    "toolsSuffix": "个工具",
+    "newBadge": "新",
+    "quickFilters": ["JSON", "密码", "颜色", "PDF", "计算器", "图片", "UUID"]
+  }
+}

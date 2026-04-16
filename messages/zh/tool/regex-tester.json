@@ -1,0 +1,19 @@
+{
+  "regexTester": {
+    "clear": "清除",
+    "regularExpression": "正则表达式",
+    "patternPlaceholder": "输入正则表达式...",
+    "flagGlobal": "全局",
+    "flagCaseInsensitive": "不区分大小写",
+    "flagMultiline": "多行",
+    "flagDotall": "点匹配所有",
+    "testString": "测试字符串",
+    "matchesCount": "匹配（{count}）",
+    "testPlaceholder": "输入要测试的文本...",
+    "captureGroups": "捕获组",
+    "thMatch": "#",
+    "thMatchValue": "匹配",
+    "thIndex": "索引",
+    "thGroups": "组"
+  }
+}

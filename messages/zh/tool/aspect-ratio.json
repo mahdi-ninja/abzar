@@ -1,0 +1,9 @@
+{
+  "aspectRatio": {
+    "width": "宽度",
+    "height": "高度",
+    "reset": "重置",
+    "aspectRatioLabel": "宽高比",
+    "decimalLabel": "小数"
+  }
+}

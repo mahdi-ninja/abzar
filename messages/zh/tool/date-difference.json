@@ -1,0 +1,13 @@
+{
+  "dateDifference": {
+    "from": "从",
+    "to": "到",
+    "reset": "重置",
+    "days": "天",
+    "weeks": "周",
+    "months": "月",
+    "years": "年",
+    "hours": "小时",
+    "minutes": "分钟"
+  }
+}

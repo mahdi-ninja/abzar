@@ -1,0 +1,9 @@
+{
+  "diceRoller": {
+    "quantity": "Cantidad",
+    "clear": "Limpiar",
+    "nat20": "¡NATURAL 20!",
+    "critFail": "¡FALLO CRÍTICO!",
+    "emptyPrompt": "¡Haz clic en un dado para lanzar!"
+  }
+}

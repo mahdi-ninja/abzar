@@ -1,0 +1,14 @@
+{
+  "pixelArt": {
+    "grid": "网格",
+    "tool": "工具",
+    "pencil": "画笔",
+    "eraser": "橡皮擦",
+    "fill": "填充",
+    "undo": "撤销",
+    "importImage": "导入图片",
+    "clear": "清除",
+    "exportPng": "导出 PNG",
+    "selectColor": "选择颜色 {color}"
+  }
+}

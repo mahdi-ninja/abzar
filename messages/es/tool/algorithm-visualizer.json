@@ -1,0 +1,18 @@
+{
+  "algorithmVisualizer": {
+    "algorithm": "Algoritmo",
+    "bubbleSort": "Ordenamiento burbuja",
+    "selectionSort": "Ordenamiento por selección",
+    "insertionSort": "Ordenamiento por inserción",
+    "quickSort": "Quicksort",
+    "mergeSort": "Mergesort",
+    "size": "Tamaño: {size}",
+    "speed": "Velocidad: {ms}ms",
+    "sort": "Ordenar",
+    "newArray": "Nuevo arreglo",
+    "default": "Por defecto",
+    "comparing": "Comparando",
+    "swapping": "Intercambiando",
+    "sorted": "Ordenado"
+  }
+}

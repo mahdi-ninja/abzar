@@ -1,0 +1,9 @@
+{
+  "romanNumerals": {
+    "reset": "重置",
+    "arabicLabel": "阿拉伯数字",
+    "romanLabel": "罗马数字",
+    "toRoman": "→ 罗马数字：",
+    "toArabic": "→ 阿拉伯数字："
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "generativeArt": {
+    "algorithm": "Algoritmo",
+    "palette": "Paleta",
+    "scaleLabel": "Escala: {value}",
+    "seedLabel": "Semilla: {value}",
+    "randomize": "Aleatorizar",
+    "downloadPng": "Descargar PNG",
+    "algoPerlin": "Ruido Perlin",
+    "algoCircles": "Círculos",
+    "algoWaves": "Ondas",
+    "algoFlowfield": "Campo de flujo"
+  }
+}

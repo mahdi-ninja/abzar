@@ -1,0 +1,8 @@
+{
+  "emojiSearch": {
+    "recentlyUsed": "最近使用",
+    "searchPlaceholder": "搜索表情…",
+    "resultCount": "{count} 个表情——点击复制",
+    "noResults": "未找到 \"{query}\" 相关的表情"
+  }
+}

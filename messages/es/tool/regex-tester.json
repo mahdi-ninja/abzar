@@ -1,0 +1,19 @@
+{
+  "regexTester": {
+    "clear": "Limpiar",
+    "regularExpression": "Expresión regular",
+    "patternPlaceholder": "Ingresa patrón regex...",
+    "flagGlobal": "Global",
+    "flagCaseInsensitive": "Sin distinción de mayúsculas",
+    "flagMultiline": "Multilínea",
+    "flagDotall": "Dotall",
+    "testString": "Cadena de prueba",
+    "matchesCount": "Coincidencias ({count})",
+    "testPlaceholder": "Ingresa texto para probar...",
+    "captureGroups": "Grupos de captura",
+    "thMatch": "#",
+    "thMatchValue": "Coincidencia",
+    "thIndex": "Índice",
+    "thGroups": "Grupos"
+  }
+}

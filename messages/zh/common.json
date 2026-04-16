@@ -1,0 +1,59 @@
+{
+  "nav": {
+    "searchPlaceholder": "搜索工具...",
+    "noResults": "未找到工具。",
+    "installApp": "安装 Abzar",
+    "offline": "离线",
+    "expandSidebar": "展开侧边栏",
+    "collapseSidebar": "收起侧边栏",
+    "openNavigation": "打开导航",
+    "navigation": "导航",
+    "comingSoon": "即将推出",
+    "toolsHeading": "工具"
+  },
+  "localeSwitcher": {
+    "label": "语言",
+    "en": "English",
+    "fa": "فارسی",
+    "zh": "中文",
+    "es": "Español"
+  },
+  "breadcrumbs": {
+    "home": "首页"
+  },
+  "notFound": {
+    "message": "页面未找到",
+    "goHome": "返回首页"
+  },
+  "toolPage": {
+    "comingSoonTitle": "即将推出",
+    "comingSoonDesc": "此工具正在开发中。",
+    "aboutHeading": "关于此工具",
+    "howToHeading": "使用方法",
+    "relatedHeading": "相关工具"
+  },
+  "categoryPage": {
+    "comingSoon": "即将推出",
+    "toolsSuffix": "工具",
+    "betaBadge": "测试版",
+    "newBadge": "新"
+  },
+  "ui": {
+    "copy": "复制",
+    "copied": "已复制",
+    "copiedToClipboard": "已复制到剪贴板！",
+    "copyFailed": "复制失败",
+    "download": "下载",
+    "dropFiles": "将文件拖放到此处或点击浏览",
+    "maxFileSize": "最大 {size}MB",
+    "input": "输入",
+    "output": "输出"
+  },
+  "site": {
+    "name": "Abzar",
+    "tagline": "200+ 免费浏览器工具",
+    "subtitle": "无需注册。无需服务器。一切在浏览器中运行。",
+    "description": "200+ 免费浏览器工具。无需注册，无需服务器，一切在浏览器中运行。",
+    "titleSuffix": "免费在线工具"
+  }
+}

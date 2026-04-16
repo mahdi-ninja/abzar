@@ -1,0 +1,12 @@
+{
+  "drumMachine": {
+    "play": "Reproducir",
+    "stop": "Detener",
+    "bpm": "BPM: {bpm}",
+    "clear": "Limpiar",
+    "toggleStep": "Alternar {instrument} paso {step}",
+    "exportBars": "Exportar compases:",
+    "rendering": "Renderizando…",
+    "downloadWav": "↓ WAV"
+  }
+}

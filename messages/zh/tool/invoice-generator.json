@@ -1,0 +1,24 @@
+{
+  "invoiceGenerator": {
+    "businessName": "您的公司名称",
+    "businessPlaceholder": "您的公司",
+    "clientName": "客户名称",
+    "clientPlaceholder": "客户名称",
+    "invoiceNumber": "发票编号",
+    "date": "日期",
+    "lineItems": "行项目",
+    "descriptionPlaceholder": "描述",
+    "addItem": "+ 添加项目",
+    "subtotal": "小计",
+    "taxPercent": "税率 (%)",
+    "tax": "税额",
+    "total": "合计",
+    "export": "导出",
+    "generating": "生成中...",
+    "pdf": "PDF",
+    "markdown": "Markdown",
+    "html": "HTML",
+    "plainText": "纯文本",
+    "csv": "CSV"
+  }
+}

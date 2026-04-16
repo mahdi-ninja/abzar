@@ -1,0 +1,12 @@
+{
+  "ambientSounds": {
+    "description": "Haz clic en un sonido para activarlo/desactivarlo. Mezcla varios sonidos.",
+    "stopAll": "Detener todo",
+    "volumeLabel": "Volumen: {value}%",
+    "whiteNoise": "Ruido blanco",
+    "pinkNoise": "Ruido rosa",
+    "brownNoise": "Ruido marrón",
+    "rain": "Lluvia",
+    "ocean": "Océano"
+  }
+}

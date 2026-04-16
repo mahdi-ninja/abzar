@@ -1,0 +1,14 @@
+{
+  "salaryConverter": {
+    "reset": "重置",
+    "annualSalary": "年薪 ($)",
+    "hoursPerWeek": "每周工时",
+    "weeksPerYear": "每年周数",
+    "hourly": "时薪",
+    "daily": "日薪（8小时）",
+    "weekly": "周薪",
+    "biweekly": "双周薪",
+    "monthly": "月薪",
+    "annual": "年薪"
+  }
+}

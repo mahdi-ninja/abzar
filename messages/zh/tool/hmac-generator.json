@@ -1,0 +1,11 @@
+{
+  "hmacGenerator": {
+    "message": "消息",
+    "secretKey": "密钥",
+    "algorithm": "算法",
+    "messagePlaceholder": "输入消息...",
+    "secretPlaceholder": "输入密钥...",
+    "generateHmac": "生成 HMAC",
+    "clear": "清除"
+  }
+}

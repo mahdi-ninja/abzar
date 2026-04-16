@@ -1,0 +1,11 @@
+{
+  "countdown": {
+    "eventName": "Nombre del evento",
+    "targetDate": "Fecha objetivo",
+    "eventPassed": "¡El evento ya pasó!",
+    "days": "Días",
+    "hours": "Horas",
+    "minutes": "Minutos",
+    "seconds": "Segundos"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "markdownEditor": {
+    "copyHtml": "复制 HTML",
+    "export": "导出",
+    "clear": "清除",
+    "markdown": "Markdown",
+    "preview": "预览",
+    "placeholder": "在此编写 Markdown..."
+  }
+}

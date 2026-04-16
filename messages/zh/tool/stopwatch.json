@@ -1,0 +1,12 @@
+{
+  "stopwatch": {
+    "start": "开始",
+    "resume": "继续",
+    "stop": "停止",
+    "lap": "计圈",
+    "reset": "重置",
+    "laps": "圈数",
+    "copy": "复制",
+    "lapNumber": "第 {number} 圈"
+  }
+}

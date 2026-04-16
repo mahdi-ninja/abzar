@@ -1,0 +1,12 @@
+{
+  "numberBaseConverter": {
+    "inputLabel": "输入",
+    "inputBaseLabel": "输入进制",
+    "reset": "重置",
+    "invalidNumber": "对于 {base} 进制无效的数字",
+    "decimal": "十进制 (10)",
+    "binary": "二进制 (2)",
+    "octal": "八进制 (8)",
+    "hexadecimal": "十六进制 (16)"
+  }
+}

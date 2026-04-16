@@ -1,0 +1,10 @@
+{
+  "markdownEditor": {
+    "copyHtml": "Copiar HTML",
+    "export": "Exportar",
+    "clear": "Limpiar",
+    "markdown": "Markdown",
+    "preview": "Vista previa",
+    "placeholder": "Escribe Markdown aquí..."
+  }
+}

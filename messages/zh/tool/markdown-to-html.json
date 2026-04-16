@@ -1,0 +1,12 @@
+{
+  "markdownToHtml": {
+    "wrapStyles": "包装为带样式的完整 HTML 文档",
+    "inputLabel": "Markdown 输入",
+    "outputLabel": "HTML 输出",
+    "inputPlaceholder": "在此输入或粘贴 Markdown…",
+    "outputPlaceholder": "HTML 将在此显示…",
+    "convert": "转换",
+    "loadExample": "加载示例",
+    "clear": "清除"
+  }
+}

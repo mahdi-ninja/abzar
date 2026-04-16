@@ -1,0 +1,26 @@
+{
+  "timestampConverter": {
+    "inputLabel": "Pega una marca de tiempo o cadena de fecha",
+    "inputPlaceholder": "ej. 1700000000, 2024-01-15T10:30:00Z, Jan 15 2024...",
+    "now": "Ahora",
+    "clear": "Limpiar",
+    "parseError": "No se pudo interpretar como fecha o marca de tiempo.",
+    "emptyHint": "Pega una marca de tiempo Unix, fecha ISO 8601 o cualquier cadena de fecha para ver todos los formatos.",
+    "fmtUnixSeconds": "Unix (segundos)",
+    "fmtUnixMs": "Unix (milisegundos)",
+    "fmtIso": "ISO 8601",
+    "fmtRfc": "RFC 2822",
+    "fmtLocal": "Local",
+    "fmtDate": "Solo fecha",
+    "fmtTime": "Solo hora",
+    "fmtRelative": "Relativo",
+    "seconds": "{count} segundos",
+    "minutes": "{count} minutos",
+    "hours": "{count} horas",
+    "days": "{count} días",
+    "months": "{count} meses",
+    "years": "{count} años",
+    "ago": "hace {time}",
+    "inFuture": "en {time}"
+  }
+}

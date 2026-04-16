@@ -1,0 +1,9 @@
+{
+  "dataSizeConverter": {
+    "valueLabel": "数值",
+    "unitLabel": "单位",
+    "binaryLabel": "二进制 (1024)",
+    "decimalLabel": "十进制 (1000)",
+    "reset": "重置"
+  }
+}

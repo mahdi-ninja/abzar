@@ -1,0 +1,20 @@
+{
+  "flashcards": {
+    "manage": "Gestionar ({count})",
+    "study": "Estudiar",
+    "frontLabel": "Frente (pregunta)",
+    "backLabel": "Reverso (respuesta)",
+    "frontPlaceholder": "Ingresa pregunta...",
+    "backPlaceholder": "Ingresa respuesta...",
+    "addCard": "Agregar tarjeta",
+    "cardsCount": "Tarjetas ({count})",
+    "box": "Caja {box}",
+    "emptyState": "Agrega algunas tarjetas para comenzar.",
+    "cardProgress": "Tarjeta {current} de {total} · Caja {box}/5",
+    "clickToReveal": "Haz clic para revelar la respuesta",
+    "answer": "Respuesta:",
+    "incorrect": "Incorrecto — Volver a caja 1",
+    "correct": "Correcto — Avanzar",
+    "noCardsToStudy": "No hay tarjetas para estudiar. Agrega algunas primero."
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "generativeArt": {
+    "algorithm": "算法",
+    "palette": "调色板",
+    "scaleLabel": "比例：{value}",
+    "seedLabel": "种子：{value}",
+    "randomize": "随机化",
+    "downloadPng": "下载 PNG",
+    "algoPerlin": "Perlin 噪声",
+    "algoCircles": "圆形",
+    "algoWaves": "波浪",
+    "algoFlowfield": "流场"
+  }
+}

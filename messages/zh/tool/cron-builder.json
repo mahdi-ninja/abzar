@@ -1,0 +1,31 @@
+{
+  "cronBuilder": {
+    "expression": "表达式",
+    "minute": "分钟",
+    "hour": "小时",
+    "dayOfMonth": "日",
+    "month": "月",
+    "dayOfWeek": "星期",
+    "presets": "预设",
+    "presetEveryMinute": "每分钟",
+    "presetEveryHour": "每小时",
+    "presetDailyMidnight": "每天午夜",
+    "presetMondayMorning": "每周一上午 9 点",
+    "presetEvery5Minutes": "每 5 分钟",
+    "presetMonthly": "每月 1 日",
+    "nextRuns": "接下来 5 次运行",
+    "descEveryMinute": "每分钟",
+    "descEveryNMinutes": "每 {step} 分钟",
+    "descAtMinute": "在第 {minute} 分钟",
+    "descEveryHour": "每小时",
+    "descEveryNHours": "每 {step} 小时",
+    "descAtTime": "在 {time}",
+    "descEveryNDays": "每 {step} 天",
+    "descOnDay": "在第 {day} 天",
+    "descInMonth": "在 {month}",
+    "descOnWeekday": "在 {weekday}",
+    "descOnWeekdays": "在 {weekdays}",
+    "descWeekdayRange": "{from}–{to}",
+    "descInvalid": "无效的表达式"
+  }
+}

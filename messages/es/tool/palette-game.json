@@ -1,0 +1,26 @@
+{
+  "paletteGame": {
+    "difficulty": "Dificultad",
+    "startGame": "Iniciar juego",
+    "howToPlay": "Cómo jugar",
+    "rule1": "La paleta objetivo se muestra arriba (ordenada de oscuro a claro)",
+    "rule2": "Reordena las fichas mezcladas de abajo para coincidir con el orden",
+    "rule3": "Arrastra las fichas para intercambiarlas",
+    "rule4": "Envía cuando estés listo para ver tu puntuación",
+    "bestScores": "Mejores puntuaciones: {scores}",
+    "targetOrder": "Orden objetivo (oscuro → claro)",
+    "yourOrder": "Tu orden — arrastra para reordenar",
+    "submit": "Enviar",
+    "newGame": "Nuevo juego",
+    "playAgain": "Jugar de nuevo",
+    "retrySame": "Reintentar mismo",
+    "perfect": "¡Perfecto! 🎉",
+    "great": "¡Genial!",
+    "good": "Bien",
+    "keepTrying": "Sigue intentando",
+    "tryAgain": "Intenta de nuevo",
+    "diffEasy": "Fácil (3)",
+    "diffMedium": "Medio (5)",
+    "diffHard": "Difícil (8)"
+  }
+}

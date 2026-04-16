@@ -1,0 +1,11 @@
+{
+  "slugGenerator": {
+    "clear": "清除",
+    "titleLabel": "标题或文本",
+    "inputPlaceholder": "我的博客文章标题",
+    "separatorLabel": "分隔符",
+    "maxLengthLabel": "最大长度（0=无限制）",
+    "lowercase": "小写",
+    "slugLabel": "Slug"
+  }
+}

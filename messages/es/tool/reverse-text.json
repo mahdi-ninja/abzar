@@ -1,0 +1,10 @@
+{
+  "reverseText": {
+    "reverseCharacters": "Invertir caracteres",
+    "reverseWords": "Invertir palabras",
+    "reverseLines": "Invertir líneas",
+    "flipUpsideDown": "Voltear al revés",
+    "clear": "Limpiar",
+    "inputPlaceholder": "Escribe texto aquí..."
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "romanNumerals": {
+    "reset": "Restablecer",
+    "arabicLabel": "Número arábigo",
+    "romanLabel": "Número romano",
+    "toRoman": "→ Romano:",
+    "toArabic": "→ Arábigo:"
+  }
+}

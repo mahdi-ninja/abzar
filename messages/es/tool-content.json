@@ -1,0 +1,181 @@
+{
+  "toolContent": {
+    "json-formatter": {
+      "about": "Pega o escribe JSON para formatearlo, validarlo y minificarlo al instante. La vista de árbol permite explorar interactivamente estructuras anidadas. Todo se ejecuta localmente en tu navegador — tus datos nunca salen de tu dispositivo.",
+      "howTo": [
+        "Pega tu JSON en el área de entrada",
+        "Haz clic en Formatear para embellecer o Minificar para comprimir",
+        "Usa la vista de árbol para explorar estructuras anidadas",
+        "Haz clic en Copiar para copiar el resultado al portapapeles"
+      ]
+    },
+    "base64": {
+      "about": "Codifica texto o archivos a Base64 y decodifica cadenas Base64 a su forma original. Ideal para incrustar datos en URLs, correos electrónicos o HTML. Soporta codificación de texto y archivos binarios.",
+      "howTo": [
+        "Selecciona el modo texto o archivo",
+        "Pega texto o arrastra un archivo al área de entrada",
+        "Alterna entre codificar y decodificar",
+        "Copia el resultado o descarga el archivo decodificado"
+      ]
+    },
+    "color-picker": {
+      "about": "Selecciona cualquier color y visualízalo simultáneamente en todos los formatos principales — HEX, RGB, HSL, HSB y CMYK. Usa el selector nativo o escribe valores directamente. Ideal para desarrollo web y diseño.",
+      "howTo": [
+        "Haz clic en la muestra de color para abrir el selector",
+        "O escribe un valor en cualquier formato (HEX, RGB, HSL, etc.)",
+        "Todos los formatos se actualizan automáticamente en sincronía",
+        "Haz clic en Copiar junto a cada formato para copiarlo"
+      ]
+    },
+    "password-generator": {
+      "about": "Crea contraseñas seguras con el generador de números aleatorios criptográficamente seguro de tu navegador. Personaliza la longitud, tipos de caracteres y genera múltiples contraseñas a la vez. Incluye cálculo de entropía para mostrar la fortaleza.",
+      "howTo": [
+        "Mueve el control deslizante para ajustar la longitud de la contraseña",
+        "Activa/desactiva tipos de caracteres: mayúsculas, minúsculas, números, símbolos",
+        "Haz clic en Generar para crear una nueva contraseña",
+        "Usa el modo por lotes para generar múltiples contraseñas a la vez",
+        "Haz clic en Copiar para copiar la contraseña al portapapeles"
+      ]
+    },
+    "uuid-generator": {
+      "about": "Genera identificadores únicos universales en varios formatos. Soporta UUID v4 (aleatorio), ULID (ordenable por tiempo) y nanoid (compacto). Generación en lote y copia con un clic.",
+      "howTo": [
+        "Selecciona el tipo de identificador: UUID v4, ULID o nanoid",
+        "Ajusta la cantidad (1 a 100)",
+        "Haz clic en Generar para crear los identificadores",
+        "Haz clic en Copiar todo para copiar todos los identificadores"
+      ]
+    },
+    "word-counter": {
+      "about": "Analiza tu texto con conteo en tiempo real de palabras, caracteres, oraciones y párrafos. Incluye puntuaciones de legibilidad (Flesch-Kincaid, Gunning Fog) para evaluar la complejidad y el nivel de lectura.",
+      "howTo": [
+        "Escribe o pega texto",
+        "Observa los conteos en tiempo real en las tarjetas de estadísticas",
+        "Revisa las puntuaciones de legibilidad para análisis de complejidad",
+        "Usa el desglose de caracteres/palabras para análisis detallado"
+      ]
+    },
+    "unit-converter": {
+      "about": "Convierte entre unidades de longitud, peso, volumen, temperatura, velocidad, área y almacenamiento de datos. Soporta sistemas métrico e imperial con conversión instantánea mientras escribes.",
+      "howTo": [
+        "Selecciona una categoría de unidad (longitud, peso, etc.)",
+        "Elige las unidades de origen y destino en los menús",
+        "Escribe un valor en el campo de entrada",
+        "Usa el botón de intercambio para invertir la conversión"
+      ]
+    },
+    "timestamp-converter": {
+      "about": "Convierte entre marcas de tiempo Unix, ISO 8601, RFC 2822 y formatos legibles. Detecta automáticamente el formato de entrada. Ideal para depurar APIs, logs y registros de bases de datos.",
+      "howTo": [
+        "Pega una marca de tiempo o cadena de fecha en la entrada",
+        "El formato se detecta automáticamente y se muestran todas las conversiones",
+        "Haz clic en \"Ahora\" para usar la fecha y hora actual",
+        "Haz clic en Copiar junto a cada formato para copiarlo"
+      ]
+    },
+    "hash-generator": {
+      "about": "Genera hashes SHA-1, SHA-256, SHA-512 y MD5 desde texto o archivos con Web Crypto API. Todo el procesamiento ocurre en tu navegador — tus datos nunca se suben.",
+      "howTo": [
+        "Selecciona el modo texto o archivo",
+        "Escribe texto o arrastra un archivo para hashear",
+        "Todos los algoritmos de hash se calculan simultáneamente",
+        "Haz clic en Copiar junto a cada hash para copiarlo"
+      ]
+    },
+    "qr-generator": {
+      "about": "Genera códigos QR para URL, texto plano, credenciales Wi-Fi y vCard. Personaliza el tamaño y el nivel de corrección de errores. Descarga en PNG o SVG para uso impreso o digital.",
+      "howTo": [
+        "Selecciona el tipo de contenido (URL, texto, Wi-Fi o vCard)",
+        "Completa los campos requeridos",
+        "Ajusta el tamaño y la corrección de errores si es necesario",
+        "Descarga el código QR en formato PNG o SVG"
+      ]
+    },
+    "generative-art": {
+      "about": "Crea arte generativo completamente en el navegador con Canvas API. Elige entre paisajes de ruido Perlin, patrones ondulados, campos de flujo de partículas y composiciones circulares. Ajusta la escala y la semilla para descubrir variaciones infinitas, luego descarga como PNG.",
+      "howTo": [
+        "Elige un algoritmo: ruido Perlin, círculos, ondas o campo de flujo",
+        "Selecciona una paleta de colores del menú",
+        "Ajusta la escala para controlar la densidad del detalle",
+        "Arrastra el control de semilla o haz clic en Aleatorizar",
+        "Haz clic en Descargar PNG para guardar la obra"
+      ]
+    },
+    "meme-generator": {
+      "about": "Crea memes en el navegador: sube cualquier imagen y añade texto clásico Impact. Ajusta el tamaño de fuente, color del texto y texto superior e inferior. Todo se ejecuta localmente — sin subidas, sin marcas de agua.",
+      "howTo": [
+        "Arrastra o haz clic para subir una imagen",
+        "Escribe el texto del título superior e inferior",
+        "Ajusta el tamaño de fuente y el color del texto",
+        "Haz clic en Descargar PNG para guardar el meme",
+        "Haz clic en Cambiar imagen para empezar con una nueva"
+      ]
+    },
+    "soundboard": {
+      "about": "Crea un panel de sonidos personalizado: sube tus clips de audio. Cada archivo se convierte en un botón de reproducción — haz clic para reproducir al instante. Controla el volumen con un control deslizante y detén todos los sonidos a la vez. Ideal para streaming, presentaciones y efectos de sonido.",
+      "howTo": [
+        "Arrastra archivos de audio (MP3, WAV, OGG) al área de carga",
+        "Haz clic en cualquier botón de sonido para reproducir",
+        "Ajusta el control de volumen para controlar el nivel",
+        "Pasa el cursor sobre una tarjeta y haz clic en × para eliminar",
+        "Haz clic en Detener todo para silenciar todos los sonidos"
+      ]
+    },
+    "terrain-generator": {
+      "about": "Genera mapas de terreno 2D realistas con movimiento browniano fraccional (fBm) basado en ruido Perlin. Ajusta la escala para acercar/alejar, aumenta las octavas de detalle para terreno más rugoso y explora miles de paisajes únicos con el control de semilla.",
+      "howTo": [
+        "Arrastra el control de semilla para explorar diferentes terrenos",
+        "Aumenta la escala para alejar la vista (características continentales)",
+        "Aumenta el detalle (octavas) para terreno más rugoso",
+        "Haz clic en Nuevo terreno para saltar a una semilla aleatoria",
+        "Haz clic en Descargar PNG para guardar el mapa"
+      ]
+    },
+    "drawing-canvas": {
+      "about": "Un lienzo de dibujo ligero con herramientas de pincel y borrador, paleta de 12 colores más selector personalizado, tamaño de pincel ajustable e historial de deshacer. Funciona con ratón y táctil. Descarga tu dibujo como PNG.",
+      "howTo": [
+        "Selecciona pincel o borrador de la barra de herramientas",
+        "Elige un color de la paleta o el selector personalizado",
+        "Ajusta el tamaño del pincel con el control deslizante",
+        "Dibuja en el lienzo — soporta táctil y lápiz óptico",
+        "Haz clic en Deshacer para retroceder, Limpiar para reiniciar o Descargar PNG para guardar"
+      ]
+    },
+    "ambient-sounds": {
+      "about": "Genera paisajes sonoros relajantes completamente en el navegador con Web Audio API — sin descargas, sin streaming. Mezcla ruido blanco, rosa, marrón, lluvia y olas del océano, cada uno con control de volumen independiente. Ideal para concentración, sueño o relajación.",
+      "howTo": [
+        "Haz clic en una tarjeta de sonido para activar/desactivar",
+        "Arrastra el control de volumen de cada tarjeta para ajustar la mezcla",
+        "Combina varios sonidos para un ambiente más rico",
+        "Haz clic en Detener todo para silenciar todo"
+      ]
+    },
+    "css-art": {
+      "about": "Un laboratorio CSS en vivo para crear imágenes y animaciones puras con CSS. Edita HTML y CSS en tiempo real con vista previa instantánea en un iframe aislado. Comienza con uno de los ejemplos incluidos y personaliza libremente.",
+      "howTo": [
+        "Selecciona un ejemplo del menú para empezar",
+        "Edita los paneles HTML y CSS — la vista previa se actualiza en vivo",
+        "Haz clic en Copiar HTML+CSS para copiar el código",
+        "Haz clic en Descargar HTML para guardar un archivo independiente"
+      ]
+    },
+    "emoji-search": {
+      "about": "Explora y busca más de 1900 emojis por nombre, palabra clave o categoría. Haz clic en cualquier emoji para copiarlo al portapapeles. Los emojis usados recientemente aparecen en la parte superior. Todos los datos están empaquetados localmente — sin solicitudes de red.",
+      "howTo": [
+        "Escribe en el cuadro de búsqueda para filtrar emojis",
+        "Haz clic en los botones de categoría para explorar por tema",
+        "Haz clic en cualquier emoji para copiarlo al portapapeles",
+        "Los emojis copiados recientemente aparecen en la parte superior"
+      ]
+    },
+    "palette-game": {
+      "about": "Entrena tu sentido del color ordenando fichas de color mezcladas para coincidir con la paleta objetivo. Cada ronda genera una nueva paleta aleatoria. Obtén un 100% colocando cada ficha en el orden correcto de luminosidad. Las mejores puntuaciones se guardan localmente.",
+      "howTo": [
+        "Elige la dificultad: fácil (3 colores), medio (5) o difícil (8)",
+        "Haz clic en Iniciar juego para ver la paleta objetivo y las fichas mezcladas",
+        "Arrastra las fichas para intercambiar posiciones y coincidir con el orden objetivo",
+        "Haz clic en Enviar para ver tu puntuación, o Nuevo juego para una nueva ronda"
+      ]
+    }
+  }
+}

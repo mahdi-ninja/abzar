@@ -1,0 +1,12 @@
+{
+  "htmlToMarkdown": {
+    "richPasteDetected": "检测到富文本——已自动从剪贴板提取 HTML 并转换。",
+    "inputLabel": "HTML 输入",
+    "outputLabel": "Markdown 输出",
+    "inputPlaceholder": "从 Word / Google Docs / 浏览器粘贴富文本，或直接输入 HTML…",
+    "outputPlaceholder": "Markdown 将在此显示…",
+    "convert": "转换",
+    "loadExample": "加载示例",
+    "clear": "清除"
+  }
+}

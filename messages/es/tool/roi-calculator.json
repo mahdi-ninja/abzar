@@ -1,0 +1,11 @@
+{
+  "roiCalculator": {
+    "reset": "Restablecer",
+    "initialInvestment": "Inversión inicial",
+    "finalValue": "Valor final",
+    "years": "Años",
+    "netGainLoss": "Ganancia/Pérdida neta",
+    "totalRoi": "ROI total",
+    "annualizedRoi": "ROI anualizado"
+  }
+}

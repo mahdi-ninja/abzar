@@ -1,0 +1,10 @@
+{
+  "markupMargin": {
+    "reset": "重置",
+    "cost": "成本 ($)",
+    "revenue": "收入 ($)",
+    "markup": "加价 (%)",
+    "margin": "利润率 (%)",
+    "profit": "利润"
+  }
+}

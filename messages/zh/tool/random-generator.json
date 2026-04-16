@@ -1,0 +1,14 @@
+{
+  "randomGenerator": {
+    "tabNumber": "数字",
+    "tabCoin": "抛硬币",
+    "tabDice": "骰子",
+    "min": "最小值",
+    "max": "最大值",
+    "count": "数量",
+    "generate": "生成",
+    "clear": "清除",
+    "heads": "正面",
+    "tails": "反面"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "terrainGenerator": {
+    "seedLabel": "种子：{value}",
+    "scaleLabel": "比例：{value}",
+    "octavesLabel": "细节（八度）：{value}",
+    "newTerrain": "新地形",
+    "downloadPng": "下载 PNG",
+    "deepWater": "深水",
+    "shallow": "浅水",
+    "sand": "沙地",
+    "grass": "草地",
+    "rock": "岩石",
+    "snow": "雪地"
+  }
+}

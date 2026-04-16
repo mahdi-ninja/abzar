@@ -1,0 +1,21 @@
+{
+  "jwtDecoder": {
+    "jwtToken": "JWT 令牌",
+    "clear": "清除",
+    "placeholder": "在此粘贴 JWT（eyJhbGci...）",
+    "errorInvalid3Parts": "无效的 JWT：应包含由点分隔的 3 个部分",
+    "errorInvalidJson": "无效的 JWT：无法将头部或载荷解析为 JSON",
+    "errorBase64Failed": "无效的 JWT：Base64 解码失败",
+    "header": "头部",
+    "payload": "载荷",
+    "signature": "签名",
+    "timestamps": "时间戳",
+    "issuedAt": "签发时间",
+    "expires": "过期时间",
+    "notBefore": "生效时间",
+    "expired": "已过期",
+    "expiresInMinutes": "{minutes} 分钟后过期",
+    "expiresInHours": "{hours} 小时后过期",
+    "emptyState": "粘贴 JWT 令牌以解码其头部、载荷并验证过期时间。"
+  }
+}

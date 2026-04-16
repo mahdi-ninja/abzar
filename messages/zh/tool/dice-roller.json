@@ -1,0 +1,9 @@
+{
+  "diceRoller": {
+    "quantity": "数量",
+    "clear": "清除",
+    "nat20": "天然 20！",
+    "critFail": "大失败！",
+    "emptyPrompt": "点击骰子按钮开始投掷！"
+  }
+}

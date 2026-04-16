@@ -1,0 +1,8 @@
+{
+  "loremIpsum": {
+    "classic": "经典",
+    "hipster": "时髦",
+    "corporate": "企业",
+    "paragraphsLabel": "段落数：{count}"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "percentageCalculator": {
+    "tabOf": "X 的 Y%",
+    "tabIs": "X 是 Y 的百分之几",
+    "tabChange": "百分比变化",
+    "labelPercentage": "百分比",
+    "labelValue": "数值",
+    "labelFrom": "从",
+    "labelNumber": "数字",
+    "labelTotal": "总数",
+    "labelTo": "到",
+    "separatorOf": "% 的",
+    "separatorIs": "是多少 % 的",
+    "separatorArrow": "→",
+    "clear": "清除"
+  }
+}

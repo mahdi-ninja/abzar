@@ -1,0 +1,8 @@
+{
+  "jsonToCsv": {
+    "inputLabel": "JSON 数组",
+    "outputLabel": "CSV 输出",
+    "convert": "转换",
+    "clear": "清除"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "home": {
+    "categories": "Categorías",
+    "popularTools": "Herramientas populares",
+    "toolsSuffix": "herramientas",
+    "newBadge": "Nuevo",
+    "quickFilters": ["JSON", "Contraseña", "Color", "PDF", "Calculadora", "Imagen", "UUID"]
+  }
+}

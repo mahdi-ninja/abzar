@@ -1,0 +1,8 @@
+{
+  "stringEscaper": {
+    "inputPlaceholder": "Texto para escapar o desescapar...",
+    "escape": "Escapar",
+    "unescape": "Desescapar",
+    "clear": "Limpiar"
+  }
+}

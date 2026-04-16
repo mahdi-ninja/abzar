@@ -121,7 +121,7 @@ export default function TimestampConverter() {
   );
 }
 
-function getRelativeTime(date: Date, t: (key: string, values?: Record<string, unknown>) => string): string {
+function getRelativeTime(date: Date, t: (key: string, values?: Record<string, string | number | Date>) => string): string {
   const now = Date.now();
   const diff = now - date.getTime();
   const absDiff = Math.abs(diff);

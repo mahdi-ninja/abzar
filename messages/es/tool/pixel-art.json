@@ -1,0 +1,14 @@
+{
+  "pixelArt": {
+    "grid": "Cuadrícula",
+    "tool": "Herramienta",
+    "pencil": "Lápiz",
+    "eraser": "Borrador",
+    "fill": "Rellenar",
+    "undo": "Deshacer",
+    "importImage": "Importar imagen",
+    "clear": "Limpiar",
+    "exportPng": "Exportar PNG",
+    "selectColor": "Seleccionar color {color}"
+  }
+}

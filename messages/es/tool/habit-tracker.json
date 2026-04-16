@@ -1,0 +1,15 @@
+{
+  "habitTracker": {
+    "add": "Agregar",
+    "placeholder": "Nombre del nuevo hábito...",
+    "emptyState": "Agrega un hábito para comenzar a rastrear.",
+    "thisWeek": "Esta semana",
+    "habit": "Hábito",
+    "streak": "Racha",
+    "removeHabit": "Eliminar hábito",
+    "heatmapTitle": "Mapa de calor de 90 días — {name}",
+    "heatmapTooltip": "{day}: {count} hábitos",
+    "less": "Menos",
+    "more": "Más"
+  }
+}

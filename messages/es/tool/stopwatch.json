@@ -1,0 +1,12 @@
+{
+  "stopwatch": {
+    "start": "Iniciar",
+    "resume": "Reanudar",
+    "stop": "Detener",
+    "lap": "Vuelta",
+    "reset": "Restablecer",
+    "laps": "Vueltas",
+    "copy": "Copiar",
+    "lapNumber": "Vuelta {number}"
+  }
+}

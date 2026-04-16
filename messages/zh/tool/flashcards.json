@@ -1,0 +1,20 @@
+{
+  "flashcards": {
+    "manage": "管理（{count}）",
+    "study": "学习",
+    "frontLabel": "正面（问题）",
+    "backLabel": "背面（答案）",
+    "frontPlaceholder": "输入问题...",
+    "backPlaceholder": "输入答案...",
+    "addCard": "添加卡片",
+    "cardsCount": "卡片（{count}）",
+    "box": "盒子 {box}",
+    "emptyState": "添加一些闪卡开始学习。",
+    "cardProgress": "第 {current} / {total} 张 · 盒子 {box}/5",
+    "clickToReveal": "点击查看答案",
+    "answer": "答案：",
+    "incorrect": "错误——回到盒子 1",
+    "correct": "正确——前进",
+    "noCardsToStudy": "没有可学习的卡片。请先添加一些卡片。"
+  }
+}

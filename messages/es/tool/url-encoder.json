@@ -1,0 +1,11 @@
+{
+  "urlEncoder": {
+    "fullUrlMode": "Modo URL completa",
+    "componentMode": "Modo componente",
+    "invalidEncoded": "Cadena codificada inválida",
+    "inputPlaceholder": "Ingresa URL o texto...",
+    "encode": "Codificar",
+    "decode": "Decodificar",
+    "clear": "Limpiar"
+  }
+}

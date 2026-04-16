@@ -1,0 +1,11 @@
+{
+  "drawingCanvas": {
+    "brush": "画笔",
+    "eraser": "橡皮擦",
+    "sizeLabel": "大小：{value}px",
+    "undo": "撤销",
+    "clear": "清除",
+    "downloadPng": "下载 PNG",
+    "customColor": "自定义颜色"
+  }
+}

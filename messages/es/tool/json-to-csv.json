@@ -1,0 +1,8 @@
+{
+  "jsonToCsv": {
+    "inputLabel": "Array JSON",
+    "outputLabel": "Salida CSV",
+    "convert": "Convertir",
+    "clear": "Limpiar"
+  }
+}

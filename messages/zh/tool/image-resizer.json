@@ -1,0 +1,24 @@
+{
+  "imageResizer": {
+    "dropLabel": "拖放图片到此处开始",
+    "resize": "缩放",
+    "crop": "裁剪",
+    "widthPx": "宽度 (px)",
+    "heightPx": "高度 (px)",
+    "lockAspectRatio": "锁定宽高比",
+    "original": "原始 ({w}x{h})",
+    "resized": "已缩放 ({w}x{h})",
+    "resizedWithSize": "已缩放 ({w}x{h}) — {size}KB",
+    "applyCrop": "应用裁剪",
+    "cropInstruction": "绘制选区，然后拖动移动或拉动手柄调整大小。",
+    "selectCropArea": "选择裁剪区域",
+    "croppedResult": "裁剪结果",
+    "croppedResultWithSize": "裁剪结果 ({w}x{h}) — {size}KB",
+    "download": "下载",
+    "clear": "清除",
+    "x": "X",
+    "y": "Y",
+    "width": "宽度",
+    "height": "高度"
+  }
+}

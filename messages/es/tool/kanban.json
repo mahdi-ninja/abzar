@@ -1,0 +1,14 @@
+{
+  "kanban": {
+    "board": "Tablero",
+    "selectBoard": "Seleccionar tablero",
+    "save": "Guardar",
+    "rename": "Renombrar",
+    "newBoardPlaceholder": "Nuevo tablero...",
+    "deleteBoard": "Eliminar tablero",
+    "removeColumn": "Eliminar columna",
+    "removeCard": "Eliminar tarjeta",
+    "newCardPlaceholder": "Nueva tarjeta...",
+    "newColumnPlaceholder": "Nueva columna..."
+  }
+}

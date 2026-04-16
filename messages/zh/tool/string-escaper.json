@@ -1,0 +1,8 @@
+{
+  "stringEscaper": {
+    "inputPlaceholder": "要转义或反转义的文本...",
+    "escape": "转义",
+    "unescape": "反转义",
+    "clear": "清除"
+  }
+}

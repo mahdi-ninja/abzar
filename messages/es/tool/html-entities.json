@@ -1,0 +1,10 @@
+{
+  "htmlEntities": {
+    "numericMode": "Entidades numéricas (&#123;)",
+    "namedMode": "Entidades con nombre (&amp;)",
+    "inputPlaceholder": "Texto HTML...",
+    "encode": "Codificar",
+    "decode": "Decodificar",
+    "clear": "Limpiar"
+  }
+}

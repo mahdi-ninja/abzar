@@ -1,0 +1,15 @@
+{
+  "terrainGenerator": {
+    "seedLabel": "Semilla: {value}",
+    "scaleLabel": "Escala: {value}",
+    "octavesLabel": "Detalle (octavas): {value}",
+    "newTerrain": "Nuevo terreno",
+    "downloadPng": "Descargar PNG",
+    "deepWater": "Agua profunda",
+    "shallow": "Poco profundo",
+    "sand": "Arena",
+    "grass": "Pasto",
+    "rock": "Roca",
+    "snow": "Nieve"
+  }
+}

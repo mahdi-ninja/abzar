@@ -1,0 +1,20 @@
+{
+  "cssArt": {
+    "algorithm": "Algoritmo",
+    "sizeLabel": "Tamaño: {value}px",
+    "complexityLabel": "Complejidad: {value}",
+    "copyCss": "Copiar CSS",
+    "download": "Descargar",
+    "color1": "Color 1",
+    "color2": "Color 2",
+    "preview": "Vista previa",
+    "algoDots": "Puntos",
+    "algoStripes": "Rayas",
+    "algoCheckerboard": "Damero",
+    "algoGradientBlob": "Manchas de degradado",
+    "algoConcentric": "Concéntrico",
+    "algoWave": "Ondas",
+    "copySuccess": "¡Copiado al portapapeles!",
+    "copyFailed": "Error al copiar"
+  }
+}

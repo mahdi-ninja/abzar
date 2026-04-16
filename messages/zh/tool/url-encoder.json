@@ -1,0 +1,11 @@
+{
+  "urlEncoder": {
+    "fullUrlMode": "完整 URL 模式",
+    "componentMode": "组件模式",
+    "invalidEncoded": "无效的编码字符串",
+    "inputPlaceholder": "输入 URL 或文本...",
+    "encode": "编码",
+    "decode": "解码",
+    "clear": "清除"
+  }
+}

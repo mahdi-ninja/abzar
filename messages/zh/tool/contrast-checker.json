@@ -1,0 +1,17 @@
+{
+  "contrastChecker": {
+    "reset": "重置",
+    "foreground": "前景色（文字）",
+    "background": "背景色",
+    "swapColors": "交换颜色",
+    "largeTextPreview": "大文本预览（24px 粗体）",
+    "normalTextPreview": "普通文本预览（16px）。敏捷的棕色狐狸跳过了懒狗。",
+    "smallTextPreview": "小文本预览（14px）。WCAG 要求较小文本有更高的对比度。",
+    "contrastRatio": "对比度",
+    "level": "级别",
+    "normalText": "普通文本",
+    "largeText": "大文本",
+    "pass": "通过",
+    "fail": "未通过"
+  }
+}

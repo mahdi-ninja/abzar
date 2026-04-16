@@ -1,0 +1,19 @@
+{
+  "mortgageCalculator": {
+    "reset": "重置",
+    "loanAmount": "贷款金额 ($)",
+    "interestRate": "利率 (%)",
+    "term": "期限（年）",
+    "monthlyPayment": "月供",
+    "totalPaid": "还款总额",
+    "totalInterest": "利息总额",
+    "paymentBreakdown": "还款明细",
+    "principal": "本金：{pct}%",
+    "interest": "利息：{pct}%",
+    "amortizationSchedule": "摊销计划表",
+    "thYear": "年",
+    "thPrincipal": "本金",
+    "thInterest": "利息",
+    "thBalance": "余额"
+  }
+}
