@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useCallback, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import {
@@ -10,7 +11,7 @@ import {
 } from "@/components/ui/select";
 
 type Difficulty = "3" | "5" | "8";
-const DIFF_LABELS: Record<Difficulty, string> = { "3": "Easy (3)", "5": "Medium (5)", "8": "Hard (8)" };
+const DIFF_KEYS: Record<Difficulty, string> = { "3": "diffEasy", "5": "diffMedium", "8": "diffHard" };
 
 function hsvToHex(h: number, s: number, v: number): string {
   const f = (n: number) => {
@@ -63,6 +64,7 @@ function scoreArr(answer: string[], correct: string[]): number {
 }
 
 export default function PaletteGame() {
+  const t = useTranslations("paletteGame");
   const [difficulty, setDifficulty] = useState<Difficulty>("5");
   const [seed, setSeed] = useState(1);
   const [tiles, setTiles] = useState<string[]>([]);
@@ -126,41 +128,41 @@ export default function PaletteGame() {
 
   const gradeLabel = useMemo(() => {
     if (result === null) return "";
-    if (result === 100) return "Perfect! 🎉";
-    if (result >= 80) return "Great!";
-    if (result >= 60) return "Good";
-    if (result >= 40) return "Keep trying";
-    return "Try again";
-  }, [result]);
+    if (result === 100) return t("perfect");
+    if (result >= 80) return t("great");
+    if (result >= 60) return t("good");
+    if (result >= 40) return t("keepTrying");
+    return t("tryAgain");
+  }, [result, t]);
 
   if (!started) {
     return (
       <div className="space-y-6">
         <div className="flex flex-wrap items-end gap-3">
           <div>
-            <Label className="text-xs mb-1 block">Difficulty</Label>
+            <Label className="text-xs mb-1 block">{t("difficulty")}</Label>
             <Select value={difficulty} onValueChange={(v) => v && setDifficulty(v as Difficulty)}>
-              <SelectTrigger className="w-40"><span>{DIFF_LABELS[difficulty]}</span></SelectTrigger>
+              <SelectTrigger className="w-40"><span>{t(DIFF_KEYS[difficulty] as "diffEasy" | "diffMedium" | "diffHard")}</span></SelectTrigger>
               <SelectContent>
-                {(Object.keys(DIFF_LABELS) as Difficulty[]).map((d) => (
-                  <SelectItem key={d} value={d}>{DIFF_LABELS[d]}</SelectItem>
+                {(Object.keys(DIFF_KEYS) as Difficulty[]).map((d) => (
+                  <SelectItem key={d} value={d}>{t(DIFF_KEYS[d] as "diffEasy" | "diffMedium" | "diffHard")}</SelectItem>
                 ))}
               </SelectContent>
             </Select>
           </div>
-          <Button onClick={startGame}>Start Game</Button>
+          <Button onClick={startGame}>{t("startGame")}</Button>
         </div>
         <div className="rounded-lg border border-border bg-muted/30 p-6 max-w-md">
-          <h3 className="font-semibold mb-2">How to play</h3>
+          <h3 className="font-semibold mb-2">{t("howToPlay")}</h3>
           <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-            <li>A target palette is shown at the top (sorted dark → bright)</li>
-            <li>Rearrange the shuffled tiles below to match the order</li>
-            <li>Drag tiles to swap them</li>
-            <li>Submit when ready to see your score</li>
+            <li>{t("rule1")}</li>
+            <li>{t("rule2")}</li>
+            <li>{t("rule3")}</li>
+            <li>{t("rule4")}</li>
           </ul>
           {(Object.keys(bestScores) as Difficulty[]).some((d) => bestScores[d] > 0) && (
             <div className="mt-4 text-xs text-muted-foreground">
-              Best scores: {(Object.entries(bestScores) as [Difficulty, number][]).map(([d, s]) => `${DIFF_LABELS[d]}: ${s}%`).join(" · ")}
+              {t("bestScores", { scores: (Object.entries(bestScores) as [Difficulty, number][]).map(([d, s]) => `${t(DIFF_KEYS[d] as "diffEasy" | "diffMedium" | "diffHard")}: ${s}%`).join(" · ") })}
             </div>
           )}
         </div>
@@ -171,7 +173,7 @@ export default function PaletteGame() {
   return (
     <div className="space-y-6 max-w-lg">
       <div>
-        <p className="text-xs text-muted-foreground mb-2 font-medium">Target order (dark → bright)</p>
+        <p className="text-xs text-muted-foreground mb-2 font-medium">{t("targetOrder")}</p>
         <div className="flex gap-2">
           {correct.map((c, i) => (
             <div key={i} className="flex-1 h-14 rounded-md border border-border shadow-sm" style={{ backgroundColor: c }} title={c} />
@@ -180,7 +182,7 @@ export default function PaletteGame() {
       </div>
 
       <div>
-        <p className="text-xs text-muted-foreground mb-2 font-medium">Your order — drag to rearrange</p>
+        <p className="text-xs text-muted-foreground mb-2 font-medium">{t("yourOrder")}</p>
         <div className="flex gap-2">
           {tiles.map((c, i) => (
             <div
@@ -204,8 +206,8 @@ export default function PaletteGame() {
 
       {result === null ? (
         <div className="flex gap-2">
-          <Button onClick={submit}>Submit</Button>
-          <Button variant="outline" onClick={newGame}>New Game</Button>
+          <Button onClick={submit}>{t("submit")}</Button>
+          <Button variant="outline" onClick={newGame}>{t("newGame")}</Button>
         </div>
       ) : (
         <div className="space-y-3">
@@ -214,8 +216,8 @@ export default function PaletteGame() {
             <div className="text-muted-foreground">{gradeLabel}</div>
           </div>
           <div className="flex gap-2">
-            <Button onClick={newGame}>Play Again</Button>
-            <Button variant="outline" onClick={startGame}>Retry Same</Button>
+            <Button onClick={newGame}>{t("playAgain")}</Button>
+            <Button variant="outline" onClick={startGame}>{t("retrySame")}</Button>
           </div>
         </div>
       )}

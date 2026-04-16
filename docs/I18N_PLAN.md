@@ -197,11 +197,29 @@ export const routing = defineRouting({
 });
 ```
 
-**`i18n/request.ts`** — uses `next/root-params` (Next.js 16.2+) to access the locale without `setRequestLocale`:
+**`i18n/request.ts`** — loads all message files including per-tool translations:
 ```ts
 import { getRequestConfig } from 'next-intl/server';
 import { hasLocale } from 'next-intl';
+import { readdirSync, readFileSync } from 'fs';
+import { join } from 'path';
 import { routing } from './routing';
+
+function loadToolMessages(locale: string): Record<string, unknown> {
+  const dir = join(process.cwd(), 'messages', locale, 'tool');
+  let files: string[];
+  try {
+    files = readdirSync(dir).filter((f) => f.endsWith('.json'));
+  } catch {
+    return {};
+  }
+  const merged: Record<string, unknown> = {};
+  for (const file of files) {
+    const content = JSON.parse(readFileSync(join(dir, file), 'utf-8'));
+    Object.assign(merged, content);
+  }
+  return merged;
+}
 
 export default getRequestConfig(async ({ requestLocale }) => {
   const requested = await requestLocale;
@@ -217,12 +235,13 @@ export default getRequestConfig(async ({ requestLocale }) => {
       ...(await import(`../messages/${locale}/categories.json`)).default,
       ...(await import(`../messages/${locale}/tools.json`)).default,
       ...(await import(`../messages/${locale}/tool-content.json`)).default,
+      ...loadToolMessages(locale!),
     },
   };
 });
 ```
 
-> **Note on bundle size:** Per-tool component strings (e.g., `messages/en/tool/word-counter.json`) are NOT loaded in `request.ts`. They are loaded on-demand inside each tool component via a nested `NextIntlClientProvider`. This keeps the global bundle from growing with every tool. See Step 5.
+> **Note:** Per-tool component strings (`messages/{locale}/tool/*.json`) are auto-loaded via `loadToolMessages()` which reads all JSON files in the `tool/` directory. This means adding a new tool's translation file requires no wiring — just create the file.
 >
 > **Future optimization:** `tools.json` (~30KB) and `tool-content.json` (~40KB) are currently loaded on every page. If this becomes a performance concern, split them by category or load conditionally by inspecting the request path.
 
@@ -563,9 +582,9 @@ function generateToolJsonLd(tool: Tool, overrides?: { name: string; description:
 
 **OG images:** Keep as English-only for now. Localizing OG images requires a generation pipeline change — track as a follow-up.
 
-### Step 5 — Replace strings in tool components
+### Step 5 — Replace strings in tool components (done)
 
-Each tool component gets translations loaded on-demand to keep bundle size small.
+All 74 tool components have been translated. Per-tool messages are loaded globally via `loadToolMessages()` in `i18n/request.ts` (reads all `messages/{locale}/tool/*.json` files at server time).
 
 **Pattern for tool component strings:**
 ```tsx
@@ -578,47 +597,14 @@ export default function WordCounter() {
 }
 ```
 
-**Loading per-tool messages:** The per-tool JSON files (`messages/{locale}/tool/word-counter.json`) are **merged with** the page's existing messages, not replaced. This is critical — a nested `NextIntlClientProvider` with only tool messages would shadow the parent provider, causing `t('nav.searchPlaceholder')` or other shared keys to fail inside the tool component.
+**Loading:** Per-tool messages are merged into the global message object by `loadToolMessages()` in `i18n/request.ts`. The tool page simply calls `const mergedMessages = await getMessages()` — no per-slug import needed. Adding a new tool's translation file requires no wiring; just create the JSON files and the `readdirSync` picks them up.
 
-The solution: use `getMessages()` to get the already-loaded global messages, merge the per-tool messages in, and pass the combined object to the provider:
-
-```tsx
-// app/[locale]/tools/[category]/[tool-slug]/page.tsx
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
-
-// Inside the component:
-const globalMessages = await getMessages();
-
-let toolMessages = {};
-try {
-  toolMessages = (await import(`@/messages/${locale}/tool/${slug}.json`)).default;
-} catch {
-  // No translation file for this tool yet — fall back to English
-  try {
-    toolMessages = (await import(`@/messages/en/tool/${slug}.json`)).default;
-  } catch {
-    // Tool has no translatable strings (e.g., pure canvas tools)
-  }
-}
-
-// Merge: global messages + tool-specific messages
-const mergedMessages = { ...globalMessages, ...toolMessages };
-
-return (
-  <NextIntlClientProvider messages={mergedMessages}>
-    <ToolPage tool={tool} about={...} howTo={...}>
-      <ToolComponent />
-    </ToolPage>
-  </NextIntlClientProvider>
-);
-```
-
-> **Why merge instead of nest?** A nested `NextIntlClientProvider` **replaces** the parent's messages — it does not inherit them. If a tool component (or any child like `CopyButton`, `DownloadButton`) calls `useTranslations('nav')`, it would fail with a missing key error. Merging keeps all global keys available while adding the tool-specific ones. The only cost is that tool pages send the full message set to the client, but since global messages are ~35KB (already loaded by the parent provider), this adds no extra transfer — just a re-declaration in the provider props.
-
-This way, `wordCounter.*` keys are only loaded when the user visits the word counter page. Tools without a translation file still work — they just won't have translated component strings.
-
-**Incremental approach:** Do this one tool at a time. Tools with no user-facing strings (pure canvas tools like `pixel-art`, `game-of-life`) need no translation file at all.
+**Convention:**
+- Namespace: camelCase of slug (`json-formatter` → `jsonFormatter`)
+- JSON structure: `{ "camelCaseNamespace": { "key": "value" } }`
+- Interpolation: ICU MessageFormat — `t("generated", { count: 5 })`
+- Literal braces: escape with `'{'` and `'}'`
+- Hook deps: add `t` to `useCallback`/`useMemo` deps if referenced inside
 
 ### Step 6 — Locale switcher component
 
@@ -945,9 +931,9 @@ messages/en/tool/*.json         (hand-written, committed)
 messages/fa/*                   (hand-translated, committed — all files)
 ```
 
-**Adding a tool** still touches exactly 3 places (registry, component, dynamic import). The build script regenerates the English message files automatically — no manual sync needed.
+**Adding a tool** now touches exactly 4 places: registry, component, dynamic import, and per-tool translation files (`messages/en/tool/{slug}.json` + `messages/fa/tool/{slug}.json`). The build script regenerates the English message files automatically — no manual sync needed. Per-tool files are auto-loaded by `loadToolMessages()` in `request.ts`.
 
-**Search stays English-only for now.** Fuse.js index is built from the registry's `name`/`description`/`tags` — no change to `lib/search.ts`. The search bar appears in all locales but always matches English terms. Localized search (building a per-locale Fuse index from message files) is a follow-up.
+**Search is locale-aware.** `lib/search.ts` builds dual Fuse.js indexes (one per locale) from message files, so search works in both English and Persian.
 
 **`.gitignore`** — add the generated files:
 ```
@@ -997,10 +983,13 @@ writeFileSync('messages/en/tool-content.json', JSON.stringify({ toolContent: con
 
 ## Out of Scope (follow-ups)
 
-- **Localized search** — Fuse.js index is built from the registry (English). To support searching in Persian, build a per-locale Fuse index from the active locale's message files at runtime. The search bar still appears in all locales but only matches English terms until this is implemented.
 - **Localized OG images** — requires updating the satori pipeline to render translated text.
-- **Localized site tagline** — `siteConfig.tagline` stays English for now. When localized, move to messages and use `getTranslations` in `generateMetadata`.
 - **Pluralization** — next-intl supports ICU message format (`{count, plural, one {# tool} other {# tools}}`). Add when needed.
 - **Date/number formatting** — use `useFormatter()` from next-intl when date/number display is added to tools.
-- **Auto-detect locale** — with `localePrefix: 'as-needed'`, visiting `/` always serves English. Auto-detecting browser language and redirecting to `/fa/` could be added as a client-side check on the homepage, but is not included in this plan. Users switch via the locale switcher instead.
 - **`tools.json` / `tool-content.json` bundle optimization** — currently loaded on every page (~70KB combined). Can be split by category or loaded conditionally when performance data warrants it.
+
+## Previously Out of Scope, Now Done
+
+- **Localized search** — Fuse.js now builds dual per-locale indexes from message files. Search works in both English and Persian.
+- **Localized site tagline** — moved to `site.*` keys in `common.json`, used via `getTranslations` in `generateMetadata`.
+- **Per-tool component i18n** — all 74 tool components fully translated (EN + FA). See `docs/I18N_CHANGELOG.md`.

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useCallback, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
@@ -81,17 +82,17 @@ function makeOcean(ctx: AudioContext): MakeResult {
 
 interface SoundDef {
   id: string;
-  label: string;
+  labelKey: string;
   emoji: string;
   make: (ctx: AudioContext) => MakeResult;
 }
 
 const SOUNDS: SoundDef[] = [
-  { id: "white", label: "White Noise", emoji: "〰️", make: makeWhiteNoise },
-  { id: "pink", label: "Pink Noise", emoji: "🎧", make: makePinkNoise },
-  { id: "brown", label: "Brown Noise", emoji: "🌫️", make: makeBrownNoise },
-  { id: "rain", label: "Rain", emoji: "🌧️", make: makeRain },
-  { id: "ocean", label: "Ocean", emoji: "🌊", make: makeOcean },
+  { id: "white", labelKey: "whiteNoise", emoji: "〰️", make: makeWhiteNoise },
+  { id: "pink", labelKey: "pinkNoise", emoji: "🎧", make: makePinkNoise },
+  { id: "brown", labelKey: "brownNoise", emoji: "🌫️", make: makeBrownNoise },
+  { id: "rain", labelKey: "rain", emoji: "🌧️", make: makeRain },
+  { id: "ocean", labelKey: "ocean", emoji: "🌊", make: makeOcean },
 ];
 
 interface ActiveNode {
@@ -100,6 +101,7 @@ interface ActiveNode {
 }
 
 export default function AmbientSounds() {
+  const t = useTranslations("ambientSounds");
   const [active, setActive] = useState<Set<string>>(new Set());
   const [volumes, setVolumes] = useState<Record<string, number>>(() =>
     Object.fromEntries(SOUNDS.map((s) => [s.id, 50]))
@@ -194,9 +196,9 @@ export default function AmbientSounds() {
   return (
     <div className="space-y-4">
       <div className="flex items-center gap-3">
-        <p className="text-sm text-muted-foreground">Click a sound to toggle it on/off. Mix multiple sounds.</p>
+        <p className="text-sm text-muted-foreground">{t("description")}</p>
         {active.size > 0 && (
-          <Button size="sm" variant="outline" onClick={stopAll}>Stop All</Button>
+          <Button size="sm" variant="outline" onClick={stopAll}>{t("stopAll")}</Button>
         )}
       </div>
 
@@ -211,13 +213,13 @@ export default function AmbientSounds() {
                   className="flex items-center gap-2 font-medium text-sm"
                 >
                   <span className="text-xl">{sound.emoji}</span>
-                  <span>{sound.label}</span>
+                  <span>{t(sound.labelKey as "whiteNoise" | "pinkNoise" | "brownNoise" | "rain" | "ocean")}</span>
                   {on && <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />}
                 </button>
               </div>
               <div>
                 <Label className="text-xs text-muted-foreground mb-1 block">
-                  Volume: {volumes[sound.id]}%
+                  {t("volumeLabel", { value: volumes[sound.id] })}
                 </Label>
                 <Slider
                   value={[volumes[sound.id]]}

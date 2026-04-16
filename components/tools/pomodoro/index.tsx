@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,13 +9,14 @@ import { Card } from "@/components/ui/card";
 
 type Phase = "work" | "short-break" | "long-break";
 
-const PHASE_LABELS: Record<Phase, string> = {
-  work: "Focus",
-  "short-break": "Short Break",
-  "long-break": "Long Break",
+const PHASE_KEYS: Record<Phase, string> = {
+  work: "phaseFocus",
+  "short-break": "phaseShortBreak",
+  "long-break": "phaseLongBreak",
 };
 
 export default function Pomodoro() {
+  const t = useTranslations("pomodoro");
   const [workMin, setWorkMin] = useState(25);
   const [shortBreakMin, setShortBreakMin] = useState(5);
   const [longBreakMin, setLongBreakMin] = useState(15);
@@ -135,7 +137,7 @@ export default function Pomodoro() {
       {/* Timer display */}
       <div className="flex flex-col items-center gap-4">
         <div className={`text-sm font-medium ${phaseColor}`}>
-          {PHASE_LABELS[phase]}
+          {t(PHASE_KEYS[phase])}
         </div>
 
         {/* Circular progress */}
@@ -170,27 +172,27 @@ export default function Pomodoro() {
         {/* Controls */}
         <div className="flex items-center gap-2">
           <Button onClick={handleStartPause} className="w-24">
-            {running ? "Pause" : "Start"}
+            {running ? t("pause") : t("start")}
           </Button>
           <Button variant="outline" onClick={handleSkip}>
-            Skip
+            {t("skip")}
           </Button>
           <Button variant="outline" onClick={handleReset}>
-            Reset
+            {t("reset")}
           </Button>
         </div>
 
         <div className="text-sm text-muted-foreground">
-          Sessions completed: {completedSessions}
+          {t("sessionsCompleted", { count: completedSessions })}
         </div>
       </div>
 
       {/* Settings */}
       <Card className="p-4">
-        <Label className="text-sm font-medium mb-3 block">Settings</Label>
+        <Label className="text-sm font-medium mb-3 block">{t("settings")}</Label>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           <div>
-            <Label className="text-xs mb-1 block">Work (min)</Label>
+            <Label className="text-xs mb-1 block">{t("workMin")}</Label>
             <Input
               type="number"
               min={1}
@@ -205,7 +207,7 @@ export default function Pomodoro() {
             />
           </div>
           <div>
-            <Label className="text-xs mb-1 block">Short Break</Label>
+            <Label className="text-xs mb-1 block">{t("shortBreak")}</Label>
             <Input
               type="number"
               min={1}
@@ -220,7 +222,7 @@ export default function Pomodoro() {
             />
           </div>
           <div>
-            <Label className="text-xs mb-1 block">Long Break</Label>
+            <Label className="text-xs mb-1 block">{t("longBreak")}</Label>
             <Input
               type="number"
               min={1}
@@ -235,7 +237,7 @@ export default function Pomodoro() {
             />
           </div>
           <div>
-            <Label className="text-xs mb-1 block">Long Break After</Label>
+            <Label className="text-xs mb-1 block">{t("longBreakAfter")}</Label>
             <Input
               type="number"
               min={1}

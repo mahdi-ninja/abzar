@@ -1,0 +1,17 @@
+{
+  "percentageCalculator": {
+    "tabOf": "X% of Y",
+    "tabIs": "X is what % of Y",
+    "tabChange": "% Change",
+    "labelPercentage": "Percentage",
+    "labelValue": "Value",
+    "labelFrom": "From",
+    "labelNumber": "Number",
+    "labelTotal": "Total",
+    "labelTo": "To",
+    "separatorOf": "% of",
+    "separatorIs": "is what % of",
+    "separatorArrow": "→",
+    "clear": "Clear"
+  }
+}

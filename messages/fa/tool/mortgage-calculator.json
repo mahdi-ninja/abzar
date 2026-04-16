@@ -1,0 +1,19 @@
+{
+  "mortgageCalculator": {
+    "reset": "بازنشانی",
+    "loanAmount": "مبلغ وام ($)",
+    "interestRate": "نرخ بهره (%)",
+    "term": "مدت (سال)",
+    "monthlyPayment": "قسط ماهانه",
+    "totalPaid": "کل پرداختی",
+    "totalInterest": "کل بهره",
+    "paymentBreakdown": "تفکیک پرداخت",
+    "principal": "اصل: {pct}%",
+    "interest": "بهره: {pct}%",
+    "amortizationSchedule": "جدول بازپرداخت",
+    "thYear": "سال",
+    "thPrincipal": "اصل",
+    "thInterest": "بهره",
+    "thBalance": "مانده"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "mortgageCalculator": {
+    "reset": "Reset",
+    "loanAmount": "Loan Amount ($)",
+    "interestRate": "Interest Rate (%)",
+    "term": "Term (years)",
+    "monthlyPayment": "Monthly Payment",
+    "totalPaid": "Total Paid",
+    "totalInterest": "Total Interest",
+    "paymentBreakdown": "Payment Breakdown",
+    "principal": "Principal: {pct}%",
+    "interest": "Interest: {pct}%",
+    "amortizationSchedule": "Amortization Schedule",
+    "thYear": "Year",
+    "thPrincipal": "Principal",
+    "thInterest": "Interest",
+    "thBalance": "Balance"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "markdownToHtml": {
+    "wrapStyles": "Wrap in full HTML document with styles",
+    "inputLabel": "Markdown Input",
+    "outputLabel": "HTML Output",
+    "inputPlaceholder": "Type or paste Markdown here…",
+    "outputPlaceholder": "HTML will appear here…",
+    "convert": "Convert",
+    "loadExample": "Load example",
+    "clear": "Clear"
+  }
+}

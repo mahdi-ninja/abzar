@@ -1,60 +1,61 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { CopyButton } from "@/components/ui/copy-button";
 import { Card } from "@/components/ui/card";
 
 const FIELDS = [
-  { key: "minute", label: "Minute", min: 0, max: 59, defaultVal: "0" },
-  { key: "hour", label: "Hour", min: 0, max: 23, defaultVal: "*" },
-  { key: "day", label: "Day of Month", min: 1, max: 31, defaultVal: "*" },
-  { key: "month", label: "Month", min: 1, max: 12, defaultVal: "*" },
-  { key: "weekday", label: "Day of Week", min: 0, max: 6, defaultVal: "*" },
+  { key: "minute", labelKey: "minute", min: 0, max: 59, defaultVal: "0" },
+  { key: "hour", labelKey: "hour", min: 0, max: 23, defaultVal: "*" },
+  { key: "day", labelKey: "dayOfMonth", min: 1, max: 31, defaultVal: "*" },
+  { key: "month", labelKey: "month", min: 1, max: 12, defaultVal: "*" },
+  { key: "weekday", labelKey: "dayOfWeek", min: 0, max: 6, defaultVal: "*" },
 ] as const;
 
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const MONTHS = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-function describeCron(parts: string[]): string {
-  if (parts.length !== 5) return "Invalid expression";
+function describeCron(parts: string[], t: (key: string, params?: Record<string, string | number>) => string): string {
+  if (parts.length !== 5) return t("descInvalid");
   const [minute, hour, day, month, weekday] = parts;
 
   const pieces: string[] = [];
 
   // Minute
-  if (minute === "*") pieces.push("Every minute");
-  else if (minute.includes("/")) pieces.push(`Every ${minute.split("/")[1]} minutes`);
-  else pieces.push(`At minute ${minute}`);
+  if (minute === "*") pieces.push(t("descEveryMinute"));
+  else if (minute.includes("/")) pieces.push(t("descEveryNMinutes", { step: minute.split("/")[1] }));
+  else pieces.push(t("descAtMinute", { minute }));
 
   // Hour
-  if (hour === "*") pieces.push("of every hour");
-  else if (hour.includes("/")) pieces.push(`every ${hour.split("/")[1]} hours`);
-  else pieces.push(`at ${hour.padStart(2, "0")}:${minute === "*" ? "00" : minute.padStart(2, "0")}`);
+  if (hour === "*") pieces.push(t("descEveryHour"));
+  else if (hour.includes("/")) pieces.push(t("descEveryNHours", { step: hour.split("/")[1] }));
+  else pieces.push(t("descAtTime", { time: `${hour.padStart(2, "0")}:${minute === "*" ? "00" : minute.padStart(2, "0")}` }));
 
   // Day of month
   if (day !== "*") {
-    if (day.includes("/")) pieces.push(`every ${day.split("/")[1]} days`);
-    else pieces.push(`on day ${day}`);
+    if (day.includes("/")) pieces.push(t("descEveryNDays", { step: day.split("/")[1] }));
+    else pieces.push(t("descOnDay", { day }));
   }
 
   // Month
   if (month !== "*") {
     const m = parseInt(month, 10);
-    pieces.push(`in ${MONTHS[m] || month}`);
+    pieces.push(t("descInMonth", { month: MONTHS[m] || month }));
   }
 
   // Weekday
   if (weekday !== "*") {
     if (weekday.includes("-")) {
       const [from, to] = weekday.split("-").map(Number);
-      pieces.push(`${WEEKDAYS[from]}–${WEEKDAYS[to]}`);
+      pieces.push(t("descWeekdayRange", { from: WEEKDAYS[from], to: WEEKDAYS[to] }));
     } else if (weekday.includes(",")) {
       const days = weekday.split(",").map((d) => WEEKDAYS[parseInt(d, 10)] || d);
-      pieces.push(`on ${days.join(", ")}`);
+      pieces.push(t("descOnWeekdays", { weekdays: days.join(", ") }));
     } else {
-      pieces.push(`on ${WEEKDAYS[parseInt(weekday, 10)] || weekday}`);
+      pieces.push(t("descOnWeekday", { weekday: WEEKDAYS[parseInt(weekday, 10)] || weekday }));
     }
   }
 
@@ -109,6 +110,7 @@ function getNextRuns(expression: string, count: number): Date[] {
 }
 
 export default function CronBuilder() {
+  const t = useTranslations("cronBuilder");
   const [fields, setFields] = useState({
     minute: "0",
     hour: "*",
@@ -118,7 +120,7 @@ export default function CronBuilder() {
   });
 
   const expression = `${fields.minute} ${fields.hour} ${fields.day} ${fields.month} ${fields.weekday}`;
-  const description = useMemo(() => describeCron(expression.split(" ")), [expression]);
+  const description = useMemo(() => describeCron(expression.split(" "), t), [expression, t]);
   const nextRuns = useMemo(() => getNextRuns(expression, 5), [expression]);
 
   const updateField = (key: string, value: string) => {
@@ -127,12 +129,12 @@ export default function CronBuilder() {
 
   // Presets
   const presets = [
-    { label: "Every minute", value: "* * * * *" },
-    { label: "Every hour", value: "0 * * * *" },
-    { label: "Every day at midnight", value: "0 0 * * *" },
-    { label: "Every Monday at 9am", value: "0 9 * * 1" },
-    { label: "Every 5 minutes", value: "*/5 * * * *" },
-    { label: "1st of every month", value: "0 0 1 * *" },
+    { labelKey: "presetEveryMinute" as const, value: "* * * * *" },
+    { labelKey: "presetEveryHour" as const, value: "0 * * * *" },
+    { labelKey: "presetDailyMidnight" as const, value: "0 0 * * *" },
+    { labelKey: "presetMondayMorning" as const, value: "0 9 * * 1" },
+    { labelKey: "presetEvery5Minutes" as const, value: "*/5 * * * *" },
+    { labelKey: "presetMonthly" as const, value: "0 0 1 * *" },
   ];
 
   const applyPreset = (expr: string) => {
@@ -151,7 +153,7 @@ export default function CronBuilder() {
       {/* Expression display */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <Label className="text-sm font-medium">Expression</Label>
+          <Label className="text-sm font-medium">{t("expression")}</Label>
           <CopyButton value={expression} />
         </div>
         <div className="rounded-md border bg-muted/50 p-3 font-mono text-lg text-center">
@@ -162,9 +164,9 @@ export default function CronBuilder() {
 
       {/* Field editors */}
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
-        {FIELDS.map(({ key, label }) => (
+        {FIELDS.map(({ key, labelKey }) => (
           <div key={key}>
-            <Label className="text-xs mb-1 block">{label}</Label>
+            <Label className="text-xs mb-1 block">{t(labelKey)}</Label>
             <Input
               value={fields[key as keyof typeof fields]}
               onChange={(e) => updateField(key, e.target.value)}
@@ -176,7 +178,7 @@ export default function CronBuilder() {
 
       {/* Presets */}
       <div className="space-y-2">
-        <Label className="text-sm font-medium">Presets</Label>
+        <Label className="text-sm font-medium">{t("presets")}</Label>
         <div className="flex flex-wrap gap-2">
           {presets.map((p) => (
             <button
@@ -184,7 +186,7 @@ export default function CronBuilder() {
               onClick={() => applyPreset(p.value)}
               className="rounded-md border bg-muted/50 px-2.5 py-1 text-xs hover:bg-accent transition-colors"
             >
-              {p.label}
+              {t(p.labelKey)}
             </button>
           ))}
         </div>
@@ -194,7 +196,7 @@ export default function CronBuilder() {
       {nextRuns.length > 0 && (
         <Card className="p-4">
           <Label className="text-sm font-medium mb-2 block">
-            Next 5 Runs
+            {t("nextRuns")}
           </Label>
           <div className="space-y-1 font-mono text-sm">
             {nextRuns.map((d, i) => (

@@ -1,0 +1,17 @@
+{
+  "pomodoro": {
+    "phaseFocus": "تمرکز",
+    "phaseShortBreak": "استراحت کوتاه",
+    "phaseLongBreak": "استراحت بلند",
+    "start": "شروع",
+    "pause": "مکث",
+    "skip": "رد شدن",
+    "reset": "بازنشانی",
+    "sessionsCompleted": "جلسات تکمیل‌شده: {count}",
+    "settings": "تنظیمات",
+    "workMin": "کار (دقیقه)",
+    "shortBreak": "استراحت کوتاه",
+    "longBreak": "استراحت بلند",
+    "longBreakAfter": "استراحت بلند بعد از"
+  }
+}

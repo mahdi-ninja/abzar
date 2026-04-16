@@ -1,0 +1,8 @@
+{
+  "emojiSearch": {
+    "recentlyUsed": "اخیراً استفاده شده",
+    "searchPlaceholder": "جستجوی ایموجی…",
+    "resultCount": "{count} ایموجی — برای کپی کلیک کنید",
+    "noResults": "ایموجی‌ای برای \"{query}\" یافت نشد"
+  }
+}

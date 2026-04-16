@@ -1,0 +1,14 @@
+{
+  "pixelArt": {
+    "grid": "Grid",
+    "tool": "Tool",
+    "pencil": "Pencil",
+    "eraser": "Eraser",
+    "fill": "Fill",
+    "undo": "Undo",
+    "importImage": "Import Image",
+    "clear": "Clear",
+    "exportPng": "Export PNG",
+    "selectColor": "Select color {color}"
+  }
+}

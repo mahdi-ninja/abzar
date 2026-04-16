@@ -1,0 +1,12 @@
+{
+  "readingTime": {
+    "words": "{count} words",
+    "clear": "Clear",
+    "placeholder": "Paste your text here to estimate reading time...",
+    "min": "{count} min",
+    "slow": "Slow (150 WPM)",
+    "average": "Average (250 WPM)",
+    "fast": "Fast (400 WPM)",
+    "speaking": "Speaking (150 WPM)"
+  }
+}

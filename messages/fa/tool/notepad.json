@@ -1,0 +1,16 @@
+{
+  "notepad": {
+    "newNote": "+ یادداشت جدید",
+    "untitled": "بدون عنوان",
+    "emptyNote": "یادداشت خالی",
+    "deleteNote": "حذف یادداشت",
+    "allNotes": "← همه یادداشت‌ها",
+    "titlePlaceholder": "عنوان یادداشت...",
+    "contentPlaceholder": "شروع به نوشتن...",
+    "stats": "{words} کلمه · {chars} کاراکتر",
+    "autoSaved": "ذخیره خودکار",
+    "justNow": "همین الان",
+    "minutesAgo": "{count} دقیقه پیش",
+    "hoursAgo": "{count} ساعت پیش"
+  }
+}

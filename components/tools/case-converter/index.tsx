@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
@@ -20,16 +21,15 @@ const converters: { label: string; fn: (s: string) => string }[] = [
 ];
 
 export default function CaseConverter() {
+  const t = useTranslations("caseConverter");
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
 
   return (
     <div className="space-y-4">
       <InputOutputLayout
-        inputLabel="Input"
-        outputLabel="Output"
         input={
-          <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="Type or paste text here..." className="min-h-50 text-sm" />
+          <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder={t("inputPlaceholder")} className="min-h-50 text-sm" />
         }
         output={
           <>
@@ -44,7 +44,7 @@ export default function CaseConverter() {
             {c.label}
           </Button>
         ))}
-        <Button size="sm" variant="outline" onClick={() => { setInput(""); setOutput(""); }}>Clear</Button>
+        <Button size="sm" variant="outline" onClick={() => { setInput(""); setOutput(""); }}>{t("clear")}</Button>
       </div>
     </div>
   );

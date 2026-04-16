@@ -1,0 +1,11 @@
+{
+  "epochCountdown": {
+    "currentTimestamp": "برچسب زمانی یونیکس فعلی",
+    "convertLabel": "تبدیل epoch یا تاریخ",
+    "inputPlaceholder": "مثلاً 1700000000 یا 2024-01-15",
+    "epochSeconds": "Epoch (ثانیه): {value}",
+    "epochMs": "Epoch (میلی‌ثانیه): {value}",
+    "iso": "ISO: {value}",
+    "local": "محلی: {value}"
+  }
+}

@@ -52,7 +52,9 @@ i18n/
 
 messages/
   en/                               — English translations (tools.json, categories.json, tool-content.json are generated)
+  en/tool/                          — Per-tool component strings (hand-written, one file per tool)
   fa/                               — Persian translations
+  fa/tool/                          — Persian per-tool component strings
 
 scripts/
   generate-messages.ts              — Extract English messages from registry into JSON
@@ -76,11 +78,12 @@ lib/
 
 ## Adding a Tool
 
-Touch exactly 3 places:
+Touch exactly 4 places:
 
 1. **Registry** — `lib/tools-registry.ts`: add metadata entry with status `"live"`
-2. **Component** — `components/tools/{slug}/index.tsx`: the interactive tool (default export)
+2. **Component** — `components/tools/{slug}/index.tsx`: the interactive tool (default export, uses `useTranslations`)
 3. **Dynamic import** — `app/[locale]/tools/[category]/[tool-slug]/page.tsx`: add to `toolComponents` map
+4. **Translations** — `messages/en/tool/{slug}.json` and `messages/fa/tool/{slug}.json`: per-tool UI strings (see [i18n](#per-tool-i18n) below)
 
 Tool statuses: `planned` | `live` | `beta` | `deprecated` | `featured`
 
@@ -95,6 +98,25 @@ All URLs include a locale prefix (`/en/tools/text/word-counter`, `/fa/tools/text
 - **Fonts:** Persian uses Vazirmatn (sans), Noto Naskh Arabic (serif), Vazir Code (mono)
 - **Translations:** Hand-written UI strings in `messages/{locale}/common.json` and `home.json`; generated tool/category names from the registry
 - **Locale switcher:** Dropdown in the header
+
+### Per-tool i18n
+
+Every tool component uses `useTranslations` from `next-intl` for all user-facing strings. Translation files live at `messages/{locale}/tool/{slug}.json` and are auto-loaded by `i18n/request.ts`.
+
+To add translations for a new tool:
+
+1. Create `messages/en/tool/{slug}.json` with a camelCase namespace wrapping all strings:
+   ```json
+   {
+     "myTool": {
+       "generate": "Generate",
+       "clear": "Clear",
+       "resultCount": "Found {count} results"
+     }
+   }
+   ```
+2. Create `messages/fa/tool/{slug}.json` with the same keys, Persian values
+3. In the component, use `const t = useTranslations("myTool")` and replace hardcoded strings with `t("key")` or `t("key", { count: n })` for interpolation
 
 ## Shared UI Primitives
 

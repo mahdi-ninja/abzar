@@ -1,0 +1,11 @@
+{
+  "memeGenerator": {
+    "dropLabel": "تصویر را بکشید و رها کنید یا کلیک کنید",
+    "topText": "متن بالا",
+    "bottomText": "متن پایین",
+    "fontSizeLabel": "اندازه فونت: {value}px",
+    "textColor": "رنگ متن",
+    "changeImage": "تغییر تصویر",
+    "downloadPng": "دانلود PNG"
+  }
+}

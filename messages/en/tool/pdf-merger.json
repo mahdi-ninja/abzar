@@ -1,0 +1,14 @@
+{
+  "pdfMerger": {
+    "dropLabel": "Drop PDF files here or click to browse",
+    "filesSummary": "{count} files · {pages} pages total",
+    "pageCount": "{count, plural, one {# page} other {# pages}}",
+    "merging": "Merging...",
+    "mergeButton": "Merge {count} PDFs",
+    "downloadMerged": "Download Merged PDF",
+    "clearAll": "Clear All",
+    "emptyState": "Add at least 2 PDF files to merge them into one.",
+    "loadError": "Failed to load {name}. Make sure it's a valid PDF.",
+    "mergeError": "Failed to merge PDFs."
+  }
+}

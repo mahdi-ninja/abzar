@@ -1,0 +1,12 @@
+{
+  "ambientSounds": {
+    "description": "روی یک صدا کلیک کنید تا روشن/خاموش شود. چند صدا را ترکیب کنید.",
+    "stopAll": "توقف همه",
+    "volumeLabel": "صدا: {value}%",
+    "whiteNoise": "نویز سفید",
+    "pinkNoise": "نویز صورتی",
+    "brownNoise": "نویز قهوه‌ای",
+    "rain": "باران",
+    "ocean": "اقیانوس"
+  }
+}

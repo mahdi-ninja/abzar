@@ -1,0 +1,11 @@
+{
+  "urlEncoder": {
+    "fullUrlMode": "Full URL mode",
+    "componentMode": "Component mode",
+    "invalidEncoded": "Invalid encoded string",
+    "inputPlaceholder": "Enter URL or text...",
+    "encode": "Encode",
+    "decode": "Decode",
+    "clear": "Clear"
+  }
+}

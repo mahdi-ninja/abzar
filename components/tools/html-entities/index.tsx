@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
@@ -21,6 +22,7 @@ function decodeHtmlEntities(s: string): string {
 }
 
 export default function HtmlEntities() {
+  const t = useTranslations("htmlEntities");
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [numeric, setNumeric] = useState(false);
@@ -29,13 +31,11 @@ export default function HtmlEntities() {
     <div className="space-y-4">
       <div className="flex items-center gap-1.5">
         <Switch checked={numeric} onCheckedChange={setNumeric} />
-        <Label className="text-xs">{numeric ? "Numeric entities (&#123;)" : "Named entities (&amp;)"}</Label>
+        <Label className="text-xs">{numeric ? t("numericMode") : t("namedMode")}</Label>
       </div>
       <InputOutputLayout
-        inputLabel="Input"
-        outputLabel="Output"
         input={
-          <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="HTML text..." className="min-h-50 font-mono text-sm" />
+          <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder={t("inputPlaceholder")} className="min-h-50 font-mono text-sm" />
         }
         output={
           <>
@@ -45,9 +45,9 @@ export default function HtmlEntities() {
         }
       />
       <div className="flex gap-2">
-        <Button size="sm" onClick={() => setOutput(encodeHtmlEntities(input, numeric))}>Encode</Button>
-        <Button size="sm" variant="secondary" onClick={() => setOutput(decodeHtmlEntities(input))}>Decode</Button>
-        <Button size="sm" variant="outline" onClick={() => { setInput(""); setOutput(""); }}>Clear</Button>
+        <Button size="sm" onClick={() => setOutput(encodeHtmlEntities(input, numeric))}>{t("encode")}</Button>
+        <Button size="sm" variant="secondary" onClick={() => setOutput(decodeHtmlEntities(input))}>{t("decode")}</Button>
+        <Button size="sm" variant="outline" onClick={() => { setInput(""); setOutput(""); }}>{t("clear")}</Button>
       </div>
     </div>
   );

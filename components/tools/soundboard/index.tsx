@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useCallback, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
@@ -16,6 +17,7 @@ function makeid() {
 }
 
 export default function Soundboard() {
+  const t = useTranslations("soundboard");
   const [sounds, setSounds] = useState<Sound[]>([]);
   const [volume, setVolume] = useState(80);
   const [playing, setPlaying] = useState<string | null>(null);
@@ -76,7 +78,7 @@ export default function Soundboard() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-end gap-3">
         <div className="flex-1 min-w-40 max-w-60">
-          <Label className="text-xs mb-1 block">Volume: {volume}%</Label>
+          <Label className="text-xs mb-1 block">{t("volumeLabel", { value: volume })}</Label>
           <Slider
             value={[volume]}
             onValueChange={(v) => setVolume(Array.isArray(v) ? v[0] : v)}
@@ -86,7 +88,7 @@ export default function Soundboard() {
           />
         </div>
         {sounds.length > 0 && (
-          <Button size="sm" variant="outline" onClick={stopAll}>Stop All</Button>
+          <Button size="sm" variant="outline" onClick={stopAll}>{t("stopAll")}</Button>
         )}
       </div>
 
@@ -94,7 +96,7 @@ export default function Soundboard() {
         accept="audio/*"
         multiple
         onFiles={handleFiles}
-        label="Drop audio files (MP3, WAV, OGG) or click to upload"
+        label={t("dropLabel")}
         maxSizeMB={50}
       />
 
@@ -123,7 +125,7 @@ export default function Soundboard() {
               <button
                 onClick={() => remove(sound.id)}
                 className="absolute top-1 right-1 hidden group-hover:flex h-5 w-5 items-center justify-center rounded-full bg-destructive/90 text-destructive-foreground text-xs"
-                aria-label={`Remove ${sound.name}`}
+                aria-label={t("removeAriaLabel", { name: sound.name })}
               >
                 ×
               </button>
@@ -134,7 +136,7 @@ export default function Soundboard() {
 
       {sounds.length === 0 && (
         <p className="text-xs text-muted-foreground text-center">
-          Upload audio files above, then click each button to play.
+          {t("emptyHint")}
         </p>
       )}
     </div>

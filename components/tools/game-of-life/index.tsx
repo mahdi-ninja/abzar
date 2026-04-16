@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
@@ -44,6 +45,7 @@ function nextGeneration(grid: boolean[][]): boolean[][] {
 }
 
 export default function GameOfLife() {
+  const t = useTranslations("gameOfLife");
   const [grid, setGrid] = useState(createEmptyGrid);
   const [running, setRunning] = useState(false);
   const [speed, setSpeed] = useState(100);
@@ -105,19 +107,19 @@ export default function GameOfLife() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-end gap-3">
         <Button onClick={() => setRunning((p) => !p)} className="w-20">
-          {running ? "Pause" : "Play"}
+          {running ? t("pause") : t("play")}
         </Button>
         <Button size="sm" variant="outline" onClick={step} disabled={running}>
-          Step
+          {t("step")}
         </Button>
         <Button size="sm" variant="outline" onClick={handleRandom}>
-          Random
+          {t("random")}
         </Button>
         <Button size="sm" variant="outline" onClick={handleClear}>
-          Clear
+          {t("clear")}
         </Button>
         <div className="flex-1 min-w-30 max-w-50">
-          <Label className="text-xs mb-1 block">Speed: {speed}ms</Label>
+          <Label className="text-xs mb-1 block">{t("speed", { ms: speed })}</Label>
           <Slider
             value={[speed]}
             onValueChange={(v) => setSpeed(Array.isArray(v) ? v[0] : v)}
@@ -127,7 +129,7 @@ export default function GameOfLife() {
           />
         </div>
         <div className="text-xs text-muted-foreground">
-          Gen: {generation} · Cells: {liveCells}
+          {t("generation", { gen: generation, cells: liveCells })}
         </div>
       </div>
 

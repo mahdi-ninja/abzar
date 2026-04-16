@@ -1,0 +1,9 @@
+{
+  "diceRoller": {
+    "quantity": "Quantity",
+    "clear": "Clear",
+    "nat20": "NAT 20!",
+    "critFail": "CRITICAL FAIL!",
+    "emptyPrompt": "Click a die button to roll!"
+  }
+}

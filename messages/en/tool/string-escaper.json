@@ -1,0 +1,8 @@
+{
+  "stringEscaper": {
+    "inputPlaceholder": "Text to escape or unescape...",
+    "escape": "Escape",
+    "unescape": "Unescape",
+    "clear": "Clear"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "subnetCalculator": {
+    "ipAddress": "آدرس IP",
+    "cidr": "CIDR",
+    "reset": "بازنشانی",
+    "invalidIpOrCidr": "آدرس IP یا CIDR نامعتبر است.",
+    "networkAddress": "آدرس شبکه",
+    "broadcastAddress": "آدرس Broadcast",
+    "subnetMask": "ماسک زیرشبکه",
+    "wildcardMask": "ماسک Wildcard",
+    "firstUsableHost": "اولین میزبان قابل استفاده",
+    "lastUsableHost": "آخرین میزبان قابل استفاده",
+    "totalUsableHosts": "مجموع میزبان‌های قابل استفاده",
+    "cidrNotation": "نماد CIDR"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "randomGenerator": {
+    "tabNumber": "عدد",
+    "tabCoin": "شیر یا خط",
+    "tabDice": "تاس",
+    "min": "حداقل",
+    "max": "حداکثر",
+    "count": "تعداد",
+    "generate": "تولید",
+    "clear": "پاک‌سازی",
+    "heads": "شیر",
+    "tails": "خط"
+  }
+}

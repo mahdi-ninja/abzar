@@ -1,0 +1,14 @@
+{
+  "salaryConverter": {
+    "reset": "بازنشانی",
+    "annualSalary": "حقوق سالانه ($)",
+    "hoursPerWeek": "ساعت/هفته",
+    "weeksPerYear": "هفته/سال",
+    "hourly": "ساعتی",
+    "daily": "روزانه (8 ساعت)",
+    "weekly": "هفتگی",
+    "biweekly": "دو هفته‌ای",
+    "monthly": "ماهانه",
+    "annual": "سالانه"
+  }
+}

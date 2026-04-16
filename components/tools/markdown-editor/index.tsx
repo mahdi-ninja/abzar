@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
@@ -9,6 +10,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { InputOutputLayout } from "@/components/ui/input-output-layout";
 
 export default function MarkdownEditor() {
+  const t = useTranslations("markdownEditor");
   const [input, setInput] = useState(
     "# Hello World\n\nThis is a **Markdown** editor with *live preview*.\n\n## Features\n\n- Real-time preview\n- Export as `.md` or `.html`\n- Copy rendered HTML\n\n> Try editing this text!\n\n```js\nconsole.log('Hello!');\n```\n"
   );
@@ -43,7 +45,7 @@ export default function MarkdownEditor() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex items-center gap-2">
-          <CopyButton value={html} label="Copy HTML" />
+          <CopyButton value={html} label={t("copyHtml")} />
           <Tabs
             value={exportMode}
             onValueChange={(v) => setExportMode(v as "md" | "html")}
@@ -63,7 +65,7 @@ export default function MarkdownEditor() {
             mimeType={
               exportMode === "md" ? "text/markdown" : "text/html"
             }
-            label="Export"
+            label={t("export")}
           />
         </div>
         <Button
@@ -71,18 +73,18 @@ export default function MarkdownEditor() {
           variant="outline"
           onClick={() => setInput("")}
         >
-          Clear
+          {t("clear")}
         </Button>
       </div>
 
       <InputOutputLayout
-        inputLabel="Markdown"
-        outputLabel="Preview"
+        inputLabel={t("markdown")}
+        outputLabel={t("preview")}
         input={
           <Textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Write Markdown here..."
+            placeholder={t("placeholder")}
             className="min-h-100 font-mono text-sm resize-none"
           />
         }

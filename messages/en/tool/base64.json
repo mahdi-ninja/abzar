@@ -1,0 +1,19 @@
+{
+  "base64": {
+    "text": "Text",
+    "file": "File",
+    "encode": "Encode",
+    "decode": "Decode",
+    "clear": "Clear",
+    "encodePlaceholder": "Type text to encode...",
+    "decodePlaceholder": "Paste Base64 to decode...",
+    "dropFileLabel": "Drop a file here to encode",
+    "selectedFile": "Selected: {fileName}",
+    "resultPlaceholder": "Result will appear here",
+    "characters": "{count} characters",
+    "invalidBase64": "Invalid Base64 string",
+    "encodeFailed": "Failed to encode text",
+    "readFailed": "Failed to read file",
+    "fileInfo": "[File: {name} — {size}KB]"
+  }
+}

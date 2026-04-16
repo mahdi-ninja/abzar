@@ -1,0 +1,10 @@
+{
+  "ageCalculator": {
+    "dateOfBirth": "تاریخ تولد",
+    "reset": "بازنشانی",
+    "ageFormat": "{years} سال، {months} ماه، {days} روز",
+    "totalDaysAlive": "کل روزهای زندگی",
+    "totalHoursAlive": "کل ساعات زندگی",
+    "daysUntilBirthday": "روز تا تولد"
+  }
+}

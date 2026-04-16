@@ -1,0 +1,21 @@
+{
+  "typingTest": {
+    "difficulty": "سطح دشواری",
+    "easy": "آسان",
+    "medium": "متوسط",
+    "hard": "سخت",
+    "start": "شروع",
+    "tryAgain": "تلاش دوباره",
+    "reset": "بازنشانی",
+    "typeHere": "اینجا تایپ کنید",
+    "clickHint": "اگر تایپ متوقف شد، روی متن بالا کلیک کنید.",
+    "wpm": "کلمه در دقیقه",
+    "accuracy": "دقت",
+    "time": "زمان",
+    "characters": "کاراکترها",
+    "charProgress": "{typed}/{total}",
+    "excellent": "عالی!",
+    "goodJob": "آفرین!",
+    "keepPracticing": "به تمرین ادامه دهید!"
+  }
+}

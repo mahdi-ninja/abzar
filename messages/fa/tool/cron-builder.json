@@ -1,0 +1,31 @@
+{
+  "cronBuilder": {
+    "expression": "عبارت",
+    "minute": "دقیقه",
+    "hour": "ساعت",
+    "dayOfMonth": "روز ماه",
+    "month": "ماه",
+    "dayOfWeek": "روز هفته",
+    "presets": "پیش‌تنظیم‌ها",
+    "presetEveryMinute": "هر دقیقه",
+    "presetEveryHour": "هر ساعت",
+    "presetDailyMidnight": "هر روز در نیمه‌شب",
+    "presetMondayMorning": "هر دوشنبه ساعت ۹ صبح",
+    "presetEvery5Minutes": "هر ۵ دقیقه",
+    "presetMonthly": "اول هر ماه",
+    "nextRuns": "۵ اجرای بعدی",
+    "descEveryMinute": "هر دقیقه",
+    "descEveryNMinutes": "هر {step} دقیقه",
+    "descAtMinute": "در دقیقه {minute}",
+    "descEveryHour": "هر ساعت",
+    "descEveryNHours": "هر {step} ساعت",
+    "descAtTime": "در ساعت {time}",
+    "descEveryNDays": "هر {step} روز",
+    "descOnDay": "روز {day}",
+    "descInMonth": "در {month}",
+    "descOnWeekday": "در {weekday}",
+    "descOnWeekdays": "در {weekdays}",
+    "descWeekdayRange": "{from}\u2013{to}",
+    "descInvalid": "عبارت نامعتبر"
+  }
+}

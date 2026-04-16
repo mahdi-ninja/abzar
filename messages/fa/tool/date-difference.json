@@ -1,0 +1,13 @@
+{
+  "dateDifference": {
+    "from": "از",
+    "to": "تا",
+    "reset": "بازنشانی",
+    "days": "روز",
+    "weeks": "هفته",
+    "months": "ماه",
+    "years": "سال",
+    "hours": "ساعت",
+    "minutes": "دقیقه"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "pdfMerger": {
+    "dropLabel": "فایل‌های PDF را اینجا بکشید یا کلیک کنید",
+    "filesSummary": "{count} فایل · {pages} صفحه در کل",
+    "pageCount": "{count, plural, one {# صفحه} other {# صفحه}}",
+    "merging": "در حال ادغام...",
+    "mergeButton": "ادغام {count} فایل PDF",
+    "downloadMerged": "دانلود PDF ادغام‌شده",
+    "clearAll": "پاک‌سازی همه",
+    "emptyState": "حداقل ۲ فایل PDF اضافه کنید تا در یک فایل ادغام شوند.",
+    "loadError": "بارگذاری {name} ناموفق بود. مطمئن شوید که PDF معتبر است.",
+    "mergeError": "ادغام فایل‌های PDF ناموفق بود."
+  }
+}

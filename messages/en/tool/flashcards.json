@@ -1,0 +1,20 @@
+{
+  "flashcards": {
+    "manage": "Manage ({count})",
+    "study": "Study",
+    "frontLabel": "Front (question)",
+    "backLabel": "Back (answer)",
+    "frontPlaceholder": "Enter question...",
+    "backPlaceholder": "Enter answer...",
+    "addCard": "Add Card",
+    "cardsCount": "Cards ({count})",
+    "box": "Box {box}",
+    "emptyState": "Add some flashcards to get started.",
+    "cardProgress": "Card {current} of {total} · Box {box}/5",
+    "clickToReveal": "Click to reveal answer",
+    "answer": "Answer:",
+    "incorrect": "Incorrect — Back to Box 1",
+    "correct": "Correct — Advance",
+    "noCardsToStudy": "No cards to study. Add some cards first."
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "percentageCalculator": {
+    "tabOf": "X% از Y",
+    "tabIs": "X چند درصد Y است",
+    "tabChange": "درصد تغییر",
+    "labelPercentage": "درصد",
+    "labelValue": "مقدار",
+    "labelFrom": "از",
+    "labelNumber": "عدد",
+    "labelTotal": "مجموع",
+    "labelTo": "به",
+    "separatorOf": "% از",
+    "separatorIs": "چند درصد",
+    "separatorArrow": "→",
+    "clear": "پاک‌سازی"
+  }
+}

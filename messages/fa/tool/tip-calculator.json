@@ -1,0 +1,12 @@
+{
+  "tipCalculator": {
+    "reset": "بازنشانی",
+    "billAmount": "مبلغ صورت‌حساب ($)",
+    "tipLabel": "انعام: {pct}%",
+    "splitBetween": "تقسیم بین",
+    "tip": "انعام",
+    "total": "مجموع",
+    "perPerson": "سهم هر نفر",
+    "tipPerPerson": "انعام/نفر"
+  }
+}

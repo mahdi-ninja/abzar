@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -37,6 +38,7 @@ function countSyllables(word: string): number {
 }
 
 export default function WordCounter() {
+  const t = useTranslations("wordCounter");
   const [text, setText] = useState("");
 
   const stats = useMemo(() => {
@@ -76,22 +78,22 @@ export default function WordCounter() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div />
-        <Button size="sm" variant="outline" onClick={() => setText("")}>Clear</Button>
+        <Button size="sm" variant="outline" onClick={() => setText("")}>{t("clear")}</Button>
       </div>
       <Textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Type or paste your text here..."
+        placeholder={t("placeholder")}
         className="min-h-50 text-sm"
       />
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
         {[
-          { label: "Words", value: stats.words },
-          { label: "Characters", value: stats.chars },
-          { label: "No spaces", value: stats.charsNoSpaces },
-          { label: "Sentences", value: stats.sentences },
-          { label: "Paragraphs", value: stats.paragraphs },
+          { label: t("words"), value: stats.words },
+          { label: t("characters"), value: stats.chars },
+          { label: t("noSpaces"), value: stats.charsNoSpaces },
+          { label: t("sentences"), value: stats.sentences },
+          { label: t("paragraphs"), value: stats.paragraphs },
         ].map((item) => (
           <Card key={item.label} className="p-3 text-center">
             <div className="text-2xl font-bold tabular-nums">
@@ -106,26 +108,26 @@ export default function WordCounter() {
         <Card className="p-3 text-center">
           <div className="text-lg font-bold tabular-nums">{stats.fk}</div>
           <div className="text-xs text-muted-foreground">
-            Flesch-Kincaid
+            {t("fleschKincaid")}
           </div>
         </Card>
         <Card className="p-3 text-center">
           <div className="text-lg font-bold tabular-nums">{stats.fog}</div>
           <div className="text-xs text-muted-foreground">
-            Gunning Fog
+            {t("gunningFog")}
           </div>
         </Card>
         <Card className="p-3 text-center">
           <div className="text-lg font-bold tabular-nums">
-            {stats.readingTime} min
+            {t("min", { time: stats.readingTime })}
           </div>
-          <div className="text-xs text-muted-foreground">Reading time</div>
+          <div className="text-xs text-muted-foreground">{t("readingTime")}</div>
         </Card>
         <Card className="p-3 text-center">
           <div className="text-lg font-bold tabular-nums">
-            {stats.speakingTime} min
+            {t("min", { time: stats.speakingTime })}
           </div>
-          <div className="text-xs text-muted-foreground">Speaking time</div>
+          <div className="text-xs text-muted-foreground">{t("speakingTime")}</div>
         </Card>
       </div>
     </div>

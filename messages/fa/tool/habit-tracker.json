@@ -1,0 +1,15 @@
+{
+  "habitTracker": {
+    "add": "افزودن",
+    "placeholder": "نام عادت جدید...",
+    "emptyState": "یک عادت اضافه کنید تا ردیابی شروع شود.",
+    "thisWeek": "این هفته",
+    "habit": "عادت",
+    "streak": "تداوم",
+    "removeHabit": "حذف عادت",
+    "heatmapTitle": "نقشه حرارتی ۹۰ روزه — {name}",
+    "heatmapTooltip": "{day}: {count} عادت",
+    "less": "کمتر",
+    "more": "بیشتر"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "whitespaceCleaner": {
+    "clear": "پاک‌سازی",
+    "trimTrailing": "حذف فاصله‌های انتهایی",
+    "normalizeEol": "یکسان‌سازی انتهای خطوط",
+    "removeBlankLines": "حذف خطوط خالی اضافی",
+    "removeInvisible": "حذف یونیکد نامرئی",
+    "inputPlaceholder": "متنی با مشکلات فاصله‌گذاری را اینجا جای‌گذاری کنید...",
+    "cleanedLabel": "پاک‌شده",
+    "modified": "(تغییر یافته)"
+  }
+}

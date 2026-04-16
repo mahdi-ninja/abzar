@@ -1,0 +1,17 @@
+{
+  "pomodoro": {
+    "phaseFocus": "Focus",
+    "phaseShortBreak": "Short Break",
+    "phaseLongBreak": "Long Break",
+    "start": "Start",
+    "pause": "Pause",
+    "skip": "Skip",
+    "reset": "Reset",
+    "sessionsCompleted": "Sessions completed: {count}",
+    "settings": "Settings",
+    "workMin": "Work (min)",
+    "shortBreak": "Short Break",
+    "longBreak": "Long Break",
+    "longBreakAfter": "Long Break After"
+  }
+}

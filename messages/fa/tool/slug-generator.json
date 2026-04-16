@@ -1,0 +1,11 @@
+{
+  "slugGenerator": {
+    "clear": "پاک‌سازی",
+    "titleLabel": "عنوان یا متن",
+    "inputPlaceholder": "عنوان پست وبلاگ من",
+    "separatorLabel": "جداکننده",
+    "maxLengthLabel": "حداکثر طول (۰=بدون محدودیت)",
+    "lowercase": "حروف کوچک",
+    "slugLabel": "اسلاگ"
+  }
+}

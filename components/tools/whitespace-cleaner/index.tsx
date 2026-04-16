@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
@@ -9,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { InputOutputLayout } from "@/components/ui/input-output-layout";
 
 export default function WhitespaceCleaner() {
+  const t = useTranslations("whitespaceCleaner");
   const [input, setInput] = useState("");
   const [trimTrailing, setTrimTrailing] = useState(true);
   const [normalizeEol, setNormalizeEol] = useState(true);
@@ -29,32 +31,31 @@ export default function WhitespaceCleaner() {
   return (
     <div className="space-y-4">
       <div className="flex justify-end">
-        <Button size="sm" variant="outline" onClick={() => { setInput(""); setTrimTrailing(true); setNormalizeEol(true); setRemoveBlankLines(false); setRemoveInvisible(true); }}>Clear</Button>
+        <Button size="sm" variant="outline" onClick={() => { setInput(""); setTrimTrailing(true); setNormalizeEol(true); setRemoveBlankLines(false); setRemoveInvisible(true); }}>{t("clear")}</Button>
       </div>
       <div className="flex flex-wrap gap-4">
         {[
-          { label: "Trim trailing spaces", checked: trimTrailing, set: setTrimTrailing },
-          { label: "Normalize line endings", checked: normalizeEol, set: setNormalizeEol },
-          { label: "Remove extra blank lines", checked: removeBlankLines, set: setRemoveBlankLines },
-          { label: "Remove invisible Unicode", checked: removeInvisible, set: setRemoveInvisible },
-        ].map(({ label, checked, set }) => (
-          <div key={label} className="flex items-center gap-1.5">
+          { key: "trimTrailing", checked: trimTrailing, set: setTrimTrailing },
+          { key: "normalizeEol", checked: normalizeEol, set: setNormalizeEol },
+          { key: "removeBlankLines", checked: removeBlankLines, set: setRemoveBlankLines },
+          { key: "removeInvisible", checked: removeInvisible, set: setRemoveInvisible },
+        ].map(({ key, checked, set }) => (
+          <div key={key} className="flex items-center gap-1.5">
             <Switch checked={checked} onCheckedChange={set} />
-            <Label className="text-xs">{label}</Label>
+            <Label className="text-xs">{t(key)}</Label>
           </div>
         ))}
       </div>
       <InputOutputLayout
-        inputLabel="Input"
-        outputLabel="Cleaned"
+        outputLabel={t("cleanedLabel")}
         input={
-          <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="Paste text with whitespace issues..." className="min-h-62.5 font-mono text-sm" />
+          <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder={t("inputPlaceholder")} className="min-h-62.5 font-mono text-sm" />
         }
         output={
           <>
             <div className="flex items-center justify-between">
-              {changed && <span className="text-xs text-primary">(modified)</span>}
-              {output && <div className="ml-auto"><CopyButton value={output} /></div>}
+              {changed && <span className="text-xs text-primary">{t("modified")}</span>}
+              {output && <div className="ms-auto"><CopyButton value={output} /></div>}
             </div>
             <Textarea value={output} readOnly className="min-h-62.5 font-mono text-sm" />
           </>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -10,7 +11,6 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
 } from "@/components/ui/select";
 
 type Tool = "pencil" | "eraser" | "fill";
@@ -22,6 +22,7 @@ const PALETTE = [
 ];
 
 export default function PixelArt() {
+  const t = useTranslations("pixelArt");
   const [gridSize, setGridSize] = useState(16);
   const [pixels, setPixels] = useState<string[]>(() => Array(16 * 16).fill(""));
   const [color, setColor] = useState("#000000");
@@ -176,10 +177,10 @@ export default function PixelArt() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-end gap-3">
         <div>
-          <Label className="text-xs mb-1 block">Grid</Label>
+          <Label className="text-xs mb-1 block">{t("grid")}</Label>
           <Select value={String(gridSize)} onValueChange={(v) => v && initGrid(Number(v))}>
             <SelectTrigger className="w-24 text-sm">
-              <SelectValue />
+              <span>{gridSize}x{gridSize}</span>
             </SelectTrigger>
             <SelectContent>
               {[8, 16, 24, 32].map((s) => (
@@ -190,27 +191,27 @@ export default function PixelArt() {
         </div>
 
         <div>
-          <Label className="text-xs mb-1 block">Tool</Label>
+          <Label className="text-xs mb-1 block">{t("tool")}</Label>
           <div className="flex gap-1">
-            {(["pencil", "eraser", "fill"] as const).map((t) => (
+            {(["pencil", "eraser", "fill"] as const).map((toolName) => (
               <Button
-                key={t}
+                key={toolName}
                 size="sm"
-                variant={tool === t ? "default" : "outline"}
-                onClick={() => setTool(t)}
-                className="h-8 text-xs capitalize"
+                variant={tool === toolName ? "default" : "outline"}
+                onClick={() => setTool(toolName)}
+                className="h-8 text-xs"
               >
-                {t}
+                {t(toolName)}
               </Button>
             ))}
           </div>
         </div>
 
         <Button size="sm" variant="outline" onClick={undo} disabled={history.length === 0}>
-          Undo
+          {t("undo")}
         </Button>
         <Button size="sm" variant="outline" onClick={() => importInputRef.current?.click()}>
-          Import Image
+          {t("importImage")}
         </Button>
         <input
           ref={importInputRef}
@@ -224,10 +225,10 @@ export default function PixelArt() {
           }}
         />
         <Button size="sm" variant="outline" onClick={() => initGrid(gridSize)}>
-          Clear
+          {t("clear")}
         </Button>
         {exportBlob && (
-          <DownloadButton data={exportBlob} filename="pixel-art.png" label="Export PNG" />
+          <DownloadButton data={exportBlob} filename="pixel-art.png" label={t("exportPng")} />
         )}
       </div>
 
@@ -239,7 +240,7 @@ export default function PixelArt() {
             className={`h-7 w-7 rounded border-2 ${color === c ? "border-primary ring-2 ring-primary/30" : "border-transparent"}`}
             style={{ backgroundColor: c }}
             onClick={() => setColor(c)}
-            aria-label={`Select color ${c}`}
+            aria-label={t("selectColor", { color: c })}
           />
         ))}
         <Input

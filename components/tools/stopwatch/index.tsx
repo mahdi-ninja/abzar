@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { CopyButton } from "@/components/ui/copy-button";
@@ -13,6 +14,7 @@ function formatMs(ms: number): string {
 }
 
 export default function Stopwatch() {
+  const t = useTranslations("stopwatch");
   const [elapsed, setElapsed] = useState(0);
   const [running, setRunning] = useState(false);
   const [laps, setLaps] = useState<{ split: number; cumulative: number }[]>([]);
@@ -57,7 +59,7 @@ export default function Stopwatch() {
 
   useEffect(() => { return () => cancelAnimationFrame(rafRef.current); }, []);
 
-  const lapsText = laps.map((l, i) => `Lap ${i + 1}: ${formatMs(l.split)} (${formatMs(l.cumulative)})`).join("\n");
+  const lapsText = laps.map((l, i) => `${t("lapNumber", { number: i + 1 })}: ${formatMs(l.split)} (${formatMs(l.cumulative)})`).join("\n");
 
   return (
     <div className="space-y-6">
@@ -66,23 +68,23 @@ export default function Stopwatch() {
       </div>
       <div className="flex items-center justify-center gap-2">
         {!running ? (
-          <Button onClick={start} className="w-24">{elapsed > 0 ? "Resume" : "Start"}</Button>
+          <Button onClick={start} className="w-24">{elapsed > 0 ? t("resume") : t("start")}</Button>
         ) : (
-          <Button onClick={stop} variant="secondary" className="w-24">Stop</Button>
+          <Button onClick={stop} variant="secondary" className="w-24">{t("stop")}</Button>
         )}
-        {running && <Button variant="outline" onClick={lap}>Lap</Button>}
-        {!running && elapsed > 0 && <Button variant="outline" onClick={reset}>Reset</Button>}
+        {running && <Button variant="outline" onClick={lap}>{t("lap")}</Button>}
+        {!running && elapsed > 0 && <Button variant="outline" onClick={reset}>{t("reset")}</Button>}
       </div>
       {laps.length > 0 && (
         <Card className="p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm font-medium">Laps</span>
-            <CopyButton value={lapsText} label="Copy" />
+            <span className="text-sm font-medium">{t("laps")}</span>
+            <CopyButton value={lapsText} label={t("copy")} />
           </div>
           <div className="max-h-48 overflow-auto space-y-1 text-sm font-mono">
             {[...laps].reverse().map((l, i) => (
               <div key={laps.length - 1 - i} className="flex justify-between">
-                <span className="text-muted-foreground">Lap {laps.length - i}</span>
+                <span className="text-muted-foreground">{t("lapNumber", { number: laps.length - i })}</span>
                 <span>{formatMs(l.split)}</span>
                 <span className="text-muted-foreground">{formatMs(l.cumulative)}</span>
               </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -32,6 +33,7 @@ function playSound(ctx: AudioContext, instrument: Instrument) {
 }
 
 export default function DrumMachine() {
+  const t = useTranslations("drumMachine");
   const [grid, setGrid] = useState<boolean[][]>(() =>
     INSTRUMENTS.map(() => Array(STEPS).fill(false))
   );
@@ -145,10 +147,10 @@ export default function DrumMachine() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-end gap-4">
         <Button onClick={handlePlay} className="w-20">
-          {playing ? "Stop" : "Play"}
+          {playing ? t("stop") : t("play")}
         </Button>
         <div className="flex-1 min-w-37.5 max-w-50">
-          <Label className="text-xs mb-1 block">BPM: {bpm}</Label>
+          <Label className="text-xs mb-1 block">{t("bpm", { bpm })}</Label>
           <Slider
             value={[bpm]}
             onValueChange={(v) => setBpm(Array.isArray(v) ? v[0] : v)}
@@ -158,7 +160,7 @@ export default function DrumMachine() {
           />
         </div>
         <Button size="sm" variant="outline" onClick={clearState}>
-          Clear
+          {t("clear")}
         </Button>
       </div>
 
@@ -174,7 +176,7 @@ export default function DrumMachine() {
                 <button
                   key={step}
                   onClick={() => toggleCell(row, step)}
-                  aria-label={`Toggle ${inst.name} step ${step + 1}`}
+                  aria-label={t("toggleStep", { instrument: inst.name, step: step + 1 })}
                   className={`h-8 w-8 rounded-sm border transition-colors ${
                     grid[row][step]
                       ? "bg-primary border-primary"
@@ -202,7 +204,7 @@ export default function DrumMachine() {
       </div>
 
       <div className="flex items-center gap-2">
-        <Label className="text-xs whitespace-nowrap">Export bars:</Label>
+        <Label className="text-xs whitespace-nowrap">{t("exportBars")}</Label>
         {([1, 2, 4, 8] as const).map((n) => (
           <Button
             key={n}
@@ -237,7 +239,7 @@ export default function DrumMachine() {
           onClick={handleDownload}
           disabled={isExporting || isEmpty}
         >
-          {isExporting ? "Rendering…" : "↓ WAV"}
+          {isExporting ? t("rendering") : t("downloadWav")}
         </Button>
       </div>
     </div>

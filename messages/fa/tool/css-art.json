@@ -1,0 +1,20 @@
+{
+  "cssArt": {
+    "algorithm": "الگوریتم",
+    "sizeLabel": "اندازه: {value}px",
+    "complexityLabel": "پیچیدگی: {value}",
+    "copyCss": "کپی CSS",
+    "download": "دانلود",
+    "color1": "رنگ ۱",
+    "color2": "رنگ ۲",
+    "preview": "پیش‌نمایش",
+    "algoDots": "نقطه‌ها",
+    "algoStripes": "خطوط",
+    "algoCheckerboard": "شطرنجی",
+    "algoGradientBlob": "حباب‌های گرادیان",
+    "algoConcentric": "هم‌مرکز",
+    "algoWave": "موج‌ها",
+    "copySuccess": "در کلیپ‌بورد کپی شد!",
+    "copyFailed": "کپی ناموفق بود"
+  }
+}

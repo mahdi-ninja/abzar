@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -30,6 +31,7 @@ function formatRow(label: string, value: string) {
 }
 
 export default function TimestampConverter() {
+  const t = useTranslations("timestampConverter");
   const [input, setInput] = useState("");
 
   const handleNow = useCallback(() => {
@@ -43,54 +45,54 @@ export default function TimestampConverter() {
   const formats = useMemo(() => {
     if (!date) return [];
     return [
-      formatRow("Unix (seconds)", String(Math.floor(date.getTime() / 1000))),
-      formatRow("Unix (milliseconds)", String(date.getTime())),
-      formatRow("ISO 8601", date.toISOString()),
-      formatRow("RFC 2822", date.toUTCString()),
+      formatRow(t("fmtUnixSeconds"), String(Math.floor(date.getTime() / 1000))),
+      formatRow(t("fmtUnixMs"), String(date.getTime())),
+      formatRow(t("fmtIso"), date.toISOString()),
+      formatRow(t("fmtRfc"), date.toUTCString()),
       formatRow(
-        "Local",
+        t("fmtLocal"),
         date.toLocaleString(undefined, {
           dateStyle: "full",
           timeStyle: "long",
         })
       ),
-      formatRow("Date only", date.toISOString().split("T")[0]),
+      formatRow(t("fmtDate"), date.toISOString().split("T")[0]),
       formatRow(
-        "Time only",
+        t("fmtTime"),
         date.toLocaleTimeString(undefined, { hour12: false })
       ),
       formatRow(
-        "Relative",
-        getRelativeTime(date)
+        t("fmtRelative"),
+        getRelativeTime(date, t)
       ),
     ];
-  }, [date]);
+  }, [date, t]);
 
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-end gap-3">
         <div className="flex-1 min-w-50">
           <Label className="text-sm mb-1 block">
-            Paste a timestamp or date string
+            {t("inputLabel")}
           </Label>
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="e.g. 1700000000, 2024-01-15T10:30:00Z, Jan 15 2024..."
+            placeholder={t("inputPlaceholder")}
             className="font-mono text-sm"
           />
         </div>
         <Button size="sm" onClick={handleNow}>
-          Now
+          {t("now")}
         </Button>
         <Button size="sm" variant="outline" onClick={handleClear}>
-          Clear
+          {t("clear")}
         </Button>
       </div>
 
       {input.trim() && !date && (
         <div className="rounded-md bg-destructive/10 px-3 py-2 text-sm text-destructive">
-          Could not parse this as a date or timestamp.
+          {t("parseError")}
         </div>
       )}
 
@@ -112,14 +114,14 @@ export default function TimestampConverter() {
 
       {!input.trim() && (
         <div className="text-center text-sm text-muted-foreground py-8">
-          Paste a Unix timestamp, ISO 8601 date, or any date string to see all formats.
+          {t("emptyHint")}
         </div>
       )}
     </div>
   );
 }
 
-function getRelativeTime(date: Date): string {
+function getRelativeTime(date: Date, t: (key: string, values?: Record<string, unknown>) => string): string {
   const now = Date.now();
   const diff = now - date.getTime();
   const absDiff = Math.abs(diff);
@@ -133,12 +135,12 @@ function getRelativeTime(date: Date): string {
   const years = Math.floor(days / 365);
 
   let text: string;
-  if (seconds < 60) text = `${seconds} seconds`;
-  else if (minutes < 60) text = `${minutes} minutes`;
-  else if (hours < 24) text = `${hours} hours`;
-  else if (days < 30) text = `${days} days`;
-  else if (months < 12) text = `${months} months`;
-  else text = `${years} years`;
+  if (seconds < 60) text = t("seconds", { count: seconds });
+  else if (minutes < 60) text = t("minutes", { count: minutes });
+  else if (hours < 24) text = t("hours", { count: hours });
+  else if (days < 30) text = t("days", { count: days });
+  else if (months < 12) text = t("months", { count: months });
+  else text = t("years", { count: years });
 
-  return future ? `in ${text}` : `${text} ago`;
+  return future ? t("inFuture", { time: text }) : t("ago", { time: text });
 }

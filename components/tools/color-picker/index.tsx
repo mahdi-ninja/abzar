@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -57,6 +58,7 @@ function rgbToCmyk(r: number, g: number, b: number): [number, number, number, nu
 }
 
 export default function ColorPicker() {
+  const t = useTranslations("colorPicker");
   const [hex, setHex] = useState("#3b82f6");
   const [rgb, setRgb] = useState<[number, number, number]>(() => hexToRgb("#3b82f6") ?? [59, 130, 246]);
 
@@ -91,7 +93,7 @@ export default function ColorPicker() {
   return (
     <div className="space-y-6">
       <div className="flex justify-end">
-        <Button size="sm" variant="outline" onClick={() => { updateFromHex("#3b82f6"); }}>Reset</Button>
+        <Button size="sm" variant="outline" onClick={() => { updateFromHex("#3b82f6"); }}>{t("reset")}</Button>
       </div>
       {/* Color preview + picker */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
@@ -102,7 +104,7 @@ export default function ColorPicker() {
         <div className="space-y-3 flex-1">
           <div>
             <Label htmlFor="color-input" className="text-sm mb-1 block">
-              Pick a color
+              {t("pickColor")}
             </Label>
             <input
               id="color-input"
@@ -168,7 +170,7 @@ export default function ColorPicker() {
 
         {/* RGB individual */}
         <div className="space-y-1">
-          <Label className="text-xs">R / G / B</Label>
+          <Label className="text-xs">{t("rgbLabel")}</Label>
           <div className="flex gap-1">
             <Input
               type="number" min={0} max={255}

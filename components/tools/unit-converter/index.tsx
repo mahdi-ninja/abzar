@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -10,92 +11,83 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
 } from "@/components/ui/select";
 
 type UnitCategory = {
-  name: string;
-  units: { key: string; label: string; factor: number }[];
+  units: { key: string; factor: number }[];
   isTemperature?: boolean;
 };
 
 const unitCategories: Record<string, UnitCategory> = {
   length: {
-    name: "Length",
     units: [
-      { key: "mm", label: "Millimeters", factor: 0.001 },
-      { key: "cm", label: "Centimeters", factor: 0.01 },
-      { key: "m", label: "Meters", factor: 1 },
-      { key: "km", label: "Kilometers", factor: 1000 },
-      { key: "in", label: "Inches", factor: 0.0254 },
-      { key: "ft", label: "Feet", factor: 0.3048 },
-      { key: "yd", label: "Yards", factor: 0.9144 },
-      { key: "mi", label: "Miles", factor: 1609.344 },
+      { key: "mm", factor: 0.001 },
+      { key: "cm", factor: 0.01 },
+      { key: "m", factor: 1 },
+      { key: "km", factor: 1000 },
+      { key: "in", factor: 0.0254 },
+      { key: "ft", factor: 0.3048 },
+      { key: "yd", factor: 0.9144 },
+      { key: "mi", factor: 1609.344 },
     ],
   },
   weight: {
-    name: "Weight",
     units: [
-      { key: "mg", label: "Milligrams", factor: 0.000001 },
-      { key: "g", label: "Grams", factor: 0.001 },
-      { key: "kg", label: "Kilograms", factor: 1 },
-      { key: "t", label: "Tonnes", factor: 1000 },
-      { key: "oz", label: "Ounces", factor: 0.0283495 },
-      { key: "lb", label: "Pounds", factor: 0.453592 },
-      { key: "st", label: "Stone", factor: 6.35029 },
+      { key: "mg", factor: 0.000001 },
+      { key: "g", factor: 0.001 },
+      { key: "kg", factor: 1 },
+      { key: "t", factor: 1000 },
+      { key: "oz", factor: 0.0283495 },
+      { key: "lb", factor: 0.453592 },
+      { key: "st", factor: 6.35029 },
     ],
   },
   volume: {
-    name: "Volume",
     units: [
-      { key: "ml", label: "Milliliters", factor: 0.001 },
-      { key: "l", label: "Liters", factor: 1 },
-      { key: "gal_us", label: "US Gallons", factor: 3.78541 },
-      { key: "gal_uk", label: "UK Gallons", factor: 4.54609 },
-      { key: "qt", label: "Quarts", factor: 0.946353 },
-      { key: "pt", label: "Pints", factor: 0.473176 },
-      { key: "cup", label: "Cups", factor: 0.236588 },
-      { key: "fl_oz", label: "Fluid Ounces", factor: 0.0295735 },
+      { key: "ml", factor: 0.001 },
+      { key: "l", factor: 1 },
+      { key: "gal_us", factor: 3.78541 },
+      { key: "gal_uk", factor: 4.54609 },
+      { key: "qt", factor: 0.946353 },
+      { key: "pt", factor: 0.473176 },
+      { key: "cup", factor: 0.236588 },
+      { key: "fl_oz", factor: 0.0295735 },
     ],
   },
   temperature: {
-    name: "Temperature",
     isTemperature: true,
     units: [
-      { key: "c", label: "Celsius", factor: 0 },
-      { key: "f", label: "Fahrenheit", factor: 0 },
-      { key: "k", label: "Kelvin", factor: 0 },
+      { key: "c", factor: 0 },
+      { key: "f", factor: 0 },
+      { key: "k", factor: 0 },
     ],
   },
   speed: {
-    name: "Speed",
     units: [
-      { key: "ms", label: "m/s", factor: 1 },
-      { key: "kmh", label: "km/h", factor: 0.277778 },
-      { key: "mph", label: "mph", factor: 0.44704 },
-      { key: "kn", label: "Knots", factor: 0.514444 },
-      { key: "fts", label: "ft/s", factor: 0.3048 },
+      { key: "ms", factor: 1 },
+      { key: "kmh", factor: 0.277778 },
+      { key: "mph", factor: 0.44704 },
+      { key: "kn", factor: 0.514444 },
+      { key: "fts", factor: 0.3048 },
     ],
   },
   area: {
-    name: "Area",
     units: [
-      { key: "sqm", label: "Square Meters", factor: 1 },
-      { key: "sqkm", label: "Square Kilometers", factor: 1000000 },
-      { key: "sqft", label: "Square Feet", factor: 0.092903 },
-      { key: "sqmi", label: "Square Miles", factor: 2589988 },
-      { key: "acre", label: "Acres", factor: 4046.86 },
-      { key: "ha", label: "Hectares", factor: 10000 },
+      { key: "sqm", factor: 1 },
+      { key: "sqkm", factor: 1000000 },
+      { key: "sqft", factor: 0.092903 },
+      { key: "sqmi", factor: 2589988 },
+      { key: "acre", factor: 4046.86 },
+      { key: "ha", factor: 10000 },
     ],
   },
   data: {
-    name: "Data",
     units: [
-      { key: "b", label: "Bytes", factor: 1 },
-      { key: "kb", label: "Kilobytes", factor: 1024 },
-      { key: "mb", label: "Megabytes", factor: 1048576 },
-      { key: "gb", label: "Gigabytes", factor: 1073741824 },
-      { key: "tb", label: "Terabytes", factor: 1099511627776 },
+      { key: "b", factor: 1 },
+      { key: "kb", factor: 1024 },
+      { key: "mb", factor: 1048576 },
+      { key: "gb", factor: 1073741824 },
+      { key: "tb", factor: 1099511627776 },
     ],
   },
 };
@@ -113,6 +105,7 @@ function convertTemperature(value: number, from: string, to: string): number {
 }
 
 export default function UnitConverter() {
+  const t = useTranslations("unitConverter");
   const [category, setCategory] = useState("length");
   const [fromUnit, setFromUnit] = useState("m");
   const [toUnit, setToUnit] = useState("ft");
@@ -152,9 +145,9 @@ export default function UnitConverter() {
     <div className="space-y-6">
       <Tabs value={category} onValueChange={handleCategoryChange}>
         <TabsList className="h-8 flex-wrap">
-          {Object.entries(unitCategories).map(([key, cat]) => (
+          {Object.keys(unitCategories).map((key) => (
             <TabsTrigger key={key} value={key} className="text-xs px-2.5 h-6">
-              {cat.name}
+              {t(`cat_${key}`)}
             </TabsTrigger>
           ))}
         </TabsList>
@@ -163,15 +156,15 @@ export default function UnitConverter() {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-end">
         {/* From */}
         <div className="space-y-2">
-          <Label className="text-sm">From</Label>
+          <Label className="text-sm">{t("from")}</Label>
           <Select value={fromUnit} onValueChange={(v) => v && setFromUnit(v)}>
             <SelectTrigger>
-              <SelectValue />
+              <span>{t(`unit_${fromUnit}`)}</span>
             </SelectTrigger>
             <SelectContent>
               {units.map((u) => (
                 <SelectItem key={u.key} value={u.key}>
-                  {u.label}
+                  {t(`unit_${u.key}`)}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -191,26 +184,26 @@ export default function UnitConverter() {
           size="icon"
           onClick={handleSwap}
           className=""
-          aria-label="Swap units"
+          aria-label={t("swapUnits")}
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4" />
           </svg>
         </Button>
-        <Button variant="outline" size="sm" onClick={() => handleCategoryChange(category)} className="text-xs">Reset</Button>
+        <Button variant="outline" size="sm" onClick={() => handleCategoryChange(category)} className="text-xs">{t("reset")}</Button>
         </div>
 
         {/* To */}
         <div className="space-y-2">
-          <Label className="text-sm">To</Label>
+          <Label className="text-sm">{t("to")}</Label>
           <Select value={toUnit} onValueChange={(v) => v && setToUnit(v)}>
             <SelectTrigger>
-              <SelectValue />
+              <span>{t(`unit_${toUnit}`)}</span>
             </SelectTrigger>
             <SelectContent>
               {units.map((u) => (
                 <SelectItem key={u.key} value={u.key}>
-                  {u.label}
+                  {t(`unit_${u.key}`)}
                 </SelectItem>
               ))}
             </SelectContent>

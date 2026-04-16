@@ -1,0 +1,9 @@
+{
+  "aspectRatio": {
+    "width": "عرض",
+    "height": "ارتفاع",
+    "reset": "بازنشانی",
+    "aspectRatioLabel": "نسبت تصویر",
+    "decimalLabel": "اعشاری"
+  }
+}

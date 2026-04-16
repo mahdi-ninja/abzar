@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
@@ -13,6 +14,7 @@ function flipUpsideDown(s: string): string {
 }
 
 export default function ReverseText() {
+  const t = useTranslations("reverseText");
   const [input, setInput] = useState("");
   const [mode, setMode] = useState<"chars" | "words" | "lines" | "flip">("chars");
 
@@ -30,17 +32,15 @@ export default function ReverseText() {
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
         {(["chars", "words", "lines", "flip"] as const).map((m) => (
-          <Button key={m} size="sm" variant={mode === m ? "default" : "secondary"} onClick={() => setMode(m)} className="capitalize">
-            {m === "chars" ? "Reverse Characters" : m === "words" ? "Reverse Words" : m === "lines" ? "Reverse Lines" : "Flip Upside Down"}
+          <Button key={m} size="sm" variant={mode === m ? "default" : "secondary"} onClick={() => setMode(m)}>
+            {m === "chars" ? t("reverseCharacters") : m === "words" ? t("reverseWords") : m === "lines" ? t("reverseLines") : t("flipUpsideDown")}
           </Button>
         ))}
-        <Button size="sm" variant="outline" onClick={() => { setInput(""); setMode("chars"); }}>Clear</Button>
+        <Button size="sm" variant="outline" onClick={() => { setInput(""); setMode("chars"); }}>{t("clear")}</Button>
       </div>
       <InputOutputLayout
-        inputLabel="Input"
-        outputLabel="Output"
         input={
-          <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="Type text here..." className="min-h-50 text-sm" />
+          <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder={t("inputPlaceholder")} className="min-h-50 text-sm" />
         }
         output={
           <>

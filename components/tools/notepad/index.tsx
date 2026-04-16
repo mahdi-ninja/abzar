@@ -1,19 +1,12 @@
 "use client";
 
 import { useState, useCallback, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { useLocalStorage } from "@/lib/use-local-storage";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-
-function timeAgo(ts: number): string {
-  const diff = Date.now() - ts;
-  if (diff < 60000) return "just now";
-  if (diff < 3600000) return `${Math.floor(diff / 60000)}m ago`;
-  if (diff < 86400000) return `${Math.floor(diff / 3600000)}h ago`;
-  return new Date(ts).toLocaleDateString();
-}
 
 interface Note {
   id: string;
@@ -32,6 +25,7 @@ function newNote(): Note {
 }
 
 export default function Notepad() {
+  const t = useTranslations("notepad");
   const [notes, setNotes] = useLocalStorage<Note[]>("abzar:notepad:notes", [newNote()]);
   const [activeId, setActiveId] = useState<string | null>(() => notes[0]?.id ?? null);
 
@@ -41,6 +35,14 @@ export default function Notepad() {
     if (!active?.content.trim()) return 0;
     return active.content.trim().split(/\s+/).length;
   }, [active]);
+
+  const timeAgo = useCallback((ts: number): string => {
+    const diff = Date.now() - ts;
+    if (diff < 60000) return t("justNow");
+    if (diff < 3600000) return t("minutesAgo", { count: Math.floor(diff / 60000) });
+    if (diff < 86400000) return t("hoursAgo", { count: Math.floor(diff / 3600000) });
+    return new Date(ts).toLocaleDateString();
+  }, [t]);
 
   const updateActive = useCallback(
     (updates: Partial<Note>) => {
@@ -82,18 +84,18 @@ export default function Notepad() {
     [notes]
   );
 
-  const preview = (content: string) => {
+  const preview = useCallback((content: string) => {
     const text = content.trim();
-    if (!text) return "Empty note";
+    if (!text) return t("emptyNote");
     return text.length > 80 ? text.slice(0, 80) + "..." : text;
-  };
+  }, [t]);
 
   return (
     <div className="flex gap-4 min-h-125">
       {/* Sidebar — note list */}
       <div className="w-56 shrink-0 space-y-2 hidden md:block">
         <Button size="sm" className="w-full" onClick={addNote}>
-          + New Note
+          {t("newNote")}
         </Button>
         <div className="space-y-1.5 max-h-115 overflow-y-auto">
           {sorted.map((note) => (
@@ -109,7 +111,7 @@ export default function Notepad() {
               <div className="flex items-start justify-between gap-1">
                 <div className="min-w-0 flex-1">
                   <div className="text-xs font-medium truncate">
-                    {note.title || "Untitled"}
+                    {note.title || t("untitled")}
                   </div>
                   <div className="text-[11px] text-muted-foreground truncate mt-0.5">
                     {preview(note.content)}
@@ -125,7 +127,7 @@ export default function Notepad() {
                       deleteNote(note.id);
                     }}
                     className="text-muted-foreground/50 hover:text-destructive text-xs shrink-0 mt-0.5"
-                    aria-label="Delete note"
+                    aria-label={t("deleteNote")}
                   >
                     ×
                   </button>
@@ -141,7 +143,7 @@ export default function Notepad() {
         {!active ? (
           <>
             <Button size="sm" className="w-full" onClick={addNote}>
-              + New Note
+              {t("newNote")}
             </Button>
             <div className="space-y-1.5">
               {sorted.map((note) => (
@@ -153,7 +155,7 @@ export default function Notepad() {
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0">
                       <div className="text-sm font-medium truncate">
-                        {note.title || "Untitled"}
+                        {note.title || t("untitled")}
                       </div>
                       <div className="text-xs text-muted-foreground truncate mt-0.5">
                         {preview(note.content)}
@@ -174,6 +176,7 @@ export default function Notepad() {
             onUpdate={updateActive}
             onBack={() => setActiveId(null)}
             showBack
+            t={t}
           />
         )}
       </div>
@@ -185,6 +188,7 @@ export default function Notepad() {
             note={active}
             wordCount={wordCount}
             onUpdate={updateActive}
+            t={t}
           />
         </div>
       )}
@@ -198,35 +202,37 @@ function NoteEditor({
   onUpdate,
   onBack,
   showBack,
+  t,
 }: {
   note: Note;
   wordCount: number;
   onUpdate: (updates: Partial<Note>) => void;
   onBack?: () => void;
   showBack?: boolean;
+  t: ReturnType<typeof useTranslations>;
 }) {
   return (
     <div className="space-y-2 flex flex-col flex-1">
       {showBack && (
         <Button size="sm" variant="ghost" onClick={onBack} className="self-start">
-          ← All Notes
+          {t("allNotes")}
         </Button>
       )}
       <Input
         value={note.title}
         onChange={(e) => onUpdate({ title: e.target.value })}
-        placeholder="Note title..."
+        placeholder={t("titlePlaceholder")}
         className="text-lg font-medium border-0 px-0 shadow-none focus-visible:ring-0"
       />
       <Textarea
         value={note.content}
         onChange={(e) => onUpdate({ content: e.target.value })}
-        placeholder="Start writing..."
+        placeholder={t("contentPlaceholder")}
         className="flex-1 min-h-100 text-sm resize-none"
       />
       <div className="flex items-center justify-between text-xs text-muted-foreground">
-        <span>{wordCount} words · {note.content.length} characters</span>
-        <span>Auto-saved</span>
+        <span>{t("stats", { words: wordCount, chars: note.content.length })}</span>
+        <span>{t("autoSaved")}</span>
       </div>
     </div>
   );

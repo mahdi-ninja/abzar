@@ -1,17 +1,19 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { CopyButton } from "@/components/ui/copy-button";
 import { Card } from "@/components/ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
 
 const ALGOS = ["SHA-1", "SHA-256", "SHA-512"] as const;
 
 export default function HmacGenerator() {
+  const t = useTranslations("hmacGenerator");
   const [message, setMessage] = useState("");
   const [secret, setSecret] = useState("");
   const [algo, setAlgo] = useState<string>("SHA-256");
@@ -28,22 +30,22 @@ export default function HmacGenerator() {
     <div className="space-y-4">
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div className="space-y-2">
-          <Label className="text-sm">Message</Label>
-          <Textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Enter message..." className="min-h-30 font-mono text-sm" />
+          <Label className="text-sm">{t("message")}</Label>
+          <Textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder={t("messagePlaceholder")} className="min-h-30 font-mono text-sm" />
         </div>
         <div className="space-y-2">
-          <Label className="text-sm">Secret Key</Label>
-          <Input value={secret} onChange={(e) => setSecret(e.target.value)} placeholder="Enter secret key..." className="font-mono text-sm" />
-          <Label className="text-sm">Algorithm</Label>
+          <Label className="text-sm">{t("secretKey")}</Label>
+          <Input value={secret} onChange={(e) => setSecret(e.target.value)} placeholder={t("secretPlaceholder")} className="font-mono text-sm" />
+          <Label className="text-sm">{t("algorithm")}</Label>
           <Select value={algo} onValueChange={(v) => v && setAlgo(v)}>
-            <SelectTrigger><SelectValue /></SelectTrigger>
+            <SelectTrigger><span>{algo}</span></SelectTrigger>
             <SelectContent>{ALGOS.map((a) => <SelectItem key={a} value={a}>{a}</SelectItem>)}</SelectContent>
           </Select>
         </div>
       </div>
       <div className="flex gap-2">
-        <Button size="sm" onClick={generate} disabled={!message || !secret}>Generate HMAC</Button>
-        <Button size="sm" variant="outline" onClick={() => { setMessage(""); setSecret(""); setAlgo("SHA-256"); setOutput(""); }}>Clear</Button>
+        <Button size="sm" onClick={generate} disabled={!message || !secret}>{t("generateHmac")}</Button>
+        <Button size="sm" variant="outline" onClick={() => { setMessage(""); setSecret(""); setAlgo("SHA-256"); setOutput(""); }}>{t("clear")}</Button>
       </div>
       {output && (
         <Card className="p-3">

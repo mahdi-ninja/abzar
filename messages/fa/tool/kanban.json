@@ -1,0 +1,14 @@
+{
+  "kanban": {
+    "board": "برد",
+    "selectBoard": "انتخاب برد",
+    "save": "ذخیره",
+    "rename": "تغییر نام",
+    "newBoardPlaceholder": "برد جدید...",
+    "deleteBoard": "حذف برد",
+    "removeColumn": "حذف ستون",
+    "removeCard": "حذف کارت",
+    "newCardPlaceholder": "کارت جدید...",
+    "newColumnPlaceholder": "ستون جدید..."
+  }
+}

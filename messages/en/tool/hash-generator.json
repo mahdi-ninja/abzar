@@ -1,0 +1,12 @@
+{
+  "hashGenerator": {
+    "text": "Text",
+    "file": "File",
+    "clear": "Clear",
+    "inputPlaceholder": "Type or paste text to hash...",
+    "dropFileLabel": "Drop a file here to hash",
+    "selectedFile": "Selected: {fileName}",
+    "computing": "Computing hashes...",
+    "emptyHint": "Type text or drop a file to generate hashes."
+  }
+}

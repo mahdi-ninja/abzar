@@ -1,5 +1,6 @@
 "use client";
 import { useState, useMemo, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import Fuse from "fuse.js";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
@@ -17,6 +18,7 @@ const fuse = new Fuse(EMOJIS, {
 });
 
 export default function EmojiSearch() {
+  const t = useTranslations("emojiSearch");
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("All");
   const [recentIds, setRecentIds] = useLocalStorage<string[]>(
@@ -63,7 +65,7 @@ export default function EmojiSearch() {
     <div className="space-y-3">
       {recent.length > 0 && !query && category === "All" && (
         <div>
-          <p className="text-xs text-muted-foreground mb-1">Recently used</p>
+          <p className="text-xs text-muted-foreground mb-1">{t("recentlyUsed")}</p>
           <div className="flex flex-wrap gap-1">
             {recent.map((e) => (
               <button
@@ -96,7 +98,7 @@ export default function EmojiSearch() {
       </div>
 
       <Input
-        placeholder="Search emojis…"
+        placeholder={t("searchPlaceholder")}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         className="w-full"
@@ -104,7 +106,7 @@ export default function EmojiSearch() {
       />
 
       <div className="text-xs text-muted-foreground">
-        {filtered.length} emoji{filtered.length !== 1 ? "s" : ""} — click to copy
+        {t("resultCount", { count: filtered.length })}
       </div>
 
       <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 gap-1 max-h-110 overflow-y-auto pr-1">
@@ -121,7 +123,7 @@ export default function EmojiSearch() {
       </div>
 
       {filtered.length === 0 && (
-        <p className="text-center text-sm text-muted-foreground py-8">No emojis found for &ldquo;{query}&rdquo;</p>
+        <p className="text-center text-sm text-muted-foreground py-8">{t("noResults", { query })}</p>
       )}
     </div>
   );

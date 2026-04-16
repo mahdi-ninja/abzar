@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
@@ -41,6 +42,7 @@ function cidrToMask(cidr: number): number {
 }
 
 export default function SubnetCalculator() {
+  const t = useTranslations("subnetCalculator");
   const [ip, setIp] = useState("192.168.1.0");
   const [cidr, setCidr] = useState("24");
 
@@ -70,24 +72,24 @@ export default function SubnetCalculator() {
     };
   }, [ip, cidr]);
 
-  const rows = result
+  const rows = useMemo(() => result
     ? [
-        { label: "Network Address", value: result.network },
-        { label: "Broadcast Address", value: result.broadcast },
-        { label: "Subnet Mask", value: result.mask },
-        { label: "Wildcard Mask", value: result.wildcard },
-        { label: "First Usable Host", value: result.firstHost },
-        { label: "Last Usable Host", value: result.lastHost },
-        { label: "Total Usable Hosts", value: result.totalHosts.toLocaleString() },
-        { label: "CIDR Notation", value: `${result.network}/${result.cidr}` },
+        { label: t("networkAddress"), value: result.network },
+        { label: t("broadcastAddress"), value: result.broadcast },
+        { label: t("subnetMask"), value: result.mask },
+        { label: t("wildcardMask"), value: result.wildcard },
+        { label: t("firstUsableHost"), value: result.firstHost },
+        { label: t("lastUsableHost"), value: result.lastHost },
+        { label: t("totalUsableHosts"), value: result.totalHosts.toLocaleString() },
+        { label: t("cidrNotation"), value: `${result.network}/${result.cidr}` },
       ]
-    : [];
+    : [], [result, t]);
 
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-end gap-4">
         <div className="flex-1 min-w-45">
-          <Label className="text-sm mb-1 block">IP Address</Label>
+          <Label className="text-sm mb-1 block">{t("ipAddress")}</Label>
           <Input
             value={ip}
             onChange={(e) => setIp(e.target.value)}
@@ -96,7 +98,7 @@ export default function SubnetCalculator() {
           />
         </div>
         <div className="w-28">
-          <Label className="text-sm mb-1 block">CIDR</Label>
+          <Label className="text-sm mb-1 block">{t("cidr")}</Label>
           <Select value={cidr} onValueChange={(v) => v && setCidr(v)}>
             <SelectTrigger className="font-mono">
               <SelectValue />
@@ -110,12 +112,12 @@ export default function SubnetCalculator() {
             </SelectContent>
           </Select>
         </div>
-        <Button size="sm" variant="outline" onClick={() => { setIp("192.168.1.0"); setCidr("24"); }}>Reset</Button>
+        <Button size="sm" variant="outline" onClick={() => { setIp("192.168.1.0"); setCidr("24"); }}>{t("reset")}</Button>
       </div>
 
       {!result && ip.trim() && (
         <div className="rounded-md bg-destructive/10 px-3 py-2 text-sm text-destructive">
-          Invalid IP address or CIDR.
+          {t("invalidIpOrCidr")}
         </div>
       )}
 

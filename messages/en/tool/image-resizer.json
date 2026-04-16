@@ -1,0 +1,24 @@
+{
+  "imageResizer": {
+    "dropLabel": "Drop an image here to get started",
+    "resize": "Resize",
+    "crop": "Crop",
+    "widthPx": "Width (px)",
+    "heightPx": "Height (px)",
+    "lockAspectRatio": "Lock aspect ratio",
+    "original": "Original ({w}x{h})",
+    "resized": "Resized ({w}x{h})",
+    "resizedWithSize": "Resized ({w}x{h}) — {size}KB",
+    "applyCrop": "Apply Crop",
+    "cropInstruction": "Draw a selection, then drag to move or pull handles to resize.",
+    "selectCropArea": "Select crop area",
+    "croppedResult": "Cropped result",
+    "croppedResultWithSize": "Cropped result ({w}x{h}) — {size}KB",
+    "download": "Download",
+    "clear": "Clear",
+    "x": "X",
+    "y": "Y",
+    "width": "Width",
+    "height": "Height"
+  }
+}

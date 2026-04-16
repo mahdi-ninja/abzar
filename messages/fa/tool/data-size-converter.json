@@ -1,0 +1,9 @@
+{
+  "dataSizeConverter": {
+    "valueLabel": "مقدار",
+    "unitLabel": "واحد",
+    "binaryLabel": "دودویی (1024)",
+    "decimalLabel": "دهدهی (1000)",
+    "reset": "بازنشانی"
+  }
+}

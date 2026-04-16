@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
@@ -9,7 +10,6 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
 } from "@/components/ui/select";
 
 type Algorithm = "bubble" | "selection" | "insertion" | "quick" | "merge";
@@ -24,6 +24,7 @@ function randomArray(size: number): number[] {
 }
 
 export default function AlgorithmVisualizer() {
+  const t = useTranslations("algorithmVisualizer");
   const [size, setSize] = useState(30);
   const [algo, setAlgo] = useState<Algorithm>("bubble");
   const [bars, setBars] = useState<BarState[]>(() =>
@@ -162,22 +163,22 @@ export default function AlgorithmVisualizer() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-end gap-3">
         <div>
-          <Label className="text-xs mb-1 block">Algorithm</Label>
+          <Label className="text-xs mb-1 block">{t("algorithm")}</Label>
           <Select value={algo} onValueChange={(v) => v && setAlgo(v as Algorithm)}>
             <SelectTrigger className="w-32 text-sm">
-              <SelectValue />
+              <span>{t(`${algo}Sort`)}</span>
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="bubble">Bubble Sort</SelectItem>
-              <SelectItem value="selection">Selection Sort</SelectItem>
-              <SelectItem value="insertion">Insertion Sort</SelectItem>
-              <SelectItem value="quick">Quick Sort</SelectItem>
-              <SelectItem value="merge">Merge Sort</SelectItem>
+              <SelectItem value="bubble">{t("bubbleSort")}</SelectItem>
+              <SelectItem value="selection">{t("selectionSort")}</SelectItem>
+              <SelectItem value="insertion">{t("insertionSort")}</SelectItem>
+              <SelectItem value="quick">{t("quickSort")}</SelectItem>
+              <SelectItem value="merge">{t("mergeSort")}</SelectItem>
             </SelectContent>
           </Select>
         </div>
         <div className="w-32">
-          <Label className="text-xs mb-1 block">Size: {size}</Label>
+          <Label className="text-xs mb-1 block">{t("size", { size })}</Label>
           <Slider
             value={[size]}
             onValueChange={(v) => { const s = Array.isArray(v) ? v[0] : v; setSize(s); }}
@@ -188,7 +189,7 @@ export default function AlgorithmVisualizer() {
           />
         </div>
         <div className="w-32">
-          <Label className="text-xs mb-1 block">Speed: {speed}ms</Label>
+          <Label className="text-xs mb-1 block">{t("speed", { ms: speed })}</Label>
           <Slider
             value={[speed]}
             onValueChange={(v) => setSpeed(Array.isArray(v) ? v[0] : v)}
@@ -198,10 +199,10 @@ export default function AlgorithmVisualizer() {
           />
         </div>
         <Button size="sm" onClick={sortArray} disabled={sorting}>
-          Sort
+          {t("sort")}
         </Button>
         <Button size="sm" variant="outline" onClick={generateNew}>
-          New Array
+          {t("newArray")}
         </Button>
       </div>
 
@@ -228,10 +229,10 @@ export default function AlgorithmVisualizer() {
       </div>
 
       <div className="flex gap-4 text-xs text-muted-foreground">
-        <span><span className="inline-block h-2 w-2 rounded-full bg-primary mr-1" />Default</span>
-        <span><span className="inline-block h-2 w-2 rounded-full bg-amber-500 mr-1" />Comparing</span>
-        <span><span className="inline-block h-2 w-2 rounded-full bg-destructive mr-1" />Swapping</span>
-        <span><span className="inline-block h-2 w-2 rounded-full bg-emerald-500 mr-1" />Sorted</span>
+        <span><span className="inline-block h-2 w-2 rounded-full bg-primary me-1" />{t("default")}</span>
+        <span><span className="inline-block h-2 w-2 rounded-full bg-amber-500 me-1" />{t("comparing")}</span>
+        <span><span className="inline-block h-2 w-2 rounded-full bg-destructive me-1" />{t("swapping")}</span>
+        <span><span className="inline-block h-2 w-2 rounded-full bg-emerald-500 me-1" />{t("sorted")}</span>
       </div>
     </div>
   );

@@ -1,0 +1,21 @@
+{
+  "jwtDecoder": {
+    "jwtToken": "JWT Token",
+    "clear": "Clear",
+    "placeholder": "Paste your JWT here (eyJhbGci...)",
+    "errorInvalid3Parts": "Invalid JWT: expected 3 parts separated by dots",
+    "errorInvalidJson": "Invalid JWT: could not parse header or payload as JSON",
+    "errorBase64Failed": "Invalid JWT: base64 decoding failed",
+    "header": "Header",
+    "payload": "Payload",
+    "signature": "Signature",
+    "timestamps": "Timestamps",
+    "issuedAt": "Issued At",
+    "expires": "Expires",
+    "notBefore": "Not Before",
+    "expired": "Expired",
+    "expiresInMinutes": "Expires in {minutes}m",
+    "expiresInHours": "Expires in {hours}h",
+    "emptyState": "Paste a JWT token to decode its header, payload, and verify expiration."
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Switch } from "@/components/ui/switch";
@@ -45,14 +46,22 @@ function calculateEntropy(
   return Math.round(length * Math.log2(poolSize));
 }
 
-function getStrengthLabel(entropy: number): { label: string; color: string } {
-  if (entropy < 40) return { label: "Weak", color: "text-destructive" };
-  if (entropy < 60) return { label: "Fair", color: "text-amber-500" };
-  if (entropy < 80) return { label: "Strong", color: "text-emerald-500" };
-  return { label: "Very Strong", color: "text-emerald-600" };
+function getStrengthColor(entropy: number): string {
+  if (entropy < 40) return "text-destructive";
+  if (entropy < 60) return "text-amber-500";
+  if (entropy < 80) return "text-emerald-500";
+  return "text-emerald-600";
+}
+
+function getStrengthKey(entropy: number): string {
+  if (entropy < 40) return "weak";
+  if (entropy < 60) return "fair";
+  if (entropy < 80) return "strong";
+  return "veryStrong";
 }
 
 export default function PasswordGenerator() {
+  const t = useTranslations("passwordGenerator");
   const [length, setLength] = useState(16);
   const [options, setOptions] = useState({
     upper: true,
@@ -77,7 +86,8 @@ export default function PasswordGenerator() {
   }, [length, options, quantity, seed]);
 
   const entropy = calculateEntropy(length, options);
-  const strength = getStrengthLabel(entropy);
+  const strengthColor = getStrengthColor(entropy);
+  const strengthKey = getStrengthKey(entropy);
 
   return (
     <div className="space-y-6">
@@ -90,9 +100,9 @@ export default function PasswordGenerator() {
         />
         <CopyButton value={password} />
         <Button size="sm" onClick={() => setSeed((s) => s + 1)}>
-          Generate
+          {t("generate")}
         </Button>
-        <Button size="sm" variant="outline" onClick={() => { setLength(16); setOptions({ upper: true, lower: true, numbers: true, symbols: true }); setQuantity(1); setSeed((s) => s + 1); }}>Reset</Button>
+        <Button size="sm" variant="outline" onClick={() => { setLength(16); setOptions({ upper: true, lower: true, numbers: true, symbols: true }); setQuantity(1); setSeed((s) => s + 1); }}>{t("reset")}</Button>
       </div>
 
       {/* Strength indicator */}
@@ -113,10 +123,10 @@ export default function PasswordGenerator() {
             />
           </div>
         </div>
-        <span className={`text-sm font-medium ${strength.color}`}>
-          {strength.label}
+        <span className={`text-sm font-medium ${strengthColor}`}>
+          {t(strengthKey)}
         </span>
-        <span className="text-xs text-muted-foreground">{entropy} bits</span>
+        <span className="text-xs text-muted-foreground">{t("bits", { bits: entropy })}</span>
       </div>
 
       {/* Controls */}
@@ -124,7 +134,7 @@ export default function PasswordGenerator() {
         <div className="space-y-4">
           <div>
             <Label className="text-sm mb-2 block">
-              Length: {length}
+              {t("length", { length })}
             </Label>
             <Slider
               value={[length]}
@@ -136,7 +146,7 @@ export default function PasswordGenerator() {
           </div>
 
           <div>
-            <Label className="text-sm mb-2 block">Quantity</Label>
+            <Label className="text-sm mb-2 block">{t("quantity")}</Label>
             <Input
               type="number"
               min={1}
@@ -153,10 +163,10 @@ export default function PasswordGenerator() {
         <div className="space-y-3">
           {(
             [
-              ["upper", "Uppercase (A-Z)"],
-              ["lower", "Lowercase (a-z)"],
-              ["numbers", "Numbers (0-9)"],
-              ["symbols", "Symbols (!@#$...)"],
+              ["upper", "uppercase"],
+              ["lower", "lowercase"],
+              ["numbers", "numbers"],
+              ["symbols", "symbols"],
             ] as const
           ).map(([key, label]) => (
             <div key={key} className="flex items-center gap-2">
@@ -166,7 +176,7 @@ export default function PasswordGenerator() {
                   setOptions((prev) => ({ ...prev, [key]: checked }))
                 }
               />
-              <Label className="text-sm">{label}</Label>
+              <Label className="text-sm">{t(label)}</Label>
             </div>
           ))}
         </div>
@@ -177,9 +187,9 @@ export default function PasswordGenerator() {
         <Card className="p-4">
           <div className="flex items-center justify-between mb-2">
             <Label className="text-sm font-medium">
-              Generated {bulk.length} passwords
+              {t("generated", { count: bulk.length })}
             </Label>
-            <CopyButton value={bulk.join("\n")} label="Copy All" />
+            <CopyButton value={bulk.join("\n")} label={t("copyAll")} />
           </div>
           <div className="max-h-48 overflow-auto rounded bg-muted p-2 font-mono text-xs space-y-0.5">
             {bulk.map((pw, i) => (

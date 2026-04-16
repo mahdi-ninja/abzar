@@ -1,0 +1,10 @@
+{
+  "markdownEditor": {
+    "copyHtml": "کپی HTML",
+    "export": "خروجی",
+    "clear": "پاک‌سازی",
+    "markdown": "Markdown",
+    "preview": "پیش‌نمایش",
+    "placeholder": "Markdown خود را اینجا بنویسید..."
+  }
+}

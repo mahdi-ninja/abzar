@@ -1,0 +1,11 @@
+{
+  "slugGenerator": {
+    "clear": "Clear",
+    "titleLabel": "Title or text",
+    "inputPlaceholder": "My Blog Post Title",
+    "separatorLabel": "Separator",
+    "maxLengthLabel": "Max length (0=none)",
+    "lowercase": "Lowercase",
+    "slugLabel": "Slug"
+  }
+}

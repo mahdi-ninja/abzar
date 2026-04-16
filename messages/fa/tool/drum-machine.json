@@ -1,0 +1,12 @@
+{
+  "drumMachine": {
+    "play": "پخش",
+    "stop": "توقف",
+    "bpm": "BPM: {bpm}",
+    "clear": "پاک‌سازی",
+    "toggleStep": "تغییر {instrument} مرحله {step}",
+    "exportBars": "میزان‌های خروجی:",
+    "rendering": "در حال رندر…",
+    "downloadWav": "↓ WAV"
+  }
+}

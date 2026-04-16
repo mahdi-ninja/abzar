@@ -1,12 +1,16 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
+type ConversionKey = "hourly" | "daily" | "weekly" | "biweekly" | "monthly" | "annual";
+
 export default function SalaryConverter() {
+  const t = useTranslations("salaryConverter");
   const [amount, setAmount] = useState(75000);
   const [hoursPerWeek, setHoursPerWeek] = useState(40);
   const [weeksPerYear, setWeeksPerYear] = useState(52);
@@ -19,12 +23,12 @@ export default function SalaryConverter() {
     const monthly = amount / 12;
     const annual = amount;
     return [
-      { label: "Hourly", value: hourly },
-      { label: "Daily (8h)", value: daily },
-      { label: "Weekly", value: weekly },
-      { label: "Bi-weekly", value: biweekly },
-      { label: "Monthly", value: monthly },
-      { label: "Annual", value: annual },
+      { key: "hourly" as ConversionKey, value: hourly },
+      { key: "daily" as ConversionKey, value: daily },
+      { key: "weekly" as ConversionKey, value: weekly },
+      { key: "biweekly" as ConversionKey, value: biweekly },
+      { key: "monthly" as ConversionKey, value: monthly },
+      { key: "annual" as ConversionKey, value: annual },
     ];
   }, [amount, hoursPerWeek, weeksPerYear]);
 
@@ -33,27 +37,27 @@ export default function SalaryConverter() {
   return (
     <div className="space-y-6">
       <div className="flex justify-end">
-        <Button size="sm" variant="outline" onClick={() => { setAmount(75000); setHoursPerWeek(40); setWeeksPerYear(52); }}>Reset</Button>
+        <Button size="sm" variant="outline" onClick={() => { setAmount(75000); setHoursPerWeek(40); setWeeksPerYear(52); }}>{t("reset")}</Button>
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <div>
-          <Label className="text-sm mb-1 block">Annual Salary ($)</Label>
+          <Label className="text-sm mb-1 block">{t("annualSalary")}</Label>
           <Input type="number" min={0} value={amount} onChange={(e) => setAmount(Number(e.target.value))} />
         </div>
         <div>
-          <Label className="text-sm mb-1 block">Hours/week</Label>
+          <Label className="text-sm mb-1 block">{t("hoursPerWeek")}</Label>
           <Input type="number" min={1} max={80} value={hoursPerWeek} onChange={(e) => setHoursPerWeek(Number(e.target.value))} />
         </div>
         <div>
-          <Label className="text-sm mb-1 block">Weeks/year</Label>
+          <Label className="text-sm mb-1 block">{t("weeksPerYear")}</Label>
           <Input type="number" min={1} max={52} value={weeksPerYear} onChange={(e) => setWeeksPerYear(Number(e.target.value))} />
         </div>
       </div>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
-        {conversions.map(({ label, value }) => (
-          <Card key={label} className="p-3 text-center">
+        {conversions.map(({ key, value }) => (
+          <Card key={key} className="p-3 text-center">
             <div className="text-xl font-bold tabular-nums">{fmt(value)}</div>
-            <div className="text-xs text-muted-foreground">{label}</div>
+            <div className="text-xs text-muted-foreground">{t(key)}</div>
           </Card>
         ))}
       </div>

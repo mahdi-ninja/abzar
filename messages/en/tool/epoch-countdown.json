@@ -1,0 +1,11 @@
+{
+  "epochCountdown": {
+    "currentTimestamp": "Current Unix Timestamp",
+    "convertLabel": "Convert epoch or date",
+    "inputPlaceholder": "e.g. 1700000000 or 2024-01-15",
+    "epochSeconds": "Epoch (s): {value}",
+    "epochMs": "Epoch (ms): {value}",
+    "iso": "ISO: {value}",
+    "local": "Local: {value}"
+  }
+}

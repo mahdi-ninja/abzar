@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -80,6 +81,7 @@ function hitTestInside(mx: number, my: number, crop: CropRect): boolean {
 }
 
 export default function ImageResizer() {
+  const t = useTranslations("imageResizer");
   const [image, setImage] = useState<HTMLImageElement | null>(null);
   const [fileName, setFileName] = useState("");
   const [origWidth, setOrigWidth] = useState(0);
@@ -359,15 +361,15 @@ export default function ImageResizer() {
         <FileDropZone
           onFiles={handleFileUpload}
           accept="image/*"
-          label="Drop an image here to get started"
+          label={t("dropLabel")}
           className="min-h-50"
         />
       ) : (
         <>
           <Tabs value={mode} onValueChange={(v) => { setMode(v as Mode); setOutputBlob(null); }}>
             <TabsList className="h-8">
-              <TabsTrigger value="resize" className="text-xs px-3 h-6">Resize</TabsTrigger>
-              <TabsTrigger value="crop" className="text-xs px-3 h-6">Crop</TabsTrigger>
+              <TabsTrigger value="resize" className="text-xs px-3 h-6">{t("resize")}</TabsTrigger>
+              <TabsTrigger value="crop" className="text-xs px-3 h-6">{t("crop")}</TabsTrigger>
             </TabsList>
           </Tabs>
 
@@ -375,24 +377,24 @@ export default function ImageResizer() {
             <>
               <div className="flex flex-wrap items-end gap-4">
                 <div>
-                  <Label className="text-sm mb-1 block">Width (px)</Label>
+                  <Label className="text-sm mb-1 block">{t("widthPx")}</Label>
                   <Input type="number" min={1} value={width}
                     onChange={(e) => handleWidthChange(Number(e.target.value))} className="w-28" />
                 </div>
                 <div>
-                  <Label className="text-sm mb-1 block">Height (px)</Label>
+                  <Label className="text-sm mb-1 block">{t("heightPx")}</Label>
                   <Input type="number" min={1} value={height}
                     onChange={(e) => handleHeightChange(Number(e.target.value))} className="w-28" />
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Switch checked={lockAspect} onCheckedChange={setLockAspect} />
-                  <Label className="text-xs">Lock aspect ratio</Label>
+                  <Label className="text-xs">{t("lockAspectRatio")}</Label>
                 </div>
               </div>
 
               <div className="flex flex-wrap gap-2">
                 <Button size="sm" variant="secondary" onClick={() => { setWidth(origWidth); setHeight(origHeight); }}>
-                  Original ({origWidth}x{origHeight})
+                  {t("original", { w: origWidth, h: origHeight })}
                 </Button>
                 <Button size="sm" variant="secondary" onClick={() => handleWidthChange(Math.round(origWidth / 2))}>
                   50%
@@ -405,15 +407,16 @@ export default function ImageResizer() {
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <Card className="p-3">
                   <Label className="text-xs text-muted-foreground mb-2 block">
-                    Original ({origWidth}x{origHeight})
+                    {t("original", { w: origWidth, h: origHeight })}
                   </Label>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={image.src} alt="Original" className="max-h-64 w-full object-contain rounded" />
+                  <img src={image.src} alt={t("original", { w: origWidth, h: origHeight })} className="max-h-64 w-full object-contain rounded" />
                 </Card>
                 <Card className="p-3">
                   <Label className="text-xs text-muted-foreground mb-2 block">
-                    Resized ({width}x{height})
-                    {outputBlob && ` — ${(outputBlob.size / 1024).toFixed(1)}KB`}
+                    {outputBlob
+                      ? t("resizedWithSize", { w: width, h: height, size: (outputBlob.size / 1024).toFixed(1) })
+                      : t("resized", { w: width, h: height })}
                   </Label>
                   <canvas ref={outputCanvasRef} className="max-h-64 w-full object-contain rounded" />
                 </Card>
@@ -425,38 +428,38 @@ export default function ImageResizer() {
             <>
               <div className="flex flex-wrap items-end gap-3">
                 <div>
-                  <Label className="text-xs mb-1 block">X</Label>
+                  <Label className="text-xs mb-1 block">{t("x")}</Label>
                   <Input type="number" min={0} max={origWidth} value={Math.round(crop.x)}
                     onChange={(e) => setCrop((p) => clampCrop({ ...p, x: Number(e.target.value) }))} className="w-20 text-sm" />
                 </div>
                 <div>
-                  <Label className="text-xs mb-1 block">Y</Label>
+                  <Label className="text-xs mb-1 block">{t("y")}</Label>
                   <Input type="number" min={0} max={origHeight} value={Math.round(crop.y)}
                     onChange={(e) => setCrop((p) => clampCrop({ ...p, y: Number(e.target.value) }))} className="w-20 text-sm" />
                 </div>
                 <div>
-                  <Label className="text-xs mb-1 block">Width</Label>
+                  <Label className="text-xs mb-1 block">{t("width")}</Label>
                   <Input type="number" min={1} value={Math.round(crop.w)}
                     onChange={(e) => setCrop((p) => clampCrop({ ...p, w: Number(e.target.value) }))} className="w-20 text-sm" />
                 </div>
                 <div>
-                  <Label className="text-xs mb-1 block">Height</Label>
+                  <Label className="text-xs mb-1 block">{t("height")}</Label>
                   <Input type="number" min={1} value={Math.round(crop.h)}
                     onChange={(e) => setCrop((p) => clampCrop({ ...p, h: Number(e.target.value) }))} className="w-20 text-sm" />
                 </div>
                 <Button size="sm" onClick={applyCrop} disabled={crop.w < 1 || crop.h < 1}>
-                  Apply Crop
+                  {t("applyCrop")}
                 </Button>
               </div>
 
               <p className="text-xs text-muted-foreground">
-                Draw a selection, then drag to move or pull handles to resize.
+                {t("cropInstruction")}
               </p>
 
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <Card className="p-3">
                   <Label className="text-xs text-muted-foreground mb-2 block">
-                    Select crop area
+                    {t("selectCropArea")}
                   </Label>
                   <canvas
                     ref={cropCanvasRef}
@@ -470,8 +473,9 @@ export default function ImageResizer() {
                 </Card>
                 <Card className="p-3">
                   <Label className="text-xs text-muted-foreground mb-2 block">
-                    Cropped result
-                    {outputBlob && ` (${Math.round(crop.w)}x${Math.round(crop.h)}) — ${(outputBlob.size / 1024).toFixed(1)}KB`}
+                    {outputBlob
+                      ? t("croppedResultWithSize", { w: Math.round(crop.w), h: Math.round(crop.h), size: (outputBlob.size / 1024).toFixed(1) })
+                      : t("croppedResult")}
                   </Label>
                   <canvas ref={outputCanvasRef} className="max-h-64 w-full object-contain rounded" />
                 </Card>
@@ -484,11 +488,11 @@ export default function ImageResizer() {
               <DownloadButton
                 data={outputBlob}
                 filename={`${mode === "crop" ? "cropped" : "resized"}-${fileName}`}
-                label="Download"
+                label={t("download")}
               />
             )}
             <Button size="sm" variant="outline" onClick={() => { if (objectUrlRef.current) { URL.revokeObjectURL(objectUrlRef.current); objectUrlRef.current = null; } setImage(null); setOutputBlob(null); setFileName(""); }}>
-              Clear
+              {t("clear")}
             </Button>
           </div>
         </>

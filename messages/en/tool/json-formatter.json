@@ -1,0 +1,13 @@
+{
+  "jsonFormatter": {
+    "format": "Format",
+    "minify": "Minify",
+    "validate": "Validate",
+    "clear": "Clear",
+    "inputPlaceholder": "Paste your JSON here... e.g. '{\"key\": \"value\"}'",
+    "outputPlaceholder": "Formatted output will appear here",
+    "validJson": "Valid JSON!",
+    "text": "Text",
+    "tree": "Tree"
+  }
+}

@@ -29,97 +29,37 @@ The i18n infrastructure is fully operational. Two locales are supported: English
 - Sidebar collapse arrow: `rtl:-scale-x-100` on the chevron SVG — flips arrow to point toward the sidebar edge in RTL
 - Site name: displays "ابزار" in Persian via `useTranslations("site")` instead of hardcoded `siteConfig.name`
 
-**Not translated — still English everywhere:**
-- All strings inside tool components (buttons, labels, placeholders, toasts — hardcoded in TSX)
+**Not yet done:**
 - OG images (don't exist for either locale)
 
 See `docs/I18N_CHANGELOG.md` for the full list of files changed during the initial implementation.
 
 ---
 
-## Remaining Work Items
+## Completed Work
 
-### 1. Translate strings inside tool components (per-tool i18n)
+### Per-tool i18n (done)
 
-This is the only large piece of work remaining. Every tool component has hardcoded English strings in JSX.
+All 74 tool components are fully internationalized with English + Persian translations.
 
-**Scale:** 74 tool component files, most with 5-15+ hardcoded strings each. Estimated 400-600 strings total across all tools.
+**What was done:**
+- Created 148 translation files: `messages/en/tool/{slug}.json` and `messages/fa/tool/{slug}.json` for all 74 tools
+- Updated all 74 tool components to use `useTranslations("{camelCaseNamespace}")`
+- Added `loadToolMessages()` to `i18n/request.ts` to auto-load all per-tool JSON files at server time
+- Converted physical CSS directional classes to logical properties for RTL support during translation
+- Removed redundant `InputOutputLayout` default label props (component handles translation internally)
 
-**What kinds of strings:**
-
-| Type | Examples | Count (approx) |
-|------|----------|-----------------|
-| Button labels | "Copy", "Clear", "Reset", "Generate", "Format", "Minify", "Convert", "Download", "Save", "Delete", "Add", "Remove", "Play", "Stop", "Pause", "Export", "Import" | ~45 |
-| Input placeholders | "Paste your JSON here...", "Type or paste text...", "Enter a URL...", "New habit name..." | ~40 |
-| Section headings / labels | "Input", "Output", "Words", "Characters", "Sentences", "Length", "This Week", "Generated N passwords" | ~30 |
-| Toast messages | Various tool-specific toasts (CopyButton/DownloadButton toasts are already translated) | ~10 |
-| Empty states | "Add a habit to start tracking.", "No results found" | ~10 |
-| Aria-labels | "Delete", "Remove habit", "Decrease", "Increase", "Swap colors" | ~15 |
-| Table headers | "Habit", "Streak", "Name", "Value", "Type" | ~10 |
-| Inline text | Readability score labels ("Flesch-Kincaid", "Gunning Fog"), unit names, descriptions | many |
-
-**Architecture — already prepared:**
-
-The tool page at `app/[locale]/tools/[category]/[tool-slug]/page.tsx` has this placeholder at line ~273:
-
-```ts
-// Per-tool messages (messages/{locale}/tool/{slug}.json) can be merged here
-// once individual tool translation files are created.
-const mergedMessages = await getMessages();
-```
-
-The tool page already wraps children in `<NextIntlClientProvider messages={mergedMessages}>`, so tool components can use `useTranslations()`.
-
-**How to add per-tool translations:**
-
-1. Create per-tool message files at `messages/en/tool/{slug}.json` and `messages/fa/tool/{slug}.json`. Example for `json-formatter`:
-
-```json
-// messages/en/tool/json-formatter.json
-{
-  "jsonFormatter": {
-    "format": "Format",
-    "minify": "Minify",
-    "validate": "Validate",
-    "clear": "Clear",
-    "inputPlaceholder": "Paste your JSON here... e.g. {\"key\": \"value\"}",
-    "outputPlaceholder": "Formatted output will appear here",
-    "validJson": "Valid JSON",
-    "invalidJson": "Invalid JSON"
-  }
-}
-```
-
-2. Update the tool page to load per-tool messages. Modify `app/[locale]/tools/[category]/[tool-slug]/page.tsx`:
-
-```ts
-// Replace the mergedMessages line with:
-let perToolMessages = {};
-try {
-  perToolMessages = (await import(`../../../../messages/${locale}/tool/${slug}.json`)).default;
-} catch {
-  // No per-tool translations yet — that's fine
-}
-const mergedMessages = { ...(await getMessages()), ...perToolMessages };
-```
-
-**Important:** Use relative paths for the dynamic import — `@/` alias doesn't work with Next.js static export dynamic imports.
-
-3. In each tool component, add `useTranslations('jsonFormatter')` (or whatever namespace) and replace hardcoded strings.
-
-4. English per-tool message files can be created manually as each tool is translated. Optionally, extend `scripts/generate-messages.ts` to auto-generate them, but this is hard to automate — manual creation is more practical.
-
-**Recommended order — start with the 10 most popular tools:**
-
-Phase 1: `json-formatter`, `base64`, `color-picker`, `password-generator`, `uuid-generator`, `word-counter`, `unit-converter`, `timestamp-converter`, `hash-generator`, `qr-generator`
-
-Phase 2: `regex-tester`, `image-resizer`, `gradient-generator`, `markdown-editor`, `mortgage-calculator`, `pomodoro`, `subnet-calculator`, `jwt-decoder`, `cron-builder`, `contrast-checker`
-
-Phase 3+: remaining tools in any order.
+**Pattern established:**
+- JSON structure: `{ "camelCaseNamespace": { "key": "value" } }` (e.g., `jsonFormatter`, `wordCounter`)
+- Interpolation uses ICU MessageFormat: `"Generated {count} passwords"` → `t("generated", { count: 5 })`
+- Literal `{` and `}` in messages must be escaped with single quotes: `'{'` and `'}'`
+- Any `useCallback` or `useMemo` referencing `t` must include `t` in the dependency array
 
 ---
 
-### 2. Localize OG images (optional, nice to have)
+## Remaining Work Items
+
+### 1. Localize OG images (optional, nice to have)
 
 **Current state:** No OG image generation exists. `generateMetadata` in tool pages references `/og/{locale}/{category}/{slug}.png` but the directory is empty.
 
@@ -144,7 +84,7 @@ The JSX template should use Vazirmatn font for Persian, Space Grotesk for Englis
 | File | Role |
 |------|------|
 | `i18n/routing.ts` | Locales config, prefix strategy |
-| `i18n/request.ts` | Server-side message merging |
+| `i18n/request.ts` | Server-side message merging (includes `loadToolMessages()` for per-tool files) |
 | `i18n/navigation.ts` | Locale-aware Link, useRouter, etc. |
 | `messages/en/common.json` | Shared UI strings including `ui.*` and `site.*` (hand-written, committed) |
 | `messages/en/home.json` | Homepage strings including `quickFilters` array (hand-written, committed) |
@@ -156,7 +96,7 @@ The JSX template should use Vazirmatn font for Persian, Space Grotesk for Englis
 | `messages/fa/categories.json` | Persian categories (translated, committed) |
 | `messages/fa/tools.json` | Persian tool names/descriptions (translated, committed) |
 | `messages/fa/tool-content.json` | Persian tool about/howTo (translated, committed) |
-| `messages/{locale}/tool/*.json` | Per-tool component strings (**don't exist yet**) |
+| `messages/{locale}/tool/*.json` | Per-tool component strings (74 tools, hand-written, committed) |
 | `scripts/generate-messages.ts` | Generates English message files from registry |
 | `scripts/generate-sitemap.ts` | Multi-locale sitemap |
 | `scripts/generate-sw.mjs` | Service worker build (locale-aware precache patterns) |
@@ -174,7 +114,7 @@ The JSX template should use Vazirmatn font for Persian, Space Grotesk for Englis
 | `components/layout/sidebar.tsx` | Translated site name + RTL-aware collapse arrow |
 | `app/[locale]/page.tsx` | Homepage — translated tagline, subtitle, quick-filter pills |
 | `app/[locale]/layout.tsx` | Root layout — translated metadata (title, description) |
-| `app/[locale]/tools/[category]/[tool-slug]/page.tsx` | Tool page — translated metadata, JSON-LD, per-tool messages placeholder |
+| `app/[locale]/tools/[category]/[tool-slug]/page.tsx` | Tool page — translated metadata, JSON-LD, per-tool messages via `getMessages()` |
 
 ---
 
@@ -198,7 +138,7 @@ If a third locale is added (e.g. Arabic `ar`):
 
 1. Add `'ar'` to the `locales` array in `i18n/routing.ts`
 2. Add `'ar'` to `rtlLocales` in `app/[locale]/layout.tsx` (if RTL)
-3. Create `messages/ar/` with all 5 message files (copy from `fa/` as starting point)
+3. Create `messages/ar/` with all message files including `tool/` directory (copy from `fa/` as starting point)
 4. Create `public/manifest.ar.json`
 5. Arabic fonts may need adding in `app/[locale]/layout.tsx` and `app/globals.css`
 6. Service worker patterns in `scripts/generate-sw.mjs` need updating (`{en,fa,ar}/...`)

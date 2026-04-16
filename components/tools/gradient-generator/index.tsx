@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -16,6 +17,7 @@ interface GradientStop {
 type GradientType = "linear" | "radial" | "conic";
 
 export default function GradientGenerator() {
+  const t = useTranslations("gradientGenerator");
   const [type, setType] = useState<GradientType>("linear");
   const [angle, setAngle] = useState(90);
   const [stops, setStops] = useState<GradientStop[]>([
@@ -70,19 +72,19 @@ export default function GradientGenerator() {
       {/* Type + angle */}
       <div className="flex flex-wrap items-end gap-4">
         <div>
-          <Label className="text-sm mb-1 block">Type</Label>
+          <Label className="text-sm mb-1 block">{t("type")}</Label>
           <Tabs value={type} onValueChange={(v) => setType(v as GradientType)}>
             <TabsList className="h-8">
-              <TabsTrigger value="linear" className="text-xs px-2.5 h-6">Linear</TabsTrigger>
-              <TabsTrigger value="radial" className="text-xs px-2.5 h-6">Radial</TabsTrigger>
-              <TabsTrigger value="conic" className="text-xs px-2.5 h-6">Conic</TabsTrigger>
+              <TabsTrigger value="linear" className="text-xs px-2.5 h-6">{t("linear")}</TabsTrigger>
+              <TabsTrigger value="radial" className="text-xs px-2.5 h-6">{t("radial")}</TabsTrigger>
+              <TabsTrigger value="conic" className="text-xs px-2.5 h-6">{t("conic")}</TabsTrigger>
             </TabsList>
           </Tabs>
         </div>
 
         {(type === "linear" || type === "conic") && (
           <div className="flex-1 min-w-37.5">
-            <Label className="text-sm mb-1 block">Angle: {angle}°</Label>
+            <Label className="text-sm mb-1 block">{t("angle", { angle })}</Label>
             <Slider
               value={[angle]}
               onValueChange={(v) => setAngle(Array.isArray(v) ? v[0] : v)}
@@ -97,11 +99,11 @@ export default function GradientGenerator() {
       {/* Stops */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <Label className="text-sm font-medium">Color Stops</Label>
+          <Label className="text-sm font-medium">{t("colorStops")}</Label>
           <div className="flex gap-2">
-            <Button size="sm" variant="outline" onClick={() => { setType("linear"); setAngle(90); setStops([{ color: "#f59e0b", position: 0 }, { color: "#ef4444", position: 100 }]); }}>Reset</Button>
+            <Button size="sm" variant="outline" onClick={() => { setType("linear"); setAngle(90); setStops([{ color: "#f59e0b", position: 0 }, { color: "#ef4444", position: 100 }]); }}>{t("reset")}</Button>
             <Button size="sm" variant="outline" onClick={addStop}>
-              Add Stop
+              {t("addStop")}
             </Button>
           </div>
         </div>
@@ -129,7 +131,7 @@ export default function GradientGenerator() {
                 step={1}
               />
             </div>
-            <span className="text-xs text-muted-foreground w-8 text-right tabular-nums">
+            <span className="text-xs text-muted-foreground w-8 text-end tabular-nums">
               {stop.position}%
             </span>
             {stops.length > 2 && (
@@ -149,7 +151,7 @@ export default function GradientGenerator() {
       {/* CSS output */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <Label className="text-sm font-medium">CSS</Label>
+          <Label className="text-sm font-medium">{t("css")}</Label>
           <CopyButton value={cssRule} />
         </div>
         <div className="rounded-md border bg-muted/50 p-3 font-mono text-sm break-all">

@@ -1,0 +1,13 @@
+{
+  "gradientGenerator": {
+    "type": "Type",
+    "linear": "Linear",
+    "radial": "Radial",
+    "conic": "Conic",
+    "angle": "Angle: {angle}°",
+    "colorStops": "Color Stops",
+    "reset": "Reset",
+    "addStop": "Add Stop",
+    "css": "CSS"
+  }
+}

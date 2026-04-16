@@ -1,12 +1,14 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export default function MarkupMargin() {
+  const t = useTranslations("markupMargin");
   const [cost, setCost] = useState(50);
   const [revenue, setRevenue] = useState(100);
   const [markupPct, setMarkupPct] = useState(100);
@@ -42,17 +44,17 @@ export default function MarkupMargin() {
   return (
     <div className="space-y-6">
       <div className="flex justify-end">
-        <Button size="sm" variant="outline" onClick={() => { setCost(50); setRevenue(100); setMarkupPct(100); setMarginPct(50); setLastChanged("cost"); }}>Reset</Button>
+        <Button size="sm" variant="outline" onClick={() => { setCost(50); setRevenue(100); setMarkupPct(100); setMarginPct(50); setLastChanged("cost"); }}>{t("reset")}</Button>
       </div>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-        <div><Label className="text-sm mb-1 block">Cost ($)</Label><Input type="number" min={0} step={0.01} value={cost} onChange={(e) => { setCost(Number(e.target.value)); setLastChanged("cost"); }} /></div>
-        <div><Label className="text-sm mb-1 block">Revenue ($)</Label><Input type="number" min={0} step={0.01} value={derivedRevenue} onChange={(e) => { setRevenue(Number(e.target.value)); setLastChanged("revenue"); }} /></div>
-        <div><Label className="text-sm mb-1 block">Markup (%)</Label><Input type="number" step={0.1} value={derivedMarkup} onChange={(e) => { setMarkupPct(Number(e.target.value)); setLastChanged("markup"); }} /></div>
-        <div><Label className="text-sm mb-1 block">Margin (%)</Label><Input type="number" step={0.1} value={derivedMargin} onChange={(e) => { setMarginPct(Number(e.target.value)); setLastChanged("margin"); }} /></div>
+        <div><Label className="text-sm mb-1 block">{t("cost")}</Label><Input type="number" min={0} step={0.01} value={cost} onChange={(e) => { setCost(Number(e.target.value)); setLastChanged("cost"); }} /></div>
+        <div><Label className="text-sm mb-1 block">{t("revenue")}</Label><Input type="number" min={0} step={0.01} value={derivedRevenue} onChange={(e) => { setRevenue(Number(e.target.value)); setLastChanged("revenue"); }} /></div>
+        <div><Label className="text-sm mb-1 block">{t("markup")}</Label><Input type="number" step={0.1} value={derivedMarkup} onChange={(e) => { setMarkupPct(Number(e.target.value)); setLastChanged("markup"); }} /></div>
+        <div><Label className="text-sm mb-1 block">{t("margin")}</Label><Input type="number" step={0.1} value={derivedMargin} onChange={(e) => { setMarginPct(Number(e.target.value)); setLastChanged("margin"); }} /></div>
       </div>
       <Card className="p-4 text-center">
         <div className="text-2xl font-bold tabular-nums">${profit.toFixed(2)}</div>
-        <div className="text-xs text-muted-foreground">Profit</div>
+        <div className="text-xs text-muted-foreground">{t("profit")}</div>
       </Card>
     </div>
   );

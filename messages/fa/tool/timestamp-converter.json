@@ -1,0 +1,26 @@
+{
+  "timestampConverter": {
+    "inputLabel": "یک مُهر زمانی یا رشته تاریخ وارد کنید",
+    "inputPlaceholder": "مثلاً 1700000000، 2024-01-15T10:30:00Z، Jan 15 2024...",
+    "now": "الان",
+    "clear": "پاک‌سازی",
+    "parseError": "تجزیه این مقدار به عنوان تاریخ یا مُهر زمانی ممکن نیست.",
+    "emptyHint": "یک مُهر زمانی Unix، تاریخ ISO 8601 یا هر رشته تاریخ را وارد کنید تا همه فرمت‌ها را ببینید.",
+    "fmtUnixSeconds": "Unix (ثانیه)",
+    "fmtUnixMs": "Unix (میلی‌ثانیه)",
+    "fmtIso": "ISO 8601",
+    "fmtRfc": "RFC 2822",
+    "fmtLocal": "محلی",
+    "fmtDate": "فقط تاریخ",
+    "fmtTime": "فقط ساعت",
+    "fmtRelative": "نسبی",
+    "seconds": "{count} ثانیه",
+    "minutes": "{count} دقیقه",
+    "hours": "{count} ساعت",
+    "days": "{count} روز",
+    "months": "{count} ماه",
+    "years": "{count} سال",
+    "ago": "{time} پیش",
+    "inFuture": "{time} دیگر"
+  }
+}

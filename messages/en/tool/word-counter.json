@@ -1,0 +1,16 @@
+{
+  "wordCounter": {
+    "clear": "Clear",
+    "placeholder": "Type or paste your text here...",
+    "words": "Words",
+    "characters": "Characters",
+    "noSpaces": "No spaces",
+    "sentences": "Sentences",
+    "paragraphs": "Paragraphs",
+    "fleschKincaid": "Flesch-Kincaid",
+    "gunningFog": "Gunning Fog",
+    "readingTime": "Reading time",
+    "speakingTime": "Speaking time",
+    "min": "{time} min"
+  }
+}

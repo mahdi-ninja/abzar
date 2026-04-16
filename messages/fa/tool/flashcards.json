@@ -1,0 +1,20 @@
+{
+  "flashcards": {
+    "manage": "مدیریت ({count})",
+    "study": "مطالعه",
+    "frontLabel": "جلو (سؤال)",
+    "backLabel": "پشت (پاسخ)",
+    "frontPlaceholder": "سؤال را وارد کنید...",
+    "backPlaceholder": "پاسخ را وارد کنید...",
+    "addCard": "افزودن کارت",
+    "cardsCount": "کارت‌ها ({count})",
+    "box": "جعبه {box}",
+    "emptyState": "برای شروع چند فلش‌کارت اضافه کنید.",
+    "cardProgress": "کارت {current} از {total} · جعبه {box}/۵",
+    "clickToReveal": "برای نمایش پاسخ کلیک کنید",
+    "answer": "پاسخ:",
+    "incorrect": "نادرست — بازگشت به جعبه ۱",
+    "correct": "درست — پیشروی",
+    "noCardsToStudy": "کارتی برای مطالعه نیست. ابتدا چند کارت اضافه کنید."
+  }
+}

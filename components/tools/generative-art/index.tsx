@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useCallback, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
@@ -129,14 +130,8 @@ function drawFlowField(ctx: CanvasRenderingContext2D, w: number, h: number, seed
   }
 }
 
-const ALGO_LABELS: Record<Algorithm, string> = {
-  perlin: "Perlin Noise",
-  circles: "Circles",
-  waves: "Waves",
-  flowfield: "Flow Field",
-};
-
 export default function GenerativeArt() {
+  const t = useTranslations("generativeArt");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [algorithm, setAlgorithm] = useState<Algorithm>("perlin");
   const [palette, setPalette] = useState("Sunset");
@@ -172,18 +167,18 @@ export default function GenerativeArt() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-end gap-3">
         <div>
-          <Label className="text-xs mb-1 block">Algorithm</Label>
+          <Label className="text-xs mb-1 block">{t("algorithm")}</Label>
           <Select value={algorithm} onValueChange={(v) => v && setAlgorithm(v as Algorithm)}>
-            <SelectTrigger className="w-36"><span>{ALGO_LABELS[algorithm]}</span></SelectTrigger>
+            <SelectTrigger className="w-36"><span>{t(`algo${algorithm.charAt(0).toUpperCase()}${algorithm.slice(1)}` as "algoPerlin" | "algoCircles" | "algoWaves" | "algoFlowfield")}</span></SelectTrigger>
             <SelectContent>
-              {(Object.keys(ALGO_LABELS) as Algorithm[]).map((a) => (
-                <SelectItem key={a} value={a}>{ALGO_LABELS[a]}</SelectItem>
+              {(["perlin", "circles", "waves", "flowfield"] as Algorithm[]).map((a) => (
+                <SelectItem key={a} value={a}>{t(`algo${a.charAt(0).toUpperCase()}${a.slice(1)}` as "algoPerlin" | "algoCircles" | "algoWaves" | "algoFlowfield")}</SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
         <div>
-          <Label className="text-xs mb-1 block">Palette</Label>
+          <Label className="text-xs mb-1 block">{t("palette")}</Label>
           <Select value={palette} onValueChange={(v) => v && setPalette(v)}>
             <SelectTrigger className="w-32"><span>{palette}</span></SelectTrigger>
             <SelectContent>
@@ -194,17 +189,17 @@ export default function GenerativeArt() {
           </Select>
         </div>
         <div className="flex-1 min-w-35 max-w-50">
-          <Label className="text-xs mb-1 block">Scale: {scale}</Label>
+          <Label className="text-xs mb-1 block">{t("scaleLabel", { value: scale })}</Label>
           <Slider value={[scale]} onValueChange={(v) => setScale(Array.isArray(v) ? v[0] : v)} min={20} max={200} step={5} />
         </div>
         <div className="flex-1 min-w-32.5 max-w-45">
-          <Label className="text-xs mb-1 block">Seed: {seed}</Label>
+          <Label className="text-xs mb-1 block">{t("seedLabel", { value: seed })}</Label>
           <Slider value={[seed]} onValueChange={(v) => setSeed(Array.isArray(v) ? v[0] : v)} min={1} max={999} step={1} />
         </div>
         <Button size="sm" variant="outline" onClick={() => setSeed((s) => (s % 999) + 1)}>
-          Randomize
+          {t("randomize")}
         </Button>
-        {blob && <DownloadButton data={blob} filename="generative-art.png" label="Download PNG" />}
+        {blob && <DownloadButton data={blob} filename="generative-art.png" label={t("downloadPng")} />}
       </div>
       <canvas
         ref={canvasRef}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,6 +9,7 @@ import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function RandomGenerator() {
+  const t = useTranslations("randomGenerator");
   const [mode, setMode] = useState("number");
   const [min, setMin] = useState(1);
   const [max, setMax] = useState(100);
@@ -20,33 +22,33 @@ export default function RandomGenerator() {
       if (mode === "number") {
         out.push(String(Math.floor(Math.random() * (max - min + 1)) + min));
       } else if (mode === "coin") {
-        out.push(Math.random() < 0.5 ? "Heads" : "Tails");
+        out.push(Math.random() < 0.5 ? t("heads") : t("tails"));
       } else if (mode === "dice") {
         out.push(String(Math.floor(Math.random() * 6) + 1));
       }
     }
     setResults(out);
-  }, [mode, min, max, count]);
+  }, [mode, min, max, count, t]);
 
   return (
     <div className="space-y-6">
       <Tabs value={mode} onValueChange={(v) => { setMode(v); setResults([]); }}>
         <TabsList className="h-8">
-          <TabsTrigger value="number" className="text-xs px-3 h-6">Number</TabsTrigger>
-          <TabsTrigger value="coin" className="text-xs px-3 h-6">Coin Flip</TabsTrigger>
-          <TabsTrigger value="dice" className="text-xs px-3 h-6">Dice</TabsTrigger>
+          <TabsTrigger value="number" className="text-xs px-3 h-6">{t("tabNumber")}</TabsTrigger>
+          <TabsTrigger value="coin" className="text-xs px-3 h-6">{t("tabCoin")}</TabsTrigger>
+          <TabsTrigger value="dice" className="text-xs px-3 h-6">{t("tabDice")}</TabsTrigger>
         </TabsList>
       </Tabs>
       <div className="flex flex-wrap items-end gap-3">
         {mode === "number" && (
           <>
-            <div><Label className="text-xs mb-1 block">Min</Label><Input type="number" value={min} onChange={(e) => setMin(Number(e.target.value))} className="w-24" /></div>
-            <div><Label className="text-xs mb-1 block">Max</Label><Input type="number" value={max} onChange={(e) => setMax(Number(e.target.value))} className="w-24" /></div>
+            <div><Label className="text-xs mb-1 block">{t("min")}</Label><Input type="number" value={min} onChange={(e) => setMin(Number(e.target.value))} className="w-24" /></div>
+            <div><Label className="text-xs mb-1 block">{t("max")}</Label><Input type="number" value={max} onChange={(e) => setMax(Number(e.target.value))} className="w-24" /></div>
           </>
         )}
-        <div><Label className="text-xs mb-1 block">Count</Label><Input type="number" min={1} max={100} value={count} onChange={(e) => setCount(Math.max(1, Number(e.target.value)))} className="w-20" /></div>
-        <Button size="sm" onClick={generate}>Generate</Button>
-        <Button size="sm" variant="outline" onClick={() => { setResults([]); setMin(1); setMax(100); setCount(1); setMode("number"); }}>Clear</Button>
+        <div><Label className="text-xs mb-1 block">{t("count")}</Label><Input type="number" min={1} max={100} value={count} onChange={(e) => setCount(Math.max(1, Number(e.target.value)))} className="w-20" /></div>
+        <Button size="sm" onClick={generate}>{t("generate")}</Button>
+        <Button size="sm" variant="outline" onClick={() => { setResults([]); setMin(1); setMax(100); setCount(1); setMode("number"); }}>{t("clear")}</Button>
       </div>
       {results.length > 0 && (
         <div className="flex flex-wrap gap-2">

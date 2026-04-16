@@ -1,0 +1,11 @@
+{
+  "hmacGenerator": {
+    "message": "پیام",
+    "secretKey": "کلید محرمانه",
+    "algorithm": "الگوریتم",
+    "messagePlaceholder": "پیام را وارد کنید...",
+    "secretPlaceholder": "کلید محرمانه را وارد کنید...",
+    "generateHmac": "تولید HMAC",
+    "clear": "پاک‌سازی"
+  }
+}

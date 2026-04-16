@@ -1,0 +1,25 @@
+{
+  "qrGenerator": {
+    "url": "URL",
+    "text": "متن",
+    "wifi": "Wi-Fi",
+    "vcard": "vCard",
+    "urlLabel": "URL",
+    "textLabel": "متن",
+    "enterText": "متن وارد کنید...",
+    "networkName": "نام شبکه (SSID)",
+    "password": "رمز عبور",
+    "encryption": "رمزنگاری",
+    "encNone": "بدون رمز",
+    "name": "نام",
+    "phone": "تلفن",
+    "email": "ایمیل",
+    "size": "اندازه: {size} پیکسل",
+    "errorCorrection": "تصحیح خطا",
+    "ecLow": "پایین (۷٪)",
+    "ecMedium": "متوسط (۱۵٪)",
+    "ecQuartile": "ربعی (۲۵٪)",
+    "ecHigh": "بالا (۳۰٪)",
+    "reset": "بازنشانی"
+  }
+}

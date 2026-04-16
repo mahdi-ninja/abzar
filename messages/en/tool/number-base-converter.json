@@ -1,0 +1,12 @@
+{
+  "numberBaseConverter": {
+    "inputLabel": "Input",
+    "inputBaseLabel": "Input base",
+    "reset": "Reset",
+    "invalidNumber": "Invalid number for base {base}",
+    "decimal": "Decimal (10)",
+    "binary": "Binary (2)",
+    "octal": "Octal (8)",
+    "hexadecimal": "Hexadecimal (16)"
+  }
+}

@@ -35,6 +35,7 @@ When implementing a planned tool, read its detailed spec from `ABZAR_SPEC.md`.
 - **Checking optional translation keys**: Use `t.has('key')` before accessing — not all tools have entries in every message namespace.
 - **Directional CSS**: Use Tailwind logical properties (`ms-*`, `me-*`, `ps-*`, `pe-*`, `text-start`, `text-end`, `inset-s-*`, `inset-e-*`, `border-s`, `border-e`) instead of physical (`ml-*`, `mr-*`, `pl-*`, `pr-*`, `text-left`, `text-right`, `left-*`, `right-*`, `border-l`, `border-r`). Exception: centering patterns (`left-1/2 -translate-x-1/2`) and animations stay physical.
 - **`localePrefix: 'always'`** — all URLs require `/en` or `/fa` prefix. The root `/` redirects to `/en` via `app/page.tsx`.
+- **Per-tool translations**: Every tool component uses `useTranslations("{camelCaseNamespace}")`. Translation files are at `messages/{locale}/tool/{slug}.json` with structure `{ "camelCaseNamespace": { "key": "value" } }`. They are auto-loaded by `i18n/request.ts` via `loadToolMessages()`. When adding a new tool, create both `en` and `fa` JSON files. If a `useCallback` or `useMemo` references `t`, add `t` to the dependency array.
 
 ## React 19 Patterns
 

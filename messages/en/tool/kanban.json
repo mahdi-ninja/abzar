@@ -1,0 +1,14 @@
+{
+  "kanban": {
+    "board": "Board",
+    "selectBoard": "Select board",
+    "save": "Save",
+    "rename": "Rename",
+    "newBoardPlaceholder": "New board...",
+    "deleteBoard": "Delete Board",
+    "removeColumn": "Remove column",
+    "removeCard": "Remove card",
+    "newCardPlaceholder": "New card...",
+    "newColumnPlaceholder": "New column..."
+  }
+}

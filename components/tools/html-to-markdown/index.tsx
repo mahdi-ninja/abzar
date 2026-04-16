@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
@@ -190,6 +191,7 @@ function run(html: string): { output: string; error: string } {
 }
 
 export default function HtmlToMarkdown() {
+  const t = useTranslations("htmlToMarkdown");
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
@@ -240,18 +242,18 @@ export default function HtmlToMarkdown() {
     <div className="space-y-4">
       {richPasted && (
         <div className="rounded-md bg-amber-500/10 border border-amber-500/20 px-3 py-2 text-sm text-amber-700 dark:text-amber-400">
-          Rich text detected — HTML extracted from clipboard and converted automatically.
+          {t("richPasteDetected")}
         </div>
       )}
       <InputOutputLayout
-        inputLabel="HTML Input"
-        outputLabel="Markdown Output"
+        inputLabel={t("inputLabel")}
+        outputLabel={t("outputLabel")}
         input={
           <Textarea
             value={input}
             onChange={handleChange}
             onPaste={handlePaste}
-            placeholder="Paste rich text from Word / Google Docs / browser, or type HTML directly…"
+            placeholder={t("inputPlaceholder")}
             className="h-80 resize-none font-mono text-sm"
           />
         }
@@ -271,7 +273,7 @@ export default function HtmlToMarkdown() {
             <Textarea
               value={output}
               readOnly
-              placeholder="Markdown will appear here…"
+              placeholder={t("outputPlaceholder")}
               className="h-80 resize-none font-mono text-sm"
             />
           </>
@@ -284,13 +286,13 @@ export default function HtmlToMarkdown() {
       )}
       <div className="flex flex-wrap gap-2">
         <Button size="sm" onClick={() => convert(input)}>
-          Convert
+          {t("convert")}
         </Button>
         <Button size="sm" variant="secondary" onClick={loadExample}>
-          Load example
+          {t("loadExample")}
         </Button>
         <Button size="sm" variant="outline" onClick={clear}>
-          Clear
+          {t("clear")}
         </Button>
       </div>
     </div>

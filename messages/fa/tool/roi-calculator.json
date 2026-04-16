@@ -1,0 +1,11 @@
+{
+  "roiCalculator": {
+    "reset": "بازنشانی",
+    "initialInvestment": "سرمایه‌گذاری اولیه",
+    "finalValue": "ارزش نهایی",
+    "years": "سال",
+    "netGainLoss": "سود/زیان خالص",
+    "totalRoi": "بازگشت سرمایه کل",
+    "annualizedRoi": "بازگشت سرمایه سالانه"
+  }
+}

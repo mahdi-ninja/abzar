@@ -1,0 +1,9 @@
+{
+  "soundboard": {
+    "volumeLabel": "Volume: {value}%",
+    "stopAll": "Stop All",
+    "dropLabel": "Drop audio files (MP3, WAV, OGG) or click to upload",
+    "emptyHint": "Upload audio files above, then click each button to play.",
+    "removeAriaLabel": "Remove {name}"
+  }
+}

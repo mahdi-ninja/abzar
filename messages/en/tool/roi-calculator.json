@@ -1,0 +1,11 @@
+{
+  "roiCalculator": {
+    "reset": "Reset",
+    "initialInvestment": "Initial Investment",
+    "finalValue": "Final Value",
+    "years": "Years",
+    "netGainLoss": "Net Gain/Loss",
+    "totalRoi": "Total ROI",
+    "annualizedRoi": "Annualized ROI"
+  }
+}

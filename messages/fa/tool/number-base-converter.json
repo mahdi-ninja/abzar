@@ -1,0 +1,12 @@
+{
+  "numberBaseConverter": {
+    "inputLabel": "ورودی",
+    "inputBaseLabel": "پایه ورودی",
+    "reset": "بازنشانی",
+    "invalidNumber": "عدد نامعتبر برای پایه {base}",
+    "decimal": "دهدهی (10)",
+    "binary": "دودویی (2)",
+    "octal": "هشت‌هشتی (8)",
+    "hexadecimal": "شانزده‌شانزدهی (16)"
+  }
+}

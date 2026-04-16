@@ -1,0 +1,10 @@
+{
+  "markupMargin": {
+    "reset": "Reset",
+    "cost": "Cost ($)",
+    "revenue": "Revenue ($)",
+    "markup": "Markup (%)",
+    "margin": "Margin (%)",
+    "profit": "Profit"
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
@@ -9,6 +10,7 @@ import { FileDropZone } from "@/components/ui/file-drop-zone";
 import { InputOutputLayout } from "@/components/ui/input-output-layout";
 
 export default function Base64Tool() {
+  const t = useTranslations("base64");
   const [mode, setMode] = useState<"text" | "file">("text");
   const [direction, setDirection] = useState<"encode" | "decode">("encode");
   const [input, setInput] = useState("");
@@ -28,13 +30,13 @@ export default function Base64Tool() {
       } catch {
         setError(
           dir === "decode"
-            ? "Invalid Base64 string"
-            : "Failed to encode text"
+            ? t("invalidBase64")
+            : t("encodeFailed")
         );
         setOutput("");
       }
     },
-    []
+    [t]
   );
 
   const handleInputChange = useCallback(
@@ -69,12 +71,12 @@ export default function Base64Tool() {
       // Extract base64 part from data URI
       const base64 = result.split(",")[1] || result;
       setOutput(base64);
-      setInput(`[File: ${file.name} — ${(file.size / 1024).toFixed(1)}KB]`);
+      setInput(t("fileInfo", { name: file.name, size: (file.size / 1024).toFixed(1) }));
       setError("");
     };
-    reader.onerror = () => setError("Failed to read file");
+    reader.onerror = () => setError(t("readFailed"));
     reader.readAsDataURL(file);
-  }, []);
+  }, [t]);
 
   const handleClear = useCallback(() => {
     setInput("");
@@ -89,10 +91,10 @@ export default function Base64Tool() {
         <Tabs value={mode} onValueChange={(v) => { setMode(v as "text" | "file"); handleClear(); }}>
           <TabsList className="h-8">
             <TabsTrigger value="text" className="text-xs px-3 h-6">
-              Text
+              {t("text")}
             </TabsTrigger>
             <TabsTrigger value="file" className="text-xs px-3 h-6">
-              File
+              {t("file")}
             </TabsTrigger>
           </TabsList>
         </Tabs>
@@ -101,17 +103,17 @@ export default function Base64Tool() {
           <Tabs value={direction} onValueChange={(v) => handleDirectionToggle(v as "encode" | "decode")}>
             <TabsList className="h-8">
               <TabsTrigger value="encode" className="text-xs px-3 h-6">
-                Encode
+                {t("encode")}
               </TabsTrigger>
               <TabsTrigger value="decode" className="text-xs px-3 h-6">
-                Decode
+                {t("decode")}
               </TabsTrigger>
             </TabsList>
           </Tabs>
         )}
 
         <Button size="sm" variant="outline" onClick={handleClear}>
-          Clear
+          {t("clear")}
         </Button>
       </div>
 
@@ -122,8 +124,7 @@ export default function Base64Tool() {
       )}
 
       <InputOutputLayout
-        inputLabel={mode === "text" ? "Input" : "File"}
-        outputLabel="Output"
+        inputLabel={mode === "text" ? undefined : t("file")}
         input={
           mode === "text" ? (
             <Textarea
@@ -131,8 +132,8 @@ export default function Base64Tool() {
               onChange={(e) => handleInputChange(e.target.value)}
               placeholder={
                 direction === "encode"
-                  ? "Type text to encode..."
-                  : "Paste Base64 to decode..."
+                  ? t("encodePlaceholder")
+                  : t("decodePlaceholder")
               }
               className="min-h-50 font-mono text-sm"
             />
@@ -141,8 +142,8 @@ export default function Base64Tool() {
               onFiles={handleFileUpload}
               label={
                 fileName
-                  ? `Selected: ${fileName}`
-                  : "Drop a file here to encode"
+                  ? t("selectedFile", { fileName })
+                  : t("dropFileLabel")
               }
               className="min-h-50"
             />
@@ -154,12 +155,12 @@ export default function Base64Tool() {
             <Textarea
               value={output}
               readOnly
-              placeholder="Result will appear here"
+              placeholder={t("resultPlaceholder")}
               className="min-h-50 font-mono text-sm"
             />
             {output && (
               <p className="text-xs text-muted-foreground">
-                {output.length.toLocaleString()} characters
+                {t("characters", { count: output.length.toLocaleString() })}
               </p>
             )}
           </>

@@ -1,0 +1,12 @@
+{
+  "whitespaceCleaner": {
+    "clear": "Clear",
+    "trimTrailing": "Trim trailing spaces",
+    "normalizeEol": "Normalize line endings",
+    "removeBlankLines": "Remove extra blank lines",
+    "removeInvisible": "Remove invisible Unicode",
+    "inputPlaceholder": "Paste text with whitespace issues...",
+    "cleanedLabel": "Cleaned",
+    "modified": "(modified)"
+  }
+}

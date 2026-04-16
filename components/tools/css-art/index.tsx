@@ -1,5 +1,6 @@
 "use client";
 import { useState, useCallback, useMemo, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
@@ -14,13 +15,13 @@ import { toast } from "sonner";
 
 type Algorithm = "dots" | "stripes" | "checkerboard" | "gradient-blob" | "concentric" | "wave";
 
-const ALGO_LABELS: Record<Algorithm, string> = {
-  dots: "Dots",
-  stripes: "Stripes",
-  checkerboard: "Checkerboard",
-  "gradient-blob": "Gradient Blobs",
-  concentric: "Concentric",
-  wave: "Waves",
+const ALGO_KEYS: Record<Algorithm, string> = {
+  dots: "algoDots",
+  stripes: "algoStripes",
+  checkerboard: "algoCheckerboard",
+  "gradient-blob": "algoGradientBlob",
+  concentric: "algoConcentric",
+  wave: "algoWave",
 };
 
 function generateCss(algo: Algorithm, color1: string, color2: string, size: number, complexity: number): { html: string; css: string } {
@@ -109,6 +110,7 @@ function buildSrcdoc(html: string, css: string) {
 }
 
 export default function CssArt() {
+  const t = useTranslations("cssArt");
   const [algo, setAlgo] = useState<Algorithm>("dots");
   const [color1, setColor1] = useState("#667eea");
   const [color2, setColor2] = useState("#764ba2");
@@ -127,10 +129,10 @@ export default function CssArt() {
   const copy = useCallback(() => {
     const full = `<style>\n${css}\n</style>\n${html}`;
     navigator.clipboard.writeText(full).then(
-      () => toast.success("Copied to clipboard!"),
-      () => toast.error("Copy failed"),
+      () => toast.success(t("copySuccess")),
+      () => toast.error(t("copyFailed")),
     );
-  }, [css, html]);
+  }, [css, html, t]);
 
   const downloadData = `<!DOCTYPE html>\n<html>\n<head>\n<meta charset="utf-8">\n<style>\nbody { display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }\n${css}\n</style>\n</head>\n<body>\n${html}\n</body>\n</html>`;
 
@@ -138,36 +140,36 @@ export default function CssArt() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-end gap-3">
         <div>
-          <Label className="text-xs mb-1 block">Algorithm</Label>
+          <Label className="text-xs mb-1 block">{t("algorithm")}</Label>
           <Select value={algo} onValueChange={(v) => v && setAlgo(v as Algorithm)}>
-            <SelectTrigger className="w-40"><span>{ALGO_LABELS[algo]}</span></SelectTrigger>
+            <SelectTrigger className="w-40"><span>{t(ALGO_KEYS[algo] as "algoDots" | "algoStripes" | "algoCheckerboard" | "algoGradientBlob" | "algoConcentric" | "algoWave")}</span></SelectTrigger>
             <SelectContent>
-              {(Object.keys(ALGO_LABELS) as Algorithm[]).map((a) => (
-                <SelectItem key={a} value={a}>{ALGO_LABELS[a]}</SelectItem>
+              {(Object.keys(ALGO_KEYS) as Algorithm[]).map((a) => (
+                <SelectItem key={a} value={a}>{t(ALGO_KEYS[a] as "algoDots" | "algoStripes" | "algoCheckerboard" | "algoGradientBlob" | "algoConcentric" | "algoWave")}</SelectItem>
               ))}
             </SelectContent>
           </Select>
         </div>
         <div>
-          <Label className="text-xs mb-1 block">Size: {size}px</Label>
+          <Label className="text-xs mb-1 block">{t("sizeLabel", { value: size })}</Label>
           <div className="w-40">
             <Slider value={[size]} onValueChange={(v) => setSize(Array.isArray(v) ? v[0] : v)} min={150} max={600} step={10} />
           </div>
         </div>
         <div>
-          <Label className="text-xs mb-1 block">Complexity: {complexity}</Label>
+          <Label className="text-xs mb-1 block">{t("complexityLabel", { value: complexity })}</Label>
           <div className="w-40">
             <Slider value={[complexity]} onValueChange={(v) => setComplexity(Array.isArray(v) ? v[0] : v)} min={1} max={10} step={1} />
           </div>
         </div>
-        <Button size="sm" variant="outline" onClick={copy}>Copy CSS</Button>
-        <DownloadButton data={downloadData} filename="css-art.html" mimeType="text/html" label="Download" />
+        <Button size="sm" variant="outline" onClick={copy}>{t("copyCss")}</Button>
+        <DownloadButton data={downloadData} filename="css-art.html" mimeType="text/html" label={t("download")} />
       </div>
 
       <div className="flex flex-wrap items-end gap-3">
         <div className="flex items-end gap-2">
           <div>
-            <Label className="text-xs mb-1 block">Color 1</Label>
+            <Label className="text-xs mb-1 block">{t("color1")}</Label>
             <input
               type="color"
               value={color1}
@@ -176,7 +178,7 @@ export default function CssArt() {
             />
           </div>
           <div>
-            <Label className="text-xs mb-1 block">Color 2</Label>
+            <Label className="text-xs mb-1 block">{t("color2")}</Label>
             <input
               type="color"
               value={color2}
@@ -189,7 +191,7 @@ export default function CssArt() {
 
       <div className="grid md:grid-cols-2 gap-4">
         <div className="space-y-2">
-          <Label className="text-xs mb-1 block">Preview</Label>
+          <Label className="text-xs mb-1 block">{t("preview")}</Label>
           <iframe
             srcDoc={buildSrcdoc(html, css)}
             sandbox="allow-scripts"

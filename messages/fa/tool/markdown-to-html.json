@@ -1,0 +1,12 @@
+{
+  "markdownToHtml": {
+    "wrapStyles": "قرار دادن در سند HTML کامل با استایل‌ها",
+    "inputLabel": "ورودی Markdown",
+    "outputLabel": "خروجی HTML",
+    "inputPlaceholder": "Markdown را اینجا بنویسید یا بچسبانید…",
+    "outputPlaceholder": "HTML اینجا نمایش داده می‌شود…",
+    "convert": "تبدیل",
+    "loadExample": "بارگذاری نمونه",
+    "clear": "پاک‌سازی"
+  }
+}

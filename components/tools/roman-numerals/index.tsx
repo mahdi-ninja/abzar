@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -31,6 +32,7 @@ function fromRoman(s: string): number {
 }
 
 export default function RomanNumerals() {
+  const t = useTranslations("romanNumerals");
   const [arabic, setArabic] = useState("2024");
   const [roman, setRoman] = useState("MMXXIV");
 
@@ -47,23 +49,23 @@ export default function RomanNumerals() {
   return (
     <div className="space-y-6">
       <div className="flex justify-end">
-        <Button size="sm" variant="outline" onClick={() => { setArabic("2024"); setRoman("MMXXIV"); }}>Reset</Button>
+        <Button size="sm" variant="outline" onClick={() => { setArabic("2024"); setRoman("MMXXIV"); }}>{t("reset")}</Button>
       </div>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div className="space-y-2">
-          <Label className="text-sm">Arabic Number</Label>
+          <Label className="text-sm">{t("arabicLabel")}</Label>
           <Input type="number" min={1} max={3999} value={arabic} onChange={(e) => setArabic(e.target.value)} className="font-mono text-lg" />
           <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">→ Roman:</span>
+            <span className="text-sm text-muted-foreground">{t("toRoman")}</span>
             <code className="font-mono text-lg font-bold">{arabicToRoman || "—"}</code>
             {arabicToRoman && <CopyButton value={arabicToRoman} label="" />}
           </div>
         </div>
         <div className="space-y-2">
-          <Label className="text-sm">Roman Numeral</Label>
+          <Label className="text-sm">{t("romanLabel")}</Label>
           <Input value={roman} onChange={(e) => setRoman(e.target.value.toUpperCase())} className="font-mono text-lg" placeholder="MMXXIV" />
           <div className="flex items-center gap-2">
-            <span className="text-sm text-muted-foreground">→ Arabic:</span>
+            <span className="text-sm text-muted-foreground">{t("toArabic")}</span>
             <code className="font-mono text-lg font-bold">{romanToArabic || "—"}</code>
             {romanToArabic && <CopyButton value={romanToArabic} label="" />}
           </div>

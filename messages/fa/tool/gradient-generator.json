@@ -1,0 +1,13 @@
+{
+  "gradientGenerator": {
+    "type": "نوع",
+    "linear": "خطی",
+    "radial": "شعاعی",
+    "conic": "مخروطی",
+    "angle": "زاویه: {angle}°",
+    "colorStops": "نقاط رنگ",
+    "reset": "بازنشانی",
+    "addStop": "افزودن نقطه",
+    "css": "CSS"
+  }
+}

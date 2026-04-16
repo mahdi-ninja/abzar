@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -124,6 +125,7 @@ interface RollResult {
 }
 
 export default function DiceRoller() {
+  const t = useTranslations("diceRoller");
   const [quantity, setQuantity] = useState(1);
   const [results, setResults] = useState<RollResult[]>([]);
   const [nextId, setNextId] = useState(0);
@@ -150,7 +152,7 @@ export default function DiceRoller() {
       {/* Dice buttons */}
       <div className="flex flex-wrap items-end gap-3">
         <div>
-          <Label className="text-xs mb-1 block">Quantity</Label>
+          <Label className="text-xs mb-1 block">{t("quantity")}</Label>
           <Input
             type="number"
             min={1}
@@ -171,7 +173,7 @@ export default function DiceRoller() {
           </Button>
         ))}
         <Button size="sm" variant="ghost" onClick={() => setResults([])}>
-          Clear
+          {t("clear")}
         </Button>
       </div>
 
@@ -190,8 +192,8 @@ export default function DiceRoller() {
                   <span className="text-sm font-mono text-muted-foreground">
                     {quantity}{DICE.find((d) => d.sides === r.sides)?.label}
                   </span>
-                  {isNat20 && <span className="text-xs font-bold text-amber-600">NAT 20!</span>}
-                  {isCritFail && <span className="text-xs font-bold text-red-600">CRITICAL FAIL!</span>}
+                  {isNat20 && <span className="text-xs font-bold text-amber-600">{t("nat20")}</span>}
+                  {isCritFail && <span className="text-xs font-bold text-red-600">{t("critFail")}</span>}
                   <span className="ml-auto text-xl font-bold tabular-nums">
                     = {r.total}
                   </span>
@@ -210,7 +212,7 @@ export default function DiceRoller() {
       {results.length === 0 && (
         <div className="text-center py-12 text-muted-foreground">
           <div className="text-4xl mb-3">🎲</div>
-          <p className="text-sm">Click a die button to roll!</p>
+          <p className="text-sm">{t("emptyPrompt")}</p>
         </div>
       )}
     </div>

@@ -1,0 +1,15 @@
+{
+  "terrainGenerator": {
+    "seedLabel": "Seed: {value}",
+    "scaleLabel": "Scale: {value}",
+    "octavesLabel": "Detail (octaves): {value}",
+    "newTerrain": "New Terrain",
+    "downloadPng": "Download PNG",
+    "deepWater": "Deep water",
+    "shallow": "Shallow",
+    "sand": "Sand",
+    "grass": "Grass",
+    "rock": "Rock",
+    "snow": "Snow"
+  }
+}

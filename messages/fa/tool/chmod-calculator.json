@@ -1,0 +1,14 @@
+{
+  "chmodCalculator": {
+    "reset": "بازنشانی",
+    "read": "خواندن",
+    "write": "نوشتن",
+    "execute": "اجرا",
+    "owner": "مالک",
+    "group": "گروه",
+    "other": "سایر",
+    "octalLabel": "هشت‌هشتی",
+    "symbolicLabel": "نمادین",
+    "commandLabel": "دستور"
+  }
+}

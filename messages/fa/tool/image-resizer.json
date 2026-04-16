@@ -1,0 +1,24 @@
+{
+  "imageResizer": {
+    "dropLabel": "یک تصویر را اینجا بکشید و رها کنید",
+    "resize": "تغییر اندازه",
+    "crop": "برش",
+    "widthPx": "عرض (px)",
+    "heightPx": "ارتفاع (px)",
+    "lockAspectRatio": "قفل نسبت تصویر",
+    "original": "اصلی ({w}x{h})",
+    "resized": "تغییر اندازه‌شده ({w}x{h})",
+    "resizedWithSize": "تغییر اندازه‌شده ({w}x{h}) — {size}KB",
+    "applyCrop": "اعمال برش",
+    "cropInstruction": "ناحیه‌ای را انتخاب کنید، سپس برای جابه‌جایی بکشید یا دسته‌ها را برای تغییر اندازه بکشید.",
+    "selectCropArea": "ناحیه برش را انتخاب کنید",
+    "croppedResult": "نتیجه برش",
+    "croppedResultWithSize": "نتیجه برش ({w}x{h}) — {size}KB",
+    "download": "دانلود",
+    "clear": "پاک‌سازی",
+    "x": "X",
+    "y": "Y",
+    "width": "عرض",
+    "height": "ارتفاع"
+  }
+}

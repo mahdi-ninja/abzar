@@ -1,15 +1,16 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
 
 const PERMS = ["r", "w", "x"] as const;
-const GROUPS = ["Owner", "Group", "Other"] as const;
 
 export default function ChmodCalculator() {
+  const t = useTranslations("chmodCalculator");
   const [bits, setBits] = useState([true, true, false, true, false, false, true, false, false]);
 
   const octal = useMemo(() => {
@@ -51,20 +52,20 @@ export default function ChmodCalculator() {
   return (
     <div className="space-y-6">
       <div className="flex justify-end">
-        <Button size="sm" variant="outline" onClick={() => setBits([true, true, false, true, false, false, true, false, false])}>Reset</Button>
+        <Button size="sm" variant="outline" onClick={() => setBits([true, true, false, true, false, false, true, false, false])}>{t("reset")}</Button>
       </div>
       <div className="overflow-auto">
         <table className="text-sm">
           <thead>
             <tr>
-              <th className="px-4 py-2 text-left font-medium" />
-              {PERMS.map((p) => <th key={p} className="px-4 py-2 text-center font-medium uppercase">{p === "r" ? "Read" : p === "w" ? "Write" : "Execute"}</th>)}
+              <th className="px-4 py-2 text-start font-medium" />
+              {PERMS.map((p) => <th key={p} className="px-4 py-2 text-center font-medium">{p === "r" ? t("read") : p === "w" ? t("write") : t("execute")}</th>)}
             </tr>
           </thead>
           <tbody>
-            {GROUPS.map((group, g) => (
+            {(["owner", "group", "other"] as const).map((group, g) => (
               <tr key={group}>
-                <td className="px-4 py-2 font-medium">{group}</td>
+                <td className="px-4 py-2 font-medium">{t(group)}</td>
                 {PERMS.map((_, p) => {
                   const idx = g * 3 + p;
                   return (
@@ -81,21 +82,21 @@ export default function ChmodCalculator() {
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <div>
-          <Label className="text-xs mb-1 block">Octal</Label>
+          <Label className="text-xs mb-1 block">{t("octalLabel")}</Label>
           <div className="flex gap-2">
             <Input value={octal} onChange={(e) => setFromOctal(e.target.value)} className="font-mono text-lg text-center" maxLength={3} />
             <CopyButton value={octal} label="" />
           </div>
         </div>
         <div>
-          <Label className="text-xs mb-1 block">Symbolic</Label>
+          <Label className="text-xs mb-1 block">{t("symbolicLabel")}</Label>
           <div className="flex gap-2">
             <Input value={symbolic} readOnly className="font-mono text-lg text-center" />
             <CopyButton value={symbolic} label="" />
           </div>
         </div>
         <div>
-          <Label className="text-xs mb-1 block">Command</Label>
+          <Label className="text-xs mb-1 block">{t("commandLabel")}</Label>
           <div className="flex gap-2">
             <Input value={`chmod ${octal}`} readOnly className="font-mono text-lg" />
             <CopyButton value={`chmod ${octal}`} label="" />

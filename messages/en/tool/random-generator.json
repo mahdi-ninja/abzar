@@ -1,0 +1,14 @@
+{
+  "randomGenerator": {
+    "tabNumber": "Number",
+    "tabCoin": "Coin Flip",
+    "tabDice": "Dice",
+    "min": "Min",
+    "max": "Max",
+    "count": "Count",
+    "generate": "Generate",
+    "clear": "Clear",
+    "heads": "Heads",
+    "tails": "Tails"
+  }
+}

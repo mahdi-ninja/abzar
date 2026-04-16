@@ -1,0 +1,16 @@
+{
+  "subnetCalculator": {
+    "ipAddress": "IP Address",
+    "cidr": "CIDR",
+    "reset": "Reset",
+    "invalidIpOrCidr": "Invalid IP address or CIDR.",
+    "networkAddress": "Network Address",
+    "broadcastAddress": "Broadcast Address",
+    "subnetMask": "Subnet Mask",
+    "wildcardMask": "Wildcard Mask",
+    "firstUsableHost": "First Usable Host",
+    "lastUsableHost": "Last Usable Host",
+    "totalUsableHosts": "Total Usable Hosts",
+    "cidrNotation": "CIDR Notation"
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -16,6 +17,7 @@ interface MatchResult {
 }
 
 export default function RegexTester() {
+  const t = useTranslations("regexTester");
   const [pattern, setPattern] = useState("");
   const [testString, setTestString] = useState("");
   const [flags, setFlags] = useState({ g: true, i: false, m: false, s: false });
@@ -81,18 +83,18 @@ export default function RegexTester() {
   return (
     <div className="space-y-4">
       <div className="flex justify-end">
-        <Button size="sm" variant="outline" onClick={() => { setPattern(""); setTestString(""); setFlags({ g: true, i: false, m: false, s: false }); }}>Clear</Button>
+        <Button size="sm" variant="outline" onClick={() => { setPattern(""); setTestString(""); setFlags({ g: true, i: false, m: false, s: false }); }}>{t("clear")}</Button>
       </div>
 
       {/* Pattern input */}
       <div className="space-y-2">
-        <Label className="text-sm font-medium">Regular Expression</Label>
+        <Label className="text-sm font-medium">{t("regularExpression")}</Label>
         <div className="flex items-center gap-2">
           <span className="text-muted-foreground font-mono">/</span>
           <Input
             value={pattern}
             onChange={(e) => setPattern(e.target.value)}
-            placeholder="Enter regex pattern..."
+            placeholder={t("patternPlaceholder")}
             className="font-mono text-sm"
           />
           <span className="text-muted-foreground font-mono">
@@ -106,15 +108,15 @@ export default function RegexTester() {
       <div className="flex flex-wrap gap-4">
         {(
           [
-            ["g", "Global"],
-            ["i", "Case insensitive"],
-            ["m", "Multiline"],
-            ["s", "Dotall"],
+            ["g", t("flagGlobal")],
+            ["i", t("flagCaseInsensitive")],
+            ["m", t("flagMultiline")],
+            ["s", t("flagDotall")],
           ] as const
         ).map(([key, label]) => (
           <div key={key} className="flex items-center gap-1.5">
             <Switch
-              checked={flags[key]}
+              checked={flags[key as keyof typeof flags]}
               onCheckedChange={(checked) =>
                 setFlags((prev) => ({ ...prev, [key]: checked }))
               }
@@ -132,13 +134,13 @@ export default function RegexTester() {
 
       {/* Test string + highlighted output */}
       <InputOutputLayout
-        inputLabel="Test String"
-        outputLabel={`Matches (${matches.length})`}
+        inputLabel={t("testString")}
+        outputLabel={t("matchesCount", { count: matches.length })}
         input={
           <Textarea
             value={testString}
             onChange={(e) => setTestString(e.target.value)}
-            placeholder="Enter text to test against..."
+            placeholder={t("testPlaceholder")}
             className="min-h-50 font-mono text-sm"
           />
         }
@@ -158,15 +160,15 @@ export default function RegexTester() {
       {/* Capture groups */}
       {matches.length > 0 && matches.some((m) => m.groups.length > 0) && (
         <div className="space-y-2">
-          <Label className="text-sm font-medium">Capture Groups</Label>
+          <Label className="text-sm font-medium">{t("captureGroups")}</Label>
           <div className="overflow-auto rounded-md border">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b bg-muted/50">
-                  <th className="px-3 py-1.5 text-left font-medium">#</th>
-                  <th className="px-3 py-1.5 text-left font-medium">Match</th>
-                  <th className="px-3 py-1.5 text-left font-medium">Index</th>
-                  <th className="px-3 py-1.5 text-left font-medium">Groups</th>
+                  <th className="px-3 py-1.5 text-start font-medium">{t("thMatch")}</th>
+                  <th className="px-3 py-1.5 text-start font-medium">{t("thMatchValue")}</th>
+                  <th className="px-3 py-1.5 text-start font-medium">{t("thIndex")}</th>
+                  <th className="px-3 py-1.5 text-start font-medium">{t("thGroups")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -181,7 +183,7 @@ export default function RegexTester() {
                     </td>
                     <td className="px-3 py-1.5 font-mono">
                       {m.groups.map((g, gi) => (
-                        <span key={gi} className="mr-2">
+                        <span key={gi} className="me-2">
                           <span className="text-muted-foreground">${gi + 1}:</span>{" "}
                           {g ?? "undefined"}
                         </span>

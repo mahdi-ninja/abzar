@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useCallback, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
@@ -69,6 +70,7 @@ function getColor(v: number): [number, number, number] {
 }
 
 export default function TerrainGenerator() {
+  const t = useTranslations("terrainGenerator");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [seed, setSeed] = useState(123);
   const [scale, setScale] = useState(4);
@@ -107,21 +109,21 @@ export default function TerrainGenerator() {
     <div className="space-y-4">
       <div className="flex flex-wrap items-end gap-4">
         <div className="flex-1 min-w-32.5 max-w-50">
-          <Label className="text-xs mb-1 block">Seed: {seed}</Label>
+          <Label className="text-xs mb-1 block">{t("seedLabel", { value: seed })}</Label>
           <Slider value={[seed]} onValueChange={(v) => setSeed(Array.isArray(v) ? v[0] : v)} min={1} max={9999} step={1} />
         </div>
         <div className="flex-1 min-w-32.5 max-w-50">
-          <Label className="text-xs mb-1 block">Scale: {scale}</Label>
+          <Label className="text-xs mb-1 block">{t("scaleLabel", { value: scale })}</Label>
           <Slider value={[scale]} onValueChange={(v) => setScale(Array.isArray(v) ? v[0] : v)} min={1} max={12} step={0.5} />
         </div>
         <div className="flex-1 min-w-32.5 max-w-50">
-          <Label className="text-xs mb-1 block">Detail (octaves): {octaves}</Label>
+          <Label className="text-xs mb-1 block">{t("octavesLabel", { value: octaves })}</Label>
           <Slider value={[octaves]} onValueChange={(v) => setOctaves(Array.isArray(v) ? v[0] : v)} min={1} max={8} step={1} />
         </div>
         <Button size="sm" variant="outline" onClick={() => setSeed((s) => (s % 9999) + 1)}>
-          New Terrain
+          {t("newTerrain")}
         </Button>
-        {blob && <DownloadButton data={blob} filename="terrain.png" label="Download PNG" />}
+        {blob && <DownloadButton data={blob} filename="terrain.png" label={t("downloadPng")} />}
       </div>
 
       <canvas
@@ -131,17 +133,17 @@ export default function TerrainGenerator() {
       />
 
       <div className="flex flex-wrap gap-2 text-xs text-muted-foreground">
-        {[
-          { label: "Deep water", color: "bg-blue-900" },
-          { label: "Shallow", color: "bg-blue-500" },
-          { label: "Sand", color: "bg-yellow-200" },
-          { label: "Grass", color: "bg-green-600" },
-          { label: "Rock", color: "bg-stone-600" },
-          { label: "Snow", color: "bg-slate-100" },
-        ].map(({ label, color }) => (
-          <span key={label} className="flex items-center gap-1">
+        {([
+          { key: "deepWater", color: "bg-blue-900" },
+          { key: "shallow", color: "bg-blue-500" },
+          { key: "sand", color: "bg-yellow-200" },
+          { key: "grass", color: "bg-green-600" },
+          { key: "rock", color: "bg-stone-600" },
+          { key: "snow", color: "bg-slate-100" },
+        ] as const).map(({ key, color }) => (
+          <span key={key} className="flex items-center gap-1">
             <span className={`inline-block h-3 w-3 rounded-sm border border-border ${color}`} />
-            {label}
+            {t(key)}
           </span>
         ))}
       </div>

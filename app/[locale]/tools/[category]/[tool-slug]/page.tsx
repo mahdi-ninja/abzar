@@ -271,9 +271,7 @@ export default async function ToolSlugPage({
   const ToolComponent = toolComponents[slug];
   const accessible = isToolAccessible(tool);
 
-  // Global messages for the NextIntlClientProvider
-  // Per-tool messages (messages/{locale}/tool/{slug}.json) can be merged here
-  // once individual tool translation files are created.
+  // All messages including per-tool translations (loaded via i18n/request.ts)
   const mergedMessages = await getMessages();
 
   return (

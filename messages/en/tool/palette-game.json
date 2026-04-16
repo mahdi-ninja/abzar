@@ -1,0 +1,26 @@
+{
+  "paletteGame": {
+    "difficulty": "Difficulty",
+    "startGame": "Start Game",
+    "howToPlay": "How to play",
+    "rule1": "A target palette is shown at the top (sorted dark → bright)",
+    "rule2": "Rearrange the shuffled tiles below to match the order",
+    "rule3": "Drag tiles to swap them",
+    "rule4": "Submit when ready to see your score",
+    "bestScores": "Best scores: {scores}",
+    "targetOrder": "Target order (dark → bright)",
+    "yourOrder": "Your order — drag to rearrange",
+    "submit": "Submit",
+    "newGame": "New Game",
+    "playAgain": "Play Again",
+    "retrySame": "Retry Same",
+    "perfect": "Perfect! 🎉",
+    "great": "Great!",
+    "good": "Good",
+    "keepTrying": "Keep trying",
+    "tryAgain": "Try again",
+    "diffEasy": "Easy (3)",
+    "diffMedium": "Medium (5)",
+    "diffHard": "Hard (8)"
+  }
+}

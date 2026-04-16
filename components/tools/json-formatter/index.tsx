@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
@@ -68,6 +69,7 @@ function JsonTree({ data, depth = 0 }: { data: unknown; depth?: number }) {
 }
 
 export default function JsonFormatter() {
+  const t = useTranslations("jsonFormatter");
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
@@ -104,12 +106,12 @@ export default function JsonFormatter() {
     try {
       JSON.parse(input);
       setError("");
-      setOutput("Valid JSON!");
+      setOutput(t("validJson"));
     } catch (e) {
       setError((e as Error).message);
       setOutput("");
     }
-  }, [input]);
+  }, [input, t]);
 
   const handleClear = useCallback(() => {
     setInput("");
@@ -122,16 +124,16 @@ export default function JsonFormatter() {
     <div className="space-y-4">
       <div className="flex flex-wrap gap-2">
         <Button size="sm" onClick={handleFormat}>
-          Format
+          {t("format")}
         </Button>
         <Button size="sm" variant="secondary" onClick={handleMinify}>
-          Minify
+          {t("minify")}
         </Button>
         <Button size="sm" variant="secondary" onClick={handleValidate}>
-          Validate
+          {t("validate")}
         </Button>
         <Button size="sm" variant="outline" onClick={handleClear}>
-          Clear
+          {t("clear")}
         </Button>
       </div>
 
@@ -142,13 +144,11 @@ export default function JsonFormatter() {
       )}
 
       <InputOutputLayout
-        inputLabel="Input"
-        outputLabel="Output"
         input={
           <Textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder='Paste your JSON here... e.g. {"key": "value"}'
+            placeholder={t("inputPlaceholder")}
             className="min-h-75 font-mono text-sm"
           />
         }
@@ -163,10 +163,10 @@ export default function JsonFormatter() {
                 >
                   <TabsList className="h-8">
                     <TabsTrigger value="text" className="text-xs px-2 h-6">
-                      Text
+                      {t("text")}
                     </TabsTrigger>
                     <TabsTrigger value="tree" className="text-xs px-2 h-6">
-                      Tree
+                      {t("tree")}
                     </TabsTrigger>
                   </TabsList>
                 </Tabs>
@@ -176,7 +176,7 @@ export default function JsonFormatter() {
               <Textarea
                 value={output}
                 readOnly
-                placeholder="Formatted output will appear here"
+                placeholder={t("outputPlaceholder")}
                 className="min-h-75 font-mono text-sm"
               />
             ) : (

@@ -1,0 +1,9 @@
+{
+  "aspectRatio": {
+    "width": "Width",
+    "height": "Height",
+    "reset": "Reset",
+    "aspectRatioLabel": "Aspect Ratio",
+    "decimalLabel": "Decimal"
+  }
+}

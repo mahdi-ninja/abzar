@@ -1,0 +1,9 @@
+{
+  "diceRoller": {
+    "quantity": "تعداد",
+    "clear": "پاک‌سازی",
+    "nat20": "NAT 20!",
+    "critFail": "شکست بحرانی!",
+    "emptyPrompt": "روی یک تاس کلیک کنید!"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "loremIpsum": {
+    "classic": "کلاسیک",
+    "hipster": "هیپستر",
+    "corporate": "شرکتی",
+    "paragraphsLabel": "پاراگراف‌ها: {count}"
+  }
+}

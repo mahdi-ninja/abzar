@@ -1,0 +1,11 @@
+{
+  "urlEncoder": {
+    "fullUrlMode": "حالت URL کامل",
+    "componentMode": "حالت جزء",
+    "invalidEncoded": "رشته کدگذاری‌شده نامعتبر",
+    "inputPlaceholder": "URL یا متن وارد کنید...",
+    "encode": "کدگذاری",
+    "decode": "کدگشایی",
+    "clear": "پاک‌سازی"
+  }
+}

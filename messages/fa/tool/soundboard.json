@@ -1,0 +1,9 @@
+{
+  "soundboard": {
+    "volumeLabel": "صدا: {value}%",
+    "stopAll": "توقف همه",
+    "dropLabel": "فایل‌های صوتی (MP3، WAV، OGG) را بکشید و رها کنید یا کلیک کنید",
+    "emptyHint": "فایل‌های صوتی را بارگذاری کنید، سپس روی هر دکمه کلیک کنید تا پخش شود.",
+    "removeAriaLabel": "حذف {name}"
+  }
+}

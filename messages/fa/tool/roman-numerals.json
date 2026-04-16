@@ -1,0 +1,9 @@
+{
+  "romanNumerals": {
+    "reset": "بازنشانی",
+    "arabicLabel": "عدد عربی",
+    "romanLabel": "عدد رومی",
+    "toRoman": "← رومی:",
+    "toArabic": "← عربی:"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "jsonFormatter": {
+    "format": "فرمت‌بندی",
+    "minify": "فشرده‌سازی",
+    "validate": "اعتبارسنجی",
+    "clear": "پاک‌سازی",
+    "inputPlaceholder": "JSON خود را اینجا وارد کنید... مثلاً '{\"key\": \"value\"}'",
+    "outputPlaceholder": "خروجی فرمت‌شده اینجا نمایش داده می‌شود",
+    "validJson": "JSON معتبر!",
+    "text": "متن",
+    "tree": "درختی"
+  }
+}

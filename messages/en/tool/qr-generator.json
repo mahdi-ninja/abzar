@@ -1,0 +1,25 @@
+{
+  "qrGenerator": {
+    "url": "URL",
+    "text": "Text",
+    "wifi": "Wi-Fi",
+    "vcard": "vCard",
+    "urlLabel": "URL",
+    "textLabel": "Text",
+    "enterText": "Enter text...",
+    "networkName": "Network name (SSID)",
+    "password": "Password",
+    "encryption": "Encryption",
+    "encNone": "None",
+    "name": "Name",
+    "phone": "Phone",
+    "email": "Email",
+    "size": "Size: {size}px",
+    "errorCorrection": "Error correction",
+    "ecLow": "Low (7%)",
+    "ecMedium": "Medium (15%)",
+    "ecQuartile": "Quartile (25%)",
+    "ecHigh": "High (30%)",
+    "reset": "Reset"
+  }
+}

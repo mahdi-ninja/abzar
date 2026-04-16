@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
@@ -78,6 +79,7 @@ console.log("Hello, World!");
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export default function MarkdownToHtml() {
+  const t = useTranslations("markdownToHtml");
   const [input, setInput] = useState("");
   const [fragment, setFragment] = useState(""); // raw HTML body from marked
   const [error, setError] = useState("");
@@ -130,16 +132,16 @@ export default function MarkdownToHtml() {
           checked={withStyles}
           onCheckedChange={(v) => v !== null && setWithStyles(v)}
         />
-        <Label className="text-xs">Wrap in full HTML document with styles</Label>
+        <Label className="text-xs">{t("wrapStyles")}</Label>
       </div>
       <InputOutputLayout
-        inputLabel="Markdown Input"
-        outputLabel="HTML Output"
+        inputLabel={t("inputLabel")}
+        outputLabel={t("outputLabel")}
         input={
           <Textarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Type or paste Markdown here…"
+            placeholder={t("inputPlaceholder")}
             className="h-80 resize-none font-mono text-sm"
           />
         }
@@ -159,7 +161,7 @@ export default function MarkdownToHtml() {
             <Textarea
               value={output}
               readOnly
-              placeholder="HTML will appear here…"
+              placeholder={t("outputPlaceholder")}
               className="h-80 resize-none font-mono text-sm"
             />
           </>
@@ -172,13 +174,13 @@ export default function MarkdownToHtml() {
       )}
       <div className="flex flex-wrap gap-2">
         <Button size="sm" onClick={() => void convert(input)}>
-          Convert
+          {t("convert")}
         </Button>
         <Button size="sm" variant="secondary" onClick={loadExample}>
-          Load example
+          {t("loadExample")}
         </Button>
         <Button size="sm" variant="outline" onClick={clear}>
-          Clear
+          {t("clear")}
         </Button>
       </div>
     </div>

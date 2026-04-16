@@ -1,0 +1,12 @@
+{
+  "htmlToMarkdown": {
+    "richPasteDetected": "Rich text detected — HTML extracted from clipboard and converted automatically.",
+    "inputLabel": "HTML Input",
+    "outputLabel": "Markdown Output",
+    "inputPlaceholder": "Paste rich text from Word / Google Docs / browser, or type HTML directly…",
+    "outputPlaceholder": "Markdown will appear here…",
+    "convert": "Convert",
+    "loadExample": "Load example",
+    "clear": "Clear"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "drawingCanvas": {
+    "brush": "قلم",
+    "eraser": "پاک‌کن",
+    "sizeLabel": "اندازه: {value}px",
+    "undo": "بازگردانی",
+    "clear": "پاک‌سازی",
+    "downloadPng": "دانلود PNG",
+    "customColor": "رنگ دلخواه"
+  }
+}

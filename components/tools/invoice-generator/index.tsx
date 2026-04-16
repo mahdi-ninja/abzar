@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,6 +16,7 @@ interface LineItem {
 }
 
 export default function InvoiceGenerator() {
+  const t = useTranslations("invoiceGenerator");
   const [businessName, setBusinessName] = useState("");
   const [clientName, setClientName] = useState("");
   const [invoiceNumber, setInvoiceNumber] = useState("INV-001");
@@ -190,33 +192,33 @@ ${taxRate > 0 ? `<p>Tax (${taxRate}%): ${fmt(tax)}</p>` : ""}
       {/* Header info */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div>
-          <Label className="text-sm mb-1 block">Your Business Name</Label>
-          <Input value={businessName} onChange={(e) => setBusinessName(e.target.value)} placeholder="Your Business" />
+          <Label className="text-sm mb-1 block">{t("businessName")}</Label>
+          <Input value={businessName} onChange={(e) => setBusinessName(e.target.value)} placeholder={t("businessPlaceholder")} />
         </div>
         <div>
-          <Label className="text-sm mb-1 block">Client Name</Label>
-          <Input value={clientName} onChange={(e) => setClientName(e.target.value)} placeholder="Client Name" />
+          <Label className="text-sm mb-1 block">{t("clientName")}</Label>
+          <Input value={clientName} onChange={(e) => setClientName(e.target.value)} placeholder={t("clientPlaceholder")} />
         </div>
         <div>
-          <Label className="text-sm mb-1 block">Invoice #</Label>
+          <Label className="text-sm mb-1 block">{t("invoiceNumber")}</Label>
           <Input value={invoiceNumber} onChange={(e) => setInvoiceNumber(e.target.value)} />
         </div>
         <div>
-          <Label className="text-sm mb-1 block">Date</Label>
+          <Label className="text-sm mb-1 block">{t("date")}</Label>
           <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
         </div>
       </div>
 
       {/* Line items */}
       <div className="space-y-2">
-        <Label className="text-sm font-medium">Line Items</Label>
+        <Label className="text-sm font-medium">{t("lineItems")}</Label>
         {items.map((item) => (
           <div key={item.id} className="flex items-end gap-2">
             <div className="flex-1">
               <Input
                 value={item.description}
                 onChange={(e) => updateItem(item.id, { description: e.target.value })}
-                placeholder="Description"
+                placeholder={t("descriptionPlaceholder")}
                 className="text-sm"
               />
             </div>
@@ -250,18 +252,18 @@ ${taxRate > 0 ? `<p>Tax (${taxRate}%): ${fmt(tax)}</p>` : ""}
           </div>
         ))}
         <Button size="sm" variant="outline" onClick={addItem}>
-          + Add Item
+          {t("addItem")}
         </Button>
       </div>
 
       {/* Tax + totals */}
       <Card className="p-4 space-y-2">
         <div className="flex items-center justify-between">
-          <span className="text-sm">Subtotal</span>
+          <span className="text-sm">{t("subtotal")}</span>
           <span className="font-mono text-sm">{fmt(subtotal)}</span>
         </div>
         <div className="flex items-center justify-between gap-2">
-          <span className="text-sm">Tax (%)</span>
+          <span className="text-sm">{t("taxPercent")}</span>
           <Input
             type="number"
             min={0}
@@ -274,26 +276,26 @@ ${taxRate > 0 ? `<p>Tax (${taxRate}%): ${fmt(tax)}</p>` : ""}
         </div>
         {taxRate > 0 && (
           <div className="flex items-center justify-between">
-            <span className="text-sm">Tax</span>
+            <span className="text-sm">{t("tax")}</span>
             <span className="font-mono text-sm">{fmt(tax)}</span>
           </div>
         )}
         <div className="flex items-center justify-between border-t pt-2">
-          <span className="text-sm font-semibold">Total</span>
+          <span className="text-sm font-semibold">{t("total")}</span>
           <span className="font-mono text-lg font-bold">{fmt(total)}</span>
         </div>
       </Card>
 
       <div className="space-y-2">
-        <Label className="text-sm font-medium">Export</Label>
+        <Label className="text-sm font-medium">{t("export")}</Label>
         <div className="flex flex-wrap gap-2">
           <Button size="sm" onClick={generatePdf} disabled={generating}>
-            {generating ? "Generating..." : "PDF"}
+            {generating ? t("generating") : t("pdf")}
           </Button>
-          <DownloadButton data={toMarkdown()} filename={`${invoiceNumber}.md`} mimeType="text/markdown" label="Markdown" />
-          <DownloadButton data={toHtml()} filename={`${invoiceNumber}.html`} mimeType="text/html" label="HTML" />
-          <DownloadButton data={toPlainText()} filename={`${invoiceNumber}.txt`} mimeType="text/plain" label="Plain Text" />
-          <DownloadButton data={toCsv()} filename={`${invoiceNumber}.csv`} mimeType="text/csv" label="CSV" />
+          <DownloadButton data={toMarkdown()} filename={`${invoiceNumber}.md`} mimeType="text/markdown" label={t("markdown")} />
+          <DownloadButton data={toHtml()} filename={`${invoiceNumber}.html`} mimeType="text/html" label={t("html")} />
+          <DownloadButton data={toPlainText()} filename={`${invoiceNumber}.txt`} mimeType="text/plain" label={t("plainText")} />
+          <DownloadButton data={toCsv()} filename={`${invoiceNumber}.csv`} mimeType="text/csv" label={t("csv")} />
         </div>
       </div>
     </div>

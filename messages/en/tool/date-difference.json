@@ -1,0 +1,13 @@
+{
+  "dateDifference": {
+    "from": "From",
+    "to": "To",
+    "reset": "Reset",
+    "days": "Days",
+    "weeks": "Weeks",
+    "months": "Months",
+    "years": "Years",
+    "hours": "Hours",
+    "minutes": "Minutes"
+  }
+}

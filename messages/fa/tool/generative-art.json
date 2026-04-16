@@ -1,0 +1,14 @@
+{
+  "generativeArt": {
+    "algorithm": "الگوریتم",
+    "palette": "پالت",
+    "scaleLabel": "مقیاس: {value}",
+    "seedLabel": "بذر: {value}",
+    "randomize": "تصادفی",
+    "downloadPng": "دانلود PNG",
+    "algoPerlin": "نویز پرلین",
+    "algoCircles": "دایره‌ها",
+    "algoWaves": "موج‌ها",
+    "algoFlowfield": "میدان جریان"
+  }
+}

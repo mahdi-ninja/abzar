@@ -1,0 +1,12 @@
+{
+  "hashGenerator": {
+    "text": "متن",
+    "file": "فایل",
+    "clear": "پاک‌سازی",
+    "inputPlaceholder": "متن را برای هش کردن وارد کنید...",
+    "dropFileLabel": "فایل را اینجا رها کنید",
+    "selectedFile": "انتخاب‌شده: {fileName}",
+    "computing": "در حال محاسبه هش‌ها...",
+    "emptyHint": "متن وارد کنید یا فایل بکشید تا هش‌ها تولید شوند."
+  }
+}

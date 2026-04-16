@@ -1,0 +1,26 @@
+{
+  "timestampConverter": {
+    "inputLabel": "Paste a timestamp or date string",
+    "inputPlaceholder": "e.g. 1700000000, 2024-01-15T10:30:00Z, Jan 15 2024...",
+    "now": "Now",
+    "clear": "Clear",
+    "parseError": "Could not parse this as a date or timestamp.",
+    "emptyHint": "Paste a Unix timestamp, ISO 8601 date, or any date string to see all formats.",
+    "fmtUnixSeconds": "Unix (seconds)",
+    "fmtUnixMs": "Unix (milliseconds)",
+    "fmtIso": "ISO 8601",
+    "fmtRfc": "RFC 2822",
+    "fmtLocal": "Local",
+    "fmtDate": "Date only",
+    "fmtTime": "Time only",
+    "fmtRelative": "Relative",
+    "seconds": "{count} seconds",
+    "minutes": "{count} minutes",
+    "hours": "{count} hours",
+    "days": "{count} days",
+    "months": "{count} months",
+    "years": "{count} years",
+    "ago": "{time} ago",
+    "inFuture": "in {time}"
+  }
+}

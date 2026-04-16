@@ -1,0 +1,10 @@
+{
+  "htmlEntities": {
+    "numericMode": "موجودیت‌های عددی (&#123;)",
+    "namedMode": "موجودیت‌های نام‌دار (&amp;)",
+    "inputPlaceholder": "متن HTML...",
+    "encode": "کدگذاری",
+    "decode": "کدگشایی",
+    "clear": "پاک‌سازی"
+  }
+}

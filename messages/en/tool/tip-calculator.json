@@ -1,0 +1,12 @@
+{
+  "tipCalculator": {
+    "reset": "Reset",
+    "billAmount": "Bill Amount ($)",
+    "tipLabel": "Tip: {pct}%",
+    "splitBetween": "Split between",
+    "tip": "Tip",
+    "total": "Total",
+    "perPerson": "Per Person",
+    "tipPerPerson": "Tip/Person"
+  }
+}

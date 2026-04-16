@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useMemo, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -53,6 +54,7 @@ function getLast90Days(): string[] {
 }
 
 export default function HabitTracker() {
+  const t = useTranslations("habitTracker");
   const [habits, setHabits] = useLocalStorage<Habit[]>("abzar:habit-tracker:habits", []);
   const [newHabitName, setNewHabitName] = useState("");
 
@@ -113,42 +115,42 @@ export default function HabitTracker() {
           value={newHabitName}
           onChange={(e) => setNewHabitName(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && addHabit()}
-          placeholder="New habit name..."
+          placeholder={t("placeholder")}
           className="text-sm"
         />
         <Button size="sm" onClick={addHabit} disabled={!newHabitName.trim()}>
-          Add
+          {t("add")}
         </Button>
       </div>
 
       {habits.length === 0 && (
         <p className="text-sm text-muted-foreground text-center py-8">
-          Add a habit to start tracking.
+          {t("emptyState")}
         </p>
       )}
 
       {/* Weekly check-in grid */}
       {habits.length > 0 && (
         <div className="space-y-3">
-          <Label className="text-sm font-medium">This Week</Label>
+          <Label className="text-sm font-medium">{t("thisWeek")}</Label>
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr>
-                  <th className="text-left font-medium pr-4 pb-2">Habit</th>
+                  <th className="text-start font-medium pe-4 pb-2">{t("habit")}</th>
                   {last7.map((day) => (
                     <th key={day} className="text-center font-normal text-xs text-muted-foreground pb-2 px-1">
                       {new Date(day + "T12:00:00").toLocaleDateString(undefined, { weekday: "short" })}
                     </th>
                   ))}
-                  <th className="text-center font-normal text-xs text-muted-foreground pb-2 px-2">Streak</th>
+                  <th className="text-center font-normal text-xs text-muted-foreground pb-2 px-2">{t("streak")}</th>
                   <th className="pb-2" />
                 </tr>
               </thead>
               <tbody>
                 {habits.map((habit) => (
                   <tr key={habit.id}>
-                    <td className="pr-4 py-1 font-medium text-sm truncate max-w-37.5">
+                    <td className="pe-4 py-1 font-medium text-sm truncate max-w-37.5">
                       {habit.name}
                     </td>
                     {last7.map((day) => {
@@ -179,7 +181,7 @@ export default function HabitTracker() {
                       <button
                         onClick={() => removeHabit(habit.id)}
                         className="text-muted-foreground hover:text-destructive text-xs"
-                        aria-label="Remove habit"
+                        aria-label={t("removeHabit")}
                       >
                         ×
                       </button>
@@ -196,7 +198,7 @@ export default function HabitTracker() {
       {habits.length > 0 && (
         <Card className="p-4">
           <Label className="text-sm font-medium mb-2 block">
-            90-Day Heatmap — {habits[0].name}
+            {t("heatmapTitle", { name: habits[0].name })}
           </Label>
           <div className="flex flex-wrap gap-0.5">
             {last90.map((day) => {
@@ -215,18 +217,18 @@ export default function HabitTracker() {
                 <div
                   key={day}
                   className={`h-3 w-3 rounded-sm ${intensity}`}
-                  title={`${day}: ${count} habits`}
+                  title={t("heatmapTooltip", { day, count })}
                 />
               );
             })}
           </div>
           <div className="flex items-center gap-2 mt-2 text-xs text-muted-foreground">
-            <span>Less</span>
+            <span>{t("less")}</span>
             <div className="h-3 w-3 rounded-sm bg-muted" />
             <div className="h-3 w-3 rounded-sm bg-primary/30" />
             <div className="h-3 w-3 rounded-sm bg-primary/60" />
             <div className="h-3 w-3 rounded-sm bg-primary" />
-            <span>More</span>
+            <span>{t("more")}</span>
           </div>
         </Card>
       )}

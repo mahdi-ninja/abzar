@@ -1,0 +1,12 @@
+{
+  "htmlToMarkdown": {
+    "richPasteDetected": "متن غنی شناسایی شد — HTML از کلیپ‌بورد استخراج و به صورت خودکار تبدیل شد.",
+    "inputLabel": "ورودی HTML",
+    "outputLabel": "خروجی Markdown",
+    "inputPlaceholder": "متن غنی از Word / Google Docs / مرورگر بچسبانید، یا مستقیماً HTML بنویسید…",
+    "outputPlaceholder": "Markdown اینجا نمایش داده می‌شود…",
+    "convert": "تبدیل",
+    "loadExample": "بارگذاری نمونه",
+    "clear": "پاک‌سازی"
+  }
+}

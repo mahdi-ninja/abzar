@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,6 +9,7 @@ import { CopyButton } from "@/components/ui/copy-button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function RandomBytes() {
+  const t = useTranslations("randomBytes");
   const [count, setCount] = useState(32);
   const [format, setFormat] = useState("hex");
   const [output, setOutput] = useState("");
@@ -27,7 +29,7 @@ export default function RandomBytes() {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-end gap-3">
-        <div><Label className="text-xs mb-1 block">Bytes</Label><Input type="number" min={1} max={1024} value={count} onChange={(e) => setCount(Math.max(1, Math.min(1024, Number(e.target.value))))} className="w-24" /></div>
+        <div><Label className="text-xs mb-1 block">{t("bytes")}</Label><Input type="number" min={1} max={1024} value={count} onChange={(e) => setCount(Math.max(1, Math.min(1024, Number(e.target.value))))} className="w-24" /></div>
         <Tabs value={format} onValueChange={setFormat}>
           <TabsList className="h-8">
             <TabsTrigger value="hex" className="text-xs px-2.5 h-6">Hex</TabsTrigger>
@@ -35,7 +37,7 @@ export default function RandomBytes() {
             <TabsTrigger value="decimal" className="text-xs px-2.5 h-6">Decimal</TabsTrigger>
           </TabsList>
         </Tabs>
-        <Button size="sm" onClick={generate}>Generate</Button>
+        <Button size="sm" onClick={generate}>{t("generate")}</Button>
       </div>
       {output && (
         <div className="space-y-2">

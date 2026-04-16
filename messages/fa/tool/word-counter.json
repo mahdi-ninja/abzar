@@ -1,0 +1,16 @@
+{
+  "wordCounter": {
+    "clear": "پاک‌سازی",
+    "placeholder": "متن خود را اینجا تایپ یا جای‌گذاری کنید...",
+    "words": "کلمات",
+    "characters": "کاراکترها",
+    "noSpaces": "بدون فاصله",
+    "sentences": "جملات",
+    "paragraphs": "پاراگراف‌ها",
+    "fleschKincaid": "Flesch-Kincaid",
+    "gunningFog": "Gunning Fog",
+    "readingTime": "زمان مطالعه",
+    "speakingTime": "زمان گفتار",
+    "min": "{time} دقیقه"
+  }
+}

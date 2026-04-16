@@ -1,0 +1,31 @@
+{
+  "cronBuilder": {
+    "expression": "Expression",
+    "minute": "Minute",
+    "hour": "Hour",
+    "dayOfMonth": "Day of Month",
+    "month": "Month",
+    "dayOfWeek": "Day of Week",
+    "presets": "Presets",
+    "presetEveryMinute": "Every minute",
+    "presetEveryHour": "Every hour",
+    "presetDailyMidnight": "Every day at midnight",
+    "presetMondayMorning": "Every Monday at 9am",
+    "presetEvery5Minutes": "Every 5 minutes",
+    "presetMonthly": "1st of every month",
+    "nextRuns": "Next 5 Runs",
+    "descEveryMinute": "Every minute",
+    "descEveryNMinutes": "Every {step} minutes",
+    "descAtMinute": "At minute {minute}",
+    "descEveryHour": "of every hour",
+    "descEveryNHours": "every {step} hours",
+    "descAtTime": "at {time}",
+    "descEveryNDays": "every {step} days",
+    "descOnDay": "on day {day}",
+    "descInMonth": "in {month}",
+    "descOnWeekday": "on {weekday}",
+    "descOnWeekdays": "on {weekdays}",
+    "descWeekdayRange": "{from}\u2013{to}",
+    "descInvalid": "Invalid expression"
+  }
+}

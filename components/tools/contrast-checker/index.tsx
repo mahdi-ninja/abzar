@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
@@ -58,15 +59,8 @@ function checkWcag(ratio: number): WcagResult[] {
   ];
 }
 
-function PassFail({ pass }: { pass: boolean }) {
-  return (
-    <Badge variant={pass ? "default" : "destructive"} className="text-xs">
-      {pass ? "Pass" : "Fail"}
-    </Badge>
-  );
-}
-
 export default function ContrastChecker() {
+  const t = useTranslations("contrastChecker");
   const [fg, setFg] = useState("#000000");
   const [bg, setBg] = useState("#ffffff");
 
@@ -91,12 +85,12 @@ export default function ContrastChecker() {
   return (
     <div className="space-y-6">
       <div className="flex justify-end">
-        <Button size="sm" variant="outline" onClick={() => { setFg("#000000"); setBg("#ffffff"); }}>Reset</Button>
+        <Button size="sm" variant="outline" onClick={() => { setFg("#000000"); setBg("#ffffff"); }}>{t("reset")}</Button>
       </div>
       {/* Color inputs */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-end">
         <div className="space-y-2">
-          <Label className="text-sm">Foreground (text)</Label>
+          <Label className="text-sm">{t("foreground")}</Label>
           <div className="flex gap-2">
             <input
               type="color"
@@ -115,7 +109,7 @@ export default function ContrastChecker() {
         <button
           onClick={handleSwap}
           className="self-center rounded-md border p-2 hover:bg-accent transition-colors"
-          aria-label="Swap colors"
+          aria-label={t("swapColors")}
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4" />
@@ -123,7 +117,7 @@ export default function ContrastChecker() {
         </button>
 
         <div className="space-y-2">
-          <Label className="text-sm">Background</Label>
+          <Label className="text-sm">{t("background")}</Label>
           <div className="flex gap-2">
             <input
               type="color"
@@ -145,11 +139,11 @@ export default function ContrastChecker() {
         className="rounded-lg border p-6 space-y-2"
         style={{ backgroundColor: bg, color: fg }}
       >
-        <p className="text-2xl font-bold">Large Text Preview (24px bold)</p>
+        <p className="text-2xl font-bold">{t("largeTextPreview")}</p>
         <p className="text-base">
-          Normal text preview (16px). The quick brown fox jumps over the lazy dog.
+          {t("normalTextPreview")}
         </p>
-        <p className="text-sm">Small text preview (14px). WCAG requires higher contrast for smaller text.</p>
+        <p className="text-sm">{t("smallTextPreview")}</p>
       </div>
 
       {/* Ratio + results */}
@@ -160,7 +154,7 @@ export default function ContrastChecker() {
               {result.ratio.toFixed(2)}:1
             </div>
             <div className="text-sm text-muted-foreground mt-1">
-              Contrast Ratio
+              {t("contrastRatio")}
             </div>
           </Card>
 
@@ -168,9 +162,9 @@ export default function ContrastChecker() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b bg-muted/50">
-                  <th className="px-4 py-2 text-left font-medium">Level</th>
-                  <th className="px-4 py-2 text-center font-medium">Normal Text</th>
-                  <th className="px-4 py-2 text-center font-medium">Large Text</th>
+                  <th className="px-4 py-2 text-start font-medium">{t("level")}</th>
+                  <th className="px-4 py-2 text-center font-medium">{t("normalText")}</th>
+                  <th className="px-4 py-2 text-center font-medium">{t("largeText")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -178,10 +172,14 @@ export default function ContrastChecker() {
                   <tr key={w.level} className="border-b last:border-0">
                     <td className="px-4 py-2 font-medium">WCAG {w.level}</td>
                     <td className="px-4 py-2 text-center">
-                      <PassFail pass={w.normalText} />
+                      <Badge variant={w.normalText ? "default" : "destructive"} className="text-xs">
+                        {w.normalText ? t("pass") : t("fail")}
+                      </Badge>
                     </td>
                     <td className="px-4 py-2 text-center">
-                      <PassFail pass={w.largeText} />
+                      <Badge variant={w.largeText ? "default" : "destructive"} className="text-xs">
+                        {w.largeText ? t("pass") : t("fail")}
+                      </Badge>
                     </td>
                   </tr>
                 ))}

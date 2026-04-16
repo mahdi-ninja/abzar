@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
@@ -15,6 +16,7 @@ interface PdfFile {
 }
 
 export default function PdfMerger() {
+  const t = useTranslations("pdfMerger");
   const [files, setFiles] = useState<PdfFile[]>([]);
   const [merging, setMerging] = useState(false);
   const [mergedBlob, setMergedBlob] = useState<Blob | null>(null);
@@ -38,11 +40,11 @@ export default function PdfMerger() {
           pageCount: doc.getPageCount(),
         });
       } catch {
-        setError(`Failed to load ${file.name}. Make sure it's a valid PDF.`);
+        setError(t("loadError", { name: file.name }));
       }
     }
     setFiles((prev) => [...prev, ...loaded]);
-  }, []);
+  }, [t]);
 
   const removeFile = useCallback((id: string) => {
     setFiles((prev) => prev.filter((f) => f.id !== id));
@@ -76,11 +78,11 @@ export default function PdfMerger() {
       const bytes = await merged.save();
       setMergedBlob(new Blob([bytes.buffer as ArrayBuffer], { type: "application/pdf" }));
     } catch {
-      setError("Failed to merge PDFs.");
+      setError(t("mergeError"));
     } finally {
       setMerging(false);
     }
-  }, [files]);
+  }, [files, t]);
 
   const totalPages = files.reduce((sum, f) => sum + f.pageCount, 0);
 
@@ -90,7 +92,7 @@ export default function PdfMerger() {
         onFiles={handleFiles}
         accept=".pdf,application/pdf"
         multiple
-        label="Drop PDF files here or click to browse"
+        label={t("dropLabel")}
         className="min-h-30"
       />
 
@@ -103,7 +105,7 @@ export default function PdfMerger() {
       {files.length > 0 && (
         <div className="space-y-2">
           <Label className="text-sm font-medium">
-            {files.length} files · {totalPages} pages total
+            {t("filesSummary", { count: files.length, pages: totalPages })}
           </Label>
           {files.map((file, idx) => (
             <Card key={file.id} className="p-3 flex items-center gap-3">
@@ -113,7 +115,7 @@ export default function PdfMerger() {
               <div className="flex-1 min-w-0">
                 <div className="text-sm font-medium truncate">{file.name}</div>
                 <div className="text-xs text-muted-foreground">
-                  {file.pageCount} page{file.pageCount !== 1 ? "s" : ""}
+                  {t("pageCount", { count: file.pageCount })}
                 </div>
               </div>
               <div className="flex items-center gap-1">
@@ -154,13 +156,13 @@ export default function PdfMerger() {
           onClick={handleMerge}
           disabled={files.length < 2 || merging}
         >
-          {merging ? "Merging..." : `Merge ${files.length} PDFs`}
+          {merging ? t("merging") : t("mergeButton", { count: files.length })}
         </Button>
         {mergedBlob && (
           <DownloadButton
             data={mergedBlob}
             filename="merged.pdf"
-            label="Download Merged PDF"
+            label={t("downloadMerged")}
           />
         )}
         {files.length > 0 && (
@@ -172,14 +174,14 @@ export default function PdfMerger() {
               setMergedBlob(null);
             }}
           >
-            Clear All
+            {t("clearAll")}
           </Button>
         )}
       </div>
 
       {files.length === 0 && (
         <p className="text-sm text-muted-foreground text-center py-4">
-          Add at least 2 PDF files to merge them into one.
+          {t("emptyState")}
         </p>
       )}
     </div>

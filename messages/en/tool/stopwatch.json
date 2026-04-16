@@ -1,0 +1,12 @@
+{
+  "stopwatch": {
+    "start": "Start",
+    "resume": "Resume",
+    "stop": "Stop",
+    "lap": "Lap",
+    "reset": "Reset",
+    "laps": "Laps",
+    "copy": "Copy",
+    "lapNumber": "Lap {number}"
+  }
+}

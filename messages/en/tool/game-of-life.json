@@ -1,0 +1,11 @@
+{
+  "gameOfLife": {
+    "pause": "Pause",
+    "play": "Play",
+    "step": "Step",
+    "random": "Random",
+    "clear": "Clear",
+    "speed": "Speed: {ms}ms",
+    "generation": "Gen: {gen} · Cells: {cells}"
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
@@ -22,6 +23,7 @@ function formatTime(t: string): string {
 }
 
 export default function SleepCalculator() {
+  const t = useTranslations("sleepCalculator");
   const [mode, setMode] = useState<"wake" | "sleep">("wake");
   const [time, setTime] = useState("07:00");
   const CYCLE = 90;
@@ -46,27 +48,27 @@ export default function SleepCalculator() {
     <div className="space-y-6">
       <Tabs value={mode} onValueChange={(v) => setMode(v as "wake" | "sleep")}>
         <TabsList className="h-8">
-          <TabsTrigger value="wake" className="text-xs px-3 h-6">I want to wake up at...</TabsTrigger>
-          <TabsTrigger value="sleep" className="text-xs px-3 h-6">I want to go to sleep at...</TabsTrigger>
+          <TabsTrigger value="wake" className="text-xs px-3 h-6">{t("wakeTab")}</TabsTrigger>
+          <TabsTrigger value="sleep" className="text-xs px-3 h-6">{t("sleepTab")}</TabsTrigger>
         </TabsList>
       </Tabs>
       <div className="flex items-end gap-3">
-        <div><Label className="text-sm mb-1 block">{mode === "wake" ? "Wake up time" : "Bedtime"}</Label><Input type="time" value={time} onChange={(e) => setTime(e.target.value)} className="w-40" /></div>
-        <Button size="sm" variant="outline" onClick={() => { setMode("wake"); setTime("07:00"); }}>Reset</Button>
+        <div><Label className="text-sm mb-1 block">{mode === "wake" ? t("wakeUpTime") : t("bedtime")}</Label><Input type="time" value={time} onChange={(e) => setTime(e.target.value)} className="w-40" /></div>
+        <Button size="sm" variant="outline" onClick={() => { setMode("wake"); setTime("07:00"); }}>{t("reset")}</Button>
       </div>
       <div className="space-y-2">
-        <Label className="text-sm font-medium">{mode === "wake" ? "Go to bed at:" : "Set your alarm for:"}</Label>
+        <Label className="text-sm font-medium">{mode === "wake" ? t("goToBedAt") : t("setAlarmFor")}</Label>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {suggestions.map((s) => (
             <Card key={s.cycles} className={`p-4 text-center ${s.cycles >= 5 ? "border-primary" : ""}`}>
               <div className="text-xl font-bold">{formatTime(s.time)}</div>
-              <div className="text-xs text-muted-foreground">{s.cycles} cycles · {s.hours}h</div>
-              {s.cycles >= 5 && <div className="text-[10px] text-primary font-medium mt-1">Recommended</div>}
+              <div className="text-xs text-muted-foreground">{t("cyclesHours", { cycles: s.cycles, hours: s.hours })}</div>
+              {s.cycles >= 5 && <div className="text-[10px] text-primary font-medium mt-1">{t("recommended")}</div>}
             </Card>
           ))}
         </div>
       </div>
-      <p className="text-xs text-muted-foreground">Based on 90-minute sleep cycles + 15 minutes to fall asleep.</p>
+      <p className="text-xs text-muted-foreground">{t("disclaimer")}</p>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -33,6 +34,7 @@ const escapers: Record<EscapeMode, { escape: (s: string) => string; unescape: (s
 };
 
 export default function StringEscaper() {
+  const t = useTranslations("stringEscaper");
   const [mode, setMode] = useState<EscapeMode>("html");
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
@@ -47,10 +49,8 @@ export default function StringEscaper() {
         </TabsList>
       </Tabs>
       <InputOutputLayout
-        inputLabel="Input"
-        outputLabel="Output"
         input={
-          <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="Text to escape or unescape..." className="min-h-50 font-mono text-sm" />
+          <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder={t("inputPlaceholder")} className="min-h-50 font-mono text-sm" />
         }
         output={
           <>
@@ -60,9 +60,9 @@ export default function StringEscaper() {
         }
       />
       <div className="flex gap-2">
-        <Button size="sm" onClick={() => setOutput(escapers[mode].escape(input))}>Escape</Button>
-        <Button size="sm" variant="secondary" onClick={() => setOutput(escapers[mode].unescape(input))}>Unescape</Button>
-        <Button size="sm" variant="outline" onClick={() => { setInput(""); setOutput(""); }}>Clear</Button>
+        <Button size="sm" onClick={() => setOutput(escapers[mode].escape(input))}>{t("escape")}</Button>
+        <Button size="sm" variant="secondary" onClick={() => setOutput(escapers[mode].unescape(input))}>{t("unescape")}</Button>
+        <Button size="sm" variant="outline" onClick={() => { setInput(""); setOutput(""); }}>{t("clear")}</Button>
       </div>
     </div>
   );

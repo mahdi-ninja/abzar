@@ -1,0 +1,15 @@
+{
+  "habitTracker": {
+    "add": "Add",
+    "placeholder": "New habit name...",
+    "emptyState": "Add a habit to start tracking.",
+    "thisWeek": "This Week",
+    "habit": "Habit",
+    "streak": "Streak",
+    "removeHabit": "Remove habit",
+    "heatmapTitle": "90-Day Heatmap — {name}",
+    "heatmapTooltip": "{day}: {count} habits",
+    "less": "Less",
+    "more": "More"
+  }
+}

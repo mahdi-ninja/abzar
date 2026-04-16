@@ -1,0 +1,8 @@
+{
+  "jsonToCsv": {
+    "inputLabel": "آرایه JSON",
+    "outputLabel": "خروجی CSV",
+    "convert": "تبدیل",
+    "clear": "پاک‌سازی"
+  }
+}

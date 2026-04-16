@@ -1,0 +1,21 @@
+{
+  "jwtDecoder": {
+    "jwtToken": "توکن JWT",
+    "clear": "پاک‌سازی",
+    "placeholder": "توکن JWT خود را اینجا بچسبانید (eyJhbGci...)",
+    "errorInvalid3Parts": "JWT نامعتبر: انتظار ۳ بخش جدا شده با نقطه",
+    "errorInvalidJson": "JWT نامعتبر: امکان تجزیه هدر یا محتوا به JSON وجود ندارد",
+    "errorBase64Failed": "JWT نامعتبر: رمزگشایی base64 ناموفق بود",
+    "header": "هدر",
+    "payload": "محتوا",
+    "signature": "امضا",
+    "timestamps": "زمان‌ها",
+    "issuedAt": "صادر شده در",
+    "expires": "انقضا",
+    "notBefore": "معتبر از",
+    "expired": "منقضی شده",
+    "expiresInMinutes": "انقضا در {minutes} دقیقه",
+    "expiresInHours": "انقضا در {hours} ساعت",
+    "emptyState": "یک توکن JWT بچسبانید تا هدر، محتوا و انقضای آن رمزگشایی شود."
+  }
+}

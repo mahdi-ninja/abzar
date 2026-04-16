@@ -1,0 +1,12 @@
+{
+  "ambientSounds": {
+    "description": "Click a sound to toggle it on/off. Mix multiple sounds.",
+    "stopAll": "Stop All",
+    "volumeLabel": "Volume: {value}%",
+    "whiteNoise": "White Noise",
+    "pinkNoise": "Pink Noise",
+    "brownNoise": "Brown Noise",
+    "rain": "Rain",
+    "ocean": "Ocean"
+  }
+}

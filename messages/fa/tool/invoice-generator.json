@@ -1,0 +1,24 @@
+{
+  "invoiceGenerator": {
+    "businessName": "نام کسب‌وکار شما",
+    "businessPlaceholder": "کسب‌وکار شما",
+    "clientName": "نام مشتری",
+    "clientPlaceholder": "نام مشتری",
+    "invoiceNumber": "شماره فاکتور",
+    "date": "تاریخ",
+    "lineItems": "اقلام",
+    "descriptionPlaceholder": "توضیحات",
+    "addItem": "+ افزودن قلم",
+    "subtotal": "جمع فرعی",
+    "taxPercent": "مالیات (%)",
+    "tax": "مالیات",
+    "total": "جمع کل",
+    "export": "خروجی",
+    "generating": "در حال تولید...",
+    "pdf": "PDF",
+    "markdown": "Markdown",
+    "html": "HTML",
+    "plainText": "متن ساده",
+    "csv": "CSV"
+  }
+}

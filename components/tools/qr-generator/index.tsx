@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -19,6 +20,7 @@ type QRMode = "url" | "text" | "wifi" | "vcard";
 type ErrorCorrectionLevel = "L" | "M" | "Q" | "H";
 
 export default function QrGenerator() {
+  const t = useTranslations("qrGenerator");
   const [mode, setMode] = useState<QRMode>("url");
   const [url, setUrl] = useState("https://example.com");
   const [text, setText] = useState("");
@@ -102,16 +104,16 @@ export default function QrGenerator() {
         <div className="space-y-4">
           <Tabs value={mode} onValueChange={(v) => setMode(v as QRMode)}>
             <TabsList className="h-8">
-              <TabsTrigger value="url" className="text-xs px-2.5 h-6">URL</TabsTrigger>
-              <TabsTrigger value="text" className="text-xs px-2.5 h-6">Text</TabsTrigger>
-              <TabsTrigger value="wifi" className="text-xs px-2.5 h-6">Wi-Fi</TabsTrigger>
-              <TabsTrigger value="vcard" className="text-xs px-2.5 h-6">vCard</TabsTrigger>
+              <TabsTrigger value="url" className="text-xs px-2.5 h-6">{t("url")}</TabsTrigger>
+              <TabsTrigger value="text" className="text-xs px-2.5 h-6">{t("text")}</TabsTrigger>
+              <TabsTrigger value="wifi" className="text-xs px-2.5 h-6">{t("wifi")}</TabsTrigger>
+              <TabsTrigger value="vcard" className="text-xs px-2.5 h-6">{t("vcard")}</TabsTrigger>
             </TabsList>
           </Tabs>
 
           {mode === "url" && (
             <div>
-              <Label className="text-sm mb-1 block">URL</Label>
+              <Label className="text-sm mb-1 block">{t("urlLabel")}</Label>
               <Input
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
@@ -122,11 +124,11 @@ export default function QrGenerator() {
 
           {mode === "text" && (
             <div>
-              <Label className="text-sm mb-1 block">Text</Label>
+              <Label className="text-sm mb-1 block">{t("textLabel")}</Label>
               <Input
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                placeholder="Enter text..."
+                placeholder={t("enterText")}
               />
             </div>
           )}
@@ -134,21 +136,21 @@ export default function QrGenerator() {
           {mode === "wifi" && (
             <div className="space-y-3">
               <div>
-                <Label className="text-sm mb-1 block">Network name (SSID)</Label>
+                <Label className="text-sm mb-1 block">{t("networkName")}</Label>
                 <Input value={wifiSsid} onChange={(e) => setWifiSsid(e.target.value)} />
               </div>
               <div>
-                <Label className="text-sm mb-1 block">Password</Label>
+                <Label className="text-sm mb-1 block">{t("password")}</Label>
                 <Input value={wifiPassword} onChange={(e) => setWifiPassword(e.target.value)} />
               </div>
               <div>
-                <Label className="text-sm mb-1 block">Encryption</Label>
+                <Label className="text-sm mb-1 block">{t("encryption")}</Label>
                 <Select value={wifiEncryption} onValueChange={(v) => v && setWifiEncryption(v)}>
                   <SelectTrigger><SelectValue /></SelectTrigger>
                   <SelectContent>
                     <SelectItem value="WPA">WPA/WPA2</SelectItem>
                     <SelectItem value="WEP">WEP</SelectItem>
-                    <SelectItem value="nopass">None</SelectItem>
+                    <SelectItem value="nopass">{t("encNone")}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -158,15 +160,15 @@ export default function QrGenerator() {
           {mode === "vcard" && (
             <div className="space-y-3">
               <div>
-                <Label className="text-sm mb-1 block">Name</Label>
+                <Label className="text-sm mb-1 block">{t("name")}</Label>
                 <Input value={vcardName} onChange={(e) => setVcardName(e.target.value)} />
               </div>
               <div>
-                <Label className="text-sm mb-1 block">Phone</Label>
+                <Label className="text-sm mb-1 block">{t("phone")}</Label>
                 <Input value={vcardPhone} onChange={(e) => setVcardPhone(e.target.value)} />
               </div>
               <div>
-                <Label className="text-sm mb-1 block">Email</Label>
+                <Label className="text-sm mb-1 block">{t("email")}</Label>
                 <Input value={vcardEmail} onChange={(e) => setVcardEmail(e.target.value)} />
               </div>
             </div>
@@ -175,7 +177,7 @@ export default function QrGenerator() {
           {/* Options */}
           <div className="space-y-3 pt-2 border-t">
             <div>
-              <Label className="text-sm mb-2 block">Size: {size}px</Label>
+              <Label className="text-sm mb-2 block">{t("size", { size })}</Label>
               <Slider
                 value={[size]}
                 onValueChange={(v) => setSize(Array.isArray(v) ? v[0] : v)}
@@ -185,16 +187,16 @@ export default function QrGenerator() {
               />
             </div>
             <div>
-              <Label className="text-sm mb-1 block">Error correction</Label>
+              <Label className="text-sm mb-1 block">{t("errorCorrection")}</Label>
               <Select value={errorLevel} onValueChange={(v) => v && setErrorLevel(v as ErrorCorrectionLevel)}>
                 <SelectTrigger>
-                  <SelectValue />
+                  <span>{t(`ec${errorLevel === "L" ? "Low" : errorLevel === "M" ? "Medium" : errorLevel === "Q" ? "Quartile" : "High"}`)}</span>
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="L">Low (7%)</SelectItem>
-                  <SelectItem value="M">Medium (15%)</SelectItem>
-                  <SelectItem value="Q">Quartile (25%)</SelectItem>
-                  <SelectItem value="H">High (30%)</SelectItem>
+                  <SelectItem value="L">{t("ecLow")}</SelectItem>
+                  <SelectItem value="M">{t("ecMedium")}</SelectItem>
+                  <SelectItem value="Q">{t("ecQuartile")}</SelectItem>
+                  <SelectItem value="H">{t("ecHigh")}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -207,7 +209,7 @@ export default function QrGenerator() {
             <canvas ref={canvasRef} />
           </div>
           <div className="flex gap-2">
-            <Button size="sm" variant="outline" onClick={() => { setMode("url"); setUrl("https://example.com"); setText(""); setWifiSsid(""); setWifiPassword(""); setWifiEncryption("WPA"); setVcardName(""); setVcardPhone(""); setVcardEmail(""); setSize(256); setErrorLevel("M"); }}>Reset</Button>
+            <Button size="sm" variant="outline" onClick={() => { setMode("url"); setUrl("https://example.com"); setText(""); setWifiSsid(""); setWifiPassword(""); setWifiEncryption("WPA"); setVcardName(""); setVcardPhone(""); setVcardEmail(""); setSize(256); setErrorLevel("M"); }}>{t("reset")}</Button>
             {pngBlob && (
               <DownloadButton
                 data={pngBlob}

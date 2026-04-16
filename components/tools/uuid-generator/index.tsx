@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -70,6 +71,7 @@ const generators: Record<IdType, () => string> = {
 };
 
 export default function UuidGenerator() {
+  const t = useTranslations("uuidGenerator");
   const [type, setType] = useState<IdType>("uuidv4");
   const [quantity, setQuantity] = useState(1);
   const [ids, setIds] = useState<string[]>(() => [generateUUIDv4()]);
@@ -89,7 +91,7 @@ export default function UuidGenerator() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end gap-4">
         <div>
-          <Label className="text-sm mb-1 block">Type</Label>
+          <Label className="text-sm mb-1 block">{t("type")}</Label>
           <Tabs value={type} onValueChange={handleTypeChange}>
             <TabsList className="h-8">
               <TabsTrigger value="uuidv4" className="text-xs px-3 h-6">
@@ -109,7 +111,7 @@ export default function UuidGenerator() {
         </div>
 
         <div>
-          <Label className="text-sm mb-1 block">Quantity</Label>
+          <Label className="text-sm mb-1 block">{t("quantity")}</Label>
           <Input
             type="number"
             min={1}
@@ -123,7 +125,7 @@ export default function UuidGenerator() {
         </div>
 
         <Button size="sm" onClick={handleGenerate}>
-          Generate
+          {t("generate")}
         </Button>
       </div>
 
@@ -140,9 +142,9 @@ export default function UuidGenerator() {
         <Card className="p-4">
           <div className="flex items-center justify-between mb-2">
             <Label className="text-sm font-medium">
-              Generated {ids.length} IDs
+              {t("generated", { count: ids.length })}
             </Label>
-            <CopyButton value={ids.join("\n")} label="Copy All" />
+            <CopyButton value={ids.join("\n")} label={t("copyAll")} />
           </div>
           <div className="max-h-64 overflow-auto rounded bg-muted p-2 font-mono text-xs space-y-0.5">
             {ids.map((id, i) => (
@@ -155,10 +157,10 @@ export default function UuidGenerator() {
       )}
 
       <div className="text-xs text-muted-foreground">
-        {type === "uuidv4" && "UUID v4: 128-bit random identifier (RFC 9562). Uses crypto.randomUUID()."}
-        {type === "uuidv7" && "UUID v7: Time-ordered UUID (RFC 9562). 48-bit Unix timestamp (ms) + random. Sortable by creation time."}
-        {type === "ulid" && "ULID: Universally Unique Lexicographically Sortable Identifier. 48-bit timestamp + 80-bit random."}
-        {type === "nanoid" && "nanoid: Compact URL-friendly unique ID. 21 characters, ~126 bits of entropy."}
+        {type === "uuidv4" && t("uuidv4Desc")}
+        {type === "uuidv7" && t("uuidv7Desc")}
+        {type === "ulid" && t("ulidDesc")}
+        {type === "nanoid" && t("nanoidDesc")}
       </div>
     </div>
   );

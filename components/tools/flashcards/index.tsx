@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -15,6 +16,7 @@ interface Flashcard {
 }
 
 export default function Flashcards() {
+  const t = useTranslations("flashcards");
   const [cards, setCards] = useLocalStorage<Flashcard[]>("abzar:flashcards:cards", []);
   const [view, setView] = useState<"manage" | "study">("manage");
   const [front, setFront] = useState("");
@@ -73,7 +75,7 @@ export default function Flashcards() {
           variant={view === "manage" ? "default" : "outline"}
           onClick={() => setView("manage")}
         >
-          Manage ({cards.length})
+          {t("manage", { count: cards.length })}
         </Button>
         <Button
           size="sm"
@@ -81,7 +83,7 @@ export default function Flashcards() {
           onClick={startStudy}
           disabled={cards.length === 0}
         >
-          Study
+          {t("study")}
         </Button>
       </div>
 
@@ -90,32 +92,32 @@ export default function Flashcards() {
           {/* Add card form */}
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <div>
-              <Label className="text-sm mb-1 block">Front (question)</Label>
+              <Label className="text-sm mb-1 block">{t("frontLabel")}</Label>
               <Textarea
                 value={front}
                 onChange={(e) => setFront(e.target.value)}
-                placeholder="Enter question..."
+                placeholder={t("frontPlaceholder")}
                 className="min-h-20 text-sm"
               />
             </div>
             <div>
-              <Label className="text-sm mb-1 block">Back (answer)</Label>
+              <Label className="text-sm mb-1 block">{t("backLabel")}</Label>
               <Textarea
                 value={back}
                 onChange={(e) => setBack(e.target.value)}
-                placeholder="Enter answer..."
+                placeholder={t("backPlaceholder")}
                 className="min-h-20 text-sm"
               />
             </div>
           </div>
           <Button size="sm" onClick={addCard} disabled={!front.trim() || !back.trim()}>
-            Add Card
+            {t("addCard")}
           </Button>
 
           {/* Card list */}
           {cards.length > 0 && (
             <div className="space-y-2">
-              <Label className="text-sm font-medium">Cards ({cards.length})</Label>
+              <Label className="text-sm font-medium">{t("cardsCount", { count: cards.length })}</Label>
               <div className="max-h-64 overflow-auto space-y-2">
                 {cards.map((card) => (
                   <Card key={card.id} className="p-3 flex items-start justify-between gap-2">
@@ -124,7 +126,7 @@ export default function Flashcards() {
                       <div className="text-xs text-muted-foreground truncate">{card.back}</div>
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
-                      <span className="text-xs text-muted-foreground">Box {card.box}</span>
+                      <span className="text-xs text-muted-foreground">{t("box", { box: card.box })}</span>
                       <button
                         onClick={() => removeCard(card.id)}
                         className="text-muted-foreground hover:text-destructive text-sm"
@@ -140,7 +142,7 @@ export default function Flashcards() {
 
           {cards.length === 0 && (
             <p className="text-sm text-muted-foreground text-center py-8">
-              Add some flashcards to get started.
+              {t("emptyState")}
             </p>
           )}
         </>
@@ -151,7 +153,7 @@ export default function Flashcards() {
           {currentCard ? (
             <div className="flex flex-col items-center gap-6">
               <div className="text-xs text-muted-foreground">
-                Card {studyIndex + 1} of {studyQueue.length} · Box {currentCard.box}/5
+                {t("cardProgress", { current: studyIndex + 1, total: studyQueue.length, box: currentCard.box })}
               </div>
 
               <Card
@@ -162,12 +164,12 @@ export default function Flashcards() {
                   <div>
                     <div className="text-lg font-medium">{currentCard.front}</div>
                     <div className="text-xs text-muted-foreground mt-3">
-                      Click to reveal answer
+                      {t("clickToReveal")}
                     </div>
                   </div>
                 ) : (
                   <div>
-                    <div className="text-xs text-muted-foreground mb-2">Answer:</div>
+                    <div className="text-xs text-muted-foreground mb-2">{t("answer")}</div>
                     <div className="text-lg font-medium">{currentCard.back}</div>
                   </div>
                 )}
@@ -176,17 +178,17 @@ export default function Flashcards() {
               {showAnswer && (
                 <div className="flex gap-3">
                   <Button variant="destructive" size="sm" onClick={() => handleAnswer(false)}>
-                    Incorrect — Back to Box 1
+                    {t("incorrect")}
                   </Button>
                   <Button size="sm" onClick={() => handleAnswer(true)}>
-                    Correct — Advance
+                    {t("correct")}
                   </Button>
                 </div>
               )}
             </div>
           ) : (
             <p className="text-sm text-muted-foreground text-center py-8">
-              No cards to study. Add some cards first.
+              {t("noCardsToStudy")}
             </p>
           )}
         </>

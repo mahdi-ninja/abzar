@@ -1,0 +1,18 @@
+{
+  "algorithmVisualizer": {
+    "algorithm": "الگوریتم",
+    "bubbleSort": "مرتب‌سازی حبابی",
+    "selectionSort": "مرتب‌سازی انتخابی",
+    "insertionSort": "مرتب‌سازی درجی",
+    "quickSort": "مرتب‌سازی سریع",
+    "mergeSort": "مرتب‌سازی ادغامی",
+    "size": "اندازه: {size}",
+    "speed": "سرعت: {ms}ms",
+    "sort": "مرتب‌سازی",
+    "newArray": "آرایه جدید",
+    "default": "پیش‌فرض",
+    "comparing": "مقایسه",
+    "swapping": "جابجایی",
+    "sorted": "مرتب‌شده"
+  }
+}

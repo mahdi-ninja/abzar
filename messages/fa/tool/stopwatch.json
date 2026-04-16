@@ -1,0 +1,12 @@
+{
+  "stopwatch": {
+    "start": "شروع",
+    "resume": "ادامه",
+    "stop": "توقف",
+    "lap": "دور",
+    "reset": "بازنشانی",
+    "laps": "دورها",
+    "copy": "کپی",
+    "lapNumber": "دور {number}"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "stringEscaper": {
+    "inputPlaceholder": "متنی برای escape یا unescape...",
+    "escape": "Escape",
+    "unescape": "Unescape",
+    "clear": "پاک‌سازی"
+  }
+}

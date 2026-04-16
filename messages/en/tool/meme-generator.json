@@ -1,0 +1,11 @@
+{
+  "memeGenerator": {
+    "dropLabel": "Drop an image or click to upload",
+    "topText": "Top text",
+    "bottomText": "Bottom text",
+    "fontSizeLabel": "Font size: {value}px",
+    "textColor": "Text color",
+    "changeImage": "Change Image",
+    "downloadPng": "Download PNG"
+  }
+}

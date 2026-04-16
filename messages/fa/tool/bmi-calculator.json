@@ -1,0 +1,15 @@
+{
+  "bmiCalculator": {
+    "imperial": "امپریال (پوند/اینچ)",
+    "metric": "متریک (کیلوگرم/سانتی‌متر)",
+    "reset": "بازنشانی",
+    "weightLbs": "وزن (پوند)",
+    "weightKg": "وزن (کیلوگرم)",
+    "heightInches": "قد (اینچ)",
+    "heightCm": "قد (سانتی‌متر)",
+    "underweight": "کم‌وزن",
+    "normal": "نرمال",
+    "overweight": "اضافه‌وزن",
+    "obese": "چاق"
+  }
+}

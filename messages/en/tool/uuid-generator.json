@@ -1,0 +1,13 @@
+{
+  "uuidGenerator": {
+    "type": "Type",
+    "quantity": "Quantity",
+    "generate": "Generate",
+    "generated": "Generated {count} IDs",
+    "copyAll": "Copy All",
+    "uuidv4Desc": "UUID v4: 128-bit random identifier (RFC 9562). Uses crypto.randomUUID().",
+    "uuidv7Desc": "UUID v7: Time-ordered UUID (RFC 9562). 48-bit Unix timestamp (ms) + random. Sortable by creation time.",
+    "ulidDesc": "ULID: Universally Unique Lexicographically Sortable Identifier. 48-bit timestamp + 80-bit random.",
+    "nanoidDesc": "nanoid: Compact URL-friendly unique ID. 21 characters, ~126 bits of entropy."
+  }
+}

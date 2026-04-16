@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
@@ -91,6 +92,7 @@ function md5(data: ArrayBuffer): string {
 }
 
 export default function HashGenerator() {
+  const t = useTranslations("hashGenerator");
   const [mode, setMode] = useState<"text" | "file">("text");
   const [input, setInput] = useState("");
   const [hashes, setHashes] = useState<Record<string, string>>({});
@@ -149,15 +151,15 @@ export default function HashGenerator() {
         <Tabs value={mode} onValueChange={(v) => { setMode(v as "text" | "file"); handleClear(); }}>
           <TabsList className="h-8">
             <TabsTrigger value="text" className="text-xs px-3 h-6">
-              Text
+              {t("text")}
             </TabsTrigger>
             <TabsTrigger value="file" className="text-xs px-3 h-6">
-              File
+              {t("file")}
             </TabsTrigger>
           </TabsList>
         </Tabs>
         <Button size="sm" variant="outline" onClick={handleClear}>
-          Clear
+          {t("clear")}
         </Button>
       </div>
 
@@ -165,19 +167,19 @@ export default function HashGenerator() {
         <Textarea
           value={input}
           onChange={(e) => handleTextChange(e.target.value)}
-          placeholder="Type or paste text to hash..."
+          placeholder={t("inputPlaceholder")}
           className="min-h-30 font-mono text-sm"
         />
       ) : (
         <FileDropZone
           onFiles={handleFileUpload}
-          label={fileName ? `Selected: ${fileName}` : "Drop a file here to hash"}
+          label={fileName ? t("selectedFile", { fileName }) : t("dropFileLabel")}
           className="min-h-30"
         />
       )}
 
       {computing && (
-        <p className="text-sm text-muted-foreground">Computing hashes...</p>
+        <p className="text-sm text-muted-foreground">{t("computing")}</p>
       )}
 
       {Object.keys(hashes).length > 0 && (
@@ -198,7 +200,7 @@ export default function HashGenerator() {
 
       {!Object.keys(hashes).length && !computing && (
         <div className="text-center text-sm text-muted-foreground py-8">
-          Type text or drop a file to generate hashes.
+          {t("emptyHint")}
         </div>
       )}
     </div>

@@ -1,0 +1,10 @@
+{
+  "reverseText": {
+    "reverseCharacters": "معکوس کاراکترها",
+    "reverseWords": "معکوس کلمات",
+    "reverseLines": "معکوس خطوط",
+    "flipUpsideDown": "وارونه کردن",
+    "clear": "پاک‌سازی",
+    "inputPlaceholder": "متن خود را اینجا تایپ کنید..."
+  }
+}

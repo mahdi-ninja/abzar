@@ -1,0 +1,14 @@
+{
+  "sleepCalculator": {
+    "wakeTab": "می‌خواهم بیدار شوم در...",
+    "sleepTab": "می‌خواهم بخوابم در...",
+    "wakeUpTime": "زمان بیدار شدن",
+    "bedtime": "زمان خواب",
+    "reset": "بازنشانی",
+    "goToBedAt": "به رختخواب بروید:",
+    "setAlarmFor": "زنگ ساعت را تنظیم کنید:",
+    "cyclesHours": "{cycles} چرخه · {hours} ساعت",
+    "recommended": "پیشنهادی",
+    "disclaimer": "بر اساس چرخه‌های خواب ۹۰ دقیقه‌ای + ۱۵ دقیقه برای به خواب رفتن."
+  }
+}

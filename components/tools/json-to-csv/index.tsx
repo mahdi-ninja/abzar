@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/copy-button";
@@ -20,6 +21,7 @@ function jsonToCsv(json: string): string {
 }
 
 export default function JsonToCsv() {
+  const t = useTranslations("jsonToCsv");
   const [input, setInput] = useState("");
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
@@ -33,8 +35,8 @@ export default function JsonToCsv() {
   return (
     <div className="space-y-4">
       <InputOutputLayout
-        inputLabel="JSON Array"
-        outputLabel="CSV Output"
+        inputLabel={t("inputLabel")}
+        outputLabel={t("outputLabel")}
         input={
           <Textarea value={input} onChange={(e) => setInput(e.target.value)} placeholder='[{"name":"Alice","age":30},{"name":"Bob","age":25}]' className="min-h-62.5 font-mono text-sm" />
         }
@@ -47,8 +49,8 @@ export default function JsonToCsv() {
       />
       {error && <div className="rounded-md bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</div>}
       <div className="flex gap-2">
-        <Button size="sm" onClick={convert}>Convert</Button>
-        <Button size="sm" variant="outline" onClick={() => { setInput(""); setOutput(""); setError(""); }}>Clear</Button>
+        <Button size="sm" onClick={convert}>{t("convert")}</Button>
+        <Button size="sm" variant="outline" onClick={() => { setInput(""); setOutput(""); setError(""); }}>{t("clear")}</Button>
       </div>
     </div>
   );

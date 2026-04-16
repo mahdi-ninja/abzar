@@ -1,0 +1,21 @@
+{
+  "typingTest": {
+    "difficulty": "Difficulty",
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard",
+    "start": "Start",
+    "tryAgain": "Try Again",
+    "reset": "Reset",
+    "typeHere": "Type here",
+    "clickHint": "Click the text above if typing stops working.",
+    "wpm": "WPM",
+    "accuracy": "Accuracy",
+    "time": "Time",
+    "characters": "Characters",
+    "charProgress": "{typed}/{total}",
+    "excellent": "Excellent!",
+    "goodJob": "Good job!",
+    "keepPracticing": "Keep practicing!"
+  }
+}

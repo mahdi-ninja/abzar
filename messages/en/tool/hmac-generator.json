@@ -1,0 +1,11 @@
+{
+  "hmacGenerator": {
+    "message": "Message",
+    "secretKey": "Secret Key",
+    "algorithm": "Algorithm",
+    "messagePlaceholder": "Enter message...",
+    "secretPlaceholder": "Enter secret key...",
+    "generateHmac": "Generate HMAC",
+    "clear": "Clear"
+  }
+}

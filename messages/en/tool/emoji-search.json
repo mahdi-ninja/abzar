@@ -1,0 +1,8 @@
+{
+  "emojiSearch": {
+    "recentlyUsed": "Recently used",
+    "searchPlaceholder": "Search emojis…",
+    "resultCount": "{count} emoji{count, plural, one {} other {s}} — click to copy",
+    "noResults": "No emojis found for \"{query}\""
+  }
+}

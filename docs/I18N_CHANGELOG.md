@@ -226,7 +226,44 @@ Build output: 438 static pages (219 per locale).
 - **Service worker:** precache patterns updated to `{en,fa}/` prefixed paths
 - **RTL fixes:** Slider and Switch use `dir="ltr"` to prevent interaction issues; sidebar chevron uses `rtl:-scale-x-100`; site name displays "ابزار" in Persian
 
+## Per-tool Component i18n (completed)
+
+All 74 tool components fully internationalized with English + Persian translations.
+
+### Infrastructure
+
+| File | Change |
+|------|--------|
+| `i18n/request.ts` | Added `loadToolMessages()` — reads all `messages/{locale}/tool/*.json` files via `readdirSync` and merges them into the global message object |
+| `app/[locale]/tools/[category]/[tool-slug]/page.tsx` | Simplified to `const mergedMessages = await getMessages()` — per-tool messages are now loaded globally via `request.ts` |
+
+### Files Created (148 JSON files)
+
+For each of the 74 tools, created:
+- `messages/en/tool/{slug}.json` — English strings with camelCase namespace
+- `messages/fa/tool/{slug}.json` — Persian translations with same keys
+
+### Files Modified (74 components)
+
+All tool components in `components/tools/*/index.tsx` updated to:
+- Import `useTranslations` from `next-intl`
+- Call `const t = useTranslations("{camelCaseNamespace}")` at the top of the component
+- Replace all hardcoded strings with `t("key")` or `t("key", { var: value })`
+- Add `t` to `useCallback`/`useMemo` dependency arrays where referenced
+
+Additional cleanups during translation:
+- Removed redundant `inputLabel="Input"` / `outputLabel="Output"` props from `InputOutputLayout` (defaults are already translated via `useTranslations("ui")`)
+- Removed unused `SelectValue` imports where `<span>{t(...)}</span>` replaced it in `SelectTrigger`
+- Converted physical CSS directional classes to logical properties (`text-left` → `text-start`, `ml-*` → `ms-*`, etc.)
+
+### Convention
+
+- **Namespace**: camelCase of the slug (e.g., `json-formatter` → `jsonFormatter`, `game-of-life` → `gameOfLife`)
+- **JSON structure**: `{ "camelCaseNamespace": { "key": "value" } }`
+- **Interpolation**: ICU MessageFormat — `"Generated {count} passwords"` → `t("generated", { count: 5 })`
+- **Literal braces**: Escape with single quotes — `'{'` and `'}'`
+- **Auto-loading**: `i18n/request.ts` reads all files in `messages/{locale}/tool/` automatically — no per-tool wiring needed
+
 ## Still Needed
 
-- Per-tool component string files (`messages/{locale}/tool/*.json`) — incremental, one tool at a time (see `docs/I18N_HANDOFF.md` for details)
 - Localized OG images (optional — no generation exists yet)

@@ -1,0 +1,20 @@
+{
+  "cssArt": {
+    "algorithm": "Algorithm",
+    "sizeLabel": "Size: {value}px",
+    "complexityLabel": "Complexity: {value}",
+    "copyCss": "Copy CSS",
+    "download": "Download",
+    "color1": "Color 1",
+    "color2": "Color 2",
+    "preview": "Preview",
+    "algoDots": "Dots",
+    "algoStripes": "Stripes",
+    "algoCheckerboard": "Checkerboard",
+    "algoGradientBlob": "Gradient Blobs",
+    "algoConcentric": "Concentric",
+    "algoWave": "Waves",
+    "copySuccess": "Copied to clipboard!",
+    "copyFailed": "Copy failed"
+  }
+}

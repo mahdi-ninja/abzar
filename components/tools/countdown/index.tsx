@@ -1,11 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 
 export default function Countdown() {
+  const t = useTranslations("countdown");
   const [target, setTarget] = useState(() => {
     const d = new Date();
     d.setDate(d.getDate() + 30);
@@ -30,20 +32,20 @@ export default function Countdown() {
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-end gap-4">
-        <div className="flex-1 min-w-50"><Label className="text-sm mb-1 block">Event Name</Label><Input value={title} onChange={(e) => setTitle(e.target.value)} /></div>
-        <div><Label className="text-sm mb-1 block">Target Date</Label><Input type="date" value={target} onChange={(e) => setTarget(e.target.value)} /></div>
+        <div className="flex-1 min-w-50"><Label className="text-sm mb-1 block">{t("eventName")}</Label><Input value={title} onChange={(e) => setTitle(e.target.value)} /></div>
+        <div><Label className="text-sm mb-1 block">{t("targetDate")}</Label><Input type="date" value={target} onChange={(e) => setTarget(e.target.value)} /></div>
       </div>
       <div className="text-center py-4">
         <p className="text-sm text-muted-foreground mb-2">{title}</p>
         {isPast ? (
-          <p className="text-2xl font-bold text-primary">Event has passed!</p>
+          <p className="text-2xl font-bold text-primary">{t("eventPassed")}</p>
         ) : (
           <div className="grid grid-cols-4 gap-3 max-w-md mx-auto">
             {[
-              { value: days, label: "Days" },
-              { value: hours, label: "Hours" },
-              { value: minutes, label: "Minutes" },
-              { value: seconds, label: "Seconds" },
+              { value: days, label: t("days") },
+              { value: hours, label: t("hours") },
+              { value: minutes, label: t("minutes") },
+              { value: seconds, label: t("seconds") },
             ].map(({ value, label }) => (
               <Card key={label} className="p-3 text-center">
                 <div className="text-3xl font-bold tabular-nums">{value}</div>

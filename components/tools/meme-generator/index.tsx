@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useCallback, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,6 +9,7 @@ import { DownloadButton } from "@/components/ui/download-button";
 import { FileDropZone } from "@/components/ui/file-drop-zone";
 
 export default function MemeGenerator() {
+  const t = useTranslations("memeGenerator");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [imgUrl, setImgUrl] = useState<string | null>(null);
   const [topText, setTopText] = useState("WHEN YOU");
@@ -66,7 +68,7 @@ export default function MemeGenerator() {
       <FileDropZone
         accept="image/*"
         onFiles={handleFiles}
-        label="Drop an image or click to upload"
+        label={t("dropLabel")}
         maxSizeMB={20}
       />
     );
@@ -76,19 +78,19 @@ export default function MemeGenerator() {
     <div className="space-y-4">
       <div className="flex flex-wrap gap-3 items-end">
         <div className="flex-1 min-w-40">
-          <Label className="text-xs mb-1 block">Top text</Label>
-          <Input value={topText} onChange={(e) => setTopText(e.target.value)} placeholder="Top text…" />
+          <Label className="text-xs mb-1 block">{t("topText")}</Label>
+          <Input value={topText} onChange={(e) => setTopText(e.target.value)} placeholder={`${t("topText")}…`} />
         </div>
         <div className="flex-1 min-w-40">
-          <Label className="text-xs mb-1 block">Bottom text</Label>
-          <Input value={bottomText} onChange={(e) => setBottomText(e.target.value)} placeholder="Bottom text…" />
+          <Label className="text-xs mb-1 block">{t("bottomText")}</Label>
+          <Input value={bottomText} onChange={(e) => setBottomText(e.target.value)} placeholder={`${t("bottomText")}…`} />
         </div>
         <div className="w-40">
-          <Label className="text-xs mb-1 block">Font size: {fontSize}px</Label>
+          <Label className="text-xs mb-1 block">{t("fontSizeLabel", { value: fontSize })}</Label>
           <Slider value={[fontSize]} onValueChange={(v) => setFontSize(Array.isArray(v) ? v[0] : v)} min={16} max={100} step={2} />
         </div>
         <div>
-          <Label className="text-xs mb-1 block">Text color</Label>
+          <Label className="text-xs mb-1 block">{t("textColor")}</Label>
           <Input
             type="color"
             value={textColor}
@@ -98,9 +100,9 @@ export default function MemeGenerator() {
         </div>
         {/* setImgUrl(null) triggers the useEffect cleanup which revokes the URL */}
         <Button size="sm" variant="outline" onClick={() => setImgUrl(null)}>
-          Change Image
+          {t("changeImage")}
         </Button>
-        {blob && <DownloadButton data={blob} filename="meme.png" label="Download PNG" />}
+        {blob && <DownloadButton data={blob} filename="meme.png" label={t("downloadPng")} />}
       </div>
       <div className="overflow-auto">
         <canvas ref={canvasRef} className="rounded-lg border border-border max-w-full" />

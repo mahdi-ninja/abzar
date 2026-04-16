@@ -1,0 +1,12 @@
+{
+  "drumMachine": {
+    "play": "Play",
+    "stop": "Stop",
+    "bpm": "BPM: {bpm}",
+    "clear": "Clear",
+    "toggleStep": "Toggle {instrument} step {step}",
+    "exportBars": "Export bars:",
+    "rendering": "Rendering…",
+    "downloadWav": "↓ WAV"
+  }
+}

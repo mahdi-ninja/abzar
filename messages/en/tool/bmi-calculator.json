@@ -1,0 +1,15 @@
+{
+  "bmiCalculator": {
+    "imperial": "Imperial (lbs/in)",
+    "metric": "Metric (kg/cm)",
+    "reset": "Reset",
+    "weightLbs": "Weight (lbs)",
+    "weightKg": "Weight (kg)",
+    "heightInches": "Height (inches)",
+    "heightCm": "Height (cm)",
+    "underweight": "Underweight",
+    "normal": "Normal",
+    "overweight": "Overweight",
+    "obese": "Obese"
+  }
+}

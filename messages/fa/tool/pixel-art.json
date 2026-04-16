@@ -1,0 +1,14 @@
+{
+  "pixelArt": {
+    "grid": "شبکه",
+    "tool": "ابزار",
+    "pencil": "مداد",
+    "eraser": "پاک‌کن",
+    "fill": "پر کردن",
+    "undo": "برگرداندن",
+    "importImage": "ورودی تصویر",
+    "clear": "پاک‌سازی",
+    "exportPng": "خروجی PNG",
+    "selectColor": "انتخاب رنگ {color}"
+  }
+}

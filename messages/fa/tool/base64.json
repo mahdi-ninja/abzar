@@ -1,0 +1,19 @@
+{
+  "base64": {
+    "text": "متن",
+    "file": "فایل",
+    "encode": "رمزگذاری",
+    "decode": "رمزگشایی",
+    "clear": "پاک‌سازی",
+    "encodePlaceholder": "متن را برای رمزگذاری وارد کنید...",
+    "decodePlaceholder": "Base64 را برای رمزگشایی وارد کنید...",
+    "dropFileLabel": "فایل را اینجا رها کنید",
+    "selectedFile": "انتخاب‌شده: {fileName}",
+    "resultPlaceholder": "نتیجه اینجا نمایش داده می‌شود",
+    "characters": "{count} کاراکتر",
+    "invalidBase64": "رشته Base64 نامعتبر",
+    "encodeFailed": "خطا در رمزگذاری متن",
+    "readFailed": "خطا در خواندن فایل",
+    "fileInfo": "[فایل: {name} — {size} کیلوبایت]"
+  }
+}

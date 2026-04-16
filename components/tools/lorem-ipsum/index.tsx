@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
@@ -30,6 +31,7 @@ function generate(style: string, count: number): string {
 }
 
 export default function LoremIpsum() {
+  const t = useTranslations("loremIpsum");
   const [style, setStyle] = useState("classic");
   const [count, setCount] = useState(3);
   const [output, setOutput] = useState(() => generate("classic", 3));
@@ -39,13 +41,13 @@ export default function LoremIpsum() {
       <div className="flex flex-wrap items-end gap-4">
         <Tabs value={style} onValueChange={(v) => { setStyle(v); setOutput(generate(v, count)); }}>
           <TabsList className="h-8">
-            <TabsTrigger value="classic" className="text-xs px-2.5 h-6">Classic</TabsTrigger>
-            <TabsTrigger value="hipster" className="text-xs px-2.5 h-6">Hipster</TabsTrigger>
-            <TabsTrigger value="corporate" className="text-xs px-2.5 h-6">Corporate</TabsTrigger>
+            <TabsTrigger value="classic" className="text-xs px-2.5 h-6">{t("classic")}</TabsTrigger>
+            <TabsTrigger value="hipster" className="text-xs px-2.5 h-6">{t("hipster")}</TabsTrigger>
+            <TabsTrigger value="corporate" className="text-xs px-2.5 h-6">{t("corporate")}</TabsTrigger>
           </TabsList>
         </Tabs>
         <div className="w-40">
-          <Label className="text-xs mb-1 block">Paragraphs: {count}</Label>
+          <Label className="text-xs mb-1 block">{t("paragraphsLabel", { count })}</Label>
           <Slider value={[count]} onValueChange={(v) => { const n = Array.isArray(v) ? v[0] : v; setCount(n); setOutput(generate(style, n)); }} min={1} max={10} step={1} />
         </div>
       </div>

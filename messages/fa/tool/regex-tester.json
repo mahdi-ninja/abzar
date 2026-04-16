@@ -1,0 +1,19 @@
+{
+  "regexTester": {
+    "clear": "پاک‌سازی",
+    "regularExpression": "عبارت باقاعده",
+    "patternPlaceholder": "الگوی regex را وارد کنید...",
+    "flagGlobal": "سراسری",
+    "flagCaseInsensitive": "بدون حساسیت حروف",
+    "flagMultiline": "چندخطی",
+    "flagDotall": "Dotall",
+    "testString": "متن آزمایشی",
+    "matchesCount": "تطابق‌ها ({count})",
+    "testPlaceholder": "متن مورد آزمایش را وارد کنید...",
+    "captureGroups": "گروه‌های جمع‌آوری",
+    "thMatch": "#",
+    "thMatchValue": "تطابق",
+    "thIndex": "شاخص",
+    "thGroups": "گروه‌ها"
+  }
+}

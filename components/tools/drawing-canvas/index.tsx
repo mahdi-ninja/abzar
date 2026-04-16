@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useCallback, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,6 +16,7 @@ const PALETTE = [
 ];
 
 export default function DrawingCanvas() {
+  const t = useTranslations("drawingCanvas");
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [tool, setTool] = useState<DrawTool>("brush");
   const [color, setColor] = useState("#000000");
@@ -121,29 +123,28 @@ export default function DrawingCanvas() {
     <div className="space-y-3">
       <div className="flex flex-wrap items-end gap-3">
         <div className="flex gap-1">
-          {(["brush", "eraser"] as DrawTool[]).map((t) => (
+          {(["brush", "eraser"] as DrawTool[]).map((dt) => (
             <Button
-              key={t}
+              key={dt}
               size="sm"
-              variant={tool === t ? "default" : "outline"}
-              onClick={() => setTool(t)}
-              className="capitalize"
+              variant={tool === dt ? "default" : "outline"}
+              onClick={() => setTool(dt)}
             >
-              {t === "brush" ? "✏️" : "⬜"} {t}
+              {dt === "brush" ? "✏️" : "⬜"} {t(dt)}
             </Button>
           ))}
         </div>
         <div className="w-40">
-          <Label className="text-xs mb-1 block">Size: {brushSize}px</Label>
+          <Label className="text-xs mb-1 block">{t("sizeLabel", { value: brushSize })}</Label>
           <Slider value={[brushSize]} onValueChange={(v) => setBrushSize(Array.isArray(v) ? v[0] : v)} min={1} max={60} step={1} />
         </div>
         <Button size="sm" variant="outline" onClick={undo} disabled={history.length === 0}>
-          Undo
+          {t("undo")}
         </Button>
         <Button size="sm" variant="outline" onClick={clear}>
-          Clear
+          {t("clear")}
         </Button>
-        {blob && <DownloadButton data={blob} filename="drawing.png" label="Download PNG" />}
+        {blob && <DownloadButton data={blob} filename="drawing.png" label={t("downloadPng")} />}
       </div>
 
       <div className="flex flex-wrap gap-1 items-center">
@@ -161,7 +162,7 @@ export default function DrawingCanvas() {
           value={color}
           onChange={(e) => { setColor(e.target.value); setTool("brush"); }}
           className="h-7 w-9 p-0.5 cursor-pointer rounded border"
-          title="Custom color"
+          title={t("customColor")}
         />
       </div>
 

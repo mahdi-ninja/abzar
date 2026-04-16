@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -47,6 +48,7 @@ function createBoard(name: string): KanbanBoard {
 }
 
 export default function Kanban() {
+  const t = useTranslations("kanban");
   const [boards, setBoards] = useLocalStorage<KanbanBoard[]>(
     "abzar:kanban:boards",
     [createBoard("My Board")]
@@ -210,14 +212,14 @@ export default function Kanban() {
       {/* Board switcher */}
       <div className="flex flex-wrap items-end gap-3">
         <div className="flex-1 min-w-45">
-          <Label className="text-xs mb-1 block">Board</Label>
+          <Label className="text-xs mb-1 block">{t("board")}</Label>
           <div className="flex items-center gap-2">
             <Select
               value={activeBoardId}
               onValueChange={(v) => v && setActiveBoardId(v)}
             >
               <SelectTrigger className="text-sm">
-                <span>{board?.name ?? "Select board"}</span>
+                <span>{board?.name ?? t("selectBoard")}</span>
               </SelectTrigger>
               <SelectContent>
                 {boards.map((b) => (
@@ -237,12 +239,12 @@ export default function Kanban() {
                   autoFocus
                 />
                 <Button size="sm" variant="secondary" onClick={finishRename} className="h-8">
-                  Save
+                  {t("save")}
                 </Button>
               </div>
             ) : (
               <Button size="sm" variant="ghost" onClick={startRename} className="h-8 text-xs">
-                Rename
+                {t("rename")}
               </Button>
             )}
           </div>
@@ -253,7 +255,7 @@ export default function Kanban() {
             value={newBoardName}
             onChange={(e) => setNewBoardName(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && addBoard()}
-            placeholder="New board..."
+            placeholder={t("newBoardPlaceholder")}
             className="h-8 text-sm w-32"
           />
           <Button size="sm" variant="outline" onClick={addBoard} className="h-8">
@@ -268,7 +270,7 @@ export default function Kanban() {
             onClick={() => deleteBoard(board.id)}
             className="h-8 text-xs text-muted-foreground hover:text-destructive"
           >
-            Delete Board
+            {t("deleteBoard")}
           </Button>
         )}
       </div>
@@ -290,7 +292,7 @@ export default function Kanban() {
                   <button
                     onClick={() => removeColumn(col.id)}
                     className="text-muted-foreground hover:text-destructive text-xs ms-1"
-                    aria-label="Remove column"
+                    aria-label={t("removeColumn")}
                   >
                     ×
                   </button>
@@ -311,7 +313,7 @@ export default function Kanban() {
                     <button
                       onClick={() => removeCard(col.id, card.id)}
                       className="text-muted-foreground hover:text-destructive text-xs shrink-0"
-                      aria-label="Remove card"
+                      aria-label={t("removeCard")}
                     >
                       ×
                     </button>
@@ -327,7 +329,7 @@ export default function Kanban() {
                   setNewCardText((prev) => ({ ...prev, [col.id]: e.target.value }))
                 }
                 onKeyDown={(e) => e.key === "Enter" && addCard(col.id)}
-                placeholder="New card..."
+                placeholder={t("newCardPlaceholder")}
                 className="text-sm h-8"
               />
               <Button size="sm" variant="secondary" onClick={() => addCard(col.id)} className="h-8 shrink-0">
@@ -344,7 +346,7 @@ export default function Kanban() {
               value={newColTitle}
               onChange={(e) => setNewColTitle(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && addColumn()}
-              placeholder="New column..."
+              placeholder={t("newColumnPlaceholder")}
               className="text-sm h-8"
             />
             <Button size="sm" variant="outline" onClick={addColumn} className="h-8 shrink-0">

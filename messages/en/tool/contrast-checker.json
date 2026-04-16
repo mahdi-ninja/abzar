@@ -1,0 +1,17 @@
+{
+  "contrastChecker": {
+    "reset": "Reset",
+    "foreground": "Foreground (text)",
+    "background": "Background",
+    "swapColors": "Swap colors",
+    "largeTextPreview": "Large Text Preview (24px bold)",
+    "normalTextPreview": "Normal text preview (16px). The quick brown fox jumps over the lazy dog.",
+    "smallTextPreview": "Small text preview (14px). WCAG requires higher contrast for smaller text.",
+    "contrastRatio": "Contrast Ratio",
+    "level": "Level",
+    "normalText": "Normal Text",
+    "largeText": "Large Text",
+    "pass": "Pass",
+    "fail": "Fail"
+  }
+}

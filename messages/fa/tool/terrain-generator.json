@@ -1,0 +1,15 @@
+{
+  "terrainGenerator": {
+    "seedLabel": "بذر: {value}",
+    "scaleLabel": "مقیاس: {value}",
+    "octavesLabel": "جزئیات (اکتاو): {value}",
+    "newTerrain": "زمین جدید",
+    "downloadPng": "دانلود PNG",
+    "deepWater": "آب عمیق",
+    "shallow": "کم‌عمق",
+    "sand": "شن",
+    "grass": "چمن",
+    "rock": "سنگ",
+    "snow": "برف"
+  }
+}

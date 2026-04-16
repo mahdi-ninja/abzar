@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useRef, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -9,7 +10,6 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
 } from "@/components/ui/select";
 
 const TEXTS: Record<string, string[]> = {
@@ -67,6 +67,7 @@ const TEXTS: Record<string, string[]> = {
 };
 
 export default function TypingTest() {
+  const t = useTranslations("typingTest");
   const [difficulty, setDifficulty] = useState("medium");
   const [targetText, setTargetText] = useState(() => {
     const pool = TEXTS["medium"];
@@ -139,23 +140,23 @@ export default function TypingTest() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end gap-3">
         <div>
-          <Label className="text-sm mb-1 block">Difficulty</Label>
+          <Label className="text-sm mb-1 block">{t("difficulty")}</Label>
           <Select value={difficulty} onValueChange={(v) => { if (v) { setDifficulty(v); pickText(v); } }} disabled={started && !finished}>
             <SelectTrigger className="w-32">
-              <SelectValue />
+              <span>{t(difficulty as "easy" | "medium" | "hard")}</span>
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="easy">Easy</SelectItem>
-              <SelectItem value="medium">Medium</SelectItem>
-              <SelectItem value="hard">Hard</SelectItem>
+              <SelectItem value="easy">{t("easy")}</SelectItem>
+              <SelectItem value="medium">{t("medium")}</SelectItem>
+              <SelectItem value="hard">{t("hard")}</SelectItem>
             </SelectContent>
           </Select>
         </div>
         {!started || finished ? (
-          <Button onClick={handleStart}>{finished ? "Try Again" : "Start"}</Button>
+          <Button onClick={handleStart}>{finished ? t("tryAgain") : t("start")}</Button>
         ) : (
           <Button variant="outline" onClick={() => { stopTimer(); setStarted(false); setFinished(false); setTyped(""); setElapsed(0); pickText(difficulty); }}>
-            Reset
+            {t("reset")}
           </Button>
         )}
       </div>
@@ -189,38 +190,38 @@ export default function TypingTest() {
         autoComplete="off"
         autoCorrect="off"
         spellCheck={false}
-        aria-label="Type here"
+        aria-label={t("typeHere")}
       />
 
       {started && !finished && (
         <p className="text-xs text-muted-foreground text-center">
-          Click the text above if typing stops working.
+          {t("clickHint")}
         </p>
       )}
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         <Card className="p-3 text-center">
           <div className="text-2xl font-bold tabular-nums">{wpm}</div>
-          <div className="text-xs text-muted-foreground">WPM</div>
+          <div className="text-xs text-muted-foreground">{t("wpm")}</div>
         </Card>
         <Card className="p-3 text-center">
           <div className="text-2xl font-bold tabular-nums">{accuracy}%</div>
-          <div className="text-xs text-muted-foreground">Accuracy</div>
+          <div className="text-xs text-muted-foreground">{t("accuracy")}</div>
         </Card>
         <Card className="p-3 text-center">
           <div className="text-2xl font-bold tabular-nums">{seconds.toFixed(1)}s</div>
-          <div className="text-xs text-muted-foreground">Time</div>
+          <div className="text-xs text-muted-foreground">{t("time")}</div>
         </Card>
         <Card className="p-3 text-center">
-          <div className="text-2xl font-bold tabular-nums">{typed.length}/{targetText.length}</div>
-          <div className="text-xs text-muted-foreground">Characters</div>
+          <div className="text-2xl font-bold tabular-nums">{t("charProgress", { typed: typed.length, total: targetText.length })}</div>
+          <div className="text-xs text-muted-foreground">{t("characters")}</div>
         </Card>
       </div>
 
       {finished && (
         <div className="text-center space-y-2">
           <p className="text-lg font-semibold">
-            {wpm >= 80 ? "Excellent!" : wpm >= 50 ? "Good job!" : "Keep practicing!"}
+            {wpm >= 80 ? t("excellent") : wpm >= 50 ? t("goodJob") : t("keepPracticing")}
           </p>
         </div>
       )}

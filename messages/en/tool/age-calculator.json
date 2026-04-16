@@ -1,0 +1,10 @@
+{
+  "ageCalculator": {
+    "dateOfBirth": "Date of Birth",
+    "reset": "Reset",
+    "ageFormat": "{years} years, {months} months, {days} days",
+    "totalDaysAlive": "Total days alive",
+    "totalHoursAlive": "Total hours alive",
+    "daysUntilBirthday": "Days until birthday"
+  }
+}

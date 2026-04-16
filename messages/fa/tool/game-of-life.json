@@ -1,0 +1,11 @@
+{
+  "gameOfLife": {
+    "pause": "مکث",
+    "play": "پخش",
+    "step": "گام",
+    "random": "تصادفی",
+    "clear": "پاک‌سازی",
+    "speed": "سرعت: {ms}ms",
+    "generation": "نسل: {gen} · سلول‌ها: {cells}"
+  }
+}

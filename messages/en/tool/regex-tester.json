@@ -1,0 +1,19 @@
+{
+  "regexTester": {
+    "clear": "Clear",
+    "regularExpression": "Regular Expression",
+    "patternPlaceholder": "Enter regex pattern...",
+    "flagGlobal": "Global",
+    "flagCaseInsensitive": "Case insensitive",
+    "flagMultiline": "Multiline",
+    "flagDotall": "Dotall",
+    "testString": "Test String",
+    "matchesCount": "Matches ({count})",
+    "testPlaceholder": "Enter text to test against...",
+    "captureGroups": "Capture Groups",
+    "thMatch": "#",
+    "thMatchValue": "Match",
+    "thIndex": "Index",
+    "thGroups": "Groups"
+  }
+}

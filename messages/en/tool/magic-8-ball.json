@@ -1,0 +1,30 @@
+{
+  "magic8Ball": {
+    "placeholder": "Ask a yes/no question...",
+    "shake": "Shake",
+    "shaking": "Shaking...",
+    "clear": "Clear",
+    "answers": {
+      "certain": "It is certain",
+      "decidedly": "It is decidedly so",
+      "withoutDoubt": "Without a doubt",
+      "yesDefinitely": "Yes definitely",
+      "rely": "You may rely on it",
+      "asISeeIt": "As I see it, yes",
+      "mostLikely": "Most likely",
+      "outlookGood": "Outlook good",
+      "yes": "Yes",
+      "signsYes": "Signs point to yes",
+      "hazy": "Reply hazy, try again",
+      "askAgain": "Ask again later",
+      "betterNot": "Better not tell you now",
+      "cannotPredict": "Cannot predict now",
+      "concentrate": "Concentrate and ask again",
+      "dontCount": "Don't count on it",
+      "replyNo": "My reply is no",
+      "sourcesNo": "My sources say no",
+      "outlookBad": "Outlook not so good",
+      "doubtful": "Very doubtful"
+    }
+  }
+}

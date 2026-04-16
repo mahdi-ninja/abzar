@@ -1,0 +1,9 @@
+{
+  "romanNumerals": {
+    "reset": "Reset",
+    "arabicLabel": "Arabic Number",
+    "romanLabel": "Roman Numeral",
+    "toRoman": "→ Roman:",
+    "toArabic": "→ Arabic:"
+  }
+}
