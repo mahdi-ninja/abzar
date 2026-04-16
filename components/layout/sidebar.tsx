@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { categories } from "@/lib/categories";
 import { getToolsByCategory } from "@/lib/tools-registry";
 import { cn } from "@/lib/utils";
@@ -15,11 +15,13 @@ interface SidebarProps {
 
 export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
   const pathname = usePathname();
+  const t = useTranslations("nav");
+  const tCat = useTranslations("categories");
 
   return (
     <aside
       className={cn(
-        "flex h-full flex-col border-r border-border bg-sidebar text-sidebar-foreground transition-all duration-200",
+        "flex h-full flex-col border-e border-border bg-sidebar text-sidebar-foreground transition-all duration-200",
         collapsed ? "w-14" : "w-60"
       )}
     >
@@ -34,7 +36,7 @@ export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
           size="icon"
           className="h-8 w-8 shrink-0"
           onClick={onToggle}
-          aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+          aria-label={collapsed ? t("expandSidebar") : t("collapseSidebar")}
         >
           <svg
             className={cn("h-4 w-4 transition-transform", collapsed && "rotate-180")}
@@ -66,12 +68,12 @@ export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
                     isActive &&
                       "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
                   )}
-                  title={collapsed ? cat.name : undefined}
+                  title={collapsed ? tCat(`${cat.slug}.name`) : undefined}
                 >
                   <span className="shrink-0 text-base leading-none">{cat.icon}</span>
                   {!collapsed && (
                     <>
-                      <span className="flex-1 truncate">{cat.name}</span>
+                      <span className="flex-1 truncate">{tCat(`${cat.slug}.name`)}</span>
                       <span className="text-xs text-muted-foreground tabular-nums">
                         {toolCount}
                       </span>

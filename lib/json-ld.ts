@@ -1,12 +1,15 @@
 import type { Tool } from "./tools-registry";
 import { siteConfig } from "./config";
 
-export function generateToolJsonLd(tool: Tool) {
+export function generateToolJsonLd(
+  tool: Tool,
+  overrides?: { name: string; description: string }
+) {
   return {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    name: tool.name,
-    description: tool.description,
+    name: overrides?.name ?? tool.name,
+    description: overrides?.description ?? tool.description,
     url: `${siteConfig.url}/tools/${tool.category}/${tool.slug}`,
     applicationCategory: "UtilityApplication",
     operatingSystem: "Any",

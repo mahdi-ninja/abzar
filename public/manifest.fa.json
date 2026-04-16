@@ -1,0 +1,18 @@
+{
+  "name": "ابزار — بیش از ۲۰۰ ابزار رایگان مرورگر",
+  "short_name": "ابزار",
+  "description": "بیش از ۲۰۰ ابزار رایگان مرورگر. بدون ثبت‌نام، بدون سرور، همه چیز در مرورگر شما اجرا می‌شود.",
+  "lang": "fa",
+  "dir": "rtl",
+  "start_url": "/fa",
+  "scope": "/",
+  "id": "/fa",
+  "display": "standalone",
+  "categories": ["utilities", "developer", "productivity"],
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "theme_color": "#f59e0b",
+  "background_color": "#ffffff"
+}

@@ -4,6 +4,8 @@
 
 > **Purpose**: This document is the complete specification for building Abzar. It covers architecture, modular loading strategy, every tool spec, and implementation guidelines.
 
+> **Note (i18n)**: Since this spec was written, the app has been internationalized with `next-intl`. All routes now live under `app/[locale]/` (e.g. `app/[locale]/tools/[category]/[tool-slug]/page.tsx`). URLs always include a locale prefix (`/en/...`, `/fa/...`). Tool components themselves don't change — i18n is handled at the page/layout level. See `docs/I18N_CHANGELOG.md` for full details.
+
 ---
 
 ## Table of Contents
@@ -27,7 +29,7 @@
 
 | Concern | Choice | Why |
 |---------|--------|-----|
-| Framework | Next.js 14+ (App Router) | File-based routing gives automatic route-level code splitting. Each tool is its own route and its own JS chunk. |
+| Framework | Next.js 16 (App Router) | File-based routing gives automatic route-level code splitting. Each tool is its own route and its own JS chunk. |
 | Language | TypeScript | Type safety across 200+ tool components. |
 | Styling | Tailwind CSS | Utility-first keeps styles co-located with components. Purge removes unused classes in production. |
 | State | React hooks + `localStorage` | No global state library needed. Each tool manages its own state. Persistence via a shared `useLocalStorage` hook. |
@@ -163,22 +165,40 @@ export const tools = [
 ```
 abzar/
 ├── app/
-│   ├── layout.tsx                        # Root layout: sidebar + header + theme
-│   ├── page.tsx                          # Homepage: search, category grid, featured tools
-│   └── tools/
-│       ├── layout.tsx                    # Tools layout (optional: breadcrumbs wrapper)
-│       └── [category]/
-│           ├── page.tsx                  # Category listing page
-│           └── [tool-slug]/
-│               └── page.tsx             # Tool page: metadata + ToolPage shell + dynamic import
+│   ├── page.tsx                          # Root redirect: / → /en
+│   ├── not-found.tsx                     # Root 404 page
+│   └── [locale]/
+│       ├── layout.tsx                    # Root layout: html lang/dir, fonts, providers
+│       ├── page.tsx                      # Homepage: search, category grid, featured tools
+│       ├── not-found.tsx                 # Localized 404 page
+│       └── tools/
+│           └── [category]/
+│               ├── page.tsx              # Category listing page
+│               └── [tool-slug]/
+│                   └── page.tsx          # Tool page: metadata + ToolPage shell + dynamic import
+│
+├── i18n/
+│   ├── routing.ts                        # Locales, default locale, prefix strategy
+│   ├── request.ts                        # Server-side message loading
+│   └── navigation.ts                     # Locale-aware Link, useRouter, usePathname, redirect
+│
+├── messages/
+│   ├── en/                               # English translations (some generated, some hand-written)
+│   └── fa/                               # Persian translations
+│
+├── scripts/
+│   ├── generate-messages.ts              # Extract English messages from registry
+│   └── generate-sitemap.ts              # Multi-locale sitemap with hreflang
 │
 ├── components/
 │   ├── layout/
 │   │   ├── sidebar.tsx                  # Category navigation sidebar
-│   │   ├── header.tsx                   # Top bar with search + theme toggle
+│   │   ├── header.tsx                   # Top bar with search + theme toggle + locale switcher
 │   │   ├── breadcrumbs.tsx              # Breadcrumb navigation
 │   │   ├── tool-page.tsx               # Shared tool page shell (title, desc, about, SEO)
 │   │   └── tool-skeleton.tsx           # Loading skeleton for dynamic tool imports
+│   │
+│   ├── locale-switcher.tsx              # Language dropdown (en/fa)
 │   │
 │   ├── ui/                             # Reusable UI primitives (see section below)
 │   │   ├── copy-button.tsx
@@ -210,21 +230,22 @@ abzar/
 │
 ├── public/
 │   ├── icons/                         # Category SVG icons
-│   └── data/                          # Static reference data (currency rates, port list, OUI db)
+│   ├── data/                          # Static reference data (currency rates, port list, OUI db)
+│   ├── manifest.en.json               # English PWA manifest
+│   └── manifest.fa.json               # Persian PWA manifest
 │
-├── tailwind.config.ts
 ├── next.config.ts
 ├── tsconfig.json
 ├── package.json
-└── TOOLS_SPEC.md                      # This file
+└── ABZAR_SPEC.md                      # This file
 ```
 
 **Key rule: Adding a new tool means touching exactly 3 places:**
 1. Add metadata to `lib/tools-registry.ts`
 2. Create `components/tools/[tool-slug]/index.tsx`
-3. Create `app/tools/[category]/[tool-slug]/page.tsx`
+3. Add dynamic import to `app/[locale]/tools/[category]/[tool-slug]/page.tsx` `toolComponents` map
 
-Nothing else changes. No barrel files to update, no imports to add to shared code.
+Nothing else changes. No barrel files to update, no imports to add to shared code. English translation messages are auto-generated from the registry at dev/build time.
 
 ---
 
@@ -803,7 +824,7 @@ Remaining tools in any order. Prioritize by user demand.
 
 1. Add entry to `lib/tools-registry.ts` with all metadata fields
 2. Create `components/tools/[slug]/index.tsx` — the interactive component
-3. Create `app/tools/[category]/[slug]/page.tsx` — thin wrapper with `ToolPage` + `dynamic` import
+3. Add dynamic import to `app/[locale]/tools/[category]/[tool-slug]/page.tsx` `toolComponents` map
 4. If the tool needs static data, add it to `public/data/` and fetch with a relative import
-5. Test: desktop, mobile, dark mode, empty state, error state
+5. Test: desktop, mobile, dark mode, empty state, error state, RTL (Persian locale)
 6. Commit with message: `feat: add [tool-name] tool`

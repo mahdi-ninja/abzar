@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import {
   Command,
   CommandEmpty,
@@ -19,6 +20,7 @@ export function HomeSearch() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<Tool[]>([]);
   const router = useRouter();
+  const t = useTranslations("nav");
 
   const handleSearch = useCallback((value: string) => {
     setQuery(value);
@@ -43,13 +45,13 @@ export function HomeSearch() {
   return (
     <Command className="rounded-lg border shadow-sm" shouldFilter={false}>
       <CommandInput
-        placeholder="Search tools..."
+        placeholder={t("searchPlaceholder")}
         value={query}
         onValueChange={handleSearch}
       />
       {query.trim().length > 0 && (
         <CommandList>
-          <CommandEmpty>No tools found.</CommandEmpty>
+          <CommandEmpty>{t("noResults")}</CommandEmpty>
           {results.length > 0 && (
             <CommandGroup>
               {results.map((tool) => {
@@ -72,7 +74,7 @@ export function HomeSearch() {
                     </div>
                     {!accessible && (
                       <Badge variant="secondary" className="text-[10px] px-1.5 py-0 shrink-0">
-                        Coming Soon
+                        {t("comingSoon")}
                       </Badge>
                     )}
                   </CommandItem>

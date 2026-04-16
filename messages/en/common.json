@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "searchPlaceholder": "Search tools...",
+    "noResults": "No tools found.",
+    "installApp": "Install Abzar",
+    "offline": "Offline",
+    "expandSidebar": "Expand sidebar",
+    "collapseSidebar": "Collapse sidebar",
+    "openNavigation": "Open navigation",
+    "navigation": "Navigation",
+    "comingSoon": "Coming Soon"
+  },
+  "localeSwitcher": {
+    "label": "Language",
+    "en": "English",
+    "fa": "فارسی"
+  },
+  "breadcrumbs": {
+    "home": "Home"
+  },
+  "notFound": {
+    "message": "Page not found",
+    "goHome": "Go home"
+  },
+  "toolPage": {
+    "comingSoonTitle": "Coming Soon",
+    "comingSoonDesc": "This tool is currently under development.",
+    "aboutHeading": "About this tool",
+    "howToHeading": "How to use",
+    "relatedHeading": "Related Tools"
+  },
+  "categoryPage": {
+    "comingSoon": "Coming Soon",
+    "toolsSuffix": "Tools",
+    "betaBadge": "Beta",
+    "newBadge": "New"
+  }
+}

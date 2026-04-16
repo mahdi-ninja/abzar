@@ -289,7 +289,7 @@ export default function Kanban() {
                 {columns.length > 1 && (
                   <button
                     onClick={() => removeColumn(col.id)}
-                    className="text-muted-foreground hover:text-destructive text-xs ml-1"
+                    className="text-muted-foreground hover:text-destructive text-xs ms-1"
                     aria-label="Remove column"
                   >
                     ×

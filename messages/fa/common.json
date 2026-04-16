@@ -1,0 +1,38 @@
+{
+  "nav": {
+    "searchPlaceholder": "جستجوی ابزار...",
+    "noResults": "ابزاری یافت نشد.",
+    "installApp": "نصب ابزار",
+    "offline": "آفلاین",
+    "expandSidebar": "باز کردن نوار کناری",
+    "collapseSidebar": "بستن نوار کناری",
+    "openNavigation": "باز کردن منو",
+    "navigation": "منوی ناوبری",
+    "comingSoon": "به‌زودی"
+  },
+  "localeSwitcher": {
+    "label": "زبان",
+    "en": "English",
+    "fa": "فارسی"
+  },
+  "breadcrumbs": {
+    "home": "خانه"
+  },
+  "notFound": {
+    "message": "صفحه یافت نشد",
+    "goHome": "بازگشت به خانه"
+  },
+  "toolPage": {
+    "comingSoonTitle": "به‌زودی",
+    "comingSoonDesc": "این ابزار در حال توسعه است.",
+    "aboutHeading": "درباره این ابزار",
+    "howToHeading": "نحوه استفاده",
+    "relatedHeading": "ابزارهای مرتبط"
+  },
+  "categoryPage": {
+    "comingSoon": "به‌زودی",
+    "toolsSuffix": "ابزار",
+    "betaBadge": "بتا",
+    "newBadge": "جدید"
+  }
+}

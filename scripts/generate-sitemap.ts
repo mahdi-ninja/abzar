@@ -1,51 +1,71 @@
-import { writeFileSync } from "fs";
-import { categories } from "../lib/categories";
-import { getVisibleTools } from "../lib/tools-registry";
-import { siteConfig } from "../lib/config";
+import { tools, isToolAccessible } from '../lib/tools-registry';
+import { categories } from '../lib/categories';
+import { locales, routing } from '../i18n/routing';
+import { siteConfig } from '../lib/config';
+import { writeFileSync } from 'fs';
 
-const BASE_URL = siteConfig.url;
+const baseUrl = siteConfig.url;
+const today = new Date().toISOString().split('T')[0];
 
-function generateSitemap(): string {
-  const now = new Date().toISOString().split("T")[0];
-
-  const urls: string[] = [];
-
-  // Homepage
-  urls.push(`  <url>
-    <loc>${BASE_URL}</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>`);
-
-  // Category pages
-  for (const cat of categories) {
-    urls.push(`  <url>
-    <loc>${BASE_URL}/tools/${cat.slug}</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>`);
-  }
-
-  // Tool pages
-  for (const tool of getVisibleTools()) {
-    urls.push(`  <url>
-    <loc>${BASE_URL}/tools/${tool.category}/${tool.slug}</loc>
-    <lastmod>${now}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>`);
-  }
-
-  return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.join("\n")}
-</urlset>`;
+function urlForLocale(path: string, locale: string): string {
+  return `${baseUrl}/${locale}${path}`;
 }
 
-const sitemap = generateSitemap();
-writeFileSync("public/sitemap.xml", sitemap, "utf-8");
+function alternateLinks(path: string): string {
+  return locales
+    .map(
+      (l) =>
+        `    <xhtml:link rel="alternate" hreflang="${l}" href="${urlForLocale(path, l)}" />`
+    )
+    .concat([
+      `    <xhtml:link rel="alternate" hreflang="x-default" href="${urlForLocale(path, routing.defaultLocale)}" />`,
+    ])
+    .join('\n');
+}
+
+function urlEntry(path: string, priority: string, changefreq: string): string {
+  return locales
+    .map(
+      (l) => `  <url>
+    <loc>${urlForLocale(path, l)}</loc>
+${alternateLinks(path)}
+    <lastmod>${today}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`
+    )
+    .join('\n');
+}
+
+const liveTools = tools.filter(
+  (t) => isToolAccessible(t) || t.status === 'beta'
+);
+
+const entries: string[] = [];
+
+// Homepage
+entries.push(urlEntry('/', '1.0', 'daily'));
+
+// Category pages
+for (const cat of categories) {
+  entries.push(urlEntry(`/tools/${cat.slug}`, '0.8', 'weekly'));
+}
+
+// Tool pages
+for (const tool of liveTools) {
+  entries.push(
+    urlEntry(`/tools/${tool.category}/${tool.slug}`, '0.7', 'monthly')
+  );
+}
+
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${entries.join('\n')}
+</urlset>
+`;
+
+writeFileSync('public/sitemap.xml', sitemap);
 console.log(
-  `Generated sitemap.xml with ${sitemap.split("<url>").length - 1} URLs`
+  `Generated public/sitemap.xml (${locales.length} locales, ${liveTools.length} tools, ${categories.length} categories)`
 );

@@ -71,7 +71,7 @@ export class ToolErrorBoundary extends React.Component<Props, State> {
           </div>
 
           {this.state.error && (
-            <details className="text-left text-xs">
+            <details className="text-start text-xs">
               <summary className="cursor-pointer text-muted-foreground hover:text-foreground">
                 Error details
               </summary>

@@ -1,37 +1,52 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { notFound } from "next/navigation";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { useTranslations } from "next-intl";
+import { routing } from "@/i18n/routing";
 import { categories, getCategoryBySlug } from "@/lib/categories";
 import { getToolsByCategory, isToolAccessible } from "@/lib/tools-registry";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 
 export function generateStaticParams() {
-  return categories.map((cat) => ({ category: cat.slug }));
+  return routing.locales.flatMap((locale) =>
+    categories.map((cat) => ({ locale, category: cat.slug }))
+  );
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ category: string }>;
+  params: Promise<{ locale: string; category: string }>;
 }) {
-  // Next.js 15+ passes params as a Promise in static generation
-  // but generateMetadata receives resolved params
-  return params.then(({ category }) => {
-    const cat = getCategoryBySlug(category);
-    if (!cat) return {};
-    return {
-      title: `${cat.name} Tools`,
-      description: cat.description,
-    };
-  });
+  const { locale, category } = await params;
+  const cat = getCategoryBySlug(category);
+  if (!cat) return {};
+  const t = await getTranslations({ locale, namespace: "categories" });
+  const tPage = await getTranslations({ locale, namespace: "categoryPage" });
+  return {
+    title: `${t(`${category}.name`)} ${tPage("toolsSuffix")}`,
+    description: t(`${category}.description`),
+    alternates: {
+      languages: Object.fromEntries(
+        routing.locales.map((l) => [l, `/${l}/tools/${category}`])
+      ),
+    },
+  };
 }
 
 export default async function CategoryPage({
   params,
 }: {
-  params: Promise<{ category: string }>;
+  params: Promise<{ locale: string; category: string }>;
 }) {
-  const { category } = await params;
+  const { locale, category } = await params;
+  setRequestLocale(locale);
   const cat = getCategoryBySlug(category);
   if (!cat) notFound();
 
@@ -39,21 +54,42 @@ export default async function CategoryPage({
   const activeTools = tools.filter((t) => isToolAccessible(t));
   const plannedTools = tools.filter((t) => !isToolAccessible(t));
 
+  return <CategoryPageContent category={category} cat={cat} activeTools={activeTools} plannedTools={plannedTools} />;
+}
+
+function CategoryPageContent({
+  category,
+  cat,
+  activeTools,
+  plannedTools,
+}: {
+  category: string;
+  cat: { icon: string };
+  activeTools: ReturnType<typeof getToolsByCategory>;
+  plannedTools: ReturnType<typeof getToolsByCategory>;
+}) {
+  const t = useTranslations("categoryPage");
+  const tBread = useTranslations("breadcrumbs");
+  const tCat = useTranslations("categories");
+  const tTools = useTranslations("tools");
+
   return (
     <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
       <div className="mb-6">
         <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
           <Link href="/" className="hover:text-foreground">
-            Home
+            {tBread("home")}
           </Link>
           <span>/</span>
-          <span>{cat.name}</span>
+          <span>{tCat(`${category}.name`)}</span>
         </div>
         <div className="flex items-center gap-3">
           <span className="text-3xl">{cat.icon}</span>
           <div>
-            <h1 className="text-2xl font-bold">{cat.name}</h1>
-            <p className="text-muted-foreground">{cat.description}</p>
+            <h1 className="text-2xl font-bold">{tCat(`${category}.name`)}</h1>
+            <p className="text-muted-foreground">
+              {tCat(`${category}.description`)}
+            </p>
           </div>
         </div>
       </div>
@@ -69,20 +105,25 @@ export default async function CategoryPage({
               <Card className="h-full transition-colors hover:bg-accent py-3 px-4 gap-1">
                 <CardHeader className="p-0">
                   <CardTitle className="text-sm font-semibold">
-                    {tool.name}
+                    {tTools(`${tool.slug}.name`)}
                   </CardTitle>
                   <CardDescription className="text-xs mt-1">
-                    {tool.description}
+                    {tTools(`${tool.slug}.description`)}
                   </CardDescription>
                 </CardHeader>
                 <div className="flex gap-1.5 px-0 pt-1">
                   {tool.status === "beta" && (
-                    <Badge variant="secondary" className="text-[10px] px-1.5 py-0">
-                      Beta
+                    <Badge
+                      variant="secondary"
+                      className="text-[10px] px-1.5 py-0"
+                    >
+                      {t("betaBadge")}
                     </Badge>
                   )}
                   {tool.isNew && (
-                    <Badge className="text-[10px] px-1.5 py-0">New</Badge>
+                    <Badge className="text-[10px] px-1.5 py-0">
+                      {t("newBadge")}
+                    </Badge>
                   )}
                 </div>
               </Card>
@@ -95,7 +136,9 @@ export default async function CategoryPage({
       {activeTools.length > 0 && plannedTools.length > 0 && (
         <div className="flex items-center gap-3 my-6">
           <div className="h-px flex-1 bg-border" />
-          <span className="text-xs text-muted-foreground shrink-0">Coming Soon</span>
+          <span className="text-xs text-muted-foreground shrink-0">
+            {t("comingSoon")}
+          </span>
           <div className="h-px flex-1 bg-border" />
         </div>
       )}
@@ -110,10 +153,10 @@ export default async function CategoryPage({
             >
               <CardHeader className="p-0">
                 <CardTitle className="text-sm font-semibold">
-                  {tool.name}
+                  {tTools(`${tool.slug}.name`)}
                 </CardTitle>
                 <CardDescription className="text-xs mt-1">
-                  {tool.description}
+                  {tTools(`${tool.slug}.description`)}
                 </CardDescription>
               </CardHeader>
             </Card>

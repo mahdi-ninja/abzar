@@ -42,3 +42,8 @@ next-env.d.ts
 
 # wrangler
 .wrangler
+
+# generated i18n message files (English only — fa/ is committed)
+messages/en/tools.json
+messages/en/categories.json
+messages/en/tool-content.json

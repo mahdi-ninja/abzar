@@ -1,9 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { useRouter } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { LocaleSwitcher } from "@/components/locale-switcher";
 import { usePwa } from "@/components/pwa-provider";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config";
@@ -29,6 +31,7 @@ export function Header() {
   const [results, setResults] = useState<Tool[]>([]);
   const router = useRouter();
   const { isOffline, isInstallable, promptInstall } = usePwa();
+  const t = useTranslations("nav");
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -62,6 +65,9 @@ export function Header() {
     [router]
   );
 
+  // Determine dir for sheet side
+  const dir = typeof document !== "undefined" ? document.documentElement.dir : "ltr";
+
   return (
     <header className="sticky top-0 z-40 flex h-14 items-center gap-3 border-b border-border bg-background/95 px-4 backdrop-blur supports-backdrop-filter:bg-background/60">
       {/* Mobile hamburger */}
@@ -72,7 +78,7 @@ export function Header() {
               variant="ghost"
               size="icon"
               className="h-9 w-9 lg:hidden"
-              aria-label="Open navigation"
+              aria-label={t("openNavigation")}
             />
           }
         >
@@ -80,8 +86,8 @@ export function Header() {
             <path d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </SheetTrigger>
-        <SheetContent side="left" className="w-60 p-0">
-          <SheetTitle className="sr-only">Navigation</SheetTitle>
+        <SheetContent side={dir === "rtl" ? "right" : "left"} className="w-60 p-0">
+          <SheetTitle className="sr-only">{t("navigation")}</SheetTitle>
           <Sidebar />
         </SheetContent>
       </Sheet>
@@ -98,12 +104,12 @@ export function Header() {
           className="relative h-9 w-full max-w-sm justify-start rounded-md text-sm text-muted-foreground"
           onClick={() => setSearchOpen(true)}
         >
-          <svg className="mr-2 h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg className="me-2 h-4 w-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <circle cx="11" cy="11" r="8" />
             <path d="M21 21l-4.35-4.35" />
           </svg>
-          <span className="hidden sm:inline">Search tools...</span>
-          <kbd className="pointer-events-none ml-auto hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
+          <span className="hidden sm:inline">{t("searchPlaceholder")}</span>
+          <kbd className="pointer-events-none ms-auto hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
             <span className="text-xs">⌘</span>K
           </kbd>
         </Button>
@@ -120,7 +126,7 @@ export function Header() {
             <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
             <line x1="12" y1="20" x2="12.01" y2="20" />
           </svg>
-          Offline
+          {t("offline")}
         </span>
       )}
 
@@ -130,7 +136,7 @@ export function Header() {
           size="icon"
           className="h-9 w-9"
           onClick={promptInstall}
-          aria-label="Install Abzar"
+          aria-label={t("installApp")}
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
@@ -140,17 +146,18 @@ export function Header() {
         </Button>
       )}
 
+      <LocaleSwitcher />
       <ThemeToggle />
 
       {/* Search dialog */}
       <CommandDialog open={searchOpen} onOpenChange={setSearchOpen}>
         <CommandInput
-          placeholder="Search tools..."
+          placeholder={t("searchPlaceholder")}
           value={query}
           onValueChange={handleSearch}
         />
         <CommandList>
-          <CommandEmpty>No tools found.</CommandEmpty>
+          <CommandEmpty>{t("noResults")}</CommandEmpty>
           {results.length > 0 && (
             <CommandGroup heading="Tools">
               {results.map((tool) => {
@@ -170,7 +177,7 @@ export function Header() {
                         <span className="font-medium truncate">{tool.name}</span>
                         {!accessible && (
                           <Badge variant="secondary" className="text-[10px] px-1.5 py-0">
-                            Coming Soon
+                            {t("comingSoon")}
                           </Badge>
                         )}
                       </div>

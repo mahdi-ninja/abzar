@@ -1,0 +1,812 @@
+{
+  "tools": {
+    "word-counter": {
+      "name": "Word & Character Counter",
+      "description": "Count words, characters, sentences, paragraphs with readability scores"
+    },
+    "markdown-editor": {
+      "name": "Markdown Editor",
+      "description": "Live split-pane editor with instant HTML preview and export"
+    },
+    "lorem-ipsum": {
+      "name": "Lorem Ipsum Generator",
+      "description": "Generate placeholder text in multiple styles (classic, hipster, corporate)"
+    },
+    "case-converter": {
+      "name": "Case Converter",
+      "description": "Transform text between camelCase, snake_case, PascalCase, Title Case, UPPER, lower, kebab-case"
+    },
+    "text-diff": {
+      "name": "Text Diff Tool",
+      "description": "Side-by-side comparison with highlighted additions, deletions, and changes"
+    },
+    "regex-tester": {
+      "name": "Regex Tester",
+      "description": "Test regular expressions with real-time match highlighting, capture groups, and cheat sheet"
+    },
+    "morse-code": {
+      "name": "Morse Code Translator",
+      "description": "Encode/decode Morse code with audio playback via Web Audio API"
+    },
+    "word-frequency": {
+      "name": "Word Frequency Analyzer",
+      "description": "Visualize most-used words in text — useful for SEO and writing"
+    },
+    "text-similarity": {
+      "name": "Text Similarity Checker",
+      "description": "Compare two texts using cosine similarity to detect overlap"
+    },
+    "name-generator": {
+      "name": "Name & Username Generator",
+      "description": "Random name generator with filters for style, length, and theme"
+    },
+    "text-to-speech": {
+      "name": "Text-to-Speech Previewer",
+      "description": "Preview text in browser voices and speeds using SpeechSynthesis API"
+    },
+    "transliteration": {
+      "name": "Transliteration Tool",
+      "description": "Convert between writing systems — Latin ↔ Cyrillic"
+    },
+    "slug-generator": {
+      "name": "Slug Generator",
+      "description": "Turn any title into a URL-friendly slug"
+    },
+    "string-escaper": {
+      "name": "String Escaper/Unescaper",
+      "description": "Escape and unescape for HTML, JSON, URL, XML, CSV"
+    },
+    "whitespace-cleaner": {
+      "name": "Whitespace Cleaner",
+      "description": "Strip trailing spaces, normalize line endings, remove invisible Unicode"
+    },
+    "reverse-text": {
+      "name": "Reverse Text / Mirror",
+      "description": "Reverse, flip, or mirror text — character-level or word-level"
+    },
+    "unicode-lookup": {
+      "name": "Unicode Character Lookup",
+      "description": "Search, browse, and copy Unicode symbols, emojis, and special characters"
+    },
+    "zalgo-text": {
+      "name": "Zalgo Text Generator",
+      "description": "Add combining characters to text for stylistic/meme use"
+    },
+    "json-formatter": {
+      "name": "JSON Formatter & Validator",
+      "description": "Pretty-print, validate, minify, and view JSON as a collapsible tree"
+    },
+    "base64": {
+      "name": "Base64 Encoder/Decoder",
+      "description": "Encode and decode text or files to/from Base64"
+    },
+    "url-encoder": {
+      "name": "URL Encoder/Decoder",
+      "description": "Percent-encode and decode URL components"
+    },
+    "jwt-decoder": {
+      "name": "JWT Decoder",
+      "description": "Paste a JWT and see decoded header, payload, and expiration"
+    },
+    "jwt-builder": {
+      "name": "JWT Builder",
+      "description": "Craft and sign JWTs with a user-provided secret"
+    },
+    "uuid-generator": {
+      "name": "UUID / ULID Generator",
+      "description": "Generate v4 UUIDs, ULIDs, nanoids — bulk and copy"
+    },
+    "cron-builder": {
+      "name": "Cron Expression Builder",
+      "description": "Visual cron schedule builder with human-readable descriptions and next-run preview"
+    },
+    "html-entities": {
+      "name": "HTML Entity Encoder",
+      "description": "Encode/decode HTML entities — named and numeric"
+    },
+    "sql-formatter": {
+      "name": "SQL Formatter",
+      "description": "Beautify and indent raw SQL queries"
+    },
+    "flexbox-playground": {
+      "name": "CSS Flexbox Playground",
+      "description": "Toggle every flex property and see layout changes in real time"
+    },
+    "grid-playground": {
+      "name": "CSS Grid Playground",
+      "description": "Visual grid builder — define rows, columns, gaps, place items"
+    },
+    "og-preview": {
+      "name": "Open Graph Previewer",
+      "description": "Paste HTML meta tags and preview social cards"
+    },
+    "breakpoint-tester": {
+      "name": "Responsive Breakpoint Tester",
+      "description": "Preview a URL at common device widths"
+    },
+    "snippet-manager": {
+      "name": "Snippet Manager",
+      "description": "Save, tag, and search code snippets in localStorage"
+    },
+    "api-mocker": {
+      "name": "API Response Mocker",
+      "description": "Define mock endpoints and responses for frontend dev"
+    },
+    "diff-viewer": {
+      "name": "Diff / Patch Viewer",
+      "description": "Visualize unified diffs with syntax highlighting"
+    },
+    "timestamp-converter": {
+      "name": "Timestamp Converter",
+      "description": "Convert between Unix epoch, ISO 8601, RFC 2822, and human-readable"
+    },
+    "yaml-json": {
+      "name": "YAML ↔ JSON Converter",
+      "description": "Convert between YAML and JSON"
+    },
+    "csv-json": {
+      "name": "CSV ↔ JSON Converter",
+      "description": "Transform CSV to JSON array and vice versa"
+    },
+    "xml-json": {
+      "name": "XML ↔ JSON Converter",
+      "description": "Bidirectional XML and JSON conversion"
+    },
+    "toml-json": {
+      "name": "TOML ↔ JSON Converter",
+      "description": "Parse and convert TOML configuration files"
+    },
+    "http-status-codes": {
+      "name": "HTTP Status Code Reference",
+      "description": "Searchable reference of all status codes"
+    },
+    "chmod-calculator": {
+      "name": "Chmod Calculator",
+      "description": "Visual permission calculator for Unix file permissions"
+    },
+    "user-agent-parser": {
+      "name": "User-Agent Parser",
+      "description": "Parse a user-agent string into browser, OS, device details"
+    },
+    "markdown-table": {
+      "name": "Markdown Table Generator",
+      "description": "Visual table editor that outputs Markdown or HTML"
+    },
+    "epoch-countdown": {
+      "name": "Epoch Countdown",
+      "description": "Live ticking Unix timestamp with conversion"
+    },
+    "color-picker": {
+      "name": "Color Picker & Converter",
+      "description": "Pick colors and convert between HEX, RGB, HSL, HSB, CMYK"
+    },
+    "gradient-generator": {
+      "name": "CSS Gradient Generator",
+      "description": "Build linear, radial, and conic gradients with visual stops"
+    },
+    "contrast-checker": {
+      "name": "Contrast Ratio Checker",
+      "description": "Check color pairs against WCAG AA/AAA"
+    },
+    "palette-generator": {
+      "name": "Color Palette Generator",
+      "description": "Generate harmonious palettes — complementary, analogous, triadic"
+    },
+    "palette-extractor": {
+      "name": "Color Palette Extractor",
+      "description": "Upload an image and extract dominant colors"
+    },
+    "duotone-filter": {
+      "name": "Duotone Image Filter",
+      "description": "Apply duotone color effects using Canvas API"
+    },
+    "font-pairing": {
+      "name": "Font Pairing Previewer",
+      "description": "Browse and preview Google Font combinations"
+    },
+    "box-shadow": {
+      "name": "Box Shadow Generator",
+      "description": "Visual CSS box-shadow builder with multiple layers"
+    },
+    "border-radius": {
+      "name": "Border Radius Previewer",
+      "description": "Drag corners to create complex border-radius values"
+    },
+    "animation-builder": {
+      "name": "CSS Animation Builder",
+      "description": "Keyframe timeline editor with easing curves and live preview"
+    },
+    "glassmorphism": {
+      "name": "Glassmorphism Generator",
+      "description": "Create frosted glass effects with CSS output"
+    },
+    "neumorphism": {
+      "name": "Neumorphism Generator",
+      "description": "Design soft UI elements with shadows"
+    },
+    "pattern-generator": {
+      "name": "Pattern / Texture Generator",
+      "description": "Generate repeating CSS/SVG patterns"
+    },
+    "mockup-generator": {
+      "name": "Mockup Frame Generator",
+      "description": "Place screenshots into device frames"
+    },
+    "sprite-sheet": {
+      "name": "Sprite Sheet Generator",
+      "description": "Upload frames and stitch into a spritesheet"
+    },
+    "svg-optimizer": {
+      "name": "SVG Optimizer / Viewer",
+      "description": "Paste SVG markup, preview, and optimize"
+    },
+    "favicon-generator": {
+      "name": "Favicon Generator",
+      "description": "Generate favicons in all sizes from text, emoji, or image"
+    },
+    "tailwind-colors": {
+      "name": "Tailwind Color Lookup",
+      "description": "Browse and search the full Tailwind color palette"
+    },
+    "type-scale": {
+      "name": "Typography Scale Calculator",
+      "description": "Generate a modular type scale from a base size and ratio"
+    },
+    "image-resizer": {
+      "name": "Image Resizer & Cropper",
+      "description": "Resize, crop, and adjust images using Canvas API"
+    },
+    "image-compressor": {
+      "name": "Image Compressor",
+      "description": "Reduce file size with adjustable quality"
+    },
+    "image-converter": {
+      "name": "Image Format Converter",
+      "description": "Convert between PNG, JPEG, WebP, BMP"
+    },
+    "image-to-base64": {
+      "name": "Image to Base64",
+      "description": "Convert image to Base64 data URI"
+    },
+    "exif-viewer": {
+      "name": "EXIF Data Viewer",
+      "description": "Inspect embedded photo metadata"
+    },
+    "qr-generator": {
+      "name": "QR Code Generator",
+      "description": "Generate QR codes for URLs, text, Wi-Fi, vCards"
+    },
+    "qr-reader": {
+      "name": "QR Code Reader",
+      "description": "Scan QR codes from image or camera"
+    },
+    "barcode-generator": {
+      "name": "Barcode Generator",
+      "description": "Create Code128, EAN, UPC barcodes"
+    },
+    "ascii-art": {
+      "name": "ASCII Art Generator",
+      "description": "Convert images to ASCII art"
+    },
+    "pixel-art": {
+      "name": "Pixel Art Editor",
+      "description": "Grid-based drawing tool with palette and export"
+    },
+    "placeholder-image": {
+      "name": "Placeholder Image Generator",
+      "description": "Generate solid/gradient placeholder images"
+    },
+    "color-replacer": {
+      "name": "Image Color Replacer",
+      "description": "Swap specific colors in an image using Canvas"
+    },
+    "collage-maker": {
+      "name": "Photo Collage Maker",
+      "description": "Arrange multiple images into grid layouts"
+    },
+    "watermark": {
+      "name": "Watermark Tool",
+      "description": "Add text or image watermarks to photos"
+    },
+    "audio-trimmer": {
+      "name": "Audio Trimmer",
+      "description": "Trim audio clips in-browser using Web Audio API"
+    },
+    "video-to-gif": {
+      "name": "Video to GIF Converter",
+      "description": "Extract video frames into animated GIF"
+    },
+    "waveform-visualizer": {
+      "name": "Waveform Visualizer",
+      "description": "Upload audio and see its waveform on Canvas"
+    },
+    "screen-recorder": {
+      "name": "Screen Recorder",
+      "description": "Record screen/tab using MediaRecorder API"
+    },
+    "webcam-booth": {
+      "name": "Webcam Photo Booth",
+      "description": "Capture webcam snapshots with filters"
+    },
+    "unit-converter": {
+      "name": "Unit Converter",
+      "description": "Convert length, weight, volume, temperature, speed, area, data"
+    },
+    "percentage-calculator": {
+      "name": "Percentage Calculator",
+      "description": "Calculate percentages, percentage change, ratios"
+    },
+    "number-base-converter": {
+      "name": "Hex / Binary / Decimal Converter",
+      "description": "Convert between hex, binary, octal, decimal"
+    },
+    "matrix-calculator": {
+      "name": "Matrix Calculator",
+      "description": "Add, multiply, transpose, invert, determinants"
+    },
+    "statistics-calculator": {
+      "name": "Statistics Calculator",
+      "description": "Mean, median, mode, std dev, variance, quartiles"
+    },
+    "scientific-calculator": {
+      "name": "Scientific Calculator",
+      "description": "Full calculator with trig, log, exponents, history"
+    },
+    "graphing-calculator": {
+      "name": "Graphing Calculator",
+      "description": "Plot mathematical functions on coordinate plane"
+    },
+    "boolean-algebra": {
+      "name": "Boolean Algebra Simplifier",
+      "description": "Simplify logic expressions and generate truth tables"
+    },
+    "roman-numerals": {
+      "name": "Roman Numeral Converter",
+      "description": "Convert between Roman and Arabic numbers"
+    },
+    "number-to-words": {
+      "name": "Number to Words",
+      "description": "Convert numeric values to written English"
+    },
+    "bitwise-visualizer": {
+      "name": "Bitwise Operation Visualizer",
+      "description": "Visualize AND, OR, XOR, NOT, shifts bit-by-bit"
+    },
+    "probability-calculator": {
+      "name": "Probability Calculator",
+      "description": "Permutations, combinations, dice, cards"
+    },
+    "aspect-ratio": {
+      "name": "Aspect Ratio Calculator",
+      "description": "Calculate and convert aspect ratios"
+    },
+    "data-size-converter": {
+      "name": "Data Size Converter",
+      "description": "Convert between bytes, KB, MB, GB, TB"
+    },
+    "random-generator": {
+      "name": "Random Number Generator",
+      "description": "Random numbers, dice, coins, lottery"
+    },
+    "arbitrary-base-converter": {
+      "name": "Number Base Converter",
+      "description": "Convert between any base (2–36) with step-by-step"
+    },
+    "compound-interest": {
+      "name": "Compound Interest Calculator",
+      "description": "Growth over time with chart"
+    },
+    "mortgage-calculator": {
+      "name": "Mortgage / Loan Calculator",
+      "description": "Monthly payments, amortization, total interest"
+    },
+    "tip-calculator": {
+      "name": "Tip / Bill Splitter",
+      "description": "Split bills with custom tip and rounding"
+    },
+    "currency-converter": {
+      "name": "Currency Converter",
+      "description": "Convert between currencies"
+    },
+    "subscription-tracker": {
+      "name": "Subscription Tracker",
+      "description": "List subscriptions, see totals"
+    },
+    "net-worth-tracker": {
+      "name": "Net Worth Tracker",
+      "description": "Track assets and liabilities over time"
+    },
+    "budget-planner": {
+      "name": "50/30/20 Budget Planner",
+      "description": "Allocate income into needs, wants, savings"
+    },
+    "debt-calculator": {
+      "name": "Debt Snowball/Avalanche Calculator",
+      "description": "Compare payoff strategies"
+    },
+    "tax-estimator": {
+      "name": "Tax Estimator (Freelancer)",
+      "description": "Rough tax estimate by income and deductions"
+    },
+    "invoice-generator": {
+      "name": "Invoice Generator",
+      "description": "Create invoices and export to PDF"
+    },
+    "salary-converter": {
+      "name": "Salary ↔ Hourly Converter",
+      "description": "Convert between annual, monthly, weekly, daily, hourly"
+    },
+    "roi-calculator": {
+      "name": "ROI Calculator",
+      "description": "Return on investment with periods"
+    },
+    "break-even": {
+      "name": "Break-Even Calculator",
+      "description": "Find break-even point"
+    },
+    "savings-goal": {
+      "name": "Savings Goal Tracker",
+      "description": "Set goals, log deposits, track progress"
+    },
+    "position-size": {
+      "name": "Stock Position Size Calculator",
+      "description": "Position sizing based on risk"
+    },
+    "markup-margin": {
+      "name": "Markup / Margin Calculator",
+      "description": "Convert between cost, markup %, profit margin"
+    },
+    "password-generator": {
+      "name": "Password Generator",
+      "description": "Strong passwords with customizable options"
+    },
+    "password-strength": {
+      "name": "Password Strength Checker",
+      "description": "Strength analysis with crack time"
+    },
+    "hash-generator": {
+      "name": "Hash Generator",
+      "description": "SHA-1, SHA-256, SHA-512, MD5 of text or files"
+    },
+    "checksum-verifier": {
+      "name": "File Checksum Verifier",
+      "description": "Drag-and-drop file hash verification"
+    },
+    "encrypted-notes": {
+      "name": "Encrypted Notes",
+      "description": "AES-GCM encrypted notepad"
+    },
+    "encrypted-vault": {
+      "name": "Encrypted Vault",
+      "description": "Client-side password manager"
+    },
+    "hmac-generator": {
+      "name": "HMAC Generator",
+      "description": "Generate HMAC signatures"
+    },
+    "random-bytes": {
+      "name": "Random Byte Generator",
+      "description": "Cryptographically secure random bytes"
+    },
+    "totp-generator": {
+      "name": "TOTP Code Generator",
+      "description": "Time-based one-time passwords (RFC 6238)"
+    },
+    "metadata-stripper": {
+      "name": "Privacy Metadata Stripper",
+      "description": "Remove EXIF from images before sharing"
+    },
+    "secure-share": {
+      "name": "Secure Text Sharing Encoder",
+      "description": "Encode message into a URL fragment for client-side decryption"
+    },
+    "pomodoro": {
+      "name": "Pomodoro Timer",
+      "description": "Focus timer with configurable intervals and session tracking"
+    },
+    "stopwatch": {
+      "name": "Stopwatch & Lap Timer",
+      "description": "Precision stopwatch with lap recording"
+    },
+    "countdown": {
+      "name": "Countdown Timer",
+      "description": "Count down to a specific date"
+    },
+    "kanban": {
+      "name": "Kanban Board",
+      "description": "Drag-and-drop task board"
+    },
+    "todo-list": {
+      "name": "To-Do List / Checklist",
+      "description": "Task manager with priorities and due dates"
+    },
+    "habit-tracker": {
+      "name": "Habit Tracker",
+      "description": "Daily habits with streaks and heatmap"
+    },
+    "notepad": {
+      "name": "Notepad with Auto-Save",
+      "description": "Distraction-free writing pad"
+    },
+    "meeting-cost": {
+      "name": "Meeting Cost Calculator",
+      "description": "Calculate real cost of a meeting"
+    },
+    "decision-matrix": {
+      "name": "Decision Matrix",
+      "description": "Score options against weighted criteria"
+    },
+    "eisenhower-matrix": {
+      "name": "Eisenhower Matrix",
+      "description": "Drag tasks into urgent/important quadrants"
+    },
+    "mind-map": {
+      "name": "Mind Map Builder",
+      "description": "Branching mind maps with drag-and-drop"
+    },
+    "daily-planner": {
+      "name": "Daily Planner / Schedule",
+      "description": "Time-block your day"
+    },
+    "reading-time": {
+      "name": "Reading Time Estimator",
+      "description": "Estimate reading time at various speeds"
+    },
+    "sticky-notes": {
+      "name": "Sticky Notes Wall",
+      "description": "Freeform draggable sticky notes"
+    },
+    "goal-tracker": {
+      "name": "Goal Tracker",
+      "description": "Goals with milestones and progress bars"
+    },
+    "bmi-calculator": {
+      "name": "BMI Calculator",
+      "description": "Body Mass Index with visual scale"
+    },
+    "tdee-calculator": {
+      "name": "TDEE & Macro Calculator",
+      "description": "Daily calorie needs and macro targets"
+    },
+    "water-tracker": {
+      "name": "Water Intake Tracker",
+      "description": "Log daily water consumption"
+    },
+    "sleep-calculator": {
+      "name": "Sleep Cycle Calculator",
+      "description": "Optimal bedtimes based on 90-min cycles"
+    },
+    "hiit-timer": {
+      "name": "HIIT / Tabata Timer",
+      "description": "Customizable interval timer with audio"
+    },
+    "body-tracker": {
+      "name": "Body Measurement Tracker",
+      "description": "Log measurements over time with charts"
+    },
+    "calorie-counter": {
+      "name": "Calorie Counter",
+      "description": "Calorie lookup and daily logging"
+    },
+    "one-rep-max": {
+      "name": "One-Rep Max Calculator",
+      "description": "Estimate 1RM from submaximal lifts"
+    },
+    "pace-calculator": {
+      "name": "Pace Calculator",
+      "description": "Convert pace, speed, and finish time"
+    },
+    "breathing-timer": {
+      "name": "Breathing Exercise Timer",
+      "description": "Guided breathing with visual + audio"
+    },
+    "subnet-calculator": {
+      "name": "Subnet Calculator",
+      "description": "Network, broadcast, host range from IP + CIDR"
+    },
+    "ip-converter": {
+      "name": "IPv4 ↔ IPv6 Converter",
+      "description": "Convert between IPv4 and IPv6"
+    },
+    "cidr-visualizer": {
+      "name": "CIDR Range Visualizer",
+      "description": "See which IPs fall within a CIDR block"
+    },
+    "bandwidth-calculator": {
+      "name": "Bandwidth Calculator",
+      "description": "Transfer time for file size at given speed"
+    },
+    "dns-reference": {
+      "name": "DNS Record Reference",
+      "description": "Interactive DNS record type reference"
+    },
+    "port-reference": {
+      "name": "Port Number Reference",
+      "description": "Searchable common port database"
+    },
+    "mac-lookup": {
+      "name": "MAC Address Lookup",
+      "description": "Identify vendor from OUI prefix"
+    },
+    "netmask-calculator": {
+      "name": "Network Mask Calculator",
+      "description": "Convert between dotted-decimal, CIDR, wildcard"
+    },
+    "typing-test": {
+      "name": "Typing Speed Test",
+      "description": "WPM with accuracy and difficulty levels"
+    },
+    "flashcards": {
+      "name": "Flashcard App",
+      "description": "Spaced repetition (Leitner) stored locally"
+    },
+    "mental-math": {
+      "name": "Mental Math Trainer",
+      "description": "Timed arithmetic drills"
+    },
+    "periodic-table": {
+      "name": "Periodic Table Explorer",
+      "description": "Interactive periodic table"
+    },
+    "geography-quiz": {
+      "name": "Geography Quiz",
+      "description": "Identify countries on SVG world map"
+    },
+    "interval-trainer": {
+      "name": "Music Interval Trainer",
+      "description": "Hear two notes, guess the interval"
+    },
+    "vocabulary-builder": {
+      "name": "Language Vocabulary Builder",
+      "description": "Words + translations with spaced repetition"
+    },
+    "times-tables": {
+      "name": "Times Table Trainer",
+      "description": "Multiplication drills with visual feedback"
+    },
+    "color-blind-sim": {
+      "name": "Color Blindness Simulator",
+      "description": "Preview images with color vision deficiencies"
+    },
+    "binary-teacher": {
+      "name": "Binary / Hex Teaching Tool",
+      "description": "Interactive binary ↔ decimal ↔ hex"
+    },
+    "algorithm-visualizer": {
+      "name": "Algorithm Visualizer",
+      "description": "Watch sorting/search algorithms step-by-step"
+    },
+    "drum-machine": {
+      "name": "Drum Machine / Beat Maker",
+      "description": "Sequencer with Web Audio API"
+    },
+    "generative-art": {
+      "name": "Generative Art Tool",
+      "description": "Parameter-driven pattern creation"
+    },
+    "meme-generator": {
+      "name": "Meme Generator",
+      "description": "Upload image, add draggable text overlays"
+    },
+    "soundboard": {
+      "name": "Soundboard",
+      "description": "Upload and trigger audio clips"
+    },
+    "game-of-life": {
+      "name": "Conway's Game of Life",
+      "description": "Cellular automaton"
+    },
+    "terrain-generator": {
+      "name": "Procedural Terrain Generator",
+      "description": "Landscape generation using noise"
+    },
+    "drawing-canvas": {
+      "name": "Drawing Canvas",
+      "description": "Freehand drawing with brushes"
+    },
+    "magic-8-ball": {
+      "name": "Fortune / Magic 8-Ball",
+      "description": "Random answers with animation"
+    },
+    "dice-roller": {
+      "name": "Dice Roller (D&D)",
+      "description": "Roll polyhedral dice with history"
+    },
+    "ambient-sounds": {
+      "name": "Noise / Ambient Sound Generator",
+      "description": "Layer noise and nature sounds"
+    },
+    "css-art": {
+      "name": "CSS Art Playground",
+      "description": "Create illustrations using only CSS"
+    },
+    "emoji-search": {
+      "name": "Emoji Picker / Search",
+      "description": "Search emojis with copy to clipboard"
+    },
+    "palette-game": {
+      "name": "Random Color Palette Game",
+      "description": "Vote on random palettes to train color sense"
+    },
+    "pdf-merger": {
+      "name": "PDF Merger",
+      "description": "Combine multiple PDFs into one"
+    },
+    "pdf-splitter": {
+      "name": "PDF Splitter",
+      "description": "Extract specific pages from a PDF"
+    },
+    "pdf-rotator": {
+      "name": "PDF Page Rotator",
+      "description": "Rotate pages in a PDF"
+    },
+    "file-size-analyzer": {
+      "name": "File Size Analyzer",
+      "description": "Drag-and-drop file size breakdown"
+    },
+    "text-merger": {
+      "name": "Text File Merger",
+      "description": "Concatenate multiple text/CSV files"
+    },
+    "markdown-to-html": {
+      "name": "Markdown → HTML Converter",
+      "description": "Convert Markdown to clean HTML"
+    },
+    "html-to-markdown": {
+      "name": "HTML → Markdown Converter",
+      "description": "Turn HTML into Markdown"
+    },
+    "json-to-csv": {
+      "name": "JSON to CSV Exporter",
+      "description": "Flatten JSON arrays into CSV"
+    },
+    "zip-creator": {
+      "name": "ZIP File Creator",
+      "description": "Bundle files into a .zip"
+    },
+    "file-renamer": {
+      "name": "File Rename Batch Tool",
+      "description": "Batch rename with patterns"
+    },
+    "text-cleaner": {
+      "name": "Plain Text Cleaner",
+      "description": "Fix encoding, remove smart quotes, normalize"
+    },
+    "timezone-converter": {
+      "name": "Timezone Converter",
+      "description": "Convert time across multiple timezones"
+    },
+    "date-difference": {
+      "name": "Date Difference Calculator",
+      "description": "Days, weeks, months, years between dates"
+    },
+    "date-add-subtract": {
+      "name": "Date Adder/Subtractor",
+      "description": "Add or subtract time from a date"
+    },
+    "week-number": {
+      "name": "Week Number Lookup",
+      "description": "ISO week number for any date"
+    },
+    "age-calculator": {
+      "name": "Age Calculator",
+      "description": "Exact age in years, months, days"
+    },
+    "working-days": {
+      "name": "Working Days Calculator",
+      "description": "Business days between two dates"
+    },
+    "calendar-generator": {
+      "name": "Calendar Generator",
+      "description": "Printable monthly/yearly calendars"
+    },
+    "meeting-planner": {
+      "name": "Timezone Meeting Planner",
+      "description": "Find overlapping working hours"
+    },
+    "relative-time": {
+      "name": "Relative Time Display",
+      "description": "See dates as relative strings"
+    }
+  }
+}

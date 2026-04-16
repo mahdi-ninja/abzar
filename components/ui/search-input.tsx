@@ -35,7 +35,7 @@ export function SearchInput({
   return (
     <div className={cn("relative", className)}>
       <svg
-        className="absolute left-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+        className="absolute inset-s-2.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -48,7 +48,7 @@ export function SearchInput({
         value={value}
         onChange={(e) => handleChange(e.target.value)}
         placeholder={placeholder}
-        className="pl-8 text-sm"
+        className="ps-8 text-sm"
       />
     </div>
   );

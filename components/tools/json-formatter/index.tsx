@@ -27,10 +27,10 @@ function JsonTree({ data, depth = 0 }: { data: unknown; depth?: number }) {
         <summary className="cursor-pointer hover:text-primary">
           Array [{data.length}]
         </summary>
-        <div className="ml-4 border-l border-border pl-2">
+        <div className="ms-4 border-s border-border ps-2">
           {data.map((item, i) => (
             <div key={i} className="py-0.5">
-              <span className="text-muted-foreground mr-1">{i}:</span>
+              <span className="text-muted-foreground me-1">{i}:</span>
               <JsonTree data={item} depth={depth + 1} />
             </div>
           ))}
@@ -49,7 +49,7 @@ function JsonTree({ data, depth = 0 }: { data: unknown; depth?: number }) {
           {entries.length}
           {"}"}
         </summary>
-        <div className="ml-4 border-l border-border pl-2">
+        <div className="ms-4 border-s border-border ps-2">
           {entries.map(([key, value]) => (
             <div key={key} className="py-0.5">
               <span className="text-blue-600 dark:text-blue-400">

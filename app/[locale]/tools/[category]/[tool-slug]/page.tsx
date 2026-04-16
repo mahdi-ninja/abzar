@@ -1,46 +1,70 @@
 import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 import { ToolPage } from "@/components/layout/tool-page";
 import { ToolSkeleton } from "@/components/layout/tool-skeleton";
-import { tools, getToolBySlug, isToolAccessible } from "@/lib/tools-registry";
-import { getToolContent } from "@/lib/tool-content";
+import {
+  tools,
+  getToolBySlug,
+  isToolAccessible,
+} from "@/lib/tools-registry";
 import { generateToolJsonLd } from "@/lib/json-ld";
 import { siteConfig } from "@/lib/config";
 
 export function generateStaticParams() {
-  return tools.map((t) => ({
-    category: t.category,
-    "tool-slug": t.slug,
-  }));
+  return routing.locales.flatMap((locale) =>
+    tools.map((t) => ({
+      locale,
+      category: t.category,
+      "tool-slug": t.slug,
+    }))
+  );
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ category: string; "tool-slug": string }>;
+  params: Promise<{
+    locale: string;
+    category: string;
+    "tool-slug": string;
+  }>;
 }) {
-  const { "tool-slug": slug } = await params;
+  const { locale, "tool-slug": slug } = await params;
   const tool = getToolBySlug(slug);
   if (!tool) return {};
+  const t = await getTranslations({ locale, namespace: "tools" });
+  const toolName = t(`${slug}.name`);
+  const toolDesc = t(`${slug}.description`);
   return {
-    title: `${tool.name} — ${siteConfig.titleSuffix}`,
-    description: tool.description,
+    title: `${toolName} — ${siteConfig.titleSuffix}`,
+    description: toolDesc,
     openGraph: {
-      title: `${tool.name} — ${siteConfig.titleSuffix} | ${siteConfig.name}`,
-      description: tool.description,
+      title: `${toolName} — ${siteConfig.titleSuffix} | ${siteConfig.name}`,
+      description: toolDesc,
       images: [`/og/${tool.category}/${tool.slug}.png`],
     },
+    alternates: {
+      languages: Object.fromEntries(
+        routing.locales.map((l) => [
+          l,
+          `/${l}/tools/${tool.category}/${tool.slug}`,
+        ])
+      ),
+    },
     other: {
-      "script:ld+json": JSON.stringify(generateToolJsonLd(tool)),
+      "script:ld+json": JSON.stringify(
+        generateToolJsonLd(tool, { name: toolName, description: toolDesc })
+      ),
     },
   };
 }
 
 // Dynamic tool component map — only import implemented tools
-const toolComponents: Record<
-  string,
-  ReturnType<typeof dynamic>
-> = {
+const toolComponents: Record<string, ReturnType<typeof dynamic>> = {
   "json-formatter": dynamic(
     () => import("@/components/tools/json-formatter"),
     { loading: () => <ToolSkeleton /> }
@@ -101,7 +125,7 @@ const toolComponents: Record<
     () => import("@/components/tools/mortgage-calculator"),
     { loading: () => <ToolSkeleton /> }
   ),
-  "pomodoro": dynamic(
+  pomodoro: dynamic(
     () => import("@/components/tools/pomodoro"),
     { loading: () => <ToolSkeleton /> }
   ),
@@ -126,11 +150,11 @@ const toolComponents: Record<
     () => import("@/components/tools/typing-test"),
     { loading: () => <ToolSkeleton /> }
   ),
-  "kanban": dynamic(
+  kanban: dynamic(
     () => import("@/components/tools/kanban"),
     { loading: () => <ToolSkeleton /> }
   ),
-  "flashcards": dynamic(
+  flashcards: dynamic(
     () => import("@/components/tools/flashcards"),
     { loading: () => <ToolSkeleton /> }
   ),
@@ -187,9 +211,9 @@ const toolComponents: Record<
   "age-calculator": dynamic(() => import("@/components/tools/age-calculator"), { loading: () => <ToolSkeleton /> }),
   "bmi-calculator": dynamic(() => import("@/components/tools/bmi-calculator"), { loading: () => <ToolSkeleton /> }),
   "sleep-calculator": dynamic(() => import("@/components/tools/sleep-calculator"), { loading: () => <ToolSkeleton /> }),
-  "stopwatch": dynamic(() => import("@/components/tools/stopwatch"), { loading: () => <ToolSkeleton /> }),
-  "countdown": dynamic(() => import("@/components/tools/countdown"), { loading: () => <ToolSkeleton /> }),
-  "notepad": dynamic(() => import("@/components/tools/notepad"), { loading: () => <ToolSkeleton /> }),
+  stopwatch: dynamic(() => import("@/components/tools/stopwatch"), { loading: () => <ToolSkeleton /> }),
+  countdown: dynamic(() => import("@/components/tools/countdown"), { loading: () => <ToolSkeleton /> }),
+  notepad: dynamic(() => import("@/components/tools/notepad"), { loading: () => <ToolSkeleton /> }),
   "reading-time": dynamic(() => import("@/components/tools/reading-time"), { loading: () => <ToolSkeleton /> }),
   "dice-roller": dynamic(() => import("@/components/tools/dice-roller"), { loading: () => <ToolSkeleton /> }),
   "magic-8-ball": dynamic(() => import("@/components/tools/magic-8-ball"), { loading: () => <ToolSkeleton /> }),
@@ -201,7 +225,7 @@ const toolComponents: Record<
   // Phase 5 — Fun & Creative
   "generative-art": dynamic(() => import("@/components/tools/generative-art"), { loading: () => <ToolSkeleton /> }),
   "meme-generator": dynamic(() => import("@/components/tools/meme-generator"), { loading: () => <ToolSkeleton /> }),
-  "soundboard": dynamic(() => import("@/components/tools/soundboard"), { loading: () => <ToolSkeleton /> }),
+  soundboard: dynamic(() => import("@/components/tools/soundboard"), { loading: () => <ToolSkeleton /> }),
   "terrain-generator": dynamic(() => import("@/components/tools/terrain-generator"), { loading: () => <ToolSkeleton /> }),
   "drawing-canvas": dynamic(() => import("@/components/tools/drawing-canvas"), { loading: () => <ToolSkeleton /> }),
   "ambient-sounds": dynamic(() => import("@/components/tools/ambient-sounds"), { loading: () => <ToolSkeleton /> }),
@@ -213,34 +237,59 @@ const toolComponents: Record<
 export default async function ToolSlugPage({
   params,
 }: {
-  params: Promise<{ category: string; "tool-slug": string }>;
+  params: Promise<{
+    locale: string;
+    category: string;
+    "tool-slug": string;
+  }>;
 }) {
-  const { "tool-slug": slug } = await params;
+  const { locale, "tool-slug": slug } = await params;
+  setRequestLocale(locale);
   const tool = getToolBySlug(slug);
   if (!tool) notFound();
 
-  const content = getToolContent(slug);
+  const t = await getTranslations({ locale, namespace: "tools" });
+  const tContent = await getTranslations({ locale, namespace: "toolContent" });
+  const tPage = await getTranslations({ locale, namespace: "toolPage" });
+
+  const toolName = t(`${slug}.name`);
+  const toolDesc = t(`${slug}.description`);
+
+  // Get translated about/howTo if this tool has content entries
+  let about: string | undefined;
+  let howTo: string[] | undefined;
+  if (tContent.has(`${slug}.about`)) {
+    about = tContent(`${slug}.about`);
+  }
+  if (tContent.has(`${slug}.howTo`)) {
+    const howToRaw = tContent.raw(`${slug}.howTo`);
+    howTo = Array.isArray(howToRaw) ? howToRaw : undefined;
+  }
+
   const ToolComponent = toolComponents[slug];
   const accessible = isToolAccessible(tool);
 
+  // Global messages for the NextIntlClientProvider
+  // Per-tool messages (messages/{locale}/tool/{slug}.json) can be merged here
+  // once individual tool translation files are created.
+  const mergedMessages = await getMessages();
+
   return (
-    <ToolPage
-        tool={tool}
-        about={content?.about}
-        howTo={content?.howTo}
-      >
+    <NextIntlClientProvider messages={mergedMessages}>
+      <ToolPage tool={tool} toolName={toolName} toolDesc={toolDesc} about={about} howTo={howTo}>
         {accessible && ToolComponent ? (
           <ToolComponent />
         ) : (
           <div className="flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/25 bg-muted/50 p-12 text-center">
             <p className="text-lg font-medium text-muted-foreground">
-              Coming Soon
+              {tPage("comingSoonTitle")}
             </p>
             <p className="mt-1 text-sm text-muted-foreground/70">
-              This tool is currently under development.
+              {tPage("comingSoonDesc")}
             </p>
           </div>
         )}
       </ToolPage>
+    </NextIntlClientProvider>
   );
 }

@@ -25,7 +25,16 @@ When implementing a planned tool, read its detailed spec from `ABZAR_SPEC.md`.
 - `SelectValue` may not display correctly for dynamic items — render the label explicitly in `SelectTrigger` instead: `<SelectTrigger><span>{label}</span></SelectTrigger>`.
 - Theme is custom (no `next-themes`). Provider at `components/theme-provider.tsx`. Import `useTheme` from there, not from any package.
 - JSON-LD goes in `generateMetadata`'s `other` field, not inline `<script>` tags (causes hydration errors).
-- Static export requires `generateStaticParams` for all dynamic routes.
+- Static export requires `generateStaticParams` for all dynamic routes — and every `generateStaticParams` must cross-product with `routing.locales` (see `i18n/routing.ts`).
+
+## i18n Gotchas
+
+- **Navigation imports**: Use `Link`, `useRouter`, `usePathname`, `redirect` from `@/i18n/navigation` — never from `next/link` or `next/navigation` directly (except `notFound` which stays from `next/navigation`).
+- **`setRequestLocale(locale)`** must be called in every server page and layout for static export to work. Without it, `next-intl` falls back to `headers()` which breaks `output: 'export'`.
+- **`useTranslations`** is for sync components (client or sync server). **`getTranslations`** (from `next-intl/server`) is for `async` server components. Using `useTranslations` in an async component will error.
+- **Checking optional translation keys**: Use `t.has('key')` before accessing — not all tools have entries in every message namespace.
+- **Directional CSS**: Use Tailwind logical properties (`ms-*`, `me-*`, `ps-*`, `pe-*`, `text-start`, `text-end`, `inset-s-*`, `inset-e-*`, `border-s`, `border-e`) instead of physical (`ml-*`, `mr-*`, `pl-*`, `pr-*`, `text-left`, `text-right`, `left-*`, `right-*`, `border-l`, `border-r`). Exception: centering patterns (`left-1/2 -translate-x-1/2`) and animations stay physical.
+- **`localePrefix: 'always'`** — all URLs require `/en` or `/fa` prefix. The root `/` redirects to `/en` via `app/page.tsx`.
 
 ## React 19 Patterns
 

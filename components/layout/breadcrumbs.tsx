@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { getCategoryBySlug } from "@/lib/categories";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 interface BreadcrumbsProps {
   category: string;
@@ -7,7 +7,8 @@ interface BreadcrumbsProps {
 }
 
 export function Breadcrumbs({ category, toolName }: BreadcrumbsProps) {
-  const cat = getCategoryBySlug(category);
+  const t = useTranslations("breadcrumbs");
+  const tCat = useTranslations("categories");
 
   return (
     <nav
@@ -15,7 +16,7 @@ export function Breadcrumbs({ category, toolName }: BreadcrumbsProps) {
       className="flex items-center gap-2 text-sm text-muted-foreground"
     >
       <Link href="/" className="hover:text-foreground transition-colors">
-        Home
+        {t("home")}
       </Link>
       <span>/</span>
       {toolName ? (
@@ -24,7 +25,7 @@ export function Breadcrumbs({ category, toolName }: BreadcrumbsProps) {
             href={`/tools/${category}`}
             className="hover:text-foreground transition-colors"
           >
-            {cat?.name ?? category}
+            {tCat(`${category}.name`)}
           </Link>
           <span>/</span>
           <span className="text-foreground font-medium truncate">
@@ -33,7 +34,7 @@ export function Breadcrumbs({ category, toolName }: BreadcrumbsProps) {
         </>
       ) : (
         <span className="text-foreground font-medium">
-          {cat?.name ?? category}
+          {tCat(`${category}.name`)}
         </span>
       )}
     </nav>
