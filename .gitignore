@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# generated files
+/public/sitemap.xml
+
 # dependencies
 /node_modules
 /.pnp
@@ -47,3 +50,6 @@ next-env.d.ts
 messages/en/tools.json
 messages/en/categories.json
 messages/en/tool-content.json
+
+# claude
+.claude/settings.local.json
