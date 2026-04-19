@@ -1,235 +1,204 @@
-# Implemented Tools Analysis
+# Implemented Tools Inventory
 
-This document tracks all **live** and **featured** tools currently implemented in Abzar, comparing them against the original PRD specifications. It identifies feature completeness and suggests improvements.
+Registry-backed snapshot of all currently implemented tools in Abzar.
 
-**Last Updated**: 2026-04-12  
-**Total Implemented Tools**: 68 (34 Live + 10 Featured + 24 Beta/Additional)  
-**Overall Feature Completeness**: 92% (most tools fully match spec)
+**Last Updated**: 2026-04-19  
+**Source of Truth**: `lib/tools-registry.ts`  
+**Implemented Tools**: 74  
+**Status Breakdown**: 64 `live`, 10 `featured`
 
----
+## Summary
 
-## Table of Contents
-
-- [Text & Language](#text--language) (8 tools)
-- [Developer Tools](#developer-tools) (11 tools)
-- [Design & Colors](#design--colors) (4 tools)
-- [Image & Media](#image--media) (3 tools)
-- [Math & Data](#math--data) (7 tools)
-- [Finance & Business](#finance--business) (6 tools)
-- [Security & Privacy](#security--privacy) (5 tools)
-- [Productivity](#productivity) (7 tools)
-- [Health & Fitness](#health--fitness) (2 tools)
-- [Networking & Sysadmin](#networking--sysadmin) (1 tool)
-- [Education & Learning](#education--learning) (3 tools)
-- [Fun & Creative](#fun--creative) (5 tools)
-- [File Utilities](#file-utilities) (3 tools)
-- [Date & Time](#date--time) (3 tools)
-
----
+| Category | Implemented |
+|----------|-------------|
+| Text & Language | 9 |
+| Developer Tools | 10 |
+| Color & Design | 3 |
+| Image & Media | 3 |
+| Math & Data | 7 |
+| Finance & Business | 6 |
+| Security & Privacy | 4 |
+| Productivity | 7 |
+| Health & Fitness | 2 |
+| Networking & Sysadmin | 1 |
+| Education & Learning | 3 |
+| Fun & Creative | 13 |
+| File Utilities | 4 |
+| Date & Time | 2 |
 
 ## Text & Language
 
-| Tool | Status | PRD Description | Feature Completeness | Missing Features | Suggested Improvements |
-|------|--------|-----------------|----------------------|------------------|----------------------|
-| **Word & Character Counter** | ✅ LIVE | Count words, characters, sentences, paragraphs with readability scores (Flesch-Kincaid, Gunning Fog) | 95% | Gunning Fog index not confirmed | Add syllable count display; add grade level reading; support multiple text samples for comparison |
-| **Markdown Editor** | ✅ LIVE | Live split-pane editor with instant HTML preview and export | 90% | Export formats limited; may need YAML frontmatter support | Add auto-save visual indicator; syntax highlighting for code blocks; export to PDF; markdown table helper |
-| **Lorem Ipsum Generator** | ✅ LIVE | Generate placeholder text in multiple styles (classic, hipster, corporate) | 100% | — | Add more styles (startup jargon, lorem-florum); paragraph preview before generation; copy individual paragraphs |
-| **Case Converter** | ✅ LIVE | Transform text: camelCase, snake_case, PascalCase, Title Case, UPPER, lower, kebab-case | 95% | May be missing CONSTANT_CASE | Add CONSTANT_CASE and dot.case; multi-line support; preserve acronyms option |
-| **Slug Generator** | ✅ LIVE | Turn any title into a URL-friendly slug | 100% | — | Add preview of slug as you type; show collision risk with common routes; batch slug generation for lists |
-| **String Escaper/Unescaper** | ✅ LIVE | Escape/unescape for HTML, JSON, URL, XML, CSV | 100% | — | Add C/C++/Java escape sequences; LDAP escaping; regex escaping; copy individual escape examples |
-| **Whitespace Cleaner** | ✅ LIVE | Strip trailing spaces, normalize line endings, remove invisible Unicode | 95% | Zero-width character detection may be incomplete | Add character encoding detection; BOM removal option; invisible character highlight visualization |
-| **Reverse Text / Mirror** | ✅ LIVE | Reverse, flip, or mirror text (character or word level) | 100% | — | Add reverse by delimiter/separator; boustrophedon style; visual character-by-character reversal |
+Transform, analyze, and generate text.
 
----
+| Tool | Slug | Status | Deps | Description |
+|------|------|--------|------|-------------|
+| Word & Character Counter | `word-counter` | `live` | `light` | Count words, characters, sentences, paragraphs with readability scores |
+| Markdown Editor | `markdown-editor` | `live` | `medium` | Live split-pane editor with instant HTML preview and export |
+| Lorem Ipsum Generator | `lorem-ipsum` | `live` | `light` | Generate placeholder text in multiple styles (classic, hipster, corporate) |
+| Case Converter | `case-converter` | `live` | `light` | Transform text between camelCase, snake_case, PascalCase, Title Case, UPPER, lower, kebab-case |
+| Regex Tester | `regex-tester` | `featured` | `light` | Test regular expressions with real-time match highlighting, capture groups, and cheat sheet |
+| Slug Generator | `slug-generator` | `live` | `light` | Turn titles and phrases into clean URL-friendly slugs |
+| String Escaper/Unescaper | `string-escaper` | `live` | `light` | Escape and unescape text for HTML, JSON, URLs, XML, CSV, and regex |
+| Whitespace Cleaner | `whitespace-cleaner` | `live` | `light` | Strip trailing spaces, normalize line endings, and clean invisible whitespace |
+| Reverse Text / Mirror | `reverse-text` | `live` | `light` | Reverse characters, words, or mirrored text for stylistic effects |
 
 ## Developer Tools
 
-| Tool | Status | PRD Description | Feature Completeness | Missing Features | Suggested Improvements |
-|------|--------|-----------------|----------------------|------------------|----------------------|
-| **JSON Formatter & Validator** | 🌟 FEATURED | Pretty-print, validate, minify, and view JSON as a collapsible tree | 100% | — | Add path-to-value navigation; JSON schema validation; duplicate key detection; array flattening/grouping tools |
-| **Base64 Encoder/Decoder** | ✅ LIVE | Encode/decode text or files to/from Base64 | 100% | — | Add Base64URL variant; streaming for large files; progress indicator for batch conversion |
-| **URL Encoder/Decoder** | ✅ LIVE | Percent-encode/decode URL components | 95% | Double-encoding toggle unclear | Add URL parsing into components; query string builder; URL validation against RFC 3986 |
-| **JWT Decoder** | ✅ LIVE | Paste a JWT and see decoded header, payload, and expiration | 90% | Signature verification missing | Add signature verification with secret/public key; timeline view of token lifetime; payload claims reference |
-| **UUID / ULID Generator** | ✅ LIVE | Generate v4 UUIDs, ULIDs, nanoids — bulk and copy | 100% | — | Add v1, v5, v6, v7 UUID variants; GUID generation; validate UUID format; collision probability display |
-| **Cron Expression Builder** | ✅ LIVE | Visual cron with human-readable descriptions and next-run preview | 95% | Next-run timezone handling unclear | Add saved cron expressions library; cron expression parser/explainer; test against dates; support non-standard seconds |
-| **HTML Entity Encoder** | ✅ LIVE | Encode/decode HTML entities (named and numeric) | 100% | — | Add hex/decimal escape sequences; CSS escapes; JavaScript string escapes; reference table for entities |
-| **Timestamp Converter** | ✅ LIVE | Convert Unix epoch, ISO 8601, RFC 2822, human-readable | 95% | Timezone handling may be limited | Add millisecond/microsecond precision; timezone converter; relative time display; leap second info |
-| **Chmod Calculator** | ✅ LIVE | Visual permission calculator for Unix file permissions | 100% | — | Add default permissions; umask calculator; symbolic notation explainer; bulk permission converter |
-| **Epoch Countdown** | ✅ LIVE | Live ticking Unix timestamp with conversion | 90% | Auto-refresh behavior unclear | Add alarm/notification at target epoch; multiple timer support; export to calendar format; precision options |
+Format, encode, decode, and debug.
 
----
+| Tool | Slug | Status | Deps | Description |
+|------|------|--------|------|-------------|
+| JSON Formatter & Validator | `json-formatter` | `featured` | `light` | Pretty-print, validate, minify, and inspect JSON with a tree view |
+| Base64 Encoder/Decoder | `base64` | `live` | `light` | Encode and decode text or files to and from Base64 |
+| URL Encoder/Decoder | `url-encoder` | `live` | `light` | Percent-encode and decode URL components safely |
+| JWT Decoder | `jwt-decoder` | `live` | `light` | Decode JWT header and payload with expiration insights |
+| UUID / ULID Generator | `uuid-generator` | `live` | `light` | Generate UUIDs, ULIDs, and related unique identifiers |
+| Cron Expression Builder | `cron-builder` | `live` | `light` | Build cron expressions with human-readable schedule previews |
+| HTML Entity Encoder | `html-entities` | `live` | `light` | Encode and decode HTML entities in named and numeric forms |
+| Timestamp Converter | `timestamp-converter` | `live` | `light` | Convert Unix, ISO 8601, RFC 2822, and human-readable timestamps |
+| Chmod Calculator | `chmod-calculator` | `live` | `light` | Visual Unix permission calculator with octal and symbolic output |
+| Epoch Countdown | `epoch-countdown` | `live` | `light` | Live countdown to a target Unix timestamp |
 
-## Design & Colors
+## Color & Design
 
-| Tool | Status | PRD Description | Feature Completeness | Missing Features | Suggested Improvements |
-|------|--------|-----------------|----------------------|------------------|----------------------|
-| **Color Picker & Converter** | 🌟 FEATURED | Pick colors and convert between HEX, RGB, HSL, HSB, CMYK | 95% | HSB/CMYK may lack full precision | Add LCH/LAB color spaces; color blindness simulator; HSL adjustment sliders; CSS color variable output |
-| **CSS Gradient Generator** | ✅ LIVE | Build linear, radial, and conic gradients with visual stops | 95% | Gradient animation export unclear | Add gradient animation keyframes; multiple gradient layers; preset gradients; gradient text effect |
-| **Contrast Ratio Checker** | ✅ LIVE | Check color pairs against WCAG AA/AAA | 100% | — | Add large text separate scoring; Myer's algorithm display; color blindness contrast check; batch checker for palettes |
+Pick colors, generate palettes, and build CSS.
 
----
+| Tool | Slug | Status | Deps | Description |
+|------|------|--------|------|-------------|
+| Color Picker & Converter | `color-picker` | `featured` | `light` | Pick colors and convert between HEX, RGB, HSL, and related formats |
+| CSS Gradient Generator | `gradient-generator` | `live` | `light` | Build linear, radial, and conic gradients visually |
+| Contrast Ratio Checker | `contrast-checker` | `live` | `light` | Check color pairs against WCAG contrast thresholds |
 
 ## Image & Media
 
-| Tool | Status | PRD Description | Feature Completeness | Missing Features | Suggested Improvements |
-|------|--------|-----------------|----------------------|------------------|----------------------|
-| **Image Resizer & Cropper** | 🌟 FEATURED | Resize, crop, adjust images using Canvas API | 85% | Rotation/flip may lack UI; filter effects missing | Add rotate/flip controls; filters (brightness, contrast, saturation); aspect ratio lock toggle; batch processing |
-| **Pixel Art Editor** | ✅ LIVE | Grid-based drawing tool with palette and export | 80% | Undo/redo unclear; fill bucket missing | Add undo/redo history; eyedropper tool; fill bucket; layers support; line/rectangle drawing tools; animation preview |
+Resize, convert, edit, and generate media.
 
----
+| Tool | Slug | Status | Deps | Description |
+|------|------|--------|------|-------------|
+| Image Resizer & Cropper | `image-resizer` | `featured` | `light` | Resize and crop images in-browser using Canvas APIs |
+| QR Code Generator | `qr-generator` | `featured` | `medium` | Generate QR codes with downloadable output |
+| Pixel Art Editor | `pixel-art` | `live` | `light` | Draw pixel art on a grid with export support |
 
 ## Math & Data
 
-| Tool | Status | PRD Description | Feature Completeness | Missing Features | Suggested Improvements |
-|------|--------|-----------------|----------------------|------------------|----------------------|
-| **Unit Converter** | 🌟 FEATURED | Convert length, weight, volume, temperature, speed, area, data | 100% | — | Add historical unit variants; custom unit definitions; batch conversion; cooking measurement converter |
-| **Percentage Calculator** | ✅ LIVE | Calculate percentages, percentage change, ratios | 95% | Compound percentage calculations unclear | Add percentage increase/decrease over time; compound interest percentage; inverse percentage finder |
-| **Number Base Converter** | ✅ LIVE | Convert between hex, binary, octal, decimal | 100% | — | Add base-n converter (any base 2-36); two's complement display; ASCII conversion; bitwise operation visualizer |
-| **Roman Numerals** | ✅ LIVE | Convert between Roman and Arabic numbers | 100% | — | Add vinculum (overline) for large numbers; historical Roman numeral variants; calculation between Roman numbers |
-| **Aspect Ratio** | ✅ LIVE | Calculate and convert aspect ratios | 95% | Resolution calculator clarity unclear | Add video frame rate calculator; pixel density converter; print size calculator; common formats reference |
-| **Data Size Converter** | ✅ LIVE | Convert bytes, KB, MB, GB, TB | 100% | — | Add bit sizes (Kilobits, Megabits); storage density calculator; download time estimator; data transfer cost calculator |
-| **Random Generator** | ✅ LIVE | Random numbers, dice, coins, lottery | 90% | Weighted random selection missing | Add custom dice definitions; weighted randomization; random string generator; shuffler for lists; seed-based reproducibility |
+Calculate, convert, and visualize numbers.
 
----
+| Tool | Slug | Status | Deps | Description |
+|------|------|--------|------|-------------|
+| Unit Converter | `unit-converter` | `featured` | `light` | Convert between common units for length, weight, volume, speed, and more |
+| Percentage Calculator | `percentage-calculator` | `live` | `light` | Calculate percentages, percentage change, and ratios |
+| Hex / Binary / Decimal Converter | `number-base-converter` | `live` | `light` | Convert values across binary, octal, decimal, and hexadecimal |
+| Roman Numeral Converter | `roman-numerals` | `live` | `light` | Convert between Roman numerals and Arabic numbers |
+| Aspect Ratio Calculator | `aspect-ratio` | `live` | `light` | Calculate and convert aspect ratios and common resolutions |
+| Data Size Converter | `data-size-converter` | `live` | `light` | Convert bytes across KB, MB, GB, TB, and related units |
+| Random Number Generator | `random-generator` | `live` | `light` | Generate random numbers, dice rolls, coin flips, and similar outputs |
 
 ## Finance & Business
 
-| Tool | Status | PRD Description | Feature Completeness | Missing Features | Suggested Improvements |
-|------|--------|-----------------|----------------------|------------------|----------------------|
-| **Mortgage / Loan Calculator** | 🌟 FEATURED | Monthly payments, amortization, total interest | 95% | Extra payment handling unclear | Add biweekly payment support; down payment options; property tax/insurance inclusion; prepayment penalty; refinance comparison |
-| **Tip / Bill Splitter** | ✅ LIVE | Split bills with custom tip and rounding | 100% | — | Add itemized splitting; per-person item assignment; tax-before/after-tip toggle; multiple currencies; Venmo/PayPal integration links |
-| **Invoice Generator** | ✅ LIVE | Create invoices and export to PDF | 85% | Tax calculations may be limited | Add invoice numbering/templates; multi-currency support; payment terms/due dates; itemized tax rates per line; recurring invoice setup |
-| **Salary Converter** | ✅ LIVE | Convert annual, monthly, weekly, daily, hourly | 100% | — | Add deduction calculator (taxes, benefits); take-home vs gross toggle; regional tax estimates; purchasing power comparison |
-| **ROI Calculator** | ✅ LIVE | Return on investment with periods | 90% | Annualized ROI clarity unclear | Add CAGR calculation; multiple investment comparison; inflation adjustment; tax impact on ROI; break-even analysis |
-| **Markup / Margin Calculator** | ✅ LIVE | Convert between cost, markup %, profit margin | 100% | — | Add volume discount calculator; pricing tiers; psychological pricing suggestions; competitor price comparison |
+Budgets, loans, invoices, and trackers.
 
----
+| Tool | Slug | Status | Deps | Description |
+|------|------|--------|------|-------------|
+| Mortgage / Loan Calculator | `mortgage-calculator` | `featured` | `light` | Calculate payments, total interest, and amortization over time |
+| Tip / Bill Splitter | `tip-calculator` | `live` | `light` | Split bills, tips, and per-person totals quickly |
+| Invoice Generator | `invoice-generator` | `live` | `heavy` | Create invoices in-browser and export them to PDF |
+| Salary ↔ Hourly Converter | `salary-converter` | `live` | `light` | Convert salary, hourly, weekly, monthly, and annual pay |
+| ROI Calculator | `roi-calculator` | `live` | `light` | Measure return on investment across different scenarios |
+| Markup / Margin Calculator | `markup-margin` | `live` | `light` | Convert between cost, markup percentage, and margin |
 
 ## Security & Privacy
 
-| Tool | Status | PRD Description | Feature Completeness | Missing Features | Suggested Improvements |
-|------|--------|-----------------|----------------------|------------------|----------------------|
-| **Password Generator** | 🌟 FEATURED | Strong passwords with customizable options | 95% | Passphrase generation unclear | Add passphrase generator (XKCD style); password history/export; strength indicator; entropy calculator; memorable password option |
-| **Hash Generator** | ✅ LIVE | SHA-1, SHA-256, SHA-512, MD5 of text or files | 95% | BLAKE2/Argon2 missing | Add BLAKE2, BLAKE3, Argon2 support; salting/peppering; key derivation (PBKDF2, Scrypt); HMAC preview alongside hash |
-| **HMAC Generator** | ✅ LIVE | Generate HMAC signatures | 100% | — | Add algorithm comparison; signature verification; multi-key testing; batch HMAC generation; timing attack warning |
-| **Random Bytes** | ✅ LIVE | Cryptographically secure random bytes | 100% | — | Add entropy analysis; random seed tester; Base32 encoding option; security strength indicator |
+Generate passwords, hash data, and work with cryptographic utilities.
 
----
+| Tool | Slug | Status | Deps | Description |
+|------|------|--------|------|-------------|
+| Password Generator | `password-generator` | `featured` | `light` | Generate strong passwords with configurable rules |
+| Hash Generator | `hash-generator` | `live` | `light` | Create SHA and MD5 hashes for text or files |
+| HMAC Generator | `hmac-generator` | `live` | `light` | Generate keyed HMAC signatures in-browser |
+| Random Byte Generator | `random-bytes` | `live` | `light` | Produce cryptographically secure random bytes |
 
 ## Productivity
 
-| Tool | Status | PRD Description | Feature Completeness | Missing Features | Suggested Improvements |
-|------|--------|-----------------|----------------------|------------------|----------------------|
-| **Pomodoro Timer** | 🌟 FEATURED | Focus timer with configurable intervals and session tracking | 95% | Session history unclear | Add session statistics; weekly focus time report; notifications; sound options; pause-resume tracking; goal setting |
-| **Stopwatch & Lap Timer** | ✅ LIVE | Precision stopwatch with lap recording | 95% | Average lap time unclear | Add split time; fastest/slowest lap; average lap display; export lap times; dark mode lap list styling |
-| **Countdown Timer** | ✅ LIVE | Count down to a specific date | 100% | — | Add multiple parallel timers; recurring countdown (yearly dates); preset countdowns (holidays); calendar integration |
-| **Kanban Board** | ✅ LIVE | Drag-and-drop task board | 85% | Persistence may have issues; card editing unclear | Add card detail modals; due dates; color labels/priorities; multiple boards; board templates; card dependency tracking |
-| **Habit Tracker** | ✅ LIVE | Daily habits with streaks and heatmap | 90% | Goal setting/analytics unclear | Add streak recovery after missed days; goal metrics per habit; reminders at set times; export habit data; monthly patterns |
-| **Notepad with Auto-Save** | ✅ LIVE | Distraction-free writing pad | 100% | — | Add word/character count; reading time estimate; text statistics; auto-backup to file; multiple notes; markdown preview toggle |
-| **Reading Time Estimator** | ✅ LIVE | Estimate reading time at various speeds | 100% | — | Add learning difficulty adjustment; language detection; speaking time estimate; visualization of reading pace; skill level profiles |
+Timers, boards, planners, and trackers.
 
----
+| Tool | Slug | Status | Deps | Description |
+|------|------|--------|------|-------------|
+| Pomodoro Timer | `pomodoro` | `featured` | `light` | Focus timer with configurable work and break intervals |
+| Stopwatch & Lap Timer | `stopwatch` | `live` | `light` | Precision stopwatch with lap recording |
+| Countdown Timer | `countdown` | `live` | `light` | Count down to a date or duration |
+| Kanban Board | `kanban` | `live` | `light` | Local-first drag-and-drop task board |
+| Habit Tracker | `habit-tracker` | `live` | `light` | Track habits, streaks, and progress over time |
+| Notepad with Auto-Save | `notepad` | `live` | `light` | Simple writing pad with local persistence |
+| Reading Time Estimator | `reading-time` | `live` | `light` | Estimate reading time at different reading speeds |
 
 ## Health & Fitness
 
-| Tool | Status | PRD Description | Feature Completeness | Missing Features | Suggested Improvements |
-|------|--------|-----------------|----------------------|------------------|----------------------|
-| **BMI Calculator** | ✅ LIVE | Body Mass Index with visual scale | 95% | Imperial/metric conversion unclear | Add BMI trend tracking; body composition estimation; TDEE calculator; BMI for children; visual body type comparison |
-| **Sleep Cycle Calculator** | ✅ LIVE | Optimal bedtimes based on 90-min cycles | 100% | — | Add caffeine/food timing considerations; sleep debt calculator; power nap timer; chronotype assessment; sleep quality tracker |
+Calculators and trackers for wellbeing.
 
----
+| Tool | Slug | Status | Deps | Description |
+|------|------|--------|------|-------------|
+| BMI Calculator | `bmi-calculator` | `live` | `light` | Calculate body mass index and interpret the result |
+| Sleep Cycle Calculator | `sleep-calculator` | `live` | `light` | Suggest bedtime and wake-up times around sleep cycles |
 
 ## Networking & Sysadmin
 
-| Tool | Status | PRD Description | Feature Completeness | Missing Features | Suggested Improvements |
-|------|--------|-----------------|----------------------|------------------|----------------------|
-| **Subnet Calculator** | ✅ LIVE | Network, broadcast, host range from IP + CIDR | 95% | IPv6 support unclear | Add IPv6 support; VLSM calculator; supernetting calculator; route aggregation; subnet cheatsheet export |
+Subnet, bandwidth, ports, and DNS.
 
----
+| Tool | Slug | Status | Deps | Description |
+|------|------|--------|------|-------------|
+| Subnet Calculator | `subnet-calculator` | `live` | `light` | Calculate network, broadcast, and host ranges from CIDR input |
 
 ## Education & Learning
 
-| Tool | Status | PRD Description | Feature Completeness | Missing Features | Suggested Improvements |
-|------|--------|-----------------|----------------------|------------------|----------------------|
-| **Typing Speed Test** | 🌟 FEATURED | WPM with accuracy and difficulty levels | 90% | Difficulty level implementation unclear | Add different test lengths (1min, 5min, 15min); common words vs rare words; language selection; typing patterns analysis |
-| **Flashcards** | ✅ LIVE | Spaced repetition (Leitner) stored locally | 95% | Export/import clarity unclear | Add card categories; batch import (CSV); audio pronunciation support; review statistics; sharing deck links; progress tracking |
-| **Algorithm Visualizer** | ✅ LIVE | Watch sorting/search algorithms step-by-step | 90% | Algorithm set may be limited | Add more algorithms (graph search, pathfinding); code highlight during steps; speed control; comparison mode for multiple algorithms |
+Quizzes, flashcards, and interactive learning.
 
----
+| Tool | Slug | Status | Deps | Description |
+|------|------|--------|------|-------------|
+| Typing Speed Test | `typing-test` | `featured` | `light` | Measure typing speed, accuracy, and difficulty performance |
+| Flashcard App | `flashcards` | `live` | `light` | Study flashcards locally with simple review flows |
+| Algorithm Visualizer | `algorithm-visualizer` | `live` | `light` | Visualize sorting and search algorithms step by step |
 
 ## Fun & Creative
 
-| Tool | Status | PRD Description | Feature Completeness | Missing Features | Suggested Improvements |
-|------|--------|-----------------|----------------------|------------------|----------------------|
-| **Drum Machine / Beat Maker** | ✅ LIVE | Sequencer with Web Audio API | 85% | Sound library may be limited | Add drum kit selection; pattern saving/loading; tempo display; swing/shuffle timing; export to audio file; MIDI export |
-| **Conway's Game of Life** | ✅ LIVE | Cellular automaton | 95% | Configuration presets unclear | Add preset patterns (gliders, blinkers); pattern library; speed controls; grid size options; population statistics; rule variations |
-| **Magic 8-Ball** | ✅ LIVE | Random answers with animation | 100% | — | Add custom answer sets; response history; probability display per answer type; sound effects toggle; dark mode animation |
-| **Dice Roller (D&D)** | ✅ LIVE | Roll polyhedral dice with history | 100% | — | Add custom dice; dice notation parser (3d6+5); roll statistics; sound effects; multiple simultaneous rolls; roll sharing links |
+Music, art, games, and creative toys.
 
----
+| Tool | Slug | Status | Deps | Description |
+|------|------|--------|------|-------------|
+| Drum Machine / Beat Maker | `drum-machine` | `live` | `light` | Step sequencer for drum patterns in the browser |
+| Generative Art Tool | `generative-art` | `live` | `light` | Create procedurally generated visual art |
+| Meme Generator | `meme-generator` | `live` | `light` | Add text overlays to images and export memes |
+| Soundboard | `soundboard` | `live` | `light` | Trigger and mix short sound effects |
+| Conway's Game of Life | `game-of-life` | `live` | `light` | Explore the Game of Life cellular automaton |
+| Procedural Terrain Generator | `terrain-generator` | `live` | `light` | Generate terrain maps and related visual outputs |
+| Drawing Canvas | `drawing-canvas` | `live` | `light` | Freeform drawing canvas with export support |
+| Fortune / Magic 8-Ball | `magic-8-ball` | `live` | `light` | Random fortune-style answer generator |
+| Dice Roller (D&D) | `dice-roller` | `live` | `light` | Roll polyhedral dice with history tracking |
+| Noise / Ambient Sound Generator | `ambient-sounds` | `live` | `light` | Play layered ambient sounds for focus or relaxation |
+| CSS Art Playground | `css-art` | `live` | `light` | Explore CSS-based art compositions |
+| Emoji Picker / Search | `emoji-search` | `live` | `light` | Search and copy emoji quickly |
+| Random Color Palette Game | `palette-game` | `live` | `light` | Interactive palette guessing and color play |
 
 ## File Utilities
 
-| Tool | Status | PRD Description | Feature Completeness | Missing Features | Suggested Improvements |
-|------|--------|-----------------|----------------------|------------------|----------------------|
-| **PDF Merger** | ✅ LIVE | Combine multiple PDFs into one | 90% | Page reordering unclear | Add drag-to-reorder; page deletion; page range extraction; compression options; password protection; batch merge from folder |
-| **JSON to CSV Exporter** | ✅ LIVE | Flatten JSON arrays into CSV | 95% | Nested object flattening unclear | Add custom column mapping; nested object flattening strategies; CSV to JSON reverse; CSV validation; delimiter options |
+Merge, split, convert, and clean files.
 
----
+| Tool | Slug | Status | Deps | Description |
+|------|------|--------|------|-------------|
+| PDF Merger | `pdf-merger` | `live` | `heavy` | Combine multiple PDFs into a single output file |
+| Markdown → HTML Converter | `markdown-to-html` | `live` | `medium` | Convert Markdown to HTML with preview-friendly output |
+| HTML → Markdown Converter | `html-to-markdown` | `live` | `medium` | Convert HTML content back into Markdown |
+| JSON to CSV Exporter | `json-to-csv` | `live` | `light` | Flatten JSON data into CSV output |
 
 ## Date & Time
 
-| Tool | Status | PRD Description | Feature Completeness | Missing Features | Suggested Improvements |
-|------|--------|-----------------|----------------------|------------------|----------------------|
-| **Date Difference Calculator** | ✅ LIVE | Days, weeks, months, years between dates | 100% | — | Add business days calculator; holiday exclusion; inclusive/exclusive toggle; calendar view; next occurrence calculator |
-| **Age Calculator** | ✅ LIVE | Exact age in years, months, days | 100% | — | Add milestone dates (next birthday countdown); age by different calendars; age statistics (oldest people, etc.); zodiac sign |
+Timezones, countdowns, and date math.
 
----
+| Tool | Slug | Status | Deps | Description |
+|------|------|--------|------|-------------|
+| Date Difference Calculator | `date-difference` | `live` | `light` | Compute days, weeks, months, and years between dates |
+| Age Calculator | `age-calculator` | `live` | `light` | Calculate exact age from a birth date |
 
-## Summary & Observations
+## Notes
 
-### Completeness by Category
-| Category | Implementation Rate | Notes |
-|----------|-------------------|-------|
-| **Productivity** | 100% (7/7) | All tools fully implemented with most features |
-| **Text & Language** | 89% (8/9) | Text Diff still planned |
-| **Developer Tools** | 46% (11/24) | Strong on formatters/converters; weak on playground tools |
-| **Math & Data** | 78% (7/9) | Missing Scientific Calculator, Statistics Calculator |
-| **Finance & Business** | 50% (6/12) | Core calculators done; missing advanced business tools |
-| **Security & Privacy** | 80% (4/5) | Missing advanced crypto and vault tools |
-| **Design & Colors** | 21% (3/14) | Only basics; missing advanced design tools |
-| **Image & Media** | 23% (2/9) | Basic resizer/cropper; missing converters and filters |
-| **Date & Time** | 60% (3/5) | Missing timezone and calendar tools |
-| **Education & Learning** | 30% (3/10) | Basic tools; missing quiz and practice tools |
-| **Health & Fitness** | 20% (2/10) | Minimal implementation |
-| **Fun & Creative** | 36% (5/14) | Niche tools; missing generative tools |
-| **File Utilities** | 27% (3/11) | Basics implemented; missing advanced file tools |
-| **Networking & Sysadmin** | 14% (1/7) | Only subnet calculator |
-
-### Common Missing Features Across Tools
-1. **Batch/Bulk Operations** — Most tools need multi-item processing
-2. **Export Options** — Limited export formats (PDF, CSV, JSON)
-3. **Undo/Redo** — Not consistently implemented in editors
-4. **Statistics/Analytics** — Usage tracking, streak data, history
-5. **Notifications/Alarms** — Missing for timer-based tools
-6. **API Integrations** — No currency rates, weather, location services
-7. **Offline Support** — Service Worker caching strategy unclear
-8. **Accessibility** — Keyboard navigation and screen reader support need audit
-9. **Dark Mode** — Not consistently themed
-10. **Error Recovery** — Input validation and helpful error messages sparse
-
-### Recommended Quick Wins (High Impact, Low Effort)
-1. Add batch operations to converters (JSON, CSV, Base64)
-2. Implement dark mode system-wide
-3. Add export to PDF for formatted tools
-4. Implement undo/redo for text editors
-5. Add keyboard shortcuts reference/help
-6. Add statistics display to trackers
-7. Implement notifications for timers
-8. Add print/export to PDF for invoices
-9. Add more presets to design tools
-10. Implement proper error boundary messages
-
----
-
-**Note**: This analysis is current as of 2026-04-12. Please update as new tools are implemented and features are added.
+- This file is intended to stay in sync with `lib/tools-registry.ts`.
+- If a tool is implemented in code but missing here, update the registry first and regenerate this inventory.

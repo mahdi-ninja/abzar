@@ -136,14 +136,13 @@
   }
 }
 
-/* Persian (RTL) font overrides — applied when <html lang="fa"> */
-[lang="fa"] {
+/* Remap locale-specific next/font variables onto the shared theme font tokens. */
+:lang(fa) {
   --font-sans: var(--font-sans-fa);
   --font-serif: var(--font-serif-fa);
   --font-mono: "Vazir Code", var(--font-mono);
 }
 
-/* Chinese font overrides — applied when <html lang="zh"> */
-[lang="zh"] {
+:lang(zh) {
   --font-sans: var(--font-sans-zh), "PingFang SC", "Microsoft YaHei", sans-serif;
 }

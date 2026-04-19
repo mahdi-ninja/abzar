@@ -33,7 +33,7 @@
 | Language | TypeScript | Type safety across 200+ tool components. |
 | Styling | Tailwind CSS | Utility-first keeps styles co-located with components. Purge removes unused classes in production. |
 | State | React hooks + `localStorage` | No global state library needed. Each tool manages its own state. Persistence via a shared `useLocalStorage` hook. |
-| Deployment | Static export (`next build && next export`) | Host on Vercel, Netlify, Cloudflare Pages, or GitHub Pages. Zero server cost. |
+| Deployment | Static export (`next build`, with `output: "export"`) | Host on Vercel, Netlify, Cloudflare Pages, or GitHub Pages. Zero server cost. |
 | Backend | None | Zero server-side logic. Zero API calls. Optional: bundled static JSON files for reference data (currency rates, port numbers, OUI database). |
 
 ---
@@ -240,10 +240,11 @@ abzar/
 └── ABZAR_SPEC.md                      # This file
 ```
 
-**Key rule: Adding a new tool means touching exactly 3 places:**
+**Key rule: Adding a new tool means touching exactly 4 places:**
 1. Add metadata to `lib/tools-registry.ts`
 2. Create `components/tools/[tool-slug]/index.tsx`
 3. Add dynamic import to `app/[locale]/tools/[category]/[tool-slug]/page.tsx` `toolComponents` map
+4. Add per-tool translations in `messages/en/tool/[tool-slug].json` and `messages/fa/tool/[tool-slug].json`
 
 Nothing else changes. No barrel files to update, no imports to add to shared code. English translation messages are auto-generated from the registry at dev/build time.
 

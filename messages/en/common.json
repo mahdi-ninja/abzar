@@ -7,6 +7,7 @@
     "expandSidebar": "Expand sidebar",
     "collapseSidebar": "Collapse sidebar",
     "openNavigation": "Open navigation",
+    "closeNavigation": "Close navigation",
     "navigation": "Navigation",
     "comingSoon": "Coming Soon",
     "toolsHeading": "Tools"
@@ -17,6 +18,12 @@
     "fa": "فارسی",
     "zh": "中文",
     "es": "Español"
+  },
+  "themeToggle": {
+    "light": "light theme",
+    "dark": "dark theme",
+    "system": "system theme",
+    "toggleTo": "Switch to {theme}"
   },
   "breadcrumbs": {
     "home": "Home"

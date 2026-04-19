@@ -7,6 +7,7 @@
     "expandSidebar": "Expandir barra lateral",
     "collapseSidebar": "Contraer barra lateral",
     "openNavigation": "Abrir navegación",
+    "closeNavigation": "Cerrar navegación",
     "navigation": "Navegación",
     "comingSoon": "Próximamente",
     "toolsHeading": "Herramientas"
@@ -17,6 +18,12 @@
     "fa": "فارسی",
     "zh": "中文",
     "es": "Español"
+  },
+  "themeToggle": {
+    "light": "tema claro",
+    "dark": "tema oscuro",
+    "system": "tema del sistema",
+    "toggleTo": "Cambiar a {theme}"
   },
   "breadcrumbs": {
     "home": "Inicio"

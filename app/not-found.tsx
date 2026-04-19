@@ -1,30 +1,20 @@
 import Link from "next/link";
 
-export default function RootNotFound() {
+import { NotFoundPage } from "@/components/not-found-page";
+import { routing } from "@/i18n/routing";
+
+export default function GlobalNotFound() {
   return (
-    <div
-      style={{
-        fontFamily: "system-ui, sans-serif",
-        display: "flex",
-        height: "100vh",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <div style={{ textAlign: "center" }}>
-        <h1 style={{ fontSize: "2rem", fontWeight: "bold" }}>404</h1>
-        <p style={{ marginTop: "0.5rem", color: "#666" }}>Page not found</p>
+    <NotFoundPage
+      message="Page not found"
+      action={(
         <Link
-          href="/en"
-          style={{
-            marginTop: "1rem",
-            display: "inline-block",
-            color: "#d97706",
-          }}
+          href={`/${routing.defaultLocale}`}
+          className="inline-flex text-sm font-medium text-primary hover:underline"
         >
           Go home
         </Link>
-      </div>
-    </div>
+      )}
+    />
   );
 }

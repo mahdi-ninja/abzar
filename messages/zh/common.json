@@ -7,6 +7,7 @@
     "expandSidebar": "展开侧边栏",
     "collapseSidebar": "收起侧边栏",
     "openNavigation": "打开导航",
+    "closeNavigation": "关闭导航",
     "navigation": "导航",
     "comingSoon": "即将推出",
     "toolsHeading": "工具"
@@ -17,6 +18,12 @@
     "fa": "فارسی",
     "zh": "中文",
     "es": "Español"
+  },
+  "themeToggle": {
+    "light": "浅色主题",
+    "dark": "深色主题",
+    "system": "系统主题",
+    "toggleTo": "切换到{theme}"
   },
   "breadcrumbs": {
     "home": "首页"

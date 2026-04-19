@@ -1,66 +1,14 @@
-import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import {
-  Space_Grotesk,
-  Source_Serif_4,
-  Source_Code_Pro,
-  Vazirmatn,
-  Noto_Naskh_Arabic,
-  Noto_Sans_SC,
-} from "next/font/google";
-import { routing } from "@/i18n/routing";
-import { ThemeProvider } from "@/components/theme-provider";
-import { PwaProvider } from "@/components/pwa-provider";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { Toaster } from "@/components/ui/sonner";
-import { AppShell } from "@/components/layout/app-shell";
-import { siteConfig } from "@/lib/config";
+
 import "@/app/globals.css";
 
-// English fonts (always loaded)
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-sans",
-  subsets: ["latin"],
-});
-const sourceSerif = Source_Serif_4({
-  variable: "--font-serif",
-  subsets: ["latin"],
-});
-const sourceCodePro = Source_Code_Pro({
-  variable: "--font-mono",
-  subsets: ["latin"],
-});
-
-// Persian fonts (applied via CSS only when locale is fa)
-const vazirmatn = Vazirmatn({
-  variable: "--font-sans-fa",
-  subsets: ["arabic"],
-});
-const notoNaskhArabic = Noto_Naskh_Arabic({
-  variable: "--font-serif-fa",
-  subsets: ["arabic"],
-});
-
-// Chinese font (applied via CSS only when locale is zh)
-const notoSansSC = Noto_Sans_SC({
-  variable: "--font-sans-zh",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-});
-
-const rtlLocales = ["fa", "ar", "he"];
-
-function getFontVars(locale: string) {
-  switch (locale) {
-    case "fa":
-      return `${vazirmatn.variable} ${notoNaskhArabic.variable} ${sourceCodePro.variable}`;
-    case "zh":
-      return `${notoSansSC.variable} ${sourceSerif.variable} ${sourceCodePro.variable}`;
-    default:
-      return `${spaceGrotesk.variable} ${sourceSerif.variable} ${sourceCodePro.variable}`;
-  }
-}
+import { routing } from "@/i18n/routing";
+import { SiteRoot } from "@/components/layout/site-root";
+import { ThemeScript } from "@/components/theme-script";
+import { siteConfig } from "@/lib/config";
+import { getLocaleDir, getLocaleFontVars } from "@/lib/locale-config";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -99,7 +47,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function RootLayout({
+export default async function LocaleLayout({
   children,
   params,
 }: {
@@ -111,8 +59,8 @@ export default async function RootLayout({
   setRequestLocale(locale);
 
   const messages = await getMessages();
-  const dir = rtlLocales.includes(locale) ? "rtl" : "ltr";
-  const fontVars = getFontVars(locale);
+  const dir = getLocaleDir(locale);
+  const fontVars = getLocaleFontVars(locale);
 
   return (
     <html
@@ -121,24 +69,9 @@ export default async function RootLayout({
       suppressHydrationWarning
       className={`${fontVars} h-full antialiased`}
     >
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem("abzar:theme");var d=document.documentElement;d.classList.remove("light","dark");if(t==="dark")d.classList.add("dark");else if(t==="light")d.classList.add("light");else if(window.matchMedia("(prefers-color-scheme:dark)").matches)d.classList.add("dark");else d.classList.add("light")}catch(e){}})()`,
-          }}
-        />
-      </head>
-      <body className="min-h-full">
-        <NextIntlClientProvider messages={messages}>
-          <ThemeProvider>
-            <PwaProvider>
-              <TooltipProvider>
-                <AppShell>{children}</AppShell>
-                <Toaster />
-              </TooltipProvider>
-            </PwaProvider>
-          </ThemeProvider>
-        </NextIntlClientProvider>
+      <body className="min-h-full font-sans">
+        <ThemeScript />
+        <SiteRoot messages={messages}>{children}</SiteRoot>
       </body>
     </html>
   );

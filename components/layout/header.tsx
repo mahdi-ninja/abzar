@@ -22,6 +22,7 @@ import { Sidebar } from "@/components/layout/sidebar";
 import { searchTools } from "@/lib/search";
 import { isToolAccessible, type Tool } from "@/lib/tools-registry";
 import { getCategoryBySlug } from "@/lib/categories";
+import { getLocaleDir } from "@/lib/locale-config";
 
 export function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
@@ -67,8 +68,7 @@ export function Header() {
     [router]
   );
 
-  // Determine dir for sheet side
-  const dir = typeof document !== "undefined" ? document.documentElement.dir : "ltr";
+  const dir = getLocaleDir(locale);
 
   return (
     <header className="sticky top-0 z-40 flex h-14 items-center gap-3 border-b border-border bg-background/95 px-4 backdrop-blur supports-backdrop-filter:bg-background/60">
@@ -88,9 +88,13 @@ export function Header() {
             <path d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </SheetTrigger>
-        <SheetContent side={dir === "rtl" ? "right" : "left"} className="w-60 p-0">
+        <SheetContent
+          side={dir === "rtl" ? "right" : "left"}
+          showCloseButton={false}
+          className="w-60 max-w-[15rem] p-0"
+        >
           <SheetTitle className="sr-only">{t("navigation")}</SheetTitle>
-          <Sidebar />
+          <Sidebar variant="mobile" onClose={() => setMobileNavOpen(false)} />
         </SheetContent>
       </Sheet>
 
