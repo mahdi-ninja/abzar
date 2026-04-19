@@ -13,6 +13,7 @@ import {
 } from "@/lib/tools-registry";
 import { generateToolJsonLd } from "@/lib/json-ld";
 
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>

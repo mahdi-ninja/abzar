@@ -13,6 +13,8 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
     categories.map((cat) => ({ locale, category: cat.slug }))
