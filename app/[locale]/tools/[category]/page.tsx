@@ -30,9 +30,8 @@ export async function generateMetadata({
   const cat = getCategoryBySlug(category);
   if (!cat) return {};
   const t = await getTranslations({ locale, namespace: "categories" });
-  const tPage = await getTranslations({ locale, namespace: "categoryPage" });
   return {
-    title: `${t(`${category}.name`)} ${tPage("toolsSuffix")}`,
+    title: t(`${category}.name`),
     description: t(`${category}.description`),
     alternates: {
       languages: Object.fromEntries(

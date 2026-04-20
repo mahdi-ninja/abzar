@@ -19,14 +19,28 @@ describe("searchTools", () => {
     expect(slugs).toContain("password-generator");
   });
 
+  it("uses localized tool names when searching in another locale", () => {
+    const results = searchTools("فرمت‌دهنده و اعتبارسنج", "fa");
+
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.map((result) => result.slug)).toContain("json-formatter");
+  });
+
+  it("falls back to English when the locale is unknown", () => {
+    const results = searchTools("json formatter", "xx");
+
+    expect(results.length).toBeGreaterThan(0);
+    expect(results[0].slug).toBe("json-formatter");
+  });
+
   it("handles typo-tolerant search", () => {
     const results = searchTools("json");
     expect(results.length).toBeGreaterThan(0);
   });
 
-  it("returns limited results", () => {
-    const results = searchTools("a");
-    // Should return some results but not all 200+
-    expect(results.length).toBeGreaterThan(0);
+  it("ranks direct name matches ahead of looser matches", () => {
+    const results = searchTools("json formatter");
+
+    expect(results[0].slug).toBe("json-formatter");
   });
 });

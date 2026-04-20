@@ -13,7 +13,7 @@ describe("generateToolJsonLd", () => {
   };
 
   it("generates valid schema.org WebApplication", () => {
-    const ld = generateToolJsonLd(mockTool);
+    const ld = generateToolJsonLd(mockTool, "en");
     expect(ld["@context"]).toBe("https://schema.org");
     expect(ld["@type"]).toBe("WebApplication");
     expect(ld.name).toBe("Test Tool");
@@ -23,5 +23,18 @@ describe("generateToolJsonLd", () => {
     expect(ld.isAccessibleForFree).toBe(true);
     expect(ld.offers.price).toBe("0");
     expect(ld.featureList).toBe("test, example");
+    expect(ld.browserRequirements).toContain("Requires JavaScript");
+  });
+
+  it("uses localized browser requirements and override text", () => {
+    const ld = generateToolJsonLd(mockTool, "fa", {
+      name: "ابزار تست",
+      description: "توضیح محلی",
+    });
+
+    expect(ld.name).toBe("ابزار تست");
+    expect(ld.description).toBe("توضیح محلی");
+    expect(ld.url).toContain("/fa/tools/developer/test-tool");
+    expect(ld.browserRequirements).toContain("نیاز به جاوااسکریپت");
   });
 });

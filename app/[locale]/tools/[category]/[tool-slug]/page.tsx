@@ -35,8 +35,9 @@ export async function generateMetadata({
   }>;
 }) {
   const { locale, "tool-slug": slug } = await params;
+  const { category } = await params;
   const tool = getToolBySlug(slug);
-  if (!tool) return {};
+  if (!tool || tool.category !== category) return {};
   const t = await getTranslations({ locale, namespace: "tools" });
   const tSite = await getTranslations({ locale, namespace: "site" });
   const toolName = t(`${slug}.name`);
@@ -246,10 +247,10 @@ export default async function ToolSlugPage({
     "tool-slug": string;
   }>;
 }) {
-  const { locale, "tool-slug": slug } = await params;
+  const { locale, category, "tool-slug": slug } = await params;
   setRequestLocale(locale);
   const tool = getToolBySlug(slug);
-  if (!tool) notFound();
+  if (!tool || tool.category !== category) notFound();
 
   const t = await getTranslations({ locale, namespace: "tools" });
   const tContent = await getTranslations({ locale, namespace: "toolContent" });
