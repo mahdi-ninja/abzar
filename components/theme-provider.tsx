@@ -53,8 +53,8 @@ function applyTheme(resolved: "light" | "dark") {
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(getStoredTheme);
   const [resolvedTheme, setResolvedTheme] = useState<"light" | "dark">(() => {
-    const t = getStoredTheme();
-    return t === "system" ? getSystemTheme() : t;
+    const storedTheme = getStoredTheme();
+    return storedTheme === "system" ? getSystemTheme() : storedTheme;
   });
 
   // Re-apply theme after hydration (React may overwrite the inline script's class)

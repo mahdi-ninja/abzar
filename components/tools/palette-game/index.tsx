@@ -65,6 +65,18 @@ function scoreArr(answer: string[], correct: string[]): number {
 
 export default function PaletteGame() {
   const t = useTranslations("paletteGame");
+  const [bestScores, setBestScores] = useState<Record<Difficulty, number>>(() => {
+    if (typeof window === "undefined") {
+      return { "3": 0, "5": 0, "8": 0 };
+    }
+
+    try {
+      const stored = localStorage.getItem("abzar:palette-game:best");
+      return stored ? JSON.parse(stored) : { "3": 0, "5": 0, "8": 0 };
+    } catch {
+      return { "3": 0, "5": 0, "8": 0 };
+    }
+  });
   const [difficulty, setDifficulty] = useState<Difficulty>("5");
   const [seed, setSeed] = useState(1);
   const [tiles, setTiles] = useState<string[]>([]);
@@ -75,15 +87,7 @@ export default function PaletteGame() {
   const draggingRef = useRef<number | null>(null);
   const [result, setResult] = useState<number | null>(null);
   const [started, setStarted] = useState(false);
-  const [bestScores, setBestScores] = useState<Record<Difficulty, number>>(() => {
-    try {
-      const s = localStorage.getItem("abzar:palette-game:best");
-      return s ? JSON.parse(s) : { "3": 0, "5": 0, "8": 0 };
-    } catch {
-      return { "3": 0, "5": 0, "8": 0 };
-    }
-  });
-
+  
   const startGame = useCallback(() => {
     const count = parseInt(difficulty);
     const palette = genPalette(count, seed);

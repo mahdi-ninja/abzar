@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import type { ComponentType } from "react";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
@@ -68,7 +69,7 @@ export async function generateMetadata({
 }
 
 // Dynamic tool component map — only import implemented tools
-const toolComponents: Record<string, ReturnType<typeof dynamic>> = {
+const toolComponents: Record<string, ComponentType> = {
   "json-formatter": dynamic(
     () => import("@/components/tools/json-formatter"),
     { loading: () => <ToolSkeleton /> }
@@ -234,7 +235,7 @@ const toolComponents: Record<string, ReturnType<typeof dynamic>> = {
   "drawing-canvas": dynamic(() => import("@/components/tools/drawing-canvas"), { loading: () => <ToolSkeleton /> }),
   "ambient-sounds": dynamic(() => import("@/components/tools/ambient-sounds"), { loading: () => <ToolSkeleton /> }),
   "css-art": dynamic(() => import("@/components/tools/css-art"), { loading: () => <ToolSkeleton /> }),
-  "emoji-search": dynamic(() => import("@/components/tools/emoji-search"), { loading: () => <ToolSkeleton /> }),
+  "emoji-search": dynamic(() => import("@/components/tools/emoji-search/lazy"), { loading: () => <ToolSkeleton /> }),
   "palette-game": dynamic(() => import("@/components/tools/palette-game"), { loading: () => <ToolSkeleton /> }),
 };
 

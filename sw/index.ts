@@ -41,7 +41,8 @@ registerRoute(
 // ── Runtime: HTML pages (tool pages cached on visit) ────────────────
 registerRoute(
   ({ request, url }) =>
-    request.mode === "navigate" && !url.pathname.startsWith("/_next/"),
+    request.mode === "navigate" &&
+    !url.pathname.startsWith("/_next/"),
   new StaleWhileRevalidate({
     cacheName: "abzar-runtime-v1",
     plugins: [
@@ -56,7 +57,7 @@ registerRoute(
 // ── Offline fallback for uncached navigations ───────────────────────
 setCatchHandler(async ({ request }) => {
   if (request.mode === "navigate") {
-    const cached = await matchPrecache("/offline.html");
+    const cached = await matchPrecache("offline.html");
     if (cached) return cached;
   }
   return Response.error();
